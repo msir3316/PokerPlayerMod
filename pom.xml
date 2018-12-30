@@ -3,12 +3,12 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>trumpthespire</groupId>
-    <artifactId>TrumpTheSpire</artifactId>
+    <artifactId>trumpthespire</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 	
-    <name>TrumpTheSpire</name>
-    <description>A base for Slay the Spire to start your own mod from.</description>
+    <name>trumpMod</name>
+    <description>Adds a character called The Trump, who plays barely like StS and all about poker hands.</description>
 
     <dependencies>
         <dependency>
@@ -32,6 +32,13 @@
             <scope>system</scope>
             <systemPath>${basedir}/../lib/BaseMod.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>stslib</groupId>
+            <artifactId>StSLib</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/../lib/StSLib.jar</systemPath>
+        </dependency>
 
     </dependencies>
 
@@ -45,30 +52,6 @@
         <!-- Change this to match your mods name -->
         <finalName>TrumpTheSpire</finalName>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>2.4.2</version>
-                <executions>
-                    <execution>
-                        <!-- Change this to match your mods artifactId -->
-                        <id>TrumpTheSpire</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <filters>
-                                <filter>
-                                    <!-- Change this to match your mods groupId:artifactId -->
-                                    <artifact>trumpthespire:TrumpTheSpire</artifact>
-                                </filter>
-                            </filters>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>

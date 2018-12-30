@@ -1,10 +1,10 @@
 {
-  "modid": "trumpthespire",
+  "modid": "TrumpMod",
   "name": "Trump The Spire",
   "author_list": ["Celicath"],
   "description": "Adds a character called The Trump, who plays barely like StS and all about poker hands.",
   "version": "0.1.0",
-  "sts_version": "11-01-2018",
-  "mts_version": "3.6.0",
-  "dependencies": ["basemod"]
+  "sts_version": "12-20-2018",
+  "mts_version": "3.6.3",
+  "dependencies": ["basemod", "stslib"]
 }
