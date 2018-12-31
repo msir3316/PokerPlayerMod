@@ -182,7 +182,7 @@ public class TheTrump extends CustomPlayer {
     // Should return a color object to be used to color the trail of moving cards
     @Override
     public Color getCardTrailColor() {
-        return TrumpTheSpire.DEFAULT_GRAY;
+        return TrumpTheSpire.TRUMP_GRAY;
     }
 
     // Should return a BitmapFont object that you can use to customize how your
@@ -195,7 +195,7 @@ public class TheTrump extends CustomPlayer {
     // Should return class name as it appears in run history screen.
     @Override
     public String getLocalizedCharacterName() {
-        return "The Gatherer";
+        return "The Trump";
     }
 
     //Which starting card should specific events give you?
@@ -207,7 +207,7 @@ public class TheTrump extends CustomPlayer {
     // The class name as it appears next to your player name in game	
     @Override
     public String getTitle(AbstractPlayer.PlayerClass playerClass) {
-        return "The Gatherer";
+        return "The Trump";
     }
 
     // Should return a new instance of your character, sending this.name as its name parameter.
@@ -219,14 +219,14 @@ public class TheTrump extends CustomPlayer {
     // Should return a Color object to be used to color the miniature card images in run history.
     @Override
     public Color getCardRenderColor() {
-        return TrumpTheSpire.DEFAULT_GRAY;
+        return TrumpTheSpire.TRUMP_GRAY;
     }
 
     // Should return a Color object to be used as screen tint effect when your
     // character attacks the heart.
     @Override
     public Color getSlashAttackColor() {
-        return TrumpTheSpire.DEFAULT_GRAY;
+        return TrumpTheSpire.TRUMP_GRAY;
     }
 
     // Should return an AttackEffect array of any size greater than 0. These effects
@@ -243,7 +243,7 @@ public class TheTrump extends CustomPlayer {
     // core to its maximum..."
     @Override
     public String getSpireHeartText() {
-        return "You touch the heart.";
+        return "You throw cards at the heart.";
     }
 
     // The vampire events refer to the base game characters as "brother", "sister",
@@ -251,7 +251,7 @@ public class TheTrump extends CustomPlayer {
     // the full text that will be displayed as the first screen of the vampires event.
     @Override
     public String getVampireText() {
-        return "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~basic~ ~one,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~";
+        return "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~card-obsessed~ ~one,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~";
     }
 
 }

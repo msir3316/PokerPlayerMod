@@ -14,6 +14,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardHelper;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -31,6 +32,7 @@ import trumpMod.variables.DefaultCustomVariable;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @SpireInitializer
@@ -48,7 +50,7 @@ public class TrumpTheSpire
 
 	// Colors (RGB)
 	// Character Color
-	public static final Color DEFAULT_GRAY = CardHelper.getColor(64.0f, 70.0f, 70.0f);
+	public static final Color TRUMP_GRAY = CardHelper.getColor(64.0f, 70.0f, 70.0f);
 
 	// Image folder name
 	private static final String TRUMP_MOD_ASSETS_FOLDER = "TrumpTheSpire/images";
@@ -125,8 +127,8 @@ public class TrumpTheSpire
 
 		logger.info("Creating the color " + CardColorEnum.TRUMP_GRAY.toString());
 
-		BaseMod.addColor(CardColorEnum.TRUMP_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
-				DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, makePath(ATTACK_DEAFULT_GRAY),
+		BaseMod.addColor(CardColorEnum.TRUMP_GRAY, TRUMP_GRAY, TRUMP_GRAY, TRUMP_GRAY,
+				TRUMP_GRAY, TRUMP_GRAY, TRUMP_GRAY, TRUMP_GRAY, makePath(ATTACK_DEAFULT_GRAY),
 				makePath(SKILL_DEAFULT_GRAY), makePath(POWER_DEAFULT_GRAY),
 				makePath(ENERGY_ORB_DEAFULT_GRAY), makePath(ATTACK_DEAFULT_GRAY_PORTRAIT),
 				makePath(SKILL_DEAFULT_GRAY_PORTRAIT), makePath(POWER_DEAFULT_GRAY_PORTRAIT),
@@ -321,5 +323,14 @@ public class TrumpTheSpire
 	private static String GetLocString(String locCode, String name) {
 		return Gdx.files.internal("TrumpTheSpire/localization/" + locCode + "/" + name + ".json").readString(
 				String.valueOf(StandardCharsets.UTF_8));
+	}
+
+	private static HashMap<String, Texture> imgMap = new HashMap<>();
+
+	public static Texture loadTexture(String path) {
+		if (!imgMap.containsKey(path)) {
+			imgMap.put(path, ImageMaster.loadImage(path));
+		}
+		return imgMap.get(path);
 	}
 }
