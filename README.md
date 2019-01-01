@@ -6,9 +6,11 @@ Trump the Spire adds a character named The Trump to Slay the Spire. The gameplay
 
 # Gameplay
 
+[Crappy showcase video of Trump the Spire](https://youtu.be/jc1tZhmU0UY)
+
 There are two types of cards: Normal and Special.
 
-## Normal
+## Normal Cards
 Normal cards are copied from Playing Cards. There are 40 cards, four suits each with numbers ranging from 1 to 10. They cost 2(1) and when you play one, it only cycles itself without doing anything. If you keep it until the end of your turn, each normal card in your hand activates its ability based on its suit.
 - Spade N: Gain N Block.
 - Diamond N: Deal N damage to a random enemy.
@@ -32,14 +34,16 @@ Flushes are not considered as a poker hand, and treated separately. If you have 
 
 Suit names can be changed later.
 
-## Special
+## Special Cards
 Special cards are similar to cards in the base game, each with their own unique abilities. Some cards are based on the Joker card, which lets you choose a normal card from multiple cards and add to your hand. Others can have direct effects like deal damage, gain Block, draw cards, etc.
 
 # Compatibility
-
 Unlike most Slay the Spire mods, Trump the Spire is not intended to be used with any other mods. Sine the majority of cards are not played in a traditional way, many relics/cards/etc added by mods will be played much differently with this character. Similarly, playing with Custom Mods are not intended.
 
 If you want to try these, feel free to have fun. I'm going to fix crash or softlock issues, but not about balance with these enabled.
+
+# See Also
+Trump the Spire is not a traditional mod. If you want to play as a character that feels normal, see [Gatherer](https://github.com/Celicath/GathererMod), or look for [List of Known Mods](https://github.com/kiooeht/ModTheSpire/wiki/List-of-Known-Mods) page on Mod The Spire wiki.
 
 ## Special Thanks To
 - HSymbol for the original game.
