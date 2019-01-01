@@ -16,15 +16,17 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import trumpMod.actions.TrumpNormalCardAction;
 import trumpMod.cards.*;
 import trumpMod.characters.TheTrump;
 import trumpMod.patches.CardColorEnum;
 import trumpMod.patches.TheTrumpEnum;
-import trumpMod.relics.ProtectiveDeckHolder;
 import trumpMod.relics.PlaceholderRelic2;
+import trumpMod.relics.ProtectiveDeckHolder;
 import trumpMod.variables.DefaultCustomVariable;
 
 import java.nio.charset.StandardCharsets;
@@ -35,7 +37,7 @@ import java.util.List;
 @SpireInitializer
 public class TrumpTheSpire
 		implements EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber,
-		EditCharactersSubscriber, PostInitializeSubscriber {
+		EditCharactersSubscriber, PostInitializeSubscriber, OnStartBattleSubscriber {
 	public static final Logger logger = LogManager.getLogger(TrumpTheSpire.class.getName());
 
 	//This is for the in-game mod settings pannel.
@@ -238,6 +240,7 @@ public class TrumpTheSpire
 		cards.add(new DefaultUncommonAttack());
 		cards.add(new DefaultRareAttack());
 		cards.add(new DefaultUncommonPower());
+		cards.add(new PowerPower());
 		cards.add(new DefaultRarePower());
 
 		for (CustomCard card : cards) {
@@ -305,6 +308,11 @@ public class TrumpTheSpire
 			}
 		}
 		logger.debug("receiveEditKeywords finished.");
+	}
+
+	@Override
+	public void receiveOnBattleStart(AbstractRoom room) {
+		TrumpNormalCardAction.cards.clear();
 	}
 
 	// ================ /LOAD THE KEYWORDS/ ===================

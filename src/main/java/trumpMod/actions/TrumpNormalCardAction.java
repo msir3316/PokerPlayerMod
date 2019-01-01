@@ -43,6 +43,7 @@ public class TrumpNormalCardAction extends AbstractGameAction {
 	private boolean init;
 
 	private int hand = 0;
+	private boolean flush = false;
 
 	public TrumpNormalCardAction(TrumpNormalCard card) {
 		this.p = AbstractDungeon.player;
@@ -87,9 +88,14 @@ public class TrumpNormalCardAction extends AbstractGameAction {
 					if (hand <= 3 && hand != 2) hand++;
 				}
 			}
-			AbstractDungeon.effectList.add(new SpeechBubble(p.dialogX, p.dialogY, TALK_DUR, TEXT[hand], true));
 
-			for(int i = 0; i < 4; i++) {
+			for (int i = 1; i <= 6; i++) {
+				if (hand < 5 && nums[i] >= 1 && nums[i + 1] >= 1 && nums[i + 2] >= 1 && nums[i + 3] >= 1 && nums[i + 4] >= 1) {
+					hand = 5;
+				}
+			}
+
+			for (int i = 0; i < 4; i++) {
 				if (suits[i] == 2) {
 					pow[i] += 2;
 				} else if (suits[i] == 3) {
@@ -97,9 +103,13 @@ public class TrumpNormalCardAction extends AbstractGameAction {
 				} else if (suits[i] == 4) {
 					pow[i] += 12;
 				} else if (suits[i] >= 5) {
+					flush = true;
 					pow[i] += 5 * suits[i];
 				}
 			}
+
+			AbstractDungeon.effectList.add(new SpeechBubble(p.dialogX, p.dialogY, TALK_DUR,
+					flush ? (hand == 0 ? TEXT[9] : TEXT[hand] + " NL " + TEXT[9]) : TEXT[hand], true));
 		}
 
 		timer -= Gdx.graphics.getDeltaTime();
@@ -122,6 +132,8 @@ public class TrumpNormalCardAction extends AbstractGameAction {
 
 			if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
 				AbstractDungeon.actionManager.clearPostCombatActions();
+				cards.clear();
+				onAction = false;
 			}
 		}
 		for (AbstractCard card : cards) {

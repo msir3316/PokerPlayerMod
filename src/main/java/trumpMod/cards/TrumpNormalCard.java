@@ -178,8 +178,6 @@ public class TrumpNormalCard extends CustomCard {
 					scale,
 					scale,
 					this.angle, 0, 0, SUIT_WIDTH, SUIT_HEIGHT, false, false);
-
-			//sb.draw(img, drawX, drawY + 72.0F, 125.0F, 23.0F, 250.0F, 190.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 250, 190, false, false);// 1749
 		}
 	}
 
@@ -193,11 +191,14 @@ public class TrumpNormalCard extends CustomCard {
 	public void initializeDescription() {
 		super.initializeDescription();
 		if (!keywords.contains("normal card")) {
-			keywords.add("normal card");
+			keywords.add(0, "normal card");
 		}
 	}
 
 	public void upgrade() {
-		this.upgradeBaseCost(NEW_COST);
+		if (!this.upgraded) {
+			this.upgradeName();
+			this.upgradeBaseCost(NEW_COST);
+		}
 	}
 }

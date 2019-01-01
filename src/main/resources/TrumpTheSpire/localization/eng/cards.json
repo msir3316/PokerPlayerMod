@@ -16,6 +16,10 @@
     "DESCRIPTION": "This will become an Awesome Power card.",
     "UPGRADE_DESCRIPTION": "This will become an Awesome Power card."
   },
+  "TrumpTheSpire:PowerPower": {
+    "NAME": "Power Power",
+    "DESCRIPTION": "This will become an Awesome Power Power."
+  },
   "TrumpTheSpire:DefaultRareAttack": {
     "NAME": "Placeholder",
     "DESCRIPTION": "This will become an Awesome Rare Attack card."
