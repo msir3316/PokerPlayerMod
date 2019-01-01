@@ -15,10 +15,7 @@ import com.google.gson.Gson;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.localization.PotionStrings;
-import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.localization.RelicStrings;
+import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -263,6 +260,10 @@ public class TrumpTheSpire
 		// PotionStrings
 		BaseMod.loadCustomStringsFile(PotionStrings.class,
 				"TrumpTheSpire/localization/eng/potions.json");
+
+		// UIStrings
+		BaseMod.loadCustomStringsFile(UIStrings.class,
+				"TrumpTheSpire/localization/eng/ui.json");
 
 		logger.info("Done editing strings");
 	}

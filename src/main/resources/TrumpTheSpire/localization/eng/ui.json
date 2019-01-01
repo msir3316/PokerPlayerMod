@@ -1,0 +1,15 @@
+{
+  "TrumpTheSpire:PokerHands": {
+    "TEXT": [
+      "No Pairs...",
+      "One Pair! NL +50%.",
+      "Two Pair! NL +100%.",
+      "Three of a kind! NL +150%.",
+      "Full House! NL +200%.",
+      "Straight! NL +250%.",
+      "Four of a kind! NL +300%.",
+      "???? NL +350%.",
+      "Five of a kind! NL +400%."
+    ]
+  }
+}
