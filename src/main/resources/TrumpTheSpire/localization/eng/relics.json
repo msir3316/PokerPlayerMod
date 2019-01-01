@@ -1,9 +1,9 @@
 {
-  "TrumpTheSpire:PlaceholderRelic": {
-    "NAME": "Placeholder Relic",
-    "FLAVOR": "The snake is a friend.",
+  "TrumpTheSpire:ProtectiveDeckHolder": {
+    "NAME": "Protective Deck Holder",
+    "FLAVOR": "So protective.",
     "DESCRIPTIONS": [
-      "Gain +1 [R] ."
+      "50% of the time you draw a Status card, #yExhaust it and draw #b1 card."
     ]
   },
   "TrumpTheSpire:PlaceholderRelic2": {

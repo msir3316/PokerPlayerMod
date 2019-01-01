@@ -1,46 +1,28 @@
 {
   "TrumpTheSpire:DefaultCommonAttack": {
     "NAME": "Strike",
-    "DESCRIPTION": "Deal !D! damage."
+    "DESCRIPTION": "This will become an Awesome Attack card."
   },
   "TrumpTheSpire:DefaultAttackWithVariable": {
-    "NAME": "Special Strike",
-    "DESCRIPTION": "Deal !D! damage [R] times. NL (Deal !ENERGY_DAMAGE! damage total.)"
-  },
-  "TrumpTheSpire:DefaultCommonSkill": {
-    "NAME": "Defend",
-    "DESCRIPTION": "Gain !B! block."
-  },
-  "TrumpTheSpire:DefaultCommonPower": {
-    "NAME": "Hold Place",
-    "DESCRIPTION": "Gain !M! keyword.",
-    "UPGRADE_DESCRIPTION": "Gain !M! keywords."
+    "NAME": "Placeholder",
+    "DESCRIPTION": "This will become an Awesome Attack card."
   },
   "TrumpTheSpire:DefaultUncommonAttack": {
-    "NAME": "Big slap",
-    "DESCRIPTION": "Deal !D! damage."
-  },
-  "TrumpTheSpire:DefaultUncommonSkill": {
-    "NAME": "A better defend",
-    "DESCRIPTION": "Gain !B! Plated Armor. Affected by Dexterity."
+    "NAME": "Placeholder",
+    "DESCRIPTION": "This will become an Awesome Attack card."
   },
   "TrumpTheSpire:DefaultUncommonPower": {
-    "NAME": "Weirdness",
-    "DESCRIPTION": "Gain X keywords.",
-    "UPGRADE_DESCRIPTION": "Gain X +1 keywords."
+    "NAME": "Placeholder",
+    "DESCRIPTION": "This will become an Awesome Power card.",
+    "UPGRADE_DESCRIPTION": "This will become an Awesome Power card."
   },
   "TrumpTheSpire:DefaultRareAttack": {
-    "NAME": "TOUCH",
-    "DESCRIPTION": "Deal !D! damage."
-  },
-  "TrumpTheSpire:DefaultRareSkill": {
-    "NAME": "for each loop x2",
-    "DESCRIPTION": "Apply !M! vulnerable to all enemies, 2 times.",
-    "UPGRADE_DESCRIPTION": "Apply !M! vulnerable to all enemies, 3 times."
+    "NAME": "Placeholder",
+    "DESCRIPTION": "This will become an Awesome Rare Attack card."
   },
   "TrumpTheSpire:DefaultRarePower": {
-    "NAME": "In-Progress Form",
-    "DESCRIPTION": "At the start of your turn, play a TOUCH."
+    "NAME": "Placeholder Form",
+    "DESCRIPTION": "This will become an Awesome Form card."
   },
   "TrumpTheSpire:TrumpNormalCard": {
     "NAME": "",
@@ -51,5 +33,18 @@
       "CLOVER",
       "DIAMOND"
     ]
+  },
+  "TrumpTheSpire:DiamondStrike": {
+    "NAME": "Diamond Strike",
+    "DESCRIPTION": "Deal !D! damage. Add a random Diamond Card to your hand."
+  },
+  "TrumpTheSpire:BadJoker": {
+    "NAME": "Bad Joker",
+    "DESCRIPTION": "Choose 1 of 3 random Normal Cards to add to your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Choose 1 of 3 random Normal Cards to add to your hand."
+  },
+  "TrumpTheSpire:Configure": {
+    "NAME": "Configure",
+    "DESCRIPTION": "Draw !M! cards. Put a card from your hand onto the top of your draw pile."
   }
 }

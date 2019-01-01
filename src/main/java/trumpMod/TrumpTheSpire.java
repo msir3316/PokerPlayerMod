@@ -19,11 +19,11 @@ import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import trumpMod.cards.TrumpNormalCard;
+import trumpMod.cards.*;
 import trumpMod.characters.TheTrump;
 import trumpMod.patches.CardColorEnum;
 import trumpMod.patches.TheTrumpEnum;
-import trumpMod.relics.PlaceholderRelic;
+import trumpMod.relics.ProtectiveDeckHolder;
 import trumpMod.relics.PlaceholderRelic2;
 import trumpMod.variables.DefaultCustomVariable;
 
@@ -203,7 +203,7 @@ public class TrumpTheSpire
 		logger.info("Add relics");
 
 		// This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-		BaseMod.addRelicToCustomPool(new PlaceholderRelic(), CardColorEnum.TRUMP_GRAY);
+		BaseMod.addRelicToCustomPool(new ProtectiveDeckHolder(), CardColorEnum.TRUMP_GRAY);
 
 		// This adds a relic to the Shared pool. Every character can find this relic.
 		BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
@@ -229,6 +229,16 @@ public class TrumpTheSpire
 				cards.add(new TrumpNormalCard(TrumpNormalCard.Suit.values()[i], j));
 			}
 		}
+		cards.add(new DiamondStrike());
+		cards.add(new BadJoker());
+		cards.add(new Configure());
+
+		cards.add(new DefaultCommonAttack());
+		cards.add(new DefaultAttackWithVariable());
+		cards.add(new DefaultUncommonAttack());
+		cards.add(new DefaultRareAttack());
+		cards.add(new DefaultUncommonPower());
+		cards.add(new DefaultRarePower());
 
 		for (CustomCard card : cards) {
 			BaseMod.addCard(card);

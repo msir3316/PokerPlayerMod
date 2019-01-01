@@ -29,5 +29,11 @@
       "clover"
     ],
     "DESCRIPTION": "Suit Effect: Deal N damage to all enemies"
+  },
+  {
+    "NAMES": [
+      "awesome"
+    ],
+    "DESCRIPTION": "Actually means Awesome (tm)"
   }
 ]

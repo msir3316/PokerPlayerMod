@@ -67,7 +67,6 @@ public class TrumpNormalCard extends CustomCard {
 	public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
 	private static final CardType TYPE = CardType.SKILL;
 	private static final CardColor COLOR = CardColorEnum.TRUMP_GRAY;
-	private static final CardRarity RARITY = CardRarity.COMMON;
 	private static final CardTarget TARGET = CardTarget.SELF;
 
 	private static final int NEW_COST = 1;
