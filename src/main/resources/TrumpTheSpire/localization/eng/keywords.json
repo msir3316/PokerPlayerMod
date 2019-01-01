@@ -10,19 +10,19 @@
     "NAMES": [
       "spade"
     ],
-    "DESCRIPTION": "Suit Effect: NL Gain N Block"
+    "DESCRIPTION": "Suit Effect: Gain N Block"
   },
   {
     "NAMES": [
       "diamond"
     ],
-    "DESCRIPTION": "Suit Effect: NL Deal N damage to a random enemy"
+    "DESCRIPTION": "Suit Effect: Deal N damage to a random enemy"
   },
   {
     "NAMES": [
       "heart"
     ],
-    "DESCRIPTION": "Suit Effect: NL Heal N HP"
+    "DESCRIPTION": "Suit Effect: Heal N HP"
   },
   {
     "NAMES": [

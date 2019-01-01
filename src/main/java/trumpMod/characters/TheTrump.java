@@ -110,7 +110,7 @@ public class TheTrump extends CustomPlayer {
     @Override
     public CharSelectInfo getLoadout() {
         return new CharSelectInfo("The Trump",
-                "Placeholder description text. NL " + "Second line of description text. ",
+                "An anomaly from the other world. NL Expert performer of cards tricks.",
                 STARTING_HP, MAX_HP, ORB_SLOTS, STARTING_GOLD, CARD_DRAW, this, getStartingRelics(),
                 getStartingDeck(), false);
     }

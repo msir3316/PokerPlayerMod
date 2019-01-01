@@ -5,10 +5,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.evacipated.cardcrawl.modthespire.lib.SpireSuper;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -16,6 +14,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import trumpMod.TrumpTheSpire;
+import trumpMod.actions.TrumpNormalCardAction;
 import trumpMod.patches.CardColorEnum;
 
 public class TrumpNormalCard extends CustomCard {
@@ -27,12 +26,12 @@ public class TrumpNormalCard extends CustomCard {
 
 	public static final String BLANK_IMG = TrumpTheSpire.GetCardPath(RAW_ID);
 
-	public static final String[] SUIT_TO_RAW_ID = new String[]{"Spade", "Diamond", "Heart", "Clover"};
+	public static final String[] SUIT_TO_RAW_ID = new String[]{"Heart", "Spade", "Clover", "Diamond"};
 	public static final Texture[] SUIT_TO_IMG = new Texture[]{
-			TrumpTheSpire.loadTexture(TrumpTheSpire.GetCardPath(SUIT_TO_RAW_ID[Suit.Spade.value])),
-			TrumpTheSpire.loadTexture(TrumpTheSpire.GetCardPath(SUIT_TO_RAW_ID[Suit.Diamond.value])),
 			TrumpTheSpire.loadTexture(TrumpTheSpire.GetCardPath(SUIT_TO_RAW_ID[Suit.Heart.value])),
-			TrumpTheSpire.loadTexture(TrumpTheSpire.GetCardPath(SUIT_TO_RAW_ID[Suit.Clover.value]))
+			TrumpTheSpire.loadTexture(TrumpTheSpire.GetCardPath(SUIT_TO_RAW_ID[Suit.Spade.value])),
+			TrumpTheSpire.loadTexture(TrumpTheSpire.GetCardPath(SUIT_TO_RAW_ID[Suit.Clover.value])),
+			TrumpTheSpire.loadTexture(TrumpTheSpire.GetCardPath(SUIT_TO_RAW_ID[Suit.Diamond.value]))
 	};
 
 	public static float X_LIMIT = 60.0f;
@@ -74,10 +73,10 @@ public class TrumpNormalCard extends CustomCard {
 	private static final int NEW_COST = 1;
 
 	public enum Suit {
-		Spade(0),
-		Diamond(1),
-		Heart(2),
-		Clover(3);
+		Heart(0),
+		Spade(1),
+		Clover(2),
+		Diamond(3);
 
 		public int value;
 
@@ -120,7 +119,7 @@ public class TrumpNormalCard extends CustomCard {
 			case Clover:
 				if (num <= 3)
 					return CardRarity.COMMON;
-				else if (num < 7 && num != 5)
+				else if (num <= 7 && num != 5)
 					return CardRarity.UNCOMMON;
 				else return CardRarity.RARE;
 			default:
@@ -146,24 +145,8 @@ public class TrumpNormalCard extends CustomCard {
 
 	@Override
 	public void triggerOnEndOfTurnForPlayingCard() {
-		doEffect(AbstractDungeon.player, this);
-	}
-
-	public static void doEffect(AbstractPlayer p, TrumpNormalCard card) {
-		switch (card.suit) {
-			case Spade:
-				AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, card.block));
-				break;
-			case Diamond:
-				AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(p, DamageInfo.createDamageMatrix(card.damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-				break;
-			case Heart:
-				AbstractDungeon.actionManager.addToBottom(new HealAction(p, p, card.magicNumber));
-				break;
-			case Clover:
-				AbstractDungeon.actionManager.addToBottom(new DamageRandomEnemyAction(new DamageInfo(p, card.damage, card.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-				break;
-		}
+		AbstractDungeon.actionManager.addToBottom(new TrumpNormalCardAction(this));
+		//doEffect(AbstractDungeon.player, this);
 	}
 
 	@Override

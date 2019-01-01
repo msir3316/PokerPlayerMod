@@ -46,10 +46,10 @@
     "NAME": "",
     "DESCRIPTION": "",
     "EXTENDED_DESCRIPTION": [
-      "SPADE",
-      "DIAMOND",
       "HEART",
-      "CLOVER"
+      "SPADE",
+      "CLOVER",
+      "DIAMOND"
     ]
   }
 }
