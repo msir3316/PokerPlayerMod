@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
+import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
 
 public class TheTrump extends CustomPlayer {
+	public static final CharacterStrings charStrings = CardCrawlGame.languagePack.getCharacterString("TheTrump");
 	public static final Logger logger = LogManager.getLogger(TrumpTheSpire.class.getName());
 
 	// =============== BASE STATS =================
@@ -107,8 +109,9 @@ public class TheTrump extends CustomPlayer {
 	// Starting description and loadout
 	@Override
 	public CharSelectInfo getLoadout() {
-		return new CharSelectInfo("The Trump",
-				"An anomaly from the other world. NL Expert performer of cards tricks.",
+		return new CharSelectInfo(
+				getLocalizedCharacterName(),
+				charStrings.TEXT[0],
 				STARTING_HP, MAX_HP, ORB_SLOTS, STARTING_GOLD, CARD_DRAW, this, getStartingRelics(),
 				getStartingDeck(), false);
 	}
@@ -120,17 +123,17 @@ public class TheTrump extends CustomPlayer {
 
 		logger.info("Begin loading started Deck strings");
 
-		retVal.add(TrumpNormalCard.getID(TrumpNormalCard.Suit.Spade, 1));
-		retVal.add(TrumpNormalCard.getID(TrumpNormalCard.Suit.Spade, 1));
-		retVal.add(TrumpNormalCard.getID(TrumpNormalCard.Suit.Spade, 2));
-		retVal.add(TrumpNormalCard.getID(TrumpNormalCard.Suit.Spade, 3));
-		retVal.add(TrumpNormalCard.getID(TrumpNormalCard.Suit.Spade, 4));
 		retVal.add(TrumpNormalCard.getID(TrumpNormalCard.Suit.Diamond, 1));
 		retVal.add(TrumpNormalCard.getID(TrumpNormalCard.Suit.Diamond, 2));
 		retVal.add(TrumpNormalCard.getID(TrumpNormalCard.Suit.Diamond, 3));
 		retVal.add(TrumpNormalCard.getID(TrumpNormalCard.Suit.Diamond, 4));
 		retVal.add(TrumpNormalCard.getID(TrumpNormalCard.Suit.Diamond, 6));
+		retVal.add(TrumpNormalCard.getID(TrumpNormalCard.Suit.Spade, 1));
+		retVal.add(TrumpNormalCard.getID(TrumpNormalCard.Suit.Spade, 2));
+		retVal.add(TrumpNormalCard.getID(TrumpNormalCard.Suit.Spade, 3));
+		retVal.add(TrumpNormalCard.getID(TrumpNormalCard.Suit.Spade, 4));
 		retVal.add(TrumpNormalCard.getID(TrumpNormalCard.Suit.Heart, 1));
+		retVal.add(TrumpNormalCard.getID(TrumpNormalCard.Suit.Clover, 1));
 		retVal.add(TrumpNormalCard.getID(TrumpNormalCard.Suit.Clover, 2));
 		retVal.add(DiamondStrike.ID);
 		retVal.add(BadJoker.ID);
@@ -193,7 +196,7 @@ public class TheTrump extends CustomPlayer {
 	// Should return class name as it appears in run history screen.
 	@Override
 	public String getLocalizedCharacterName() {
-		return "The Trump";
+		return charStrings.NAMES[1];
 	}
 
 	//Which starting card should specific events give you?
@@ -205,7 +208,7 @@ public class TheTrump extends CustomPlayer {
 	// The class name as it appears next to your player name in game
 	@Override
 	public String getTitle(AbstractPlayer.PlayerClass playerClass) {
-		return "The Trump";
+		return charStrings.NAMES[0];
 	}
 
 	// Should return a new instance of your character, sending this.name as its name parameter.
@@ -233,7 +236,12 @@ public class TheTrump extends CustomPlayer {
 	@Override
 	public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
 		return new AbstractGameAction.AttackEffect[]{
-				AbstractGameAction.AttackEffect.BLUNT_HEAVY};
+				AbstractGameAction.AttackEffect.SLASH_DIAGONAL,
+				AbstractGameAction.AttackEffect.SLASH_HORIZONTAL,
+				AbstractGameAction.AttackEffect.SLASH_DIAGONAL,
+				AbstractGameAction.AttackEffect.SLASH_VERTICAL,
+				AbstractGameAction.AttackEffect.BLUNT_LIGHT,
+				AbstractGameAction.AttackEffect.SLASH_HEAVY};
 	}
 
 	// Should return a string containing what text is shown when your character is
@@ -241,7 +249,7 @@ public class TheTrump extends CustomPlayer {
 	// core to its maximum..."
 	@Override
 	public String getSpireHeartText() {
-		return "You throw cards at the heart.";
+		return CardCrawlGame.languagePack.getEventString("TrumpTheSpire:SpireHeart").DESCRIPTIONS[0];
 	}
 
 	// The vampire events refer to the base game characters as "brother", "sister",
@@ -249,6 +257,6 @@ public class TheTrump extends CustomPlayer {
 	// the full text that will be displayed as the first screen of the vampires event.
 	@Override
 	public String getVampireText() {
-		return "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~card-obsessed~ ~one,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~";
+		return CardCrawlGame.languagePack.getEventString("TrumpTheSpire:Vampires").DESCRIPTIONS[0];
 	}
 }

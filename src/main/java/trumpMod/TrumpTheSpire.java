@@ -258,25 +258,29 @@ public class TrumpTheSpire
 	public void receiveEditStrings() {
 		logger.info("Begin editing strings");
 
-		// CardStrings
-		BaseMod.loadCustomStringsFile(CardStrings.class,
-				"TrumpTheSpire/localization/eng/cards.json");
-
-		// PowerStrings
-		BaseMod.loadCustomStringsFile(PowerStrings.class,
-				"TrumpTheSpire/localization/eng/powers.json");
+		String loc = getLocCode();
 
 		// RelicStrings
-		BaseMod.loadCustomStringsFile(RelicStrings.class,
-				"TrumpTheSpire/localization/eng/relics.json");
-
+		String relicStrings = GetLocString(loc, "relics");
+		BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
+		// CardStrings
+		String cardStrings = GetLocString(loc, "cards");
+		BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
 		// PotionStrings
-		BaseMod.loadCustomStringsFile(PotionStrings.class,
-				"TrumpTheSpire/localization/eng/potions.json");
-
+		String potionStrings = GetLocString(loc, "potions");
+		BaseMod.loadCustomStrings(PotionStrings.class, potionStrings);
+		// PowerStrings
+		String powerStrings = GetLocString(loc, "powers");
+		BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
 		// UIStrings
-		BaseMod.loadCustomStringsFile(UIStrings.class,
-				"TrumpTheSpire/localization/eng/ui.json");
+		String uiStrings = GetLocString(loc, "ui");
+		BaseMod.loadCustomStrings(UIStrings.class, uiStrings);
+		// EventStrings
+		String eventStrings = GetLocString(loc, "events");
+		BaseMod.loadCustomStrings(EventStrings.class, eventStrings);
+		// CharacterStrings
+		String characterStrings = GetLocString(loc, "characters");
+		BaseMod.loadCustomStrings(CharacterStrings.class, characterStrings);
 
 		logger.info("Done editing strings");
 	}
@@ -285,7 +289,7 @@ public class TrumpTheSpire
 
 	public static String getLocCode() {
 		if (Settings.language == Settings.GameLanguage.KOR) {
-			return "eng"; // change this to kor later
+			return "eng"; // TODO: change this to kor later
 		} else {
 			return "eng";
 		}
