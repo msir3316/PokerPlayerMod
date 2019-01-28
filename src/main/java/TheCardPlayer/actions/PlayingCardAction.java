@@ -106,9 +106,10 @@ public class PlayingCardAction extends AbstractGameAction {
 			}
 
 			modifier = (hand + (flush ? 3 : 0)) * 50;
+			String msg = flush ? (hand == 0 ? TEXT[10] : TEXT[hand] + TEXT[10]) : TEXT[hand] + TEXT[9];
+			if (modifier > 0) msg += TEXT[11] + modifier + TEXT[12];
 
-			AbstractDungeon.effectList.add(new SpeechBubble(p.dialogX, p.dialogY, TALK_DUR,
-					flush ? (hand == 0 ? TEXT[10] : TEXT[hand] + TEXT[10]) : TEXT[hand] + TEXT[9] + TEXT[11] + modifier + TEXT[12], true));
+			AbstractDungeon.effectList.add(new SpeechBubble(p.dialogX, p.dialogY, TALK_DUR, msg, true));
 		}
 
 		timer -= Gdx.graphics.getDeltaTime();
@@ -155,7 +156,7 @@ public class PlayingCardAction extends AbstractGameAction {
 	}
 
 	private void doEffect(PlayingCard.Suit suit, AbstractMonster target) {
-		int eff = 1 + (parity[suit.value] ? (hand + 1) / 2 : hand / 2);
+		int eff = 1 + (parity[suit.value] ? (modifier / 50 + 1) / 2 : modifier / 50 / 2);
 		parity[suit.value] = !parity[suit.value];
 		switch (suit) {
 			case Spade:
