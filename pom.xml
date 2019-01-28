@@ -7,7 +7,7 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
 	
-    <name>trumpMod</name>
+    <name>CardPlayerMod</name>
     <description>Adds a character called The Trump, who plays barely like StS and all about poker hands.</description>
 
     <dependencies>
