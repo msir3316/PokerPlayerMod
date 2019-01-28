@@ -1,21 +1,23 @@
 Also available in: [한국어](README-KOR.md)
 
-# Trump the Spire
+# CardPlayerMod
 
-Trump the Spire adds a character named The Trump to Slay the Spire. The gameplay of this character is based on a game called 'Trump Battle', created by *HSymbol* in a small game jam. It plays similarly to 'Trump Battle', but with its own twist.
+This mod adds a character named `The Card Player` to Slay the Spire. This character defies traditional style of combat, and fights with poker rules. This mod is based on a game called 'Trump Battle', created by *HSymbol* in a small game jam. It plays similarly to 'Trump Battle', but with its own twist.
 
 # Gameplay
 
 [Crappy showcase video of Trump the Spire](https://youtu.be/jc1tZhmU0UY)
 
-There are two types of cards: Normal and Special.
+In addition to traditional Attack, Skill, Powers etc in the base StS game, The Card Player uses another card type: Playing Card.
 
-## Normal Cards
-Normal cards are copied from Playing Cards. There are 40 cards, four suits each with numbers ranging from 1 to 10. They cost 2(1) and when you play one, it only cycles itself without doing anything. If you keep it until the end of your turn, each normal card in your hand activates its ability based on its suit.
+## Playing Card
+There are 40 cards, four suits each with numbers ranging from 1 to 10. They cost 2(1) and when you play one, it only cycles itself without doing anything. If you keep it until the end of your turn, each normal card in your hand activates its ability based on its suit.
 - Spade N: Gain N Block.
 - Diamond N: Deal N damage to a random enemy.
 - Heart N: Heal N HP.
 - Clover N: Deal N damage to all enemies.
+
+(Suit names can be changed later.)
 
 In addition, if your normal cards in your hand forms a [Poker Hand](https://en.wikipedia.org/wiki/List_of_poker_hands), effects of all normal cards are boosted.
 - 1 Pair: +50%
@@ -25,17 +27,7 @@ In addition, if your normal cards in your hand forms a [Poker Hand](https://en.w
 - Straight: +250%
 - Four of a kind: +300%
 - Five of a kind: +400%
-
-Flushes are not considered as a poker hand, and treated separately. If you have multiples of a suit, the number of all cards with that suit is increased by follows.
-- 2 Same Suit: +1 each
-- 3 Same Suit: +2 each
-- 4 Same Suit: +3 each
-- 5 Same Suit: +5 each
-
-Suit names can be changed later.
-
-## Special Cards
-Special cards are similar to cards in the base game, each with their own unique abilities. Some cards are based on the Joker card, which lets you choose a normal card from multiple cards and add to your hand. Others can have direct effects like deal damage, gain Block, draw cards, etc.
+- In addition, Flush can be added to any of the above hand (including No paris too). It adds an additional +150% to the modifier.
 
 # Compatibility
 Unlike most Slay the Spire mods, Trump the Spire is not intended to be used with any other mods. Sine the majority of cards are not played in a traditional way, many relics/cards/etc added by mods will be played much differently with this character. Similarly, playing with Custom Mods are not intended.
