@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>trumpthespire</groupId>
-    <artifactId>trumpthespire</artifactId>
+    <groupId>cardplayermod</groupId>
+    <artifactId>cardplayermod</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 	
@@ -48,7 +48,7 @@
     </properties>
 
     <build>
-        <finalName>TrumpTheSpire</finalName>
+        <finalName>CardPlayerMod</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -59,7 +59,7 @@
                         <phase>package</phase>
                         <configuration>
                             <target>
-                                <copy file="target/TrumpTheSpire.jar" tofile="D:\Steam\steamapps\common\SlayTheSpire\mods\TrumpTheSpire.jar"/>
+                                <copy file="target/CardPlayerMod.jar" tofile="D:\Steam\steamapps\common\SlayTheSpire\mods\CardPlayerMod.jar"/>
                             </target>
                         </configuration>
                         <goals>
