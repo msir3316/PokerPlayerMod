@@ -1,0 +1,54 @@
+{
+  "CardPlayerMod:DefaultCommonAttack": {
+    "NAME": "Strike",
+    "DESCRIPTION": "This will become an Awesome Attack card."
+  },
+  "CardPlayerMod:DefaultAttackWithVariable": {
+    "NAME": "Placeholder",
+    "DESCRIPTION": "This will become an Awesome Attack card."
+  },
+  "CardPlayerMod:DefaultUncommonAttack": {
+    "NAME": "Placeholder",
+    "DESCRIPTION": "This will become an Awesome Attack card."
+  },
+  "CardPlayerMod:DefaultUncommonPower": {
+    "NAME": "Placeholder",
+    "DESCRIPTION": "This will become an Awesome Power card.",
+    "UPGRADE_DESCRIPTION": "This will become an Awesome Power card."
+  },
+  "CardPlayerMod:PowerPower": {
+    "NAME": "Power Power",
+    "DESCRIPTION": "This will become an Awesome Power Power."
+  },
+  "CardPlayerMod:DefaultRareAttack": {
+    "NAME": "Placeholder",
+    "DESCRIPTION": "This will become an Awesome Rare Attack card."
+  },
+  "CardPlayerMod:DefaultRarePower": {
+    "NAME": "Placeholder Form",
+    "DESCRIPTION": "This will become an Awesome Form card."
+  },
+  "CardPlayerMod:PlayingCard": {
+    "NAME": "",
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      "HEART",
+      "SPADE",
+      "CLOVER",
+      "DIAMOND"
+    ]
+  },
+  "CardPlayerMod:DiamondStrike": {
+    "NAME": "Diamond Strike",
+    "DESCRIPTION": "Deal !D! damage. Add a random Diamond Card to your hand."
+  },
+  "CardPlayerMod:BadJoker": {
+    "NAME": "Bad Joker",
+    "DESCRIPTION": "Choose 1 of 3 random Normal Cards to add to your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Choose 1 of 3 random Normal Cards to add to your hand."
+  },
+  "CardPlayerMod:Configure": {
+    "NAME": "Configure",
+    "DESCRIPTION": "Draw !M! cards. Put a card from your hand onto the top of your draw pile."
+  }
+}
