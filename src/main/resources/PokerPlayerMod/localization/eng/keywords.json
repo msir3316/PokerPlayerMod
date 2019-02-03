@@ -1,0 +1,39 @@
+[
+  {
+    "PROPER_NAME": "Poker Card",
+    "NAMES": [
+      "poker card"
+    ],
+    "DESCRIPTION": "This is a poker card. Play to draw 1 card. At the end of your turn, receive an effect based on the Suit, which is boosted by poker hand you form."
+  },
+  {
+    "NAMES": [
+      "spades"
+    ],
+    "DESCRIPTION": "Suit Effect: Gain N Block"
+  },
+  {
+    "NAMES": [
+      "diamonds"
+    ],
+    "DESCRIPTION": "Suit Effect: Deal N damage to a random enemy"
+  },
+  {
+    "NAMES": [
+      "hearts"
+    ],
+    "DESCRIPTION": "Suit Effect: Heal N HP"
+  },
+  {
+    "NAMES": [
+      "clubs"
+    ],
+    "DESCRIPTION": "Suit Effect: Deal N damage to all enemies"
+  },
+  {
+    "NAMES": [
+      "awesome"
+    ],
+    "DESCRIPTION": "Actually means Awesome (tm)"
+  }
+]

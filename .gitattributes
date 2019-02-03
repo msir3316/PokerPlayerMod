@@ -1,1 +1,1 @@
-src/main/resources/CardPlayerMod/images/* filter=lfs diff=lfs merge=lfs -text
+src/main/resources/PokerPlayerMod/images/* filter=lfs diff=lfs merge=lfs -text

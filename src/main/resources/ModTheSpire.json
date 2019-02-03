@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1b8da54aa1f1e7957a3396f9dfb853f41fe41902d84e02db1c465e40f0747008
-size 390
+{
+  "modid": "PokerPlayerMod",
+  "name": "The Poker Player",
+  "author_list": ["Celicath"],
+  "credits": "HSymbol - original game",
+  "description": "Adds a character called The Poker Player, who fights with his own rule inspired from poker.",
+  "version": "0.1.0",
+  "sts_version": "01-23-2019",
+  "mts_version": "3.7.0",
+  "dependencies": ["basemod", "stslib"],
+  "update_json": ""
+}

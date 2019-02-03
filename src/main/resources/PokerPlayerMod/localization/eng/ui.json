@@ -1,0 +1,19 @@
+{
+  "PokerPlayerMod:PokerHands": {
+    "TEXT": [
+      "No Pairs...",
+      "One Pair",
+      "Two Pair",
+      "Three of a kind",
+      "Full House",
+      "Straight",
+      "Four of a kind",
+      "????",
+      "Five of a kind!",
+      "!",
+      " Flush!",
+      " NL +",
+      "%."
+    ]
+  }
+}

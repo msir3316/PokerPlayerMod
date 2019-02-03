@@ -1,0 +1,58 @@
+{
+  "PokerPlayerMod:DefaultCommonAttack": {
+    "NAME": "Strike",
+    "DESCRIPTION": "This will become an Awesome Attack card."
+  },
+  "PokerPlayerMod:DefaultAttackWithVariable": {
+    "NAME": "Placeholder",
+    "DESCRIPTION": "This will become an Awesome Attack card."
+  },
+  "PokerPlayerMod:DefaultUncommonAttack": {
+    "NAME": "Placeholder",
+    "DESCRIPTION": "This will become an Awesome Attack card."
+  },
+  "PokerPlayerMod:DefaultUncommonPower": {
+    "NAME": "Placeholder",
+    "DESCRIPTION": "This will become an Awesome Power card.",
+    "UPGRADE_DESCRIPTION": "This will become an Awesome Power card."
+  },
+  "PokerPlayerMod:PowerPower": {
+    "NAME": "Power Power",
+    "DESCRIPTION": "This will become an Awesome Power Power."
+  },
+  "PokerPlayerMod:DefaultRareAttack": {
+    "NAME": "Placeholder",
+    "DESCRIPTION": "This will become an Awesome Rare Attack card."
+  },
+  "PokerPlayerMod:DefaultRarePower": {
+    "NAME": "Placeholder Form",
+    "DESCRIPTION": "This will become an Awesome Form card."
+  },
+  "PokerPlayerMod:PokerCard": {
+    "NAME": "",
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      "",
+      " of Hearts",
+      "",
+      " of Spades",
+      "",
+      " of Clubs",
+      "",
+      " of Diamonds"
+    ]
+  },
+  "PokerPlayerMod:DiamondStrike": {
+    "NAME": "Diamond Strike",
+    "DESCRIPTION": "Deal !D! damage. Add a random Diamond Card to your hand."
+  },
+  "PokerPlayerMod:BadJoker": {
+    "NAME": "Bad Joker",
+    "DESCRIPTION": "Choose 1 of 3 random Playing Cards to add to your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Choose 1 of 3 random Playing Cards to add to your hand."
+  },
+  "PokerPlayerMod:Configure": {
+    "NAME": "Configure",
+    "DESCRIPTION": "Draw !M! cards. Put a card from your hand onto the top of your draw pile."
+  }
+}
