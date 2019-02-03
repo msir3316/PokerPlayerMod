@@ -3,8 +3,11 @@ package ThePokerPlayer.cards;
 import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.actions.PlayingCardAction;
 import ThePokerPlayer.patches.CardColorEnum;
+import ThePokerPlayer.patches.CardTypeEnum;
+import ThePokerPlayer.patches.PokerCardTypePatch;
 import basemod.abstracts.CustomCard;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.evacipated.cardcrawl.modthespire.lib.SpireSuper;
@@ -14,8 +17,13 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class PokerCard extends CustomCard {
 	private static final String RAW_ID = "PokerCard";
@@ -60,12 +68,26 @@ public class PokerCard extends CustomCard {
 			new float[]{-Y_LIMIT, Y_LIMIT, -Y_LIMIT, Y_LIMIT, 0, -Y_LIMIT, Y_LIMIT, -Y_LIMIT, Y_LIMIT},
 			new float[]{-Y_LIMIT, Y_LIMIT, 0, -Y_LIMIT, Y_LIMIT, -Y_LIMIT, Y_LIMIT, 0, -Y_LIMIT, Y_LIMIT}
 	};
+
 	public static final int SUIT_WIDTH = 17;
 	public static final int SUIT_HEIGHT = 17;
+
+	public static float typeWidthPoker;
+	public static float typeOffsetPoker;
+
+	static {
+		float d = 48.0F * Settings.scale;
+		GlyphLayout gl = new GlyphLayout();
+		gl.setText(FontHelper.cardTypeFont_L, PokerCardTypePatch.TEXT[0]);
+		typeOffsetPoker = (gl.width - 48.0F * Settings.scale) / 2.0F;
+		typeWidthPoker = (gl.width / d - 1.0F) * 2.0F + 1.0F;
+	}
+
+
 	private static final int COST = 2;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
-	private static final CardType TYPE = CardType.SKILL;
+	private static final CardType TYPE = CardTypeEnum.POKER;
 	private static final CardColor COLOR = CardColorEnum.POKER_PLAYER_GRAY;
 	private static final CardTarget TARGET = CardTarget.SELF;
 
@@ -184,6 +206,28 @@ public class PokerCard extends CustomCard {
 	protected void renderImage(SpriteBatch sb, boolean hovered, boolean selected) {
 		SpireSuper.call(sb, hovered, selected);
 		renderSuit(sb);
+	}
+
+	@SpireOverride
+	protected void renderPortraitFrame(SpriteBatch sb, float x, float y) {
+		try {
+			Method method = AbstractCard.class.getDeclaredMethod("renderSkillPortrait", SpriteBatch.class, float.class, float.class);
+			method.setAccessible(true);
+			method.invoke(this, sb, x, y);
+			float tWidth = typeWidthPoker;
+			float tOffset = typeOffsetPoker;
+
+			Method method2 = AbstractCard.class.getDeclaredMethod("renderDynamicFrame", SpriteBatch.class, float.class, float.class, float.class, float.class);
+			method2.setAccessible(true);
+			method2.invoke(this, sb, x, y, tOffset, tWidth);
+		} catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException ex) {
+			PokerPlayerMod.logger.warn("renderPortraitFrame Failed - " + ex.toString());
+		}
+	}
+
+	@Override
+	public Texture getCardBg() {
+		return ImageMaster.CARD_SKILL_BG_SILHOUETTE;
 	}
 
 	@Override

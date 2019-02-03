@@ -15,5 +15,10 @@
       " NL +",
       "%."
     ]
+  },
+  "PokerPlayerMod:PokerCardType": {
+    "TEXT": [
+      "Poker"
+    ]
   }
 }
