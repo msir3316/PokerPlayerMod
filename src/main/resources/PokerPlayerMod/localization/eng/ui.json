@@ -20,5 +20,15 @@
     "TEXT": [
       "Poker"
     ]
+  },
+  "PokerPlayerMod:WildCardAction": {
+    "TEXT": [
+      "Choose a Poker Card to Add to Your Hand."
+    ]
+  },
+  "PokerPlayerMod:DiscardAnyNumberAction": {
+    "TEXT": [
+      "Discard"
+    ]
   }
 }

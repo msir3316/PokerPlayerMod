@@ -113,6 +113,9 @@ public class PokerCard extends CustomCard {
 	public String getCardName(Suit suit, int num) {
 		return EXTENDED_DESCRIPTION[suit.value * 2] + num + EXTENDED_DESCRIPTION[suit.value * 2 + 1];
 	}
+	public String getCardDescription(Suit suit, int num) {
+		return EXTENDED_DESCRIPTION[suit.value * 2 + 8] + num + EXTENDED_DESCRIPTION[suit.value * 2 + 9];
+	}
 
 	public Suit suit;
 	public int num;
@@ -140,7 +143,7 @@ public class PokerCard extends CustomCard {
 			case Club:
 				if (num <= 3)
 					return CardRarity.COMMON;
-				else if (num <= 7 && num != 5)
+				else if (num <= 7)
 					return CardRarity.UNCOMMON;
 				else return CardRarity.RARE;
 			default:
@@ -159,7 +162,7 @@ public class PokerCard extends CustomCard {
 		this.baseDamage = num;
 
 		this.name = getCardName(suit, num);
-		this.rawDescription = this.name;
+		this.rawDescription = getCardDescription(suit, num);
 		this.initializeTitle();
 		this.initializeDescription();
 	}
@@ -233,8 +236,8 @@ public class PokerCard extends CustomCard {
 	@Override
 	public void initializeDescription() {
 		super.initializeDescription();
-		if (!keywords.contains("poker card")) {
-			keywords.add(0, "poker card");
+		if (!keywords.contains("ppk:poker card")) {
+			keywords.add(0, "ppk:poker card");
 		}
 	}
 

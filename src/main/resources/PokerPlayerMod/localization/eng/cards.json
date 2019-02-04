@@ -39,20 +39,40 @@
       "",
       " of Clubs",
       "",
-      " of Diamonds"
+      " of Diamonds",
+      "",
+      " of ppk:Hearts",
+      "",
+      " of ppk:Spades",
+      "",
+      " of ppk:Clubs",
+      "",
+      " of ppk:Diamonds"
     ]
   },
   "PokerPlayerMod:DiamondStrike": {
     "NAME": "Diamond Strike",
-    "DESCRIPTION": "Deal !D! damage. Add a random Diamond Card to your hand."
+    "DESCRIPTION": "Deal !D! damage. Add a random ppk:Diamonds Card to your hand."
   },
   "PokerPlayerMod:BadJoker": {
     "NAME": "Bad Joker",
-    "DESCRIPTION": "Choose 1 of 3 random Playing Cards to add to your hand. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Choose 1 of 3 random Playing Cards to add to your hand."
+    "DESCRIPTION": "Choose 1 of 3 random Poker Cards to add to your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Choose 1 of 3 random Poker Cards to add to your hand."
   },
   "PokerPlayerMod:Configure": {
     "NAME": "Configure",
     "DESCRIPTION": "Draw !M! cards. Put a card from your hand onto the top of your draw pile."
+  },
+  "PokerPlayerMod:Mulligan": {
+    "NAME": "Mulligan",
+    "DESCRIPTION": "Discard any number of cards. Draw cards until you have 5 cards in hand."
+  },
+  "PokerPlayerMod:CloakShield": {
+    "NAME": "Cloak Shield",
+    "DESCRIPTION": "Gain !B! Block."
+  },
+  "PokerPlayerMod:WildCard": {
+    "NAME": "Wild Card",
+    "DESCRIPTION": "Choose 1 from ALL Poker Cards to add into your hand. NL Exhaust."
   }
 }

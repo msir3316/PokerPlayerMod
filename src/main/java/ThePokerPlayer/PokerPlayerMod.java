@@ -233,7 +233,11 @@ public class PokerPlayerMod
 		}
 		cards.add(new DiamondStrike());
 		cards.add(new BadJoker());
+		cards.add(new Mulligan());
+
+		cards.add(new CloakShield());
 		cards.add(new Configure());
+		cards.add(new WildCard());
 
 		cards.add(new DefaultCommonAttack());
 		cards.add(new DefaultAttackWithVariable());
@@ -308,7 +312,7 @@ public class PokerPlayerMod
 
 		if (keywords != null) {
 			for (Keyword keyword : keywords) {
-				BaseMod.addKeyword(keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
+				BaseMod.addKeyword("ppk", keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
 			}
 		}
 		logger.debug("receiveEditKeywords finished.");
