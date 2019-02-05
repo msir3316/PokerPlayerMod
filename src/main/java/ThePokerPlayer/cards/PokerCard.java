@@ -236,8 +236,8 @@ public class PokerCard extends CustomCard {
 	@Override
 	public void initializeDescription() {
 		super.initializeDescription();
-		if (!keywords.contains("ppk:poker card")) {
-			keywords.add(0, "ppk:poker card");
+		if (!keywords.contains("pokerplayer:poker card")) {
+			keywords.add(0, "pokerplayer:poker card");
 		}
 	}
 

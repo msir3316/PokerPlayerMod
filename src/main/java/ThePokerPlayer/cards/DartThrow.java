@@ -11,8 +11,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class CloakShield extends CustomCard {
-	private static final String RAW_ID = "CloakShield";
+public class DartThrow extends CustomCard {
+	private static final String RAW_ID = "DartThrow";
 	public static final String ID = PokerPlayerMod.makeID(RAW_ID);
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -22,12 +22,12 @@ public class CloakShield extends CustomCard {
 	private static final AbstractCard.CardType TYPE = CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = CardColorEnum.POKER_PLAYER_GRAY;
 	private static final AbstractCard.CardRarity RARITY = CardRarity.COMMON;
-	private static final AbstractCard.CardTarget TARGET = CardTarget.SELF;
+	private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
 
-	private static final int POWER = 11;
+	private static final int POWER = 13;
 	private static final int UPGRADE_BONUS = 4;
 
-	public CloakShield() {
+	public DartThrow() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		this.baseBlock = POWER;
 	}
@@ -37,7 +37,7 @@ public class CloakShield extends CustomCard {
 	}
 
 	public AbstractCard makeCopy() {
-		return new CloakShield();
+		return new DartThrow();
 	}
 
 	public void upgrade() {

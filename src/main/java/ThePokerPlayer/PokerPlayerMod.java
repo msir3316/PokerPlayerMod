@@ -312,7 +312,7 @@ public class PokerPlayerMod
 
 		if (keywords != null) {
 			for (Keyword keyword : keywords) {
-				BaseMod.addKeyword("ppk", keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
+				BaseMod.addKeyword("pokerplayer", keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
 			}
 		}
 		logger.debug("receiveEditKeywords finished.");

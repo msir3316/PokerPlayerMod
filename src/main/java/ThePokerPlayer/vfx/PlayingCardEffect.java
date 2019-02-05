@@ -34,6 +34,7 @@ public class PlayingCardEffect extends AbstractGameEffect {
 	private ArrayList<Vector2> dest1;
 	private ArrayList<Vector2> dest2;
 	private ArrayList<Vector2> curPos;
+	private float curA;
 	AbstractMonster selected = null;
 
 	public PlayingCardEffect(PokerCard.Suit suit) {
@@ -58,6 +59,24 @@ public class PlayingCardEffect extends AbstractGameEffect {
 		curPos.add(new Vector2(originX, originY));
 	}
 
+	AbstractMonster getTarget() {
+		int num = 0;
+		AbstractMonster result = null;
+		for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+			if (!m.halfDead && !m.isDying && !m.isEscaping) {
+				if (suit == PokerCard.Suit.Club) {
+					addDests(m.hb);
+				} else {
+					if (AbstractDungeon.cardRandomRng.random(num) == 0) {
+						result = m;
+					}
+					num++;
+				}
+			}
+		}
+		return result;
+	}
+
 	@Override
 	public void update() {
 		if (!this.init) {
@@ -66,19 +85,7 @@ public class PlayingCardEffect extends AbstractGameEffect {
 			if (suit == PokerCard.Suit.Heart || suit == PokerCard.Suit.Spade) {
 				addDests(p.hb);
 			} else {
-				int num = 0;
-				for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-					if (!m.halfDead && !m.isDying && !m.isEscaping) {
-						if (suit == PokerCard.Suit.Club) {
-							addDests(m.hb);
-						} else {
-							if (AbstractDungeon.cardRandomRng.random(num) == 0) {
-								selected = m;
-							}
-							num++;
-						}
-					}
-				}
+				selected = getTarget();
 				if (suit == PokerCard.Suit.Diamond) {
 					if (selected == null) {
 						isDone = true;
@@ -87,7 +94,13 @@ public class PlayingCardEffect extends AbstractGameEffect {
 					addDests(selected.hb);
 				}
 			}
+			curA = 0;
 			this.init = true;
+		} else if(suit == PokerCard.Suit.Diamond) {
+			if (selected.isDying) {
+				AbstractMonster m = getTarget();
+				if (m != null) selected = m;
+			}
 		}
 
 		this.duration -= Gdx.graphics.getDeltaTime();
@@ -99,14 +112,21 @@ public class PlayingCardEffect extends AbstractGameEffect {
 		} else {
 			for (int i = 0; i < dest1.size(); i++) {
 				float x, y;
-				Vector2 v1 = dest1.get(i);
 				if (t < 0.5f) {
+					Vector2 v1 = dest1.get(i);
 					x = Interpolation.linear.apply(originX, v1.x, t * 2);
 					y = Interpolation.linear.apply(originY, v1.y, t * 2);
 				} else {
+					float a = t * 2 - 1;
+					a *= a;
+
+					float p = (curA > 0.999f ? 1 : (a - curA) / (1 - curA));
+
+					Vector2 vc = curPos.get(i);
 					Vector2 v2 = dest2.get(i);
-					x = Interpolation.linear.apply(v1.x, v2.x, t * 2 - 1);
-					y = Interpolation.linear.apply(v1.y, v2.y, t * 2 - 1);
+					x = Interpolation.linear.apply(vc.x, v2.x, p);
+					y = Interpolation.linear.apply(vc.y, v2.y, p);
+					curA = a;
 				}
 
 				curPos.set(i, new Vector2(x, y));
