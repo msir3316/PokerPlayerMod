@@ -75,6 +75,23 @@
     "NAME": "Manipulation",
     "DESCRIPTION": "Deal !D! damage X times. Increase the pokerplayer:Rank of one Poker Card by X."
   },
+  "PokerPlayerMod:HotShotCut": {
+    "NAME": "Hot Shot Cut",
+    "DESCRIPTION": "Exhaust your hand. Deal !D! damage to a random enemy for each exhausted Poker Card. Exhaust.",
+    "UPGRADE_DESCRIPTION": "Exhaust your hand. Deal !D! damage to a random enemy for each exhausted card. Exhaust."
+  },
+  "PokerPlayerMod:ClubsClub": {
+    "NAME": "Clubs Club",
+    "DESCRIPTION": "Draw a card. NL Deal !D! damage for each pokerplayer:Clubs in your hand."
+  },
+  "PokerPlayerMod:SecondChance": {
+    "NAME": "Second Chance",
+    "DESCRIPTION": "Deal !D! damage. NL Draw until you have 5 cards in hand."
+  },
+  "PokerPlayerMod:Trickery": {
+    "NAME": "Trickery",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak."
+  },
   "PokerPlayerMod:Configure": {
     "NAME": "Configure",
     "DESCRIPTION": "Draw !M! cards. Put a card from your hand onto the top of your draw pile."

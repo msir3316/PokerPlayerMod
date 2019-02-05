@@ -3,8 +3,9 @@ package ThePokerPlayer.cards;
 import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.patches.CardColorEnum;
 import basemod.abstracts.CustomCard;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.unique.ExpertiseAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,10 +13,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.ThrowDaggerEffect;
 
-public class DartThrow extends CustomCard {
-	private static final String RAW_ID = "DartThrow";
+public class SecondChance extends CustomCard {
+	private static final String RAW_ID = "SecondChance";
 	public static final String ID = PokerPlayerMod.makeID(RAW_ID);
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -24,26 +24,25 @@ public class DartThrow extends CustomCard {
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	private static final AbstractCard.CardType TYPE = CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = CardColorEnum.POKER_PLAYER_GRAY;
-	private static final AbstractCard.CardRarity RARITY = CardRarity.COMMON;
+	private static final AbstractCard.CardRarity RARITY = CardRarity.UNCOMMON;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
 
-	private static final int POWER = 13;
-	private static final int UPGRADE_BONUS = 4;
+	private static final int POWER = 4;
+	private static final int UPGRADE_BONUS = 3;
+	private static final int DRAW_UNTIL = 5;
 
-	public DartThrow() {
+	public SecondChance() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		this.baseDamage = POWER;
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		if (m != null) {
-			AbstractDungeon.actionManager.addToBottom(new VFXAction(new ThrowDaggerEffect(m.hb.cX, m.hb.cY)));
-		}
-		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn)));
+		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+		AbstractDungeon.actionManager.addToBottom(new ExpertiseAction(p, DRAW_UNTIL));
 	}
 
 	public AbstractCard makeCopy() {
-		return new DartThrow();
+		return new SecondChance();
 	}
 
 	public void upgrade() {

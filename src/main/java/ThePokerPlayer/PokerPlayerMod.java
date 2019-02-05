@@ -245,8 +245,11 @@ public class PokerPlayerMod
 		cards.add(new WildCard());
 		cards.add(new DartThrow());
 		cards.add(new Manipulation());
+		cards.add(new HotShotCut());
+		cards.add(new ClubsClub());
+		cards.add(new SecondChance());
+		cards.add(new Trickery());
 
-		cards.add(new DefaultUncommonAttack());
 		cards.add(new DefaultRareAttack());
 		cards.add(new DefaultUncommonPower());
 		cards.add(new PowerPower());
