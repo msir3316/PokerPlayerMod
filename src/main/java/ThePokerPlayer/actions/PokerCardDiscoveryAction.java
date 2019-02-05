@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDiscardEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 
-public class PlayingCardDiscoveryAction extends AbstractGameAction {
+public class PokerCardDiscoveryAction extends AbstractGameAction {
 	private boolean retrieveCard = false;
 	public static PokerCard.Suit suit;
 	public static int min;
@@ -16,24 +16,24 @@ public class PlayingCardDiscoveryAction extends AbstractGameAction {
 
 	public static boolean isActive = false;
 
-	public PlayingCardDiscoveryAction() {
+	public PokerCardDiscoveryAction() {
 		this(null, 1, 10);
 	}
 
-	public PlayingCardDiscoveryAction(PokerCard.Suit suit) {
+	public PokerCardDiscoveryAction(PokerCard.Suit suit) {
 		this(suit, 1, 10);
 	}
 
-	public PlayingCardDiscoveryAction(int min, int max) {
+	public PokerCardDiscoveryAction(int min, int max) {
 		this(null, min, max);
 	}
 
-	public PlayingCardDiscoveryAction(PokerCard.Suit suit, int min, int max) {
+	public PokerCardDiscoveryAction(PokerCard.Suit suit, int min, int max) {
 		this.actionType = ActionType.CARD_MANIPULATION;
 		this.duration = Settings.ACTION_DUR_FAST;
-		PlayingCardDiscoveryAction.suit = suit;
-		PlayingCardDiscoveryAction.min = min;
-		PlayingCardDiscoveryAction.max = max;
+		PokerCardDiscoveryAction.suit = suit;
+		PokerCardDiscoveryAction.min = min;
+		PokerCardDiscoveryAction.max = max;
 	}
 
 	public void update() {

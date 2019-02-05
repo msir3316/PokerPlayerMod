@@ -1,6 +1,6 @@
 package ThePokerPlayer.vfx;
 
-import ThePokerPlayer.actions.PlayingCardAction;
+import ThePokerPlayer.actions.ShowdownAction;
 import ThePokerPlayer.cards.PokerCard;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -134,7 +134,7 @@ public class PlayingCardEffect extends AbstractGameEffect {
 		}
 
 		if (isDone) {
-			PlayingCardAction.pendingEffects.add(new ImmutablePair<>(suit, selected));
+			ShowdownAction.pendingEffects.add(new ImmutablePair<>(suit, selected));
 		}
 	}
 

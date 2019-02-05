@@ -1,6 +1,6 @@
 package ThePokerPlayer.patches;
 
-import ThePokerPlayer.actions.PlayingCardDiscoveryAction;
+import ThePokerPlayer.actions.PokerCardDiscoveryAction;
 import ThePokerPlayer.cards.PokerCard;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
@@ -12,12 +12,12 @@ public class DiscoveryPatch {
 	public static class FixRandomCard {
 		@SpirePostfixPatch
 		public static AbstractCard Postfix(AbstractCard __result) {
-			if (PlayingCardDiscoveryAction.isActive) {
+			if (PokerCardDiscoveryAction.isActive) {
 				return new PokerCard(
-						PlayingCardDiscoveryAction.suit == null ?
+						PokerCardDiscoveryAction.suit == null ?
 								PokerCard.Suit.values()[AbstractDungeon.cardRandomRng.random(3)] :
-								PlayingCardDiscoveryAction.suit,
-						AbstractDungeon.cardRandomRng.random(PlayingCardDiscoveryAction.min, PlayingCardDiscoveryAction.max));
+								PokerCardDiscoveryAction.suit,
+						AbstractDungeon.cardRandomRng.random(PokerCardDiscoveryAction.min, PokerCardDiscoveryAction.max));
 			} else {
 				return __result;
 			}

@@ -22,7 +22,7 @@ import java.util.LinkedList;
 
 import static ThePokerPlayer.vfx.PlayingCardEffect.EFFECT_DUR;
 
-public class PlayingCardAction extends AbstractGameAction {
+public class ShowdownAction extends AbstractGameAction {
 	private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("PokerPlayerMod:PokerHands");
 	public static final String[] TEXT = uiStrings.TEXT;
 
@@ -46,7 +46,7 @@ public class PlayingCardAction extends AbstractGameAction {
 	private int modifier = 0;
 	private boolean flush = false;
 
-	public PlayingCardAction(PokerCard card) {
+	public ShowdownAction(PokerCard card) {
 		this.p = AbstractDungeon.player;
 		this.duration = EFFECT_DUR;
 		this.actionType = ActionType.SPECIAL;

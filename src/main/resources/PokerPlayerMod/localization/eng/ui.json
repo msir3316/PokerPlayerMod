@@ -33,7 +33,8 @@
   },
   "PokerPlayerMod:PokerCardChangeAction": {
     "TEXT": [
-      "Change Rank"
+      "Change Rank",
+      "Extract"
     ]
   }
 }

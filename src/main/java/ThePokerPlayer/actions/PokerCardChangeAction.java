@@ -3,6 +3,7 @@ package ThePokerPlayer.actions;
 import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.cards.PokerCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -23,9 +24,11 @@ public class PokerCardChangeAction extends AbstractGameAction {
 	public static PokerCardChangeAction ref = null;
 
 	public enum Mode {
-		RANK_SINGLE,
-		RANK_ALL
+		RANK_CHANGE_SINGLE,
+		RANK_CHANGE_ALL,
+		EXTRACT
 	}
+
 
 	/// amount = how much card rank will be changed. amount of 0 means it's randomized.
 	public PokerCardChangeAction(AbstractCreature target, AbstractCreature source, Mode mode, int amount) {
@@ -44,7 +47,8 @@ public class PokerCardChangeAction extends AbstractGameAction {
 			}
 
 			switch (mode) {
-				case RANK_SINGLE:
+				case RANK_CHANGE_SINGLE:
+				case EXTRACT:
 					for (AbstractCard c : this.p.hand.group) {
 						if (!(c instanceof PokerCard)) {
 							this.nonPokerCards.add(c);
@@ -54,16 +58,31 @@ public class PokerCardChangeAction extends AbstractGameAction {
 						this.isDone = true;
 						return;
 					}
-					this.p.hand.group.removeAll(this.nonPokerCards);
-					if (this.p.hand.group.size() >= 1) {
-						ref = this;
-						PokerPlayerMod.transformAnimTimer = 0;
-						AbstractDungeon.handCardSelectScreen.open(TEXT[0], 1, true, true, false, true);
-						this.tickDuration();
-						return;
+
+					if (mode == Mode.RANK_CHANGE_SINGLE) {
+						this.p.hand.group.removeAll(this.nonPokerCards);
+						if (this.p.hand.group.size() >= 1) {
+							ref = this;
+							PokerPlayerMod.transformAnimTimer = 0;
+							AbstractDungeon.handCardSelectScreen.open(TEXT[0], 1, true, true, false, true);
+							this.tickDuration();
+							return;
+						}
+					} else if (mode == Mode.EXTRACT) {
+						if (this.nonPokerCards.size() >= this.p.hand.group.size() - amount) {
+							for (AbstractCard c : this.p.hand.group) {
+								doExtract((PokerCard) c);
+							}
+							this.isDone = true;
+							return;
+						} else {
+							AbstractDungeon.handCardSelectScreen.open(TEXT[1], amount, false, false, false, false);
+							this.tickDuration();
+							return;
+						}
 					}
 					break;
-				case RANK_ALL:
+				case RANK_CHANGE_ALL:
 					for (AbstractCard c : AbstractDungeon.player.hand.group)
 						if (c instanceof PokerCard) {
 							((PokerCard) c).rankChange(amount, true);
@@ -77,9 +96,15 @@ public class PokerCardChangeAction extends AbstractGameAction {
 
 		if (!AbstractDungeon.handCardSelectScreen.wereCardsRetrieved) {
 			for (AbstractCard c : AbstractDungeon.handCardSelectScreen.selectedCards.group) {
-				((PokerCard) c).rankChange(amount, true);
-				c.superFlash();
-				this.p.hand.addToTop(c);
+				switch (mode) {
+					case RANK_CHANGE_SINGLE:
+						((PokerCard) c).rankChange(amount, true);
+						c.superFlash();
+						this.p.hand.addToTop(c);
+						break;
+					case EXTRACT:
+						doExtract((PokerCard) c);
+				}
 			}
 
 			this.returnCards();
@@ -98,5 +123,10 @@ public class PokerCardChangeAction extends AbstractGameAction {
 		}
 
 		this.p.hand.refreshHandLayout();
+	}
+
+	private void doExtract(PokerCard c) {
+		this.p.hand.moveToExhaustPile(c);
+		AbstractDungeon.actionManager.addToTop(new GainEnergyAction(c.rank));
 	}
 }

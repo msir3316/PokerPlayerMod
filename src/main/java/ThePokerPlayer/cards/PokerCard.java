@@ -1,7 +1,7 @@
 package ThePokerPlayer.cards;
 
 import ThePokerPlayer.PokerPlayerMod;
-import ThePokerPlayer.actions.PlayingCardAction;
+import ThePokerPlayer.actions.ShowdownAction;
 import ThePokerPlayer.patches.CardColorEnum;
 import ThePokerPlayer.patches.CardTypeEnum;
 import ThePokerPlayer.patches.PokerCardTypePatch;
@@ -170,7 +170,7 @@ public class PokerCard extends CustomCard {
 
 	@Override
 	public void triggerOnEndOfTurnForPlayingCard() {
-		AbstractDungeon.actionManager.addToBottom(new PlayingCardAction(this));
+		AbstractDungeon.actionManager.addToBottom(new ShowdownAction(this));
 	}
 
 	@Override

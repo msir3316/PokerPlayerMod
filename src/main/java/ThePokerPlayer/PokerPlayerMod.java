@@ -1,6 +1,6 @@
 package ThePokerPlayer;
 
-import ThePokerPlayer.actions.PlayingCardAction;
+import ThePokerPlayer.actions.ShowdownAction;
 import ThePokerPlayer.cards.*;
 import ThePokerPlayer.characters.ThePokerPlayer;
 import ThePokerPlayer.patches.CardColorEnum;
@@ -249,6 +249,9 @@ public class PokerPlayerMod
 		cards.add(new ClubsClub());
 		cards.add(new SecondChance());
 		cards.add(new Trickery());
+		cards.add(new CardBurn());
+		cards.add(new HiddenCard());
+		cards.add(new Extraction());
 
 		cards.add(new DefaultRareAttack());
 		cards.add(new DefaultUncommonPower());
@@ -328,8 +331,8 @@ public class PokerPlayerMod
 
 	@Override
 	public void receiveOnBattleStart(AbstractRoom room) {
-		PlayingCardAction.cards.clear();
-		PlayingCardAction.pendingEffects.clear();
+		ShowdownAction.cards.clear();
+		ShowdownAction.pendingEffects.clear();
 	}
 
 	// ================ /LOAD THE KEYWORDS/ ===================

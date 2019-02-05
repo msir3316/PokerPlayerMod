@@ -43,7 +43,7 @@ public class ManipulationAction extends AbstractGameAction {
 			for (int i = 0; i < effect; ++i) {
 				AbstractDungeon.actionManager.addToBottom(new DamageAction(this.m, new DamageInfo(this.p, this.damage, this.damageTypeForTurn), AttackEffect.BLUNT_LIGHT));
 			}
-			AbstractDungeon.actionManager.addToBottom(new PokerCardChangeAction(this.p, this.p, PokerCardChangeAction.Mode.RANK_SINGLE, effect));
+			AbstractDungeon.actionManager.addToBottom(new PokerCardChangeAction(this.p, this.p, PokerCardChangeAction.Mode.RANK_CHANGE_SINGLE, effect));
 
 			if (!this.freeToPlayOnce) {
 				this.p.energy.use(EnergyPanel.totalCount);

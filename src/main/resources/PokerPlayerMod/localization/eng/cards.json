@@ -96,6 +96,20 @@
     "NAME": "Configure",
     "DESCRIPTION": "Draw !M! cards. Put a card from your hand onto the top of your draw pile."
   },
+  "PokerPlayerMod:CardBurn": {
+    "NAME": "Card Burn",
+    "DESCRIPTION": "Exhaust 1 card. NL Draw 2 Cards.",
+    "UPGRADE_DESCRIPTION": "Draw 2 Cards. Exhaust 1 card."
+  },
+  "PokerPlayerMod:HiddenCard": {
+    "NAME": "Hidden Card",
+    "DESCRIPTION": "Fetch a Poker Card from your discard pile.",
+    "UPGRADE_DESCRIPTION": "Fetch a Poker Card from your discard pile. NL Gain Block equal to its Rank."
+  },
+  "PokerPlayerMod:Extraction": {
+    "NAME": "Extraction",
+    "DESCRIPTION": "Exhaust a Poker Card. Gain energy equal to its Rank."
+  },
   "PokerPlayerMod:WildCard": {
     "NAME": "Wild Card",
     "DESCRIPTION": "Choose 1 from ALL Poker Cards to add into your hand. NL Exhaust."
