@@ -1,7 +1,10 @@
 package ThePokerPlayer.characters;
 
 import ThePokerPlayer.PokerPlayerMod;
-import ThePokerPlayer.cards.*;
+import ThePokerPlayer.cards.BadJoker;
+import ThePokerPlayer.cards.DiamondStrike;
+import ThePokerPlayer.cards.Mulligan;
+import ThePokerPlayer.cards.PokerCard;
 import ThePokerPlayer.patches.CardColorEnum;
 import ThePokerPlayer.relics.ProtectiveDeckHolder;
 import basemod.abstracts.CustomPlayer;
@@ -201,7 +204,7 @@ public class ThePokerPlayer extends CustomPlayer {
 	//Which starting card should specific events give you?
 	@Override
 	public AbstractCard getStartCardForEvent() {
-		return new DefaultCommonAttack();
+		return new Mulligan();
 	}
 
 	// The class name as it appears next to your player name in game

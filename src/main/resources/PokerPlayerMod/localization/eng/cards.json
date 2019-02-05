@@ -63,7 +63,6 @@
     "NAME": "Mulligan",
     "DESCRIPTION": "Discard any number of cards. Draw cards until you have 5 cards in hand."
   },
-
   "PokerPlayerMod:DartThrow": {
     "NAME": "Dart Throw",
     "DESCRIPTION": "Deal !D! damage."
@@ -71,6 +70,10 @@
   "PokerPlayerMod:CloakShield": {
     "NAME": "Cloak Shield",
     "DESCRIPTION": "Gain !B! Block."
+  },
+  "PokerPlayerMod:Manipulation": {
+    "NAME": "Manipulation",
+    "DESCRIPTION": "Deal !D! damage X times. Increase the pokerplayer:Rank of one Poker Card by X."
   },
   "PokerPlayerMod:Configure": {
     "NAME": "Configure",

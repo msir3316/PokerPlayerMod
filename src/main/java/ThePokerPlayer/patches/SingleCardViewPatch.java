@@ -18,10 +18,10 @@ public class SingleCardViewPatch {
 			if (card instanceof PokerCard) {
 				PokerCard tnc = (PokerCard) card;
 
-				for (int i = 0; i < tnc.num; i++) {
+				for (int i = 0; i < tnc.rank; i++) {
 					float scale = Settings.scale * 2;
-					float dx = PokerCard.OFFSETS_X[tnc.num - 1][i];
-					float dy = PokerCard.OFFSETS_Y[tnc.num - 1][i];
+					float dx = PokerCard.OFFSETS_X[tnc.rank - 1][i];
+					float dy = PokerCard.OFFSETS_Y[tnc.rank - 1][i];
 					sb.draw(
 							tnc.suit.getImage(),
 							(float) Settings.WIDTH / 2.0F - PokerCard.SUIT_WIDTH,

@@ -3,7 +3,6 @@ package ThePokerPlayer.actions;
 import ThePokerPlayer.PokerPlayerMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -35,8 +34,8 @@ public class DiscardAnyNumberAction extends AbstractGameAction {
 				if (!AbstractDungeon.handCardSelectScreen.selectedCards.group.isEmpty()) {
 					Iterator var1 = AbstractDungeon.handCardSelectScreen.selectedCards.group.iterator();
 
-					while(var1.hasNext()) {
-						AbstractCard c = (AbstractCard)var1.next();
+					while (var1.hasNext()) {
+						AbstractCard c = (AbstractCard) var1.next();
 						AbstractDungeon.player.hand.moveToDiscardPile(c);
 						GameActionManager.incrementDiscard(false);
 						c.triggerOnManualDiscard();

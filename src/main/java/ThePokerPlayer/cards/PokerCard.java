@@ -9,6 +9,7 @@ import basemod.abstracts.CustomCard;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.evacipated.cardcrawl.modthespire.lib.SpireSuper;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
@@ -113,12 +114,13 @@ public class PokerCard extends CustomCard {
 	public String getCardName(Suit suit, int num) {
 		return EXTENDED_DESCRIPTION[suit.value * 2] + num + EXTENDED_DESCRIPTION[suit.value * 2 + 1];
 	}
+
 	public String getCardDescription(Suit suit, int num) {
 		return EXTENDED_DESCRIPTION[suit.value * 2 + 8] + num + EXTENDED_DESCRIPTION[suit.value * 2 + 9];
 	}
 
 	public Suit suit;
-	public int num;
+	public int rank;
 
 	public static String getID(Suit suit, int num) {
 		return PokerPlayerMod.makeID(SUIT_TO_RAW_ID[suit.value] + num);
@@ -151,18 +153,17 @@ public class PokerCard extends CustomCard {
 		}
 	}
 
-	public PokerCard(Suit suit, int num) {
-		super(getID(suit, num), NAME, BLANK_IMG, COST, DESCRIPTION, TYPE, COLOR, getRarity(suit, num), TARGET);
+	public PokerCard(Suit suit, int rank) {
+		super(getID(suit, rank), NAME, BLANK_IMG, COST, DESCRIPTION, TYPE, COLOR, getRarity(suit, rank), TARGET);
 
 		this.suit = suit;
-		this.num = num;
-		this.baseMagicNumber = num;
-		this.magicNumber = this.baseMagicNumber;
-		this.baseBlock = num;
-		this.baseDamage = num;
+		this.rank = rank;
+		initCard();
+	}
 
-		this.name = getCardName(suit, num);
-		this.rawDescription = getCardDescription(suit, num);
+	void initCard() {
+		this.name = getCardName(suit, rank);
+		this.rawDescription = getCardDescription(suit, rank);
 		this.initializeTitle();
 		this.initializeDescription();
 	}
@@ -174,7 +175,7 @@ public class PokerCard extends CustomCard {
 
 	@Override
 	public AbstractCard makeCopy() {
-		return new PokerCard(this.suit, this.num);
+		return new PokerCard(this.suit, this.rank);
 	}
 
 	@Override
@@ -187,10 +188,10 @@ public class PokerCard extends CustomCard {
 		float drawY = this.current_y - SUIT_HEIGHT / 2.0f;
 		float yOffset = 72.0f / 2.0f;
 
-		for (int i = 0; i < num; i++) {
+		for (int i = 0; i < rank; i++) {
 			float scale = this.drawScale * Settings.scale * 2;
-			float dx = OFFSETS_X[num - 1][i] / 2.0f;
-			float dy = OFFSETS_Y[num - 1][i] / 2.0f;
+			float dx = OFFSETS_X[rank - 1][i] / 2.0f;
+			float dy = OFFSETS_Y[rank - 1][i] / 2.0f;
 			sb.draw(
 					suit.getImage(),
 					drawX + dx,
@@ -246,5 +247,23 @@ public class PokerCard extends CustomCard {
 			this.upgradeName();
 			this.upgradeBaseCost(NEW_COST);
 		}
+	}
+
+	public void rankChange(int amount, boolean useRng) {
+		if (amount == 0) {
+			if (useRng) {
+				this.rank = AbstractDungeon.cardRandomRng.random(1, 10);
+			} else {
+				this.rank = MathUtils.random(1, 10);
+			}
+		} else {
+			this.rank += amount;
+			if (this.rank > 10) {
+				this.rank = 10;
+			} else if (this.rank < 1) {
+				this.rank = 1;
+			}
+		}
+		initCard();
 	}
 }

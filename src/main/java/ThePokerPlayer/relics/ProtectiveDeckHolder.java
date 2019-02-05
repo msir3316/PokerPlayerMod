@@ -1,5 +1,6 @@
 package ThePokerPlayer.relics;
 
+import ThePokerPlayer.PokerPlayerMod;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
@@ -7,7 +8,6 @@ import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import ThePokerPlayer.PokerPlayerMod;
 
 public class ProtectiveDeckHolder extends CustomRelic {
 

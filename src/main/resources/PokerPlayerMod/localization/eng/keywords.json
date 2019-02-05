@@ -10,7 +10,7 @@
     "NAMES": [
       "showdown"
     ],
-    "DESCRIPTION": "At the end of your turn, you receive Showdown effects from Poker Cards in you hand. They are boosted by poker hand you form."
+    "DESCRIPTION": "At the end of your turn, you receive Showdown effects from Poker Cards in you hand. They are boosted by poker hand you form. NL \"Showdown:\" powers are activated before the effects."
   },
   {
     "NAMES": [
@@ -35,6 +35,12 @@
       "clubs"
     ],
     "DESCRIPTION": "Showdown Effect: Deal N damage to all enemies"
+  },
+  {
+    "NAMES": [
+      "rank"
+    ],
+    "DESCRIPTION": "The number of symbols on Poker Cards. During Showdown, the number of suits coming out is equal to their Rank."
   },
   {
     "NAMES": [

@@ -1,5 +1,6 @@
 package ThePokerPlayer.cards;
 
+import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.patches.CardColorEnum;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
@@ -10,7 +11,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import ThePokerPlayer.PokerPlayerMod;
 
 public class Configure extends CustomCard {
 	private static final String RAW_ID = "Configure";

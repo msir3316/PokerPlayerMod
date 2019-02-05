@@ -96,7 +96,7 @@ public class PlayingCardEffect extends AbstractGameEffect {
 			}
 			curA = 0;
 			this.init = true;
-		} else if(suit == PokerCard.Suit.Diamond) {
+		} else if (suit == PokerCard.Suit.Diamond) {
 			if (selected.isDying) {
 				AbstractMonster m = getTarget();
 				if (m != null) selected = m;

@@ -1,8 +1,7 @@
 package ThePokerPlayer.actions;
 
-import ThePokerPlayer.powers.CommonPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
@@ -10,53 +9,48 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
-public class UncommonPowerAction extends AbstractGameAction {
+public class ManipulationAction extends AbstractGameAction {
 	private boolean freeToPlayOnce;
-	private int magicNumber;
+	private int damage;
 	private AbstractPlayer p;
+	private AbstractMonster m;
+	private DamageInfo.DamageType damageTypeForTurn;
 	private int energyOnUse;
-	private boolean upgraded;
 
-	public UncommonPowerAction(final AbstractPlayer p, final AbstractMonster m,
-	                           final int magicNumber, final boolean upgraded,
-	                           final DamageInfo.DamageType damageTypeForTurn, final boolean freeToPlayOnce,
-	                           final int energyOnUse) {
-		this.freeToPlayOnce = false;
-		this.energyOnUse = -1;
+	public ManipulationAction(AbstractPlayer p, AbstractMonster m, int damage, DamageInfo.DamageType damageTypeForTurn, boolean freeToPlayOnce, int energyOnUse) {
 		this.p = p;
-		this.magicNumber = magicNumber;
+		this.m = m;
+		this.damage = damage;
 		this.freeToPlayOnce = freeToPlayOnce;
 		this.duration = Settings.ACTION_DUR_XFAST;
 		this.actionType = ActionType.SPECIAL;
+		this.damageTypeForTurn = damageTypeForTurn;
 		this.energyOnUse = energyOnUse;
-		this.upgraded = upgraded;
 	}
 
-	@Override
 	public void update() {
 		int effect = EnergyPanel.totalCount;
 		if (this.energyOnUse != -1) {
 			effect = this.energyOnUse;
 		}
+
 		if (this.p.hasRelic("Chemical X")) {
 			effect += 2;
 			this.p.getRelic("Chemical X").flash();
 		}
-		if (this.upgraded) {
-			++effect;
-		}
+
 		if (effect > 0) {
 			for (int i = 0; i < effect; ++i) {
-
-				AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.p, this.p,
-						new CommonPower(this.p, this.p, this.magicNumber), this.magicNumber,
-						AttackEffect.BLUNT_LIGHT));
-
+				AbstractDungeon.actionManager.addToBottom(new DamageAction(this.m, new DamageInfo(this.p, this.damage, this.damageTypeForTurn), AttackEffect.BLUNT_LIGHT));
 			}
+			AbstractDungeon.actionManager.addToBottom(new PokerCardChangeAction(this.p, this.p, PokerCardChangeAction.Mode.RANK_SINGLE, effect));
+
 			if (!this.freeToPlayOnce) {
 				this.p.energy.use(EnergyPanel.totalCount);
 			}
 		}
+
 		this.isDone = true;
 	}
 }
+

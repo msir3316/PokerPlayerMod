@@ -20,6 +20,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -102,6 +103,10 @@ public class PokerPlayerMod
 	// Animations atlas and JSON files
 	public static final String THE_DEFAULT_SKELETON_ATLAS = "char/ThePokerPlayer/skeleton.atlas";
 	public static final String THE_DEFAULT_SKELETON_JSON = "char/ThePokerPlayer/skeleton.json";
+
+	// Logics
+	public static AbstractCard cardSelectScreenCard;
+	public static float transformAnimTimer;
 
 	// =============== /INPUT TEXTURE LOCATION/ =================
 
@@ -238,9 +243,9 @@ public class PokerPlayerMod
 		cards.add(new CloakShield());
 		cards.add(new Configure());
 		cards.add(new WildCard());
+		cards.add(new DartThrow());
+		cards.add(new Manipulation());
 
-		cards.add(new DefaultCommonAttack());
-		cards.add(new DefaultAttackWithVariable());
 		cards.add(new DefaultUncommonAttack());
 		cards.add(new DefaultRareAttack());
 		cards.add(new DefaultUncommonPower());
@@ -321,6 +326,7 @@ public class PokerPlayerMod
 	@Override
 	public void receiveOnBattleStart(AbstractRoom room) {
 		PlayingCardAction.cards.clear();
+		PlayingCardAction.pendingEffects.clear();
 	}
 
 	// ================ /LOAD THE KEYWORDS/ ===================

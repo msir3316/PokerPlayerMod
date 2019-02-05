@@ -1,12 +1,17 @@
 {
   "modid": "PokerPlayerMod",
   "name": "The Poker Player",
-  "author_list": ["Celicath"],
+  "author_list": [
+    "Celicath"
+  ],
   "credits": "HSymbol - original game",
   "description": "Adds a character called The Poker Player, who fights with his own rule inspired from poker.",
   "version": "0.1.0",
   "sts_version": "01-23-2019",
   "mts_version": "3.7.0",
-  "dependencies": ["basemod", "stslib"],
+  "dependencies": [
+    "basemod",
+    "stslib"
+  ],
   "update_json": ""
 }

@@ -1,6 +1,7 @@
 package ThePokerPlayer.actions;
 
 import ThePokerPlayer.cards.PokerCard;
+import ThePokerPlayer.vfx.PlayingCardEffect;
 import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -15,7 +16,6 @@ import com.megacrit.cardcrawl.vfx.SpeechBubble;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
-import ThePokerPlayer.vfx.PlayingCardEffect;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -70,8 +70,8 @@ public class PlayingCardAction extends AbstractGameAction {
 			pow = new int[4];
 			parity = new boolean[4];
 			for (PokerCard card : cards) {
-				pow[card.suit.value] += card.num;
-				nums[card.num]++;
+				pow[card.suit.value] += card.rank;
+				nums[card.rank]++;
 				suits[card.suit.value]++;
 			}
 			index = 0;
