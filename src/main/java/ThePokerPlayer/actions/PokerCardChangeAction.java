@@ -3,6 +3,7 @@ package ThePokerPlayer.actions;
 import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.cards.PokerCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -60,8 +61,8 @@ public class PokerCardChangeAction extends AbstractGameAction {
 					}
 
 					if (mode == Mode.RANK_CHANGE_SINGLE) {
-						this.p.hand.group.removeAll(this.nonPokerCards);
-						if (this.p.hand.group.size() >= 1) {
+						if (this.p.hand.group.size() - this.nonPokerCards.size() >= 1) {
+							this.p.hand.group.removeAll(this.nonPokerCards);
 							ref = this;
 							PokerPlayerMod.transformAnimTimer = 0;
 							AbstractDungeon.handCardSelectScreen.open(TEXT[0], 1, true, true, false, true);
@@ -69,13 +70,16 @@ public class PokerCardChangeAction extends AbstractGameAction {
 							return;
 						}
 					} else if (mode == Mode.EXTRACT) {
-						if (this.nonPokerCards.size() >= this.p.hand.group.size() - amount) {
+						if (this.p.hand.group.size() - this.nonPokerCards.size() <= amount) {
 							for (AbstractCard c : this.p.hand.group) {
-								doExtract((PokerCard) c);
+								if (c instanceof PokerCard) {
+									doExtract((PokerCard) c);
+								}
 							}
 							this.isDone = true;
 							return;
 						} else {
+							this.p.hand.group.removeAll(this.nonPokerCards);
 							AbstractDungeon.handCardSelectScreen.open(TEXT[1], amount, false, false, false, false);
 							this.tickDuration();
 							return;
@@ -126,7 +130,7 @@ public class PokerCardChangeAction extends AbstractGameAction {
 	}
 
 	private void doExtract(PokerCard c) {
-		this.p.hand.moveToExhaustPile(c);
+		AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(c, p.hand, true));
 		AbstractDungeon.actionManager.addToTop(new GainEnergyAction(c.rank));
 	}
 }

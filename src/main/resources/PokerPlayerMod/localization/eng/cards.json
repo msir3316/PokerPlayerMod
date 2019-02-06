@@ -99,12 +99,12 @@
   "PokerPlayerMod:CardBurn": {
     "NAME": "Card Burn",
     "DESCRIPTION": "Exhaust 1 card. NL Draw 2 Cards.",
-    "UPGRADE_DESCRIPTION": "Draw 2 Cards. Exhaust 1 card."
+    "UPGRADE_DESCRIPTION": "Draw 2 Cards. NL Exhaust 1 card."
   },
   "PokerPlayerMod:HiddenCard": {
     "NAME": "Hidden Card",
     "DESCRIPTION": "Fetch a Poker Card from your discard pile.",
-    "UPGRADE_DESCRIPTION": "Fetch a Poker Card from your discard pile. NL Gain Block equal to its Rank."
+    "UPGRADE_DESCRIPTION": "Fetch a Poker Card from your discard pile. Gain Block equal to its Rank."
   },
   "PokerPlayerMod:Extraction": {
     "NAME": "Extraction",
@@ -113,5 +113,14 @@
   "PokerPlayerMod:WildCard": {
     "NAME": "Wild Card",
     "DESCRIPTION": "Choose 1 from ALL Poker Cards to add into your hand. NL Exhaust."
+  },
+  "PokerPlayerMod:Raise": {
+    "NAME": "Raise",
+    "DESCRIPTION": "Draw a card. NL All Rank of Poker Cards in your hand is increased by !M!."
+  },
+  "PokerPlayerMod:MagicTrick": {
+    "NAME": "Magic Trick",
+    "DESCRIPTION": "Draw until you have 6 cards in hand. Discard !M! card.",
+    "UPGRADE_DESCRIPTION": "Draw until you have 7 cards in hand. Discard !M! cards."
   }
 }

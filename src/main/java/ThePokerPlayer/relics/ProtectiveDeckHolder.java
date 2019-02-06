@@ -22,6 +22,7 @@ public class ProtectiveDeckHolder extends CustomRelic {
 	@Override
 	public void onCardDraw(AbstractCard drawnCard) {
 		if (drawnCard.type == AbstractCard.CardType.STATUS && AbstractDungeon.cardRandomRng.randomBoolean()) {
+			this.flash();
 			AbstractDungeon.actionManager.addToBottom(new ExhaustSpecificCardAction(drawnCard, AbstractDungeon.player.hand));
 			AbstractDungeon.actionManager.addToBottom(new DrawCardAction(AbstractDungeon.player, 1));
 		}

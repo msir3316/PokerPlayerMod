@@ -252,6 +252,8 @@ public class PokerPlayerMod
 		cards.add(new CardBurn());
 		cards.add(new HiddenCard());
 		cards.add(new Extraction());
+		cards.add(new Raise());
+		cards.add(new MagicTrick());
 
 		cards.add(new DefaultRareAttack());
 		cards.add(new DefaultUncommonPower());
