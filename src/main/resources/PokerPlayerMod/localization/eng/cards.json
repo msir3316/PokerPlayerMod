@@ -1,16 +1,4 @@
 {
-  "PokerPlayerMod:DefaultAttackWithVariable": {
-    "NAME": "Placeholder",
-    "DESCRIPTION": "This will become an Awesome Attack card."
-  },
-  "PokerPlayerMod:PowerPower": {
-    "NAME": "Power Power",
-    "DESCRIPTION": "This will become an Awesome Power Power."
-  },
-  "PokerPlayerMod:DefaultRareAttack": {
-    "NAME": "Placeholder",
-    "DESCRIPTION": "This will become an Awesome Rare Attack card."
-  },
   "PokerPlayerMod:PokerCard": {
     "NAME": "",
     "DESCRIPTION": "",
@@ -93,10 +81,6 @@
     "NAME": "Extraction",
     "DESCRIPTION": "Exhaust a Poker Card. Gain energy equal to its pokerplayer:Rank."
   },
-  "PokerPlayerMod:WildCard": {
-    "NAME": "Wild Card",
-    "DESCRIPTION": "Choose 1 from ALL Poker Cards to add into your hand. NL Exhaust."
-  },
   "PokerPlayerMod:Raise": {
     "NAME": "Raise",
     "DESCRIPTION": "Draw a card. NL pokerplayer:Ranks of all Poker Cards in your hand are increased by !M!."
@@ -131,6 +115,26 @@
   "PokerPlayerMod:FakeSymbols": {
     "NAME": "Fake Symbols",
     "DESCRIPTION": "You score a Flush if you have 4 or more Poker Cards with same suit during pokerplayer:Showdown."
+  },
+  "PokerPlayerMod:WildCard": {
+    "NAME": "Wild Card",
+    "DESCRIPTION": "Choose 1 from ALL Poker Cards to add into your hand. NL Exhaust."
+  },
+  "PokerPlayerMod:ChangeRules": {
+    "NAME": "Change Rules",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! Strength."
+  },
+  "PokerPlayerMod:VarietyAttack": {
+    "NAME": "Variety Attack",
+    "DESCRIPTION": "Deal !D! damage to all enemies. Damage is doubled for each unique Suit of Poker Cards in your hand."
+  },
+  "PokerPlayerMod:FakeCopy": {
+    "NAME": "Fake Copy",
+    "DESCRIPTION": "Choose a Poker Card from your hand. Add a copy of that card into your hand."
+  },
+  "PokerPlayerMod:SecretDealer": {
+    "NAME": "Secret Dealer",
+    "DESCRIPTION": "Draw !M! cards."
   },
   "PokerPlayerMod:GamblerForm": {
     "NAME": "Gambler Form",

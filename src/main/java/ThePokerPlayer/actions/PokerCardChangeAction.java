@@ -5,6 +5,7 @@ import ThePokerPlayer.cards.PokerCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -28,7 +29,8 @@ public class PokerCardChangeAction extends AbstractGameAction {
 	public enum Mode {
 		RANK_CHANGE_ANY,
 		RANK_CHANGE_ALL,
-		EXTRACT
+		EXTRACT,
+		COPY
 	}
 
 
@@ -53,6 +55,7 @@ public class PokerCardChangeAction extends AbstractGameAction {
 			switch (mode) {
 				case RANK_CHANGE_ANY:
 				case EXTRACT:
+				case COPY:
 					for (AbstractCard c : this.p.hand.group) {
 						if (!(c instanceof PokerCard)) {
 							this.nonPokerCards.add(c);
@@ -70,11 +73,15 @@ public class PokerCardChangeAction extends AbstractGameAction {
 						AbstractDungeon.handCardSelectScreen.open(TEXT[0], amount, true, true, false, amount == 1);
 						this.tickDuration();
 						return;
-					} else if (mode == Mode.EXTRACT) {
+					} else {
 						if (this.p.hand.group.size() - this.nonPokerCards.size() <= amount) {
 							for (AbstractCard c : this.p.hand.group) {
 								if (c instanceof PokerCard) {
-									doExtract((PokerCard) c);
+									if (mode == Mode.EXTRACT) {
+										doExtract((PokerCard) c);
+									} else {
+										doCopy((PokerCard) c);
+									}
 								}
 							}
 							this.isDone = true;
@@ -86,7 +93,6 @@ public class PokerCardChangeAction extends AbstractGameAction {
 							return;
 						}
 					}
-					break;
 				case RANK_CHANGE_ALL:
 					for (AbstractCard c : AbstractDungeon.player.hand.group)
 						if (c instanceof PokerCard) {
@@ -109,6 +115,12 @@ public class PokerCardChangeAction extends AbstractGameAction {
 						break;
 					case EXTRACT:
 						doExtract((PokerCard) c);
+						this.p.hand.addToTop(c);
+						break;
+					case COPY:
+						doCopy((PokerCard) c);
+						this.p.hand.addToTop(c);
+						break;
 				}
 			}
 
@@ -133,5 +145,9 @@ public class PokerCardChangeAction extends AbstractGameAction {
 	private void doExtract(PokerCard c) {
 		AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(c, p.hand, true));
 		AbstractDungeon.actionManager.addToTop(new GainEnergyAction(c.rank));
+	}
+
+	private void doCopy(PokerCard c) {
+		AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(c));
 	}
 }

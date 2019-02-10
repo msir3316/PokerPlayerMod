@@ -67,22 +67,6 @@ public class PokerPlayerMod
 	private static final String SKILL_DEAFULT_GRAY_PORTRAIT = "1024/bg_skill_default_gray.png";
 	private static final String ENERGY_ORB_DEAFULT_GRAY_PORTRAIT = "1024/card_default_gray_orb.png";
 
-	// Card images
-	public static final String DEFAULT_COMMON_ATTACK = "cards/Attack.png";
-	public static final String DEFAULT_COMMON_SKILL = "cards/Skill.png";
-	public static final String DEFAULT_COMMON_POWER = "cards/Power.png";
-	public static final String DEFAULT_UNCOMMON_ATTACK = "cards/Attack.png";
-	public static final String DEFAULT_UNCOMMON_SKILL = "cards/Skill.png";
-	public static final String DEFAULT_UNCOMMON_POWER = "cards/Power.png";
-	public static final String DEFAULT_RARE_ATTACK = "cards/Attack.png";
-	public static final String DEFAULT_RARE_SKILL = "cards/Skill.png";
-	public static final String DEFAULT_RARE_POWER = "cards/Power.png";
-
-	// Power images
-	public static final String COMMON_POWER = "powers/placeholder_power.png";
-	public static final String UNCOMMON_POWER = "powers/placeholder_power.png";
-	public static final String RARE_POWER = "powers/placeholder_power.png";
-
 	// Relic images
 	public static final String PLACEHOLDER_RELIC = "relics/placeholder_relic.png";
 	public static final String PLACEHOLDER_RELIC_OUTLINE = "relics/outline/placeholder_relic.png";
@@ -260,10 +244,11 @@ public class PokerPlayerMod
 		cards.add(new Round());
 		cards.add(new Sharpen());
 		cards.add(new Splitter());
+		cards.add(new ChangeRules());
+		cards.add(new VarietyAttack());
+		cards.add(new FakeCopy());
+		cards.add(new SecretDealer());
 		cards.add(new GamblerForm());
-
-		cards.add(new DefaultRareAttack());
-		cards.add(new PowerPower());
 
 		for (CustomCard card : cards) {
 			BaseMod.addCard(card);
