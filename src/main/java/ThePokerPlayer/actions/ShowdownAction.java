@@ -1,6 +1,10 @@
 package ThePokerPlayer.actions;
 
 import ThePokerPlayer.cards.PokerCard;
+import ThePokerPlayer.powers.DamnStraightPower;
+import ThePokerPlayer.powers.FakeSymbolsPower;
+import ThePokerPlayer.powers.RoundPower;
+import ThePokerPlayer.powers.SharpenPower;
 import ThePokerPlayer.vfx.PlayingCardEffect;
 import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -46,14 +50,13 @@ public class ShowdownAction extends AbstractGameAction {
 	private int modifier = 0;
 	private boolean flush = false;
 
-	public ShowdownAction(PokerCard card) {
+	public ShowdownAction() {
 		this.p = AbstractDungeon.player;
 		this.duration = EFFECT_DUR;
 		this.actionType = ActionType.SPECIAL;
 		this.timer = START_DELAY;
 		this.index = 0;
 		this.init = false;
-		cards.add(card);
 	}
 
 	@Override
@@ -62,6 +65,7 @@ public class ShowdownAction extends AbstractGameAction {
 			this.isDone = true;
 			return;
 		}
+
 		onAction = true;
 		if (!init) {
 			int[] nums = new int[11];
@@ -71,6 +75,14 @@ public class ShowdownAction extends AbstractGameAction {
 			parity = new boolean[4];
 			for (PokerCard card : cards) {
 				pow[card.suit.value] += card.rank;
+
+				if (card.suit == PokerCard.Suit.Diamond && this.p.hasPower(SharpenPower.POWER_ID)) {
+					pow[PokerCard.Suit.Diamond.value] += this.p.getPower(SharpenPower.POWER_ID).amount;
+				}
+				if (card.suit == PokerCard.Suit.Club && this.p.hasPower(RoundPower.POWER_ID)) {
+					pow[PokerCard.Suit.Spade.value] += this.p.getPower(RoundPower.POWER_ID).amount;
+				}
+
 				nums[card.rank]++;
 				suits[card.suit.value]++;
 			}
@@ -90,7 +102,11 @@ public class ShowdownAction extends AbstractGameAction {
 				}
 			}
 
-			if (hand < 5) {
+			int straightModifier = 1;
+			if (p.hasPower(DamnStraightPower.POWER_ID)) {
+				straightModifier <<= p.getPower(DamnStraightPower.POWER_ID).amount;
+			}
+			if (hand < 5 || straightModifier > 1) {
 				for (int i = 1; i <= 6; i++) {
 					if (nums[i] >= 1 && nums[i + 1] >= 1 && nums[i + 2] >= 1 && nums[i + 3] >= 1 && nums[i + 4] >= 1) {
 						hand = 5;
@@ -99,13 +115,20 @@ public class ShowdownAction extends AbstractGameAction {
 				}
 			}
 
+			int flushThreshold = 5;
+			if (this.p.hasPower(FakeSymbolsPower.POWER_ID)) {
+				flushThreshold -= this.p.getPower(FakeSymbolsPower.POWER_ID).amount;
+			}
 			for (int i = 0; i < 4; i++) {
-				if (suits[i] >= 5) {
+				if (suits[i] >= flushThreshold) {
 					flush = true;
 				}
 			}
 
 			modifier = (hand + (flush ? 3 : 0)) * 50;
+			if (hand == 5) {
+				modifier *= straightModifier;
+			}
 			String msg = flush ? (hand == 0 ? TEXT[10] : TEXT[hand] + TEXT[10]) : TEXT[hand] + TEXT[9];
 			if (modifier > 0) msg += TEXT[11] + modifier + TEXT[12];
 

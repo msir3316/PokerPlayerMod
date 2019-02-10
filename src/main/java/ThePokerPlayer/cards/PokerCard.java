@@ -1,7 +1,7 @@
 package ThePokerPlayer.cards;
 
 import ThePokerPlayer.PokerPlayerMod;
-import ThePokerPlayer.actions.ShowdownAction;
+import ThePokerPlayer.actions.PokerCardEndOfTurnAction;
 import ThePokerPlayer.patches.CardColorEnum;
 import ThePokerPlayer.patches.CardTypeEnum;
 import ThePokerPlayer.patches.PokerCardTypePatch;
@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 
 public class PokerCard extends CustomCard {
 	private static final String RAW_ID = "PokerCard";
-	public static final String ID = PokerPlayerMod.makeID(RAW_ID);
+	private static final String ID = PokerPlayerMod.makeID(RAW_ID); // This ID is never used for actual ID for poker cards so don't use it.
 
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -170,7 +170,7 @@ public class PokerCard extends CustomCard {
 
 	@Override
 	public void triggerOnEndOfTurnForPlayingCard() {
-		AbstractDungeon.actionManager.addToBottom(new ShowdownAction(this));
+		AbstractDungeon.actionManager.addToBottom(new PokerCardEndOfTurnAction(this));
 	}
 
 	@Override

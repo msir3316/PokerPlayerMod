@@ -1,13 +1,13 @@
-package ThePokerPlayer.actions;
+package ThePokerPlayer.patches;
 
 import ThePokerPlayer.PokerPlayerMod;
+import ThePokerPlayer.actions.PokerCardChangeAction;
 import ThePokerPlayer.cards.PokerCard;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.screens.select.HandCardSelectScreen;
-import javassist.CtBehavior;
 
 public class HandCardSelectScreenPatch {
 	@SpirePatch(clz = HandCardSelectScreen.class, method = "update")
@@ -25,12 +25,13 @@ public class HandCardSelectScreenPatch {
 					PokerPlayerMod.cardSelectScreenCard = c;
 				}
 				if (c != null) {
-					__instance.upgradePreviewCard = c.makeStatEquivalentCopy();
-					if (PokerCardChangeAction.ref.amount != 0) {
-						((PokerCard) __instance.upgradePreviewCard).rankChange(PokerCardChangeAction.ref.amount, false);
+					if (PokerCardChangeAction.ref.rankChange != 0) {
+						__instance.upgradePreviewCard = c.makeStatEquivalentCopy();
+						((PokerCard) __instance.upgradePreviewCard).rankChange(PokerCardChangeAction.ref.rankChange, false);
 					} else {
 						PokerPlayerMod.transformAnimTimer -= Gdx.graphics.getDeltaTime();
 						if (PokerPlayerMod.transformAnimTimer < 0.0F || cardChanged) {
+							__instance.upgradePreviewCard = c.makeStatEquivalentCopy();
 							((PokerCard) __instance.upgradePreviewCard).rankChange(0, false);
 							__instance.upgradePreviewCard.update();
 							PokerPlayerMod.transformAnimTimer = 0.1F;

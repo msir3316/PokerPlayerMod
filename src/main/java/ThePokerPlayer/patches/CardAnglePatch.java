@@ -11,6 +11,8 @@ public class CardAnglePatch {
 		@SpirePostfixPatch
 		public static void Postfix(AbstractCard __instance) {
 			if (ShowdownAction.onAction) {
+				__instance.unhover();
+				__instance.drawScale = __instance.targetDrawScale = 0.75f;
 				__instance.targetAngle = __instance.angle = 0;
 			}
 		}

@@ -254,11 +254,16 @@ public class PokerPlayerMod
 		cards.add(new Extraction());
 		cards.add(new Raise());
 		cards.add(new MagicTrick());
+		cards.add(new Ace());
+		cards.add(new DamnStraight());
+		cards.add(new FakeSymbols());
+		cards.add(new Round());
+		cards.add(new Sharpen());
+		cards.add(new Splitter());
+		cards.add(new GamblerForm());
 
 		cards.add(new DefaultRareAttack());
-		cards.add(new DefaultUncommonPower());
 		cards.add(new PowerPower());
-		cards.add(new DefaultRarePower());
 
 		for (CustomCard card : cards) {
 			BaseMod.addCard(card);
@@ -349,8 +354,8 @@ public class PokerPlayerMod
 		return "PokerPlayerMod/images/cards/" + id + ".png";
 	}
 
-	public static String GetPowerPath(String id) {
-		return "PokerPlayerMod/images/powers/" + id + ".png";
+	public static String GetPowerPath(String id, int size) {
+		return "PokerPlayerMod/images/powers/" + id + "_" + size + ".png";
 	}
 
 	public static String GetRelicPath(String id) {

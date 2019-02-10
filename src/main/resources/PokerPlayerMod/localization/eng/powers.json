@@ -1,18 +1,56 @@
 {
-  "PokerPlayerMod:CommonPower": {
-    "NAME": "Placeholder Power",
+  "PokerPlayerMod:DamnStraightPower": {
+    "NAME": "Damn Straight",
     "DESCRIPTIONS": [
-      "You applied ",
-      " keyword.",
-      " keywords."
+      "Whenever you form a Straight during Showdown, the Modifier bonus you get is",
+      " doubled.",
+      " multiplied by #b",
+      ".",
+      " almost infinite."
     ]
   },
-  "PokerPlayerMod:RarePower": {
-    "NAME": "Placeholder Power",
+  "PokerPlayerMod:SharpenPower": {
+    "NAME": "Sharpen",
     "DESCRIPTIONS": [
-      "At the start of your turn TOUCH ",
-      " enemy.",
-      " enemies."
+      "During Showdown, your Diamonds deal ",
+      " extra damage."
+    ]
+  },
+  "PokerPlayerMod:RoundPower": {
+    "NAME": "Round",
+    "DESCRIPTIONS": [
+      "During Showdown, your Clubs give you ",
+      " Block per card."
+    ]
+  },
+  "PokerPlayerMod:AcePower": {
+    "NAME": "Ace",
+    "DESCRIPTIONS": [
+      "Whenever you play a Poker Card with #ypokerplayer:Rank 1, gain #b",
+      " energy and #b",
+      " Block."
+    ]
+  },
+  "PokerPlayerMod:SplitterPower": {
+    "NAME": "Splitter",
+    "DESCRIPTIONS": [
+      "During Showdown, if ranks of your Poker Cards in hand are all #b5 or less, they are increased by #b",
+      "."
+    ]
+  },
+  "PokerPlayerMod:FakeSymbolsPower": {
+    "NAME": "Fake Symbols",
+    "DESCRIPTIONS": [
+      "During Showdown, you score a Flush if you have #b",
+      " or more Poker Cards with same suit."
+    ]
+  },
+  "PokerPlayerMod:GamblerFormPower": {
+    "NAME": "Gambler Form",
+    "DESCRIPTIONS": [
+      "At the start of Showdown, you may choose a Poker Card to randomize its rank.",
+      "At the start of Showdown, you may choose #b",
+      " Poker Cards to randomize its rank."
     ]
   }
 }

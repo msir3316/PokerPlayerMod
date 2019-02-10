@@ -21,7 +21,7 @@ public class Trickery extends CustomCard {
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String IMG = PokerPlayerMod.GetCardPath(RAW_ID);
-	private static final int COST = 1;
+	private static final int COST = 0;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	private static final AbstractCard.CardType TYPE = CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = CardColorEnum.POKER_PLAYER_GRAY;

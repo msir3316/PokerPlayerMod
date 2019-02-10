@@ -1,20 +1,7 @@
 {
-  "PokerPlayerMod:DefaultCommonAttack": {
-    "NAME": "Strike",
-    "DESCRIPTION": "This will become an Awesome Attack card."
-  },
   "PokerPlayerMod:DefaultAttackWithVariable": {
     "NAME": "Placeholder",
     "DESCRIPTION": "This will become an Awesome Attack card."
-  },
-  "PokerPlayerMod:DefaultUncommonAttack": {
-    "NAME": "Placeholder",
-    "DESCRIPTION": "This will become an Awesome Attack card."
-  },
-  "PokerPlayerMod:DefaultUncommonPower": {
-    "NAME": "Placeholder",
-    "DESCRIPTION": "This will become an Awesome Power card.",
-    "UPGRADE_DESCRIPTION": "This will become an Awesome Power card."
   },
   "PokerPlayerMod:PowerPower": {
     "NAME": "Power Power",
@@ -23,10 +10,6 @@
   "PokerPlayerMod:DefaultRareAttack": {
     "NAME": "Placeholder",
     "DESCRIPTION": "This will become an Awesome Rare Attack card."
-  },
-  "PokerPlayerMod:DefaultRarePower": {
-    "NAME": "Placeholder Form",
-    "DESCRIPTION": "This will become an Awesome Form card."
   },
   "PokerPlayerMod:PokerCard": {
     "NAME": "",
@@ -73,12 +56,12 @@
   },
   "PokerPlayerMod:Manipulation": {
     "NAME": "Manipulation",
-    "DESCRIPTION": "Deal !D! damage X times. Increase the pokerplayer:Rank of one Poker Card by X."
+    "DESCRIPTION": "Deal !D! damage X times. You may increase the pokerplayer:Rank of one Poker Card by X."
   },
   "PokerPlayerMod:HotShotCut": {
     "NAME": "Hot Shot Cut",
-    "DESCRIPTION": "Exhaust your hand. Deal !D! damage to a random enemy for each exhausted Poker Card. Exhaust.",
-    "UPGRADE_DESCRIPTION": "Exhaust your hand. Deal !D! damage to a random enemy for each exhausted card. Exhaust."
+    "DESCRIPTION": "Exhaust your hand. Deal !D! damage to a random enemy for each exhausted Poker Card. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Exhaust your hand. Deal !D! damage to a random enemy for each exhausted card. NL Exhaust."
   },
   "PokerPlayerMod:ClubsClub": {
     "NAME": "Clubs Club",
@@ -104,11 +87,11 @@
   "PokerPlayerMod:HiddenCard": {
     "NAME": "Hidden Card",
     "DESCRIPTION": "Fetch a Poker Card from your discard pile.",
-    "UPGRADE_DESCRIPTION": "Fetch a Poker Card from your discard pile. Gain Block equal to its Rank."
+    "UPGRADE_DESCRIPTION": "Fetch a Poker Card from your discard pile. Gain Block equal to its pokerplayer:Rank."
   },
   "PokerPlayerMod:Extraction": {
     "NAME": "Extraction",
-    "DESCRIPTION": "Exhaust a Poker Card. Gain energy equal to its Rank."
+    "DESCRIPTION": "Exhaust a Poker Card. Gain energy equal to its pokerplayer:Rank."
   },
   "PokerPlayerMod:WildCard": {
     "NAME": "Wild Card",
@@ -116,11 +99,41 @@
   },
   "PokerPlayerMod:Raise": {
     "NAME": "Raise",
-    "DESCRIPTION": "Draw a card. NL All Rank of Poker Cards in your hand is increased by !M!."
+    "DESCRIPTION": "Draw a card. NL pokerplayer:Ranks of all Poker Cards in your hand are increased by !M!."
   },
   "PokerPlayerMod:MagicTrick": {
     "NAME": "Magic Trick",
     "DESCRIPTION": "Draw until you have 6 cards in hand. Discard !M! card.",
     "UPGRADE_DESCRIPTION": "Draw until you have 7 cards in hand. Discard !M! cards."
+  },
+  "PokerPlayerMod:DamnStraight": {
+    "NAME": "Damn Straight",
+    "DESCRIPTION": "Modifier Bonus from Straight is doubled."
+  },
+  "PokerPlayerMod:Sharpen": {
+    "NAME": "Sharpen",
+    "DESCRIPTION": "Your Diamonds deal !M! more damage during pokerplayer:Showdown."
+  },
+  "PokerPlayerMod:Round": {
+    "NAME": "Round",
+    "DESCRIPTION": "Your pokerplayer:Clubs gives you !M! Block during pokerplayer:Showdown.",
+    "UPGRADE_DESCRIPTION": "Draw 1 card. NL Your pokerplayer:Clubs gives you 2 Block during pokerplayer:Showdown."
+  },
+  "PokerPlayerMod:Ace": {
+    "NAME": "Ace",
+    "DESCRIPTION": "Whenever you play a Poker Card with pokerplayer:Rank 1, gain [E] and 4 Block.",
+    "UPGRADE_DESCRIPTION": "Draw 1 card. NL Whenever you play a Poker Card with pokerplayer:Rank 1, gain [E] and 4 Block."
+  },
+  "PokerPlayerMod:Splitter": {
+    "NAME": "Splitter",
+    "DESCRIPTION": "If the pokerplayer:Ranks of all Poker Cards in your hand are 5 or less during pokerplayer:Showdown, increase their pokerplayer:Rank by !M! ."
+  },
+  "PokerPlayerMod:FakeSymbols": {
+    "NAME": "Fake Symbols",
+    "DESCRIPTION": "You score a Flush if you have 4 or more Poker Cards with same suit during pokerplayer:Showdown."
+  },
+  "PokerPlayerMod:GamblerForm": {
+    "NAME": "Gambler Form",
+    "DESCRIPTION": "At the start of pokerplayer:Showdown, you may choose a Poker Card to randomize its pokerplayer:Rank."
   }
 }

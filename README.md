@@ -8,16 +8,18 @@ This mod adds a character named `The Poker Player` to Slay the Spire. This chara
 
 [Crappy showcase video of The Poker Player](https://youtu.be/jc1tZhmU0UY)
 
-In addition to traditional Attack, Skill, Powers etc in the base StS game, The Poker Player uses another card type: Poker Card.
+In addition to traditional Attack, Skill, Powers etc in the base StS game, The Poker Player uses another card type: Poker.
 
 ## Poker Card
-There are 40 cards, four suits each with numbers ranging from 1 to 10. They cost 2(1) and when you play one, it only cycles itself without doing anything. If you keep it until the end of your turn, each normal card in your hand activates its ability based on its suit.
+There are 40 cards, four suits each with numbers ranging from 1 to 10. They cost 2(1) and when you play one, it only cycles itself without doing anything.
+
+If you keep at least one of them until the end of your turn, you enter Showdown. During showdown, each Poker Card in your hand activates its ability based on its suit.
 - Spade N: Gain N Block.
 - Diamond N: Deal N damage to a random enemy.
 - Heart N: Heal N HP.
 - Clover N: Deal N damage to all enemies.
 
-In addition, if your normal cards in your hand forms a [Poker Hand](https://en.wikipedia.org/wiki/List_of_poker_hands), effects of all normal cards are boosted.
+In addition, if you score a [Poker Hand](https://en.wikipedia.org/wiki/List_of_poker_hands), effects of them are boosted.
 - 1 Pair: +50%
 - 2 Pairs: +100%
 - Three of a kind: +150%
@@ -33,7 +35,7 @@ In addition, if your normal cards in your hand forms a [Poker Hand](https://en.w
 # Compatibility
 Unlike most Slay the Spire mods, The Poker Player is not intended to be used with any other mods. Sine the majority of cards are not played in a traditional way, many relics/cards/etc added by mods will be played much differently with this character. Similarly, playing with Custom Mods are not intended.
 
-To play with this mod only, only check BaseMod, StSLib and The Card Player and run in the Mod The Spire menu.
+To play with this mod only, only check BaseMod, StSLib and The Poker Player and run in the Mod The Spire menu.
 
 However, nothing stops you from trying this mod with others. Just keep in mind that I'm not going to change any cross-mod interactions other than crash or softlock issues.
 
