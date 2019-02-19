@@ -16,8 +16,8 @@ public class ShopPatch {
 		public static void Prefix(ShopScreen __instance, ArrayList<AbstractCard> coloredCards, ArrayList<AbstractCard> colorlessCards) {
 			if (AbstractDungeon.player.chosenClass == ThePokerPlayerEnum.THE_POKER_PLAYER) {
 				int[] n = new int[]{
-						AbstractDungeon.cardRng.random(40),
-						AbstractDungeon.cardRng.random(39)
+						AbstractDungeon.cardRng.random(39),
+						AbstractDungeon.cardRng.random(38)
 				};
 				if (n[1] >= n[0]) {
 					n[1]++;
