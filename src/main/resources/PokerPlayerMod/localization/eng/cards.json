@@ -11,28 +11,28 @@
       " of Clubs",
       "",
       " of Diamonds",
+      "pokerplayer:Heart ",
       "",
-      " of pokerplayer:Hearts",
+      "pokerplayer:Spade ",
       "",
-      " of pokerplayer:Spades",
+      "pokerplayer:Club ",
       "",
-      " of pokerplayer:Clubs",
-      "",
-      " of pokerplayer:Diamonds"
+      "pokerplayer:Diamond ",
+      ""
     ]
   },
   "PokerPlayerMod:DiamondStrike": {
     "NAME": "Diamond Strike",
-    "DESCRIPTION": "Deal !D! damage. Add a random pokerplayer:Diamonds Card to your hand."
+    "DESCRIPTION": "Deal !D! damage. Add a random pokerplayer:Diamond Card to your hand."
   },
   "PokerPlayerMod:BadJoker": {
     "NAME": "Bad Joker",
-    "DESCRIPTION": "Choose 1 of 3 random Poker Cards to add to your hand. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Choose 1 of 3 random Poker Cards to add to your hand."
+    "DESCRIPTION": "Choose 1 of !M! random Poker Cards. This becomes that card until the end of turn."
   },
   "PokerPlayerMod:Mulligan": {
     "NAME": "Mulligan",
-    "DESCRIPTION": "Discard any number of cards. Draw cards until you have 5 cards in hand."
+    "DESCRIPTION": "Discard any number of cards. NL Draw cards until you have 5 cards in hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Discard any number of cards. NL Draw cards until you have 5 cards in hand."
   },
   "PokerPlayerMod:DartThrow": {
     "NAME": "Dart Throw",
@@ -44,7 +44,7 @@
   },
   "PokerPlayerMod:Manipulation": {
     "NAME": "Manipulation",
-    "DESCRIPTION": "Deal !D! damage X times. You may increase the pokerplayer:Rank of one Poker Card by X."
+    "DESCRIPTION": "Deal !D! damage X times. You may increase the pokerplayer:Rank of one Poker Card by X. NL Refund 1"
   },
   "PokerPlayerMod:HotShotCut": {
     "NAME": "Hot Shot Cut",
@@ -53,11 +53,11 @@
   },
   "PokerPlayerMod:ClubsClub": {
     "NAME": "Clubs Club",
-    "DESCRIPTION": "Draw a card. NL Deal !D! damage for each pokerplayer:Clubs in your hand."
+    "DESCRIPTION": "Draw a card. NL Deal !D! damage for each pokerplayer:Club in your hand."
   },
   "PokerPlayerMod:SecondChance": {
     "NAME": "Second Chance",
-    "DESCRIPTION": "Deal !D! damage. NL Draw until you have 5 cards in hand."
+    "DESCRIPTION": "Deal !D! damage. NL Draw a card. NL Repeat until you have 5 cards in hand."
   },
   "PokerPlayerMod:Trickery": {
     "NAME": "Trickery",
@@ -75,7 +75,10 @@
   "PokerPlayerMod:HiddenCard": {
     "NAME": "Hidden Card",
     "DESCRIPTION": "Fetch a Poker Card from your discard pile.",
-    "UPGRADE_DESCRIPTION": "Fetch a Poker Card from your discard pile. Gain Block equal to its pokerplayer:Rank."
+    "UPGRADE_DESCRIPTION": "Fetch a Poker Card from your discard pile. Gain Block equal to its pokerplayer:Rank.",
+    "EXTENDED_DESCRIPTION": [
+      "There are no Poker Cards in my discard pile."
+    ]
   },
   "PokerPlayerMod:Extraction": {
     "NAME": "Extraction",
@@ -87,34 +90,38 @@
   },
   "PokerPlayerMod:MagicTrick": {
     "NAME": "Magic Trick",
-    "DESCRIPTION": "Draw until you have 6 cards in hand. Discard !M! card.",
-    "UPGRADE_DESCRIPTION": "Draw until you have 7 cards in hand. Discard !M! cards."
+    "DESCRIPTION": "Draw until you have 6 cards in hand. NL Discard !M! card.",
+    "UPGRADE_DESCRIPTION": "Draw until you have 7 cards in hand. NL Discard !M! cards."
   },
   "PokerPlayerMod:DamnStraight": {
     "NAME": "Damn Straight",
-    "DESCRIPTION": "Modifier Bonus from Straight is doubled."
+    "DESCRIPTION": "Modifier Bonus from Straight is doubled.",
+    "UPGRADE_DESCRIPTION": "Draw a card. NL Modifier Bonus from Straight is doubled."
   },
   "PokerPlayerMod:Sharpen": {
     "NAME": "Sharpen",
-    "DESCRIPTION": "Your Diamonds deal !M! more damage during pokerplayer:Showdown."
+    "DESCRIPTION": "Your pokerplayer:Diamonds deal !M! more damage during pokerplayer:Showdown.",
+    "UPGRADE_DESCRIPTION": "Draw a card. NL Your pokerplayer:Diamonds deal !M! more damage during pokerplayer:Showdown."
   },
   "PokerPlayerMod:Round": {
     "NAME": "Round",
-    "DESCRIPTION": "Your pokerplayer:Clubs gives you !M! Block during pokerplayer:Showdown.",
-    "UPGRADE_DESCRIPTION": "Draw 1 card. NL Your pokerplayer:Clubs gives you 2 Block during pokerplayer:Showdown."
+    "DESCRIPTION": "Your pokerplayer:Clubs give you !M! Block during pokerplayer:Showdown.",
+    "UPGRADE_DESCRIPTION": "Draw a card. NL Your pokerplayer:Clubs give you 2 Block during pokerplayer:Showdown."
   },
   "PokerPlayerMod:Ace": {
     "NAME": "Ace",
     "DESCRIPTION": "Whenever you play a Poker Card with pokerplayer:Rank 1, gain [E] and 4 Block.",
-    "UPGRADE_DESCRIPTION": "Draw 1 card. NL Whenever you play a Poker Card with pokerplayer:Rank 1, gain [E] and 4 Block."
+    "UPGRADE_DESCRIPTION": "Draw a card. NL Whenever you play a Poker Card with pokerplayer:Rank 1, gain [E] and 4 Block."
   },
   "PokerPlayerMod:Splitter": {
     "NAME": "Splitter",
-    "DESCRIPTION": "If the pokerplayer:Ranks of all Poker Cards in your hand are 5 or less during pokerplayer:Showdown, increase their pokerplayer:Rank by !M! ."
+    "DESCRIPTION": "If the pokerplayer:Ranks of all Poker Cards in your hand are 5 or less during pokerplayer:Showdown, increase their pokerplayer:Rank by !M! .",
+    "UPGRADE_DESCRIPTION": "Draw a card. NL If the pokerplayer:Ranks of all Poker Cards in your hand are 5 or less during pokerplayer:Showdown, increase their pokerplayer:Rank by !M! ."
   },
   "PokerPlayerMod:FakeSymbols": {
     "NAME": "Fake Symbols",
-    "DESCRIPTION": "You score a Flush if you have 4 or more Poker Cards with same suit during pokerplayer:Showdown."
+    "DESCRIPTION": "You score a Flush if you have 4 or more Poker Cards with same suit during pokerplayer:Showdown.",
+    "UPGRADE_DESCRIPTION": "Draw a card. NL You score a Flush if you have 4 or more Poker Cards with same suit during pokerplayer:Showdown."
   },
   "PokerPlayerMod:WildCard": {
     "NAME": "Wild Card",
@@ -128,8 +135,8 @@
     "NAME": "Variety Attack",
     "DESCRIPTION": "Deal !D! damage to all enemies. Damage is doubled for each unique Suit of Poker Cards in your hand."
   },
-  "PokerPlayerMod:FakeCopy": {
-    "NAME": "Fake Copy",
+  "PokerPlayerMod:Duplicate": {
+    "NAME": "Duplicate",
     "DESCRIPTION": "Choose a Poker Card from your hand. Add a copy of that card into your hand."
   },
   "PokerPlayerMod:SecretDealer": {
@@ -138,6 +145,7 @@
   },
   "PokerPlayerMod:GamblerForm": {
     "NAME": "Gambler Form",
-    "DESCRIPTION": "At the start of pokerplayer:Showdown, you may choose a Poker Card to randomize its pokerplayer:Rank."
+    "DESCRIPTION": "At the start of pokerplayer:Showdown, you may choose a Poker Card to randomize its pokerplayer:Rank between 6 and 10.",
+    "UPGRADE_DESCRIPTION": "Draw a card. NL At the start of pokerplayer:Showdown, you may choose a Poker Card to randomize its pokerplayer:Rank between 6 and 10."
   }
 }

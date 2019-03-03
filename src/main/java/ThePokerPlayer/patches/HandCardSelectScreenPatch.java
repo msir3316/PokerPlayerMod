@@ -25,7 +25,7 @@ public class HandCardSelectScreenPatch {
 					PokerPlayerMod.cardSelectScreenCard = c;
 				}
 				if (c != null) {
-					if (PokerCardChangeAction.ref.rankChange != 0) {
+					if (PokerCardChangeAction.ref.rankChange > 0) {
 						__instance.upgradePreviewCard = c.makeStatEquivalentCopy();
 						((PokerCard) __instance.upgradePreviewCard).rankChange(PokerCardChangeAction.ref.rankChange, false);
 					} else {

@@ -31,7 +31,8 @@ public class ShowdownAction extends AbstractGameAction {
 	public static final String[] TEXT = uiStrings.TEXT;
 
 	private AbstractPlayer p;
-	public static ArrayList<PokerCard> cards = new ArrayList<>();
+	public static ArrayList<PokerCard> pokerCards = new ArrayList<>();
+	public static ArrayList<AbstractCard> otherCards = new ArrayList<>();
 	public static final float START_DELAY = 0.4f;
 	public static final float TALK_DUR = 2.5f;
 	public static final float DUR_DELTA = 0.05f;
@@ -61,7 +62,7 @@ public class ShowdownAction extends AbstractGameAction {
 
 	@Override
 	public void update() {
-		if (cards.isEmpty()) {
+		if (pokerCards.isEmpty()) {
 			this.isDone = true;
 			return;
 		}
@@ -73,7 +74,7 @@ public class ShowdownAction extends AbstractGameAction {
 
 			pow = new int[4];
 			parity = new boolean[4];
-			for (PokerCard card : cards) {
+			for (PokerCard card : pokerCards) {
 				pow[card.suit.value] += card.rank;
 
 				if (card.suit == PokerCard.Suit.Diamond && this.p.hasPower(SharpenPower.POWER_ID)) {
@@ -155,25 +156,34 @@ public class ShowdownAction extends AbstractGameAction {
 
 			if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
 				AbstractDungeon.actionManager.clearPostCombatActions();
-				cards.clear();
+				pokerCards.clear();
 				onAction = false;
 			}
 		}
-		for (AbstractCard card : cards) {
-			if (card instanceof PokerCard) {
-				card.target_y = Settings.HEIGHT * 0.1f;
-				card.angle = 0;
-			}
+		for (PokerCard card : pokerCards) {
+			card.target_y = Settings.HEIGHT * 0.1f;
+			card.angle = 0;
 		}
 		this.tickDuration();
 
 		if (isDone) {
-			for (AbstractCard card : cards) {
+			for (PokerCard card : pokerCards) {
 				if (AbstractDungeon.player.hand.contains(card)) {
-					AbstractDungeon.player.hand.moveToDiscardPile(card);
+					if (card.suit == PokerCard.Suit.Heart) {
+						AbstractDungeon.player.hand.moveToExhaustPile(card);
+						card.exhaustOnUseOnce = false;
+						card.freeToPlayOnce = false;
+					} else {
+						AbstractDungeon.player.hand.moveToDiscardPile(card);
+					}
 				}
 			}
-			cards.clear();
+			for (AbstractCard card : otherCards) {
+				this.p.hand.addToTop(card);
+			}
+			pokerCards.clear();
+			otherCards.clear();
+			PokerCardEndOfTurnAction.triggeredThisTurn = false;
 			onAction = false;
 		}
 	}

@@ -5,6 +5,7 @@ import ThePokerPlayer.patches.CardColorEnum;
 import ThePokerPlayer.powers.FakeSymbolsPower;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -20,18 +21,20 @@ public class FakeSymbols extends CustomCard {
 	public static final String IMG = PokerPlayerMod.GetCardPath(RAW_ID);
 	private static final int COST = 2;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final AbstractCard.CardType TYPE = CardType.POWER;
 	private static final AbstractCard.CardColor COLOR = CardColorEnum.POKER_PLAYER_GRAY;
 	private static final AbstractCard.CardRarity RARITY = CardRarity.UNCOMMON;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.SELF;
-
-	private static final int NEW_COST = 1;
 
 	public FakeSymbols() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
+		if (upgraded) {
+			AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
+		}
 		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new FakeSymbolsPower(p, p, 1), 1));
 	}
 
@@ -42,7 +45,8 @@ public class FakeSymbols extends CustomCard {
 	public void upgrade() {
 		if (!upgraded) {
 			upgradeName();
-			this.upgradeBaseCost(NEW_COST);
+			this.rawDescription = UPGRADE_DESCRIPTION;
+			this.initializeDescription();
 		}
 	}
 }

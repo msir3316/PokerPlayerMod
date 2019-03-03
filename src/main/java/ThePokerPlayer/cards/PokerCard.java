@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 
 public class PokerCard extends CustomCard {
 	private static final String RAW_ID = "PokerCard";
-	private static final String ID = PokerPlayerMod.makeID(RAW_ID); // This ID is never used for actual ID for poker cards so don't use it.
+	private static final String ID = PokerPlayerMod.makeID(RAW_ID); // This ID is never used for actual ID for poker pokerCards so don't use it.
 
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -85,14 +85,12 @@ public class PokerCard extends CustomCard {
 	}
 
 
-	private static final int COST = 2;
+	private static final int COST = 1;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
 	private static final CardType TYPE = CardTypeEnum.POKER;
 	private static final CardColor COLOR = CardColorEnum.POKER_PLAYER_GRAY;
 	private static final CardTarget TARGET = CardTarget.SELF;
-
-	private static final int NEW_COST = 1;
 
 	public enum Suit {
 		Heart(0),
@@ -242,27 +240,37 @@ public class PokerCard extends CustomCard {
 		}
 	}
 
+	@Override
+	public boolean canUpgrade() {
+		return this.rank < 10;
+	}
+
+	@Override
 	public void upgrade() {
 		if (!this.upgraded) {
-			this.upgradeName();
-			this.upgradeBaseCost(NEW_COST);
+			rankChange(1, false);
 		}
 	}
 
 	public void rankChange(int amount, boolean useRng) {
-		if (amount == 0) {
-			if (useRng) {
-				this.rank = AbstractDungeon.cardRandomRng.random(1, 10);
-			} else {
-				this.rank = MathUtils.random(1, 10);
-			}
-		} else {
-			this.rank += amount;
-			if (this.rank > 10) {
-				this.rank = 10;
-			} else if (this.rank < 1) {
-				this.rank = 1;
-			}
+		switch (amount) {
+			case -1:
+			case 0:
+				int min = amount == 0 ? 1 : 6;
+				if (useRng) {
+					this.rank = AbstractDungeon.cardRandomRng.random(min, 10);
+				} else {
+					this.rank = MathUtils.random(min, 10);
+				}
+				break;
+			default:
+				this.rank += amount;
+				if (this.rank > 10) {
+					this.rank = 10;
+				} else if (this.rank < 1) {
+					this.rank = 1;
+				}
+				break;
 		}
 		initCard();
 	}

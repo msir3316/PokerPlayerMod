@@ -27,9 +27,14 @@ public class BadJoker extends CustomCard {
 	private static final AbstractCard.CardRarity RARITY = CardRarity.BASIC;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.SELF;
 
+	private static final int POWER = 3;
+	private static final int UPGRADE_BONUS = 2;
+
 	public BadJoker() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-		this.exhaust = true;
+		this.baseMagicNumber = POWER;
+		this.magicNumber = this.baseMagicNumber;
+		this.purgeOnUse = true;
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
@@ -37,7 +42,7 @@ public class BadJoker extends CustomCard {
 				new DamageInfo(p, this.damage, this.damageTypeForTurn),
 				AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 
-		AbstractDungeon.actionManager.addToBottom(new PokerCardDiscoveryAction());
+		AbstractDungeon.actionManager.addToBottom(new PokerCardDiscoveryAction(this, this.magicNumber));
 	}
 
 	public AbstractCard makeCopy() {
@@ -47,9 +52,7 @@ public class BadJoker extends CustomCard {
 	public void upgrade() {
 		if (!upgraded) {
 			upgradeName();
-			this.exhaust = false;
-			this.rawDescription = UPGRADE_DESCRIPTION;
-			this.initializeDescription();
+			this.upgradeMagicNumber(UPGRADE_BONUS);
 		}
 	}
 }

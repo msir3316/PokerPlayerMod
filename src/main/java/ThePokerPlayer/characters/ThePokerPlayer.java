@@ -35,7 +35,7 @@ public class ThePokerPlayer extends CustomPlayer {
 
 	// =============== BASE STATS =================
 
-	public static final int ENERGY_PER_TURN = 4;
+	public static final int ENERGY_PER_TURN = 3;
 	public static final int STARTING_HP = 52;
 	public static final int MAX_HP = 52;
 	public static final int STARTING_GOLD = 99;
@@ -182,7 +182,7 @@ public class ThePokerPlayer extends CustomPlayer {
 		return CardColorEnum.POKER_PLAYER_GRAY;
 	}
 
-	// Should return a color object to be used to color the trail of moving cards
+	// Should return a color object to be used to color the trail of moving pokerCards
 	@Override
 	public Color getCardTrailColor() {
 		return PokerPlayerMod.POKER_PLAYER_GRAY;

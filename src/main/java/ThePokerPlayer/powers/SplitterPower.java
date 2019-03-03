@@ -61,6 +61,7 @@ public class SplitterPower extends AbstractPower implements IShowdownEffect {
 			if (result) {
 				AbstractDungeon.actionManager.addToBottom(new PokerCardChangeAction(this.owner, this.source, PokerCardChangeAction.Mode.RANK_CHANGE_ALL, 0, this.amount));
 				activated = true;
+				this.flash();
 			}
 		}
 	}

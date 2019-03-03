@@ -1,11 +1,11 @@
 package ThePokerPlayer;
 
+import ThePokerPlayer.actions.PokerCardEndOfTurnAction;
 import ThePokerPlayer.actions.ShowdownAction;
 import ThePokerPlayer.cards.*;
 import ThePokerPlayer.characters.ThePokerPlayer;
 import ThePokerPlayer.patches.CardColorEnum;
 import ThePokerPlayer.patches.ThePokerPlayerEnum;
-import ThePokerPlayer.relics.PlaceholderRelic2;
 import ThePokerPlayer.relics.ProtectiveDeckHolder;
 import ThePokerPlayer.variables.DefaultCustomVariable;
 import basemod.BaseMod;
@@ -21,10 +21,13 @@ import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
@@ -38,7 +41,7 @@ import java.util.List;
 @SpireInitializer
 public class PokerPlayerMod
 		implements EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber,
-		EditCharactersSubscriber, PostInitializeSubscriber, OnStartBattleSubscriber {
+		EditCharactersSubscriber, PostInitializeSubscriber, OnStartBattleSubscriber, PreMonsterTurnSubscriber {
 	public static final Logger logger = LogManager.getLogger(PokerPlayerMod.class.getName());
 
 	//This is for the in-game mod settings pannel.
@@ -91,6 +94,7 @@ public class PokerPlayerMod
 	// Logics
 	public static AbstractCard cardSelectScreenCard;
 	public static float transformAnimTimer;
+	public static HashMap<AbstractCard, AbstractCard> shapeshiftReturns;
 
 	// =============== /INPUT TEXTURE LOCATION/ =================
 
@@ -193,11 +197,7 @@ public class PokerPlayerMod
 	public void receiveEditRelics() {
 		logger.info("Add relics");
 
-		// This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
 		BaseMod.addRelicToCustomPool(new ProtectiveDeckHolder(), CardColorEnum.POKER_PLAYER_GRAY);
-
-		// This adds a relic to the Shared pool. Every character can find this relic.
-		BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
 
 		logger.info("Done adding relics!");
 	}
@@ -212,7 +212,7 @@ public class PokerPlayerMod
 		// Add the Custom Dynamic Variables
 		BaseMod.addDynamicVariable(new DefaultCustomVariable());
 
-		// Add the cards
+		// Add the pokerCards
 		List<CustomCard> cards = new ArrayList<>();
 
 		for (int i = 0; i < 4; i++) {
@@ -246,7 +246,7 @@ public class PokerPlayerMod
 		cards.add(new Splitter());
 		cards.add(new ChangeRules());
 		cards.add(new VarietyAttack());
-		cards.add(new FakeCopy());
+		cards.add(new Duplicate());
 		cards.add(new SecretDealer());
 		cards.add(new GamblerForm());
 
@@ -323,8 +323,33 @@ public class PokerPlayerMod
 
 	@Override
 	public void receiveOnBattleStart(AbstractRoom room) {
-		ShowdownAction.cards.clear();
+		ShowdownAction.pokerCards.clear();
+		ShowdownAction.otherCards.clear();
 		ShowdownAction.pendingEffects.clear();
+		PokerCardEndOfTurnAction.triggeredThisTurn = false;
+		shapeshiftReturns = new HashMap<>();
+	}
+
+	@Override
+	public boolean receivePreMonsterTurn(AbstractMonster m) {
+		CardGroup[] groups = new CardGroup[]{
+				AbstractDungeon.player.hand,
+				AbstractDungeon.player.drawPile,
+				AbstractDungeon.player.discardPile,
+				AbstractDungeon.player.exhaustPile
+		};
+		for (CardGroup cg : groups) {
+			for (int i = 0; i < cg.size(); i++) {
+				AbstractCard c = cg.group.get(i);
+				if (shapeshiftReturns.containsKey(c)) {
+					cg.group.set(i, shapeshiftReturns.get(c));
+					cg.group.get(i).stopGlowing();
+					cg.group.get(i).unfadeOut();
+				}
+			}
+		}
+		shapeshiftReturns.clear();
+		return true;
 	}
 
 	// ================ /LOAD THE KEYWORDS/ ===================

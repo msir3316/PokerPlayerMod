@@ -2,7 +2,6 @@ package ThePokerPlayer.powers;
 
 import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.cards.PokerCard;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;

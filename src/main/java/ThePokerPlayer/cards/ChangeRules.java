@@ -28,9 +28,9 @@ public class ChangeRules extends CustomCard {
 	private static final AbstractCard.CardRarity RARITY = CardRarity.RARE;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
 
-	private static final int POWER = 16;
+	private static final int POWER = 18;
 	private static final int UPGRADE_BONUS = 4;
-	private static final int MAGIC = 5;
+	private static final int MAGIC = 4;
 	private static final int UPGRADE_MAGIC = 1;
 
 	public ChangeRules() {

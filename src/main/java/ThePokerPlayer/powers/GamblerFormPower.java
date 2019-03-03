@@ -4,7 +4,6 @@ import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.actions.PokerCardChangeAction;
 import ThePokerPlayer.interfaces.IShowdownEffect;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -40,7 +39,7 @@ public class GamblerFormPower extends AbstractPower implements IShowdownEffect {
 
 	@Override
 	public void onShowdownStart() {
-		AbstractDungeon.actionManager.addToBottom(new PokerCardChangeAction(this.owner, this.source, PokerCardChangeAction.Mode.RANK_CHANGE_ANY, this.amount, 0));
+		AbstractDungeon.actionManager.addToBottom(new PokerCardChangeAction(this.owner, this.source, PokerCardChangeAction.Mode.RANK_CHANGE_ANY, this.amount, -1));
 	}
 
 	@Override

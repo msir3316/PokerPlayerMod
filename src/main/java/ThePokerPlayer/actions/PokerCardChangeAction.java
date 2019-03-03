@@ -34,8 +34,9 @@ public class PokerCardChangeAction extends AbstractGameAction {
 	}
 
 
-	/// amount = how much cards will be changed for RANK_CHANGE_ANY and EXTRACT.
-	/// rankChange = how much card rank will be changed. amount of 0 means it's randomized.
+	// amount = how much pokerCards will be changed for RANK_CHANGE_ANY and EXTRACT.
+	// rankChange = how much card rank will be changed.
+	//   0 = randomized. -1 = randomized between 6 and 10.
 	public PokerCardChangeAction(AbstractCreature target, AbstractCreature source, Mode mode, int amount, int rankChange) {
 		this.p = (AbstractPlayer) target;
 		this.mode = mode;

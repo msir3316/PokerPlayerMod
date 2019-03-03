@@ -13,28 +13,36 @@
     "DESCRIPTION": "At the end of your turn, you receive Showdown effects from Poker Cards in you hand. They are boosted by poker hand you score."
   },
   {
+    "PROPER_NAME": "Spade X",
     "NAMES": [
+      "spade",
       "spades"
     ],
-    "DESCRIPTION": "Showdown Effect: Gain N Block"
+    "DESCRIPTION": "Showdown Effect: Gain X Block."
   },
   {
+    "PROPER_NAME": "Diamond X",
     "NAMES": [
+      "diamond",
       "diamonds"
     ],
-    "DESCRIPTION": "Showdown Effect: Deal N damage to a random enemy"
+    "DESCRIPTION": "Showdown Effect: Deal X damage to the lowest health enemy."
   },
   {
+    "PROPER_NAME": "Heart X",
     "NAMES": [
+      "heart",
       "hearts"
     ],
-    "DESCRIPTION": "Showdown Effect: Heal N HP"
+    "DESCRIPTION": "Showdown Effect: Heal X HP, and Exhausts."
   },
   {
+    "PROPER_NAME": "Club X",
     "NAMES": [
+      "club",
       "clubs"
     ],
-    "DESCRIPTION": "Showdown Effect: Deal N damage to all enemies"
+    "DESCRIPTION": "Showdown Effect: Deal X damage to all enemies."
   },
   {
     "NAMES": [
@@ -42,11 +50,5 @@
       "ranks"
     ],
     "DESCRIPTION": "The number of symbols on Poker Cards. During Showdown, the number of suits coming out is equal to their Rank."
-  },
-  {
-    "NAMES": [
-      "awesome"
-    ],
-    "DESCRIPTION": "Actually means Awesome (tm)"
   }
 ]

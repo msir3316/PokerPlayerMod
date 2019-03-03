@@ -22,11 +22,13 @@ public class Raise extends CustomCard {
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	private static final AbstractCard.CardType TYPE = CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = CardColorEnum.POKER_PLAYER_GRAY;
-	private static final AbstractCard.CardRarity RARITY = CardRarity.UNCOMMON;
+	private static final AbstractCard.CardRarity RARITY = CardRarity.RARE;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.SELF;
 
 	private static final int POWER = 1;
-	private static final int UPGRADE_BONUS = 1;
+
+	private static final int NEW_COST = 1;
+
 
 	public Raise() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
@@ -46,7 +48,7 @@ public class Raise extends CustomCard {
 	public void upgrade() {
 		if (!upgraded) {
 			upgradeName();
-			this.upgradeMagicNumber(UPGRADE_BONUS);
+			this.upgradeBaseCost(NEW_COST);
 		}
 	}
 }

@@ -11,8 +11,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class FakeCopy extends CustomCard {
-	private static final String RAW_ID = "FakeCopy";
+public class Duplicate extends CustomCard {
+	private static final String RAW_ID = "Duplicate";
 	public static final String ID = PokerPlayerMod.makeID(RAW_ID);
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -26,7 +26,7 @@ public class FakeCopy extends CustomCard {
 
 	private static final int NEW_COST = 1;
 
-	public FakeCopy() {
+	public Duplicate() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 	}
 
@@ -35,7 +35,7 @@ public class FakeCopy extends CustomCard {
 	}
 
 	public AbstractCard makeCopy() {
-		return new FakeCopy();
+		return new Duplicate();
 	}
 
 	public void upgrade() {

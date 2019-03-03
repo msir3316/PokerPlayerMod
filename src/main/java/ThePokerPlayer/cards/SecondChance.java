@@ -5,7 +5,7 @@ import ThePokerPlayer.patches.CardColorEnum;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.unique.ExpertiseAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -27,7 +27,7 @@ public class SecondChance extends CustomCard {
 	private static final AbstractCard.CardRarity RARITY = CardRarity.UNCOMMON;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
 
-	private static final int POWER = 4;
+	private static final int POWER = 6;
 	private static final int UPGRADE_BONUS = 3;
 	private static final int DRAW_UNTIL = 5;
 
@@ -37,8 +37,15 @@ public class SecondChance extends CustomCard {
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-		AbstractDungeon.actionManager.addToBottom(new ExpertiseAction(p, DRAW_UNTIL));
+		int cur = 0;
+		for (AbstractCard c : p.hand.group) {
+			if (c != this) cur++;
+		}
+		do {
+			AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+			AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
+			cur++;
+		} while (cur < DRAW_UNTIL);
 	}
 
 	public AbstractCard makeCopy() {

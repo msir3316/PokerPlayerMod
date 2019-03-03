@@ -17,9 +17,10 @@ public class HiddenCard extends CustomCard {
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String IMG = PokerPlayerMod.GetCardPath(RAW_ID);
-	private static final int COST = 2;
+	private static final int COST = 1;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+	public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
 	private static final AbstractCard.CardType TYPE = CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = CardColorEnum.POKER_PLAYER_GRAY;
 	private static final AbstractCard.CardRarity RARITY = CardRarity.UNCOMMON;
@@ -31,6 +32,20 @@ public class HiddenCard extends CustomCard {
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new HiddenCardAction(1, upgraded));
+	}
+
+	public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+		if (!super.canUse(p, m))
+			return false;
+
+		for (AbstractCard c : p.discardPile.group) {
+			if (c instanceof PokerCard) {
+				return true;
+			}
+		}
+
+		this.cantUseMessage = EXTENDED_DESCRIPTION[0];
+		return false;
 	}
 
 	public AbstractCard makeCopy() {

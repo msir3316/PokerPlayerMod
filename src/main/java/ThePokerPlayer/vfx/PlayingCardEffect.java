@@ -60,17 +60,18 @@ public class PlayingCardEffect extends AbstractGameEffect {
 	}
 
 	AbstractMonster getTarget() {
-		int num = 0;
+		int min = 0;
+
 		AbstractMonster result = null;
 		for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
 			if (!m.halfDead && !m.isDying && !m.isEscaping) {
 				if (suit == PokerCard.Suit.Club) {
 					addDests(m.hb);
 				} else {
-					if (AbstractDungeon.cardRandomRng.random(num) == 0) {
+					if (result == null || min > m.currentHealth) {
 						result = m;
+						min = m.currentHealth;
 					}
-					num++;
 				}
 			}
 		}

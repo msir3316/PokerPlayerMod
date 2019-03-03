@@ -1,5 +1,6 @@
 package ThePokerPlayer.actions;
 
+import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.cards.PokerCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -10,27 +11,31 @@ import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 
 public class PokerCardDiscoveryAction extends AbstractGameAction {
 	private boolean retrieveCard = false;
+	private AbstractCard shapeshiftCard;
+	public static int choices;
 	public static PokerCard.Suit suit;
 	public static int min;
 	public static int max;
 
 	public static boolean isActive = false;
 
-	public PokerCardDiscoveryAction() {
-		this(null, 1, 10);
+	public PokerCardDiscoveryAction(AbstractCard shapeshiftCard, int choices) {
+		this(shapeshiftCard, choices, null, 1, 10);
 	}
 
-	public PokerCardDiscoveryAction(PokerCard.Suit suit) {
-		this(suit, 1, 10);
+	public PokerCardDiscoveryAction(AbstractCard shapeshiftCard, int choices, PokerCard.Suit suit) {
+		this(shapeshiftCard, choices, suit, 1, 10);
 	}
 
-	public PokerCardDiscoveryAction(int min, int max) {
-		this(null, min, max);
+	public PokerCardDiscoveryAction(AbstractCard shapeshiftCard, int choices, int min, int max) {
+		this(shapeshiftCard, choices, null, min, max);
 	}
 
-	public PokerCardDiscoveryAction(PokerCard.Suit suit, int min, int max) {
+	public PokerCardDiscoveryAction(AbstractCard shapeshiftCard, int choices, PokerCard.Suit suit, int min, int max) {
 		this.actionType = ActionType.CARD_MANIPULATION;
 		this.duration = Settings.ACTION_DUR_FAST;
+		this.shapeshiftCard = shapeshiftCard;
+		PokerCardDiscoveryAction.choices = choices;
 		PokerCardDiscoveryAction.suit = suit;
 		PokerCardDiscoveryAction.min = min;
 		PokerCardDiscoveryAction.max = max;
@@ -54,6 +59,10 @@ public class PokerCardDiscoveryAction extends AbstractGameAction {
 					}
 
 					AbstractDungeon.cardRewardScreen.discoveryCard = null;
+					if (shapeshiftCard != null) {
+						PokerPlayerMod.shapeshiftReturns.put(disCard, this.shapeshiftCard);
+					}
+
 					isActive = false;
 				}
 

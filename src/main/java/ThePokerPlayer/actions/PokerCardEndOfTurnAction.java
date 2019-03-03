@@ -2,23 +2,41 @@ package ThePokerPlayer.actions;
 
 import ThePokerPlayer.cards.PokerCard;
 import ThePokerPlayer.interfaces.IShowdownEffect;
+import ThePokerPlayer.relics.ProtectiveDeckHolder;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DiscardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 public class PokerCardEndOfTurnAction extends AbstractGameAction {
+	public static boolean triggeredThisTurn = false;
+
 	public PokerCardEndOfTurnAction(PokerCard card) {
 		this.duration = Settings.ACTION_DUR_FAST;
 		this.actionType = ActionType.SPECIAL;
-		ShowdownAction.cards.add(card);
+		ShowdownAction.pokerCards.add(card);
+		ProtectiveDeckHolder.disabled = true;
 	}
 
 	@Override
 	public void update() {
 		this.isDone = true;
-		if (!ShowdownAction.cards.isEmpty()) {
+		if (!triggeredThisTurn) {
+			triggeredThisTurn = true;
+
+			for (AbstractCard c : AbstractDungeon.player.hand.group) {
+				if (!ShowdownAction.pokerCards.contains(c)) {
+					ShowdownAction.otherCards.add(c);
+				}
+			}
+			AbstractDungeon.player.hand.group.removeAll(ShowdownAction.otherCards);
+			if (ShowdownAction.pokerCards.size() > 5) {
+				AbstractDungeon.actionManager.addToBottom(new DiscardAction(
+						AbstractDungeon.player, AbstractDungeon.player, ShowdownAction.pokerCards.size() - 5, false, true));
+			}
 			for (AbstractPower pow : AbstractDungeon.player.powers) {
 				if (pow instanceof IShowdownEffect) {
 					((IShowdownEffect) pow).onShowdownStart();

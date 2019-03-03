@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>pokerplayermod</groupId>
     <artifactId>pokerplayermod</artifactId>
-    <version>1.0.0</version>
+    <version>0.3.0</version>
     <packaging>jar</packaging>
 	
     <name>PokerPlayerMod</name>
-    <description>Adds a character called The Poker Player, who fights with his own rule inspired from poker.</description>
+    <description>Adds a character called The Poker Player, who fights with his own rule inspired from Card poker.</description>
 
     <dependencies>
         <dependency>
