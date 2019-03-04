@@ -29,6 +29,9 @@ import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.relics.CentennialPuzzle;
+import com.megacrit.cardcrawl.relics.RunicPyramid;
+import com.megacrit.cardcrawl.relics.SneckoEye;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -41,7 +44,8 @@ import java.util.List;
 @SpireInitializer
 public class PokerPlayerMod
 		implements EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber,
-		EditCharactersSubscriber, PostInitializeSubscriber, OnStartBattleSubscriber, PreMonsterTurnSubscriber {
+		EditCharactersSubscriber, PostInitializeSubscriber, OnStartBattleSubscriber, PreMonsterTurnSubscriber,
+		PostDungeonInitializeSubscriber {
 	public static final Logger logger = LogManager.getLogger(PokerPlayerMod.class.getName());
 
 	//This is for the in-game mod settings pannel.
@@ -285,6 +289,19 @@ public class PokerPlayerMod
 		BaseMod.loadCustomStrings(CharacterStrings.class, characterStrings);
 
 		logger.info("Done editing strings");
+	}
+
+	@Override
+	public void receivePostDungeonInitialize() {
+		if (AbstractDungeon.player.chosenClass == ThePokerPlayerEnum.THE_POKER_PLAYER) {
+			logger.debug("Boss relics (before) = " + AbstractDungeon.bossRelicPool.size());
+			AbstractDungeon.bossRelicPool.remove(SneckoEye.ID);
+			AbstractDungeon.bossRelicPool.remove(RunicPyramid.ID);
+			logger.debug("Boss relics (after) = " + AbstractDungeon.bossRelicPool.size());
+			logger.debug("common relics (before) = " + AbstractDungeon.commonRelicPool.size());
+			AbstractDungeon.commonRelicPool.remove(CentennialPuzzle.ID);
+			logger.debug("common relics (after) = " + AbstractDungeon.commonRelicPool.size());
+		}
 	}
 
 	// ================ /LOAD THE TEXT/ ===================
