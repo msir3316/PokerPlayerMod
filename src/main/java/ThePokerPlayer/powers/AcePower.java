@@ -3,10 +3,10 @@ package ThePokerPlayer.powers;
 import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.cards.PokerCard;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.unique.SwordBoomerangAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -26,7 +26,6 @@ public class AcePower extends AbstractPower {
 			ImageMaster.loadImage(PokerPlayerMod.GetPowerPath(RAW_ID, 128)), 0, 0, 84, 84);
 	public static final TextureAtlas.AtlasRegion IMG48 = new TextureAtlas.AtlasRegion(
 			ImageMaster.loadImage(PokerPlayerMod.GetPowerPath(RAW_ID, 48)), 0, 0, 32, 32);
-	public static final int BLOCK = 4;
 
 	public AcePower(AbstractCreature owner, AbstractCreature source, int amount) {
 		this.name = NAME;
@@ -44,14 +43,13 @@ public class AcePower extends AbstractPower {
 	@Override
 	public void onUseCard(AbstractCard card, UseCardAction action) {
 		if (card instanceof PokerCard && ((PokerCard) card).rank == 1) {
-			AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(this.amount));
-			AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, this.amount * BLOCK));
+			AbstractDungeon.actionManager.addToBottom(new SwordBoomerangAction(AbstractDungeon.getMonsters().getRandomMonster(null, true, AbstractDungeon.cardRandomRng), new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS), 1));
 			this.flash();
 		}
 	}
 
 	@Override
 	public void updateDescription() {
-		this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + this.amount * BLOCK + DESCRIPTIONS[2];
+		this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
 	}
 }

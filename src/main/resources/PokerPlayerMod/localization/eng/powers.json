@@ -2,7 +2,7 @@
   "PokerPlayerMod:DamnStraightPower": {
     "NAME": "Damn Straight",
     "DESCRIPTIONS": [
-      "Whenever you form a Straight during Showdown, the Modifier bonus you get is",
+      "Whenever you score a Straight during Showdown, the Modifier bonus you get is",
       " doubled.",
       " multiplied by #b",
       ".",
@@ -26,9 +26,8 @@
   "PokerPlayerMod:AcePower": {
     "NAME": "Ace",
     "DESCRIPTIONS": [
-      "Whenever you play a Poker Card with #ypokerplayer:Rank 1, gain #b",
-      " energy and #b",
-      " Block."
+      "Whenever you play a Poker Card with #ypokerplayer:Rank 1, deal #b",
+      " damage to a random enemy."
     ]
   },
   "PokerPlayerMod:SplitterPower": {
@@ -48,9 +47,9 @@
   "PokerPlayerMod:GamblerFormPower": {
     "NAME": "Gambler Form",
     "DESCRIPTIONS": [
-      "At the start of Showdown, you may choose a Poker Card to randomize its rank.",
+      "At the start of Showdown, you may choose a Poker Card to randomize its rank between 6 and 10.",
       "At the start of Showdown, you may choose #b",
-      " Poker Cards to randomize its rank."
+      " Poker Cards to randomize its rank between 6 and 10."
     ]
   }
 }

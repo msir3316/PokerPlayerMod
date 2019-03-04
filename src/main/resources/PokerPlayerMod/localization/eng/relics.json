@@ -9,16 +9,17 @@
   },
   "PokerPlayerMod:PenAndEraser": {
     "NAME": "Pen and Eraser",
-    "FLAVOR": "",
+    "FLAVOR": "The best tool for \"modifying\" poker cards.",
     "DESCRIPTIONS": [
-      "Upon pickup, raise a Rank of two random Poker Cards by 3."
+      "Upon pickup, raise the pokerplayer:Rank of two random Poker Cards by #b3."
     ]
   },
   "PokerPlayerMod:JackpotMachine": {
     "NAME": "Jackpot Machine",
-    "FLAVOR": "",
+    "FLAVOR": "That feeling when you became a millionaire... in your dream.",
     "DESCRIPTIONS": [
-      "If you have #b3 or more Poker Cards with rank #b7 during Showdown, deal #b77 damage to ALL enemies."
+      "If you have #b3 or more Poker Cards with rank #b7 during Showdown, deal #b",
+      " damage to ALL enemies."
     ]
   }
 }

@@ -27,10 +27,10 @@ In addition, if you score a [Poker Hand](https://en.wikipedia.org/wiki/List_of_p
 - Straight: +250%
 - Four of a kind: +300%
 - Five of a kind: +400%
-- Flush can be added to any of the above hand (including No pairs), which adds an additional +150% to the modifier. For example,
-  - (No pairs) Flush: +150%
-  - 1 Pair Flush: +200%
-  - Straight Flush: +400%
+- Flush can be added to any of the above hand (including No pairs), which adds an additional +200% to the modifier. For example,
+  - (No pairs) Flush: +200%
+  - 1 Pair Flush: +250%
+  - Straight Flush: +450%
 
 If you upgrade a Poker Card, it's rank will go up by 1. This means the one with rank 10 cannot be upgraded.
 

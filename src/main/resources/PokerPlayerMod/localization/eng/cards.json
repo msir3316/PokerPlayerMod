@@ -110,8 +110,8 @@
   },
   "PokerPlayerMod:Ace": {
     "NAME": "Ace",
-    "DESCRIPTION": "Whenever you play a Poker Card with pokerplayer:Rank 1, gain [E] and 4 Block.",
-    "UPGRADE_DESCRIPTION": "Draw a card. NL Whenever you play a Poker Card with pokerplayer:Rank 1, gain [E] and 4 Block."
+    "DESCRIPTION": "Whenever you play a Poker Card with pokerplayer:Rank 1, deal !M! damage to a random enemy.",
+    "UPGRADE_DESCRIPTION": "Draw a card. NL Whenever you play a Poker Card with pokerplayer:Rank 1, deal !M! damage to a random enemy."
   },
   "PokerPlayerMod:Splitter": {
     "NAME": "Splitter",

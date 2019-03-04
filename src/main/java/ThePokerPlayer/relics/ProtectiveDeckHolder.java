@@ -17,7 +17,7 @@ public class ProtectiveDeckHolder extends CustomRelic implements ClickableRelic 
 	private static final String RAW_ID = "ProtectiveDeckHolder";
 	public static final String ID = PokerPlayerMod.makeID(RAW_ID);
 	public static final String IMG = PokerPlayerMod.GetRelicPath(RAW_ID);
-	public static final String OUTLINE = PokerPlayerMod.makePath(PokerPlayerMod.PLACEHOLDER_RELIC_OUTLINE);
+	public static final String OUTLINE = PokerPlayerMod.GetRelicOutlinePath(RAW_ID);
 	public static boolean disabled = false;
 	public boolean alreadyUsed;
 

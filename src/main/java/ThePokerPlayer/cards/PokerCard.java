@@ -135,9 +135,9 @@ public class PokerCard extends CustomCard {
 					return CardRarity.UNCOMMON;
 				else return CardRarity.COMMON;
 			case Heart:
-				if (num <= 2)
+				if (num <= 3)
 					return CardRarity.COMMON;
-				else if (num < 5)
+				else if (num < 7)
 					return CardRarity.UNCOMMON;
 				else return CardRarity.RARE;
 			case Club:

@@ -126,7 +126,7 @@ public class ShowdownAction extends AbstractGameAction {
 				}
 			}
 
-			modifier = (hand + (flush ? 3 : 0)) * 50;
+			modifier = (hand + (flush ? 4 : 0)) * 50;
 			if (hand == 5) {
 				modifier *= straightModifier;
 			}

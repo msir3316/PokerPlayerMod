@@ -6,13 +6,14 @@ import ThePokerPlayer.cards.*;
 import ThePokerPlayer.characters.ThePokerPlayer;
 import ThePokerPlayer.patches.CardColorEnum;
 import ThePokerPlayer.patches.ThePokerPlayerEnum;
+import ThePokerPlayer.relics.JackpotMachine;
+import ThePokerPlayer.relics.PenAndEraser;
 import ThePokerPlayer.relics.ProtectiveDeckHolder;
 import ThePokerPlayer.variables.DefaultCustomVariable;
 import basemod.BaseMod;
 import basemod.ModLabel;
 import basemod.ModPanel;
 import basemod.abstracts.CustomCard;
-import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -29,7 +30,6 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -69,13 +69,6 @@ public class PokerPlayerMod
 	private static final String POWER_DEAFULT_GRAY_PORTRAIT = "1024/bg_power_default_gray.png";
 	private static final String SKILL_DEAFULT_GRAY_PORTRAIT = "1024/bg_skill_default_gray.png";
 	private static final String ENERGY_ORB_DEAFULT_GRAY_PORTRAIT = "1024/card_default_gray_orb.png";
-
-	// Relic images
-	public static final String PLACEHOLDER_RELIC = "relics/placeholder_relic.png";
-	public static final String PLACEHOLDER_RELIC_OUTLINE = "relics/outline/placeholder_relic.png";
-
-	public static final String PLACEHOLDER_RELIC_2 = "relics/placeholder_relic2.png";
-	public static final String PLACEHOLDER_RELIC_OUTLINE_2 = "relics/outline/placeholder_relic2.png";
 
 	// Character assets
 	private static final String THE_DEFAULT_BUTTON = "charSelect/DefaultCharacterButton.png";
@@ -198,6 +191,8 @@ public class PokerPlayerMod
 		logger.info("Add relics");
 
 		BaseMod.addRelicToCustomPool(new ProtectiveDeckHolder(), CardColorEnum.POKER_PLAYER_GRAY);
+		BaseMod.addRelicToCustomPool(new PenAndEraser(), CardColorEnum.POKER_PLAYER_GRAY);
+		BaseMod.addRelicToCustomPool(new JackpotMachine(), CardColorEnum.POKER_PLAYER_GRAY);
 
 		logger.info("Done adding relics!");
 	}
@@ -252,7 +247,7 @@ public class PokerPlayerMod
 
 		for (CustomCard card : cards) {
 			BaseMod.addCard(card);
-			UnlockTracker.unlockCard(card.cardID);
+			//UnlockTracker.unlockCard(card.cardID);
 		}
 	}
 
@@ -370,6 +365,10 @@ public class PokerPlayerMod
 
 	public static String GetRelicPath(String id) {
 		return "PokerPlayerMod/images/relics/" + id + ".png";
+	}
+
+	public static String GetRelicOutlinePath(String id) {
+		return "PokerPlayerMod/images/relics/outline/" + id + ".png";
 	}
 
 	public static String GetEventPath(String id) {
