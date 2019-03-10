@@ -124,46 +124,23 @@ public class PokerCard extends CustomCard {
 		return PokerPlayerMod.makeID(SUIT_TO_RAW_ID[suit.value] + num);
 	}
 
-	public static CardRarity getRarity(Suit suit, int num) {
-		switch (suit) {
-			case Spade:
-				if (num == 5 || num >= 8)
-					return CardRarity.UNCOMMON;
-				else return CardRarity.COMMON;
-			case Diamond:
-				if (num == 5 || num == 10)
-					return CardRarity.UNCOMMON;
-				else return CardRarity.COMMON;
-			case Heart:
-				if (num <= 3)
-					return CardRarity.COMMON;
-				else if (num < 7)
-					return CardRarity.UNCOMMON;
-				else return CardRarity.RARE;
-			case Club:
-				if (num <= 3)
-					return CardRarity.COMMON;
-				else if (num <= 7)
-					return CardRarity.UNCOMMON;
-				else return CardRarity.RARE;
-			default:
-				return CardRarity.SPECIAL;
-		}
-	}
-
 	public PokerCard(Suit suit, int rank) {
-		super(getID(suit, rank), NAME, BLANK_IMG, COST, DESCRIPTION, TYPE, COLOR, getRarity(suit, rank), TARGET);
+		super(getID(suit, rank), NAME, BLANK_IMG, COST, DESCRIPTION, TYPE, COLOR, CardRarity.SPECIAL, TARGET);
 
 		this.suit = suit;
-		this.rank = rank;
+		this.rank = MathUtils.clamp(rank, 1, 10);
 		initCard();
 	}
 
-	void initCard() {
+	private void initCard() {
 		this.name = getCardName(suit, rank);
 		this.rawDescription = getCardDescription(suit, rank);
 		this.initializeTitle();
 		this.initializeDescription();
+		if (suit == Suit.Heart) {
+			this.tags.add(CardTags.HEALING);
+		}
+		this.isEthereal = (suit == Suit.Heart);
 	}
 
 	@Override

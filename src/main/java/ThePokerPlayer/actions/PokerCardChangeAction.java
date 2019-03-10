@@ -55,7 +55,6 @@ public class PokerCardChangeAction extends AbstractGameAction {
 
 			switch (mode) {
 				case RANK_CHANGE_ANY:
-				case EXTRACT:
 				case COPY:
 					for (AbstractCard c : this.p.hand.group) {
 						if (!(c instanceof PokerCard)) {
@@ -78,21 +77,29 @@ public class PokerCardChangeAction extends AbstractGameAction {
 						if (this.p.hand.group.size() - this.nonPokerCards.size() <= amount) {
 							for (AbstractCard c : this.p.hand.group) {
 								if (c instanceof PokerCard) {
-									if (mode == Mode.EXTRACT) {
-										doExtract((PokerCard) c);
-									} else {
-										doCopy((PokerCard) c);
-									}
+									doCopy((PokerCard) c);
 								}
 							}
 							this.isDone = true;
 							return;
 						} else {
 							this.p.hand.group.removeAll(this.nonPokerCards);
-							AbstractDungeon.handCardSelectScreen.open(TEXT[1], amount, false, false, false, false);
+							AbstractDungeon.handCardSelectScreen.open(TEXT[2], amount, false, false, false, false);
 							this.tickDuration();
 							return;
 						}
+					}
+				case EXTRACT:
+					if (this.p.hand.group.size() <= amount) {
+						for (AbstractCard c : this.p.hand.group) {
+							doExtract(c);
+						}
+						this.isDone = true;
+						return;
+					} else {
+						AbstractDungeon.handCardSelectScreen.open(TEXT[1], amount, false, false, false, false);
+						this.tickDuration();
+						return;
 					}
 				case RANK_CHANGE_ALL:
 					for (AbstractCard c : AbstractDungeon.player.hand.group)
@@ -143,9 +150,11 @@ public class PokerCardChangeAction extends AbstractGameAction {
 		this.p.hand.refreshHandLayout();
 	}
 
-	private void doExtract(PokerCard c) {
+	private void doExtract(AbstractCard c) {
 		AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(c, p.hand, true));
-		AbstractDungeon.actionManager.addToTop(new GainEnergyAction(c.rank));
+		if (c instanceof PokerCard) {
+			AbstractDungeon.actionManager.addToTop(new GainEnergyAction(((PokerCard) c).rank));
+		}
 	}
 
 	private void doCopy(PokerCard c) {

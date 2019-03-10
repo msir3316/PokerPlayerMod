@@ -1,10 +1,10 @@
 package ThePokerPlayer.cards;
 
 import ThePokerPlayer.PokerPlayerMod;
-import ThePokerPlayer.actions.PokerCardChangeAction;
 import ThePokerPlayer.patches.CardColorEnum;
 import basemod.abstracts.CustomCard;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.DiscardAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -12,8 +12,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class Raise extends CustomCard {
-	private static final String RAW_ID = "Raise";
+public class Fold extends CustomCard {
+	private static final String RAW_ID = "Fold";
 	public static final String ID = PokerPlayerMod.makeID(RAW_ID);
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -25,28 +25,30 @@ public class Raise extends CustomCard {
 	private static final AbstractCard.CardRarity RARITY = CardRarity.COMMON;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.SELF;
 
-	private static final int POWER = 1;
-	private static final int NEW_COST = 0;
+	private static final int POWER = 14;
+	private static final int UPGRADE_BONUS = 4;
+	private static final int MAGIC = 2;
 
-	public Raise() {
+	public Fold() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-		this.baseMagicNumber = POWER;
+		this.baseBlock = POWER;
+		this.baseMagicNumber = MAGIC;
 		this.magicNumber = this.baseMagicNumber;
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
-		AbstractDungeon.actionManager.addToBottom(new PokerCardChangeAction(p, p, PokerCardChangeAction.Mode.RANK_CHANGE_ANY, 1, this.magicNumber));
+		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
+		AbstractDungeon.actionManager.addToBottom(new DiscardAction(p, p, this.magicNumber, false));
 	}
 
 	public AbstractCard makeCopy() {
-		return new Raise();
+		return new Fold();
 	}
 
 	public void upgrade() {
 		if (!upgraded) {
 			upgradeName();
-			this.upgradeBaseCost(NEW_COST);
+			this.upgradeBlock(UPGRADE_BONUS);
 		}
 	}
 }

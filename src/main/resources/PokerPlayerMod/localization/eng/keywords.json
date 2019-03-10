@@ -26,7 +26,7 @@
       "diamond",
       "diamonds"
     ],
-    "DESCRIPTION": "Showdown Effect: Deal X damage to the lowest health enemy."
+    "DESCRIPTION": "Showdown Effect: Deal X damage to the enemy with the lowest HP."
   },
   {
     "PROPER_NAME": "Heart X",

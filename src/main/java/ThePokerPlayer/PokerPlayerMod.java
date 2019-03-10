@@ -23,23 +23,20 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.cards.colorless.*;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.relics.CentennialPuzzle;
-import com.megacrit.cardcrawl.relics.RunicPyramid;
-import com.megacrit.cardcrawl.relics.SneckoEye;
+import com.megacrit.cardcrawl.relics.*;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @SpireInitializer
 public class PokerPlayerMod
@@ -93,6 +90,13 @@ public class PokerPlayerMod
 	public static float transformAnimTimer;
 	public static HashMap<AbstractCard, AbstractCard> shapeshiftReturns;
 
+	// Bans
+	public static final ArrayList<String> bannedRelics = new ArrayList<>(Arrays.asList(
+			SneckoEye.ID, CentennialPuzzle.ID, RunicPyramid.ID, BagOfPreparation.ID, Pocketwatch.ID
+	));
+	public static final HashSet<String> bannedCards = new HashSet<>(Arrays.asList(
+			DeepBreath.ID, Impatience.ID, MasterOfStrategy.ID, Mayhem.ID, Magnetism.ID, Violence.ID
+	));
 	// =============== /INPUT TEXTURE LOCATION/ =================
 
 	/**
@@ -223,31 +227,36 @@ public class PokerPlayerMod
 		cards.add(new BadJoker());
 		cards.add(new Mulligan());
 
-		cards.add(new CloakShield());
-		cards.add(new Configure());
-		cards.add(new WildCard());
-		cards.add(new DartThrow());
-		cards.add(new Manipulation());
-		cards.add(new HotShotCut());
-		cards.add(new ClubsClub());
-		cards.add(new SecondChance());
-		cards.add(new Trickery());
-		cards.add(new CardBurn());
-		cards.add(new HiddenCard());
-		cards.add(new Extraction());
-		cards.add(new Raise());
-		cards.add(new MagicTrick());
 		cards.add(new Ace());
-		cards.add(new DamnStraight());
-		cards.add(new FakeSymbols());
-		cards.add(new Round());
-		cards.add(new Sharpen());
-		cards.add(new Splitter());
+		cards.add(new CardBurn());
 		cards.add(new ChangeRules());
-		cards.add(new VarietyAttack());
+		cards.add(new CloakAndDiamond());
+		cards.add(new ClubsClub());
+		cards.add(new ClubStrike());
+		cards.add(new Configure());
+		cards.add(new DamnStraight());
+		cards.add(new DartThrow());
 		cards.add(new Duplicate());
-		cards.add(new SecretDealer());
+		cards.add(new Extraction());
+		cards.add(new FakeSymbols());
+		cards.add(new FillThePot());
+		cards.add(new Fold());
 		cards.add(new GamblerForm());
+		cards.add(new HeartStrike());
+		cards.add(new HiddenCard());
+		cards.add(new HotShotCut());
+		cards.add(new MagicTrick());
+		cards.add(new Manipulation());
+		cards.add(new Raise());
+		cards.add(new Round());
+		cards.add(new SecondChance());
+		cards.add(new SecretDealer());
+		cards.add(new Sharpen());
+		cards.add(new SpadeStrike());
+		cards.add(new Splitter());
+		cards.add(new Trickery());
+		cards.add(new VarietyAttack());
+		cards.add(new WildCard());
 
 		for (CustomCard card : cards) {
 			BaseMod.addCard(card);
@@ -294,13 +303,22 @@ public class PokerPlayerMod
 	@Override
 	public void receivePostDungeonInitialize() {
 		if (AbstractDungeon.player.chosenClass == ThePokerPlayerEnum.THE_POKER_PLAYER) {
-			logger.debug("Boss relics (before) = " + AbstractDungeon.bossRelicPool.size());
-			AbstractDungeon.bossRelicPool.remove(SneckoEye.ID);
-			AbstractDungeon.bossRelicPool.remove(RunicPyramid.ID);
-			logger.debug("Boss relics (after) = " + AbstractDungeon.bossRelicPool.size());
-			logger.debug("common relics (before) = " + AbstractDungeon.commonRelicPool.size());
-			AbstractDungeon.commonRelicPool.remove(CentennialPuzzle.ID);
-			logger.debug("common relics (after) = " + AbstractDungeon.commonRelicPool.size());
+			ArrayList<ArrayList<String>> relicPools = new ArrayList<>();
+			relicPools.add(AbstractDungeon.commonRelicPool);
+			relicPools.add(AbstractDungeon.shopRelicPool);
+			relicPools.add(AbstractDungeon.uncommonRelicPool);
+			relicPools.add(AbstractDungeon.rareRelicPool);
+			relicPools.add(AbstractDungeon.bossRelicPool);
+
+			for (ArrayList<String> pool : relicPools) {
+				logger.debug("Relic pool count (before) = " + pool.size());
+				pool.removeAll(bannedRelics);
+				logger.debug("Relic pool count (after) = " + pool.size());
+			}
+
+			logger.debug("Colorless card pool count (before) = " + AbstractDungeon.colorlessCardPool.size());
+			AbstractDungeon.colorlessCardPool.group.removeIf(i -> bannedCards.contains(i.cardID));
+			logger.debug("Colorless card pool count (after) = " + AbstractDungeon.colorlessCardPool.size());
 		}
 	}
 
@@ -338,7 +356,7 @@ public class PokerPlayerMod
 		ShowdownAction.pokerCards.clear();
 		ShowdownAction.otherCards.clear();
 		ShowdownAction.pendingEffects.clear();
-		PokerCardEndOfTurnAction.triggeredThisTurn = false;
+		PokerCardEndOfTurnAction.cards.clear();
 		shapeshiftReturns = new HashMap<>();
 	}
 

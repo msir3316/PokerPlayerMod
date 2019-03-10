@@ -43,13 +43,14 @@ public class ShowdownAction extends AbstractGameAction {
 
 	private float timer;
 	private int index;
-	private static int[] pow;
 	private static boolean[] parity;
 	private boolean init;
 
-	private int hand = 0;
-	private int modifier = 0;
-	private boolean flush = false;
+	public static int[] rawPow = new int[4];
+	public static int[] pow = new int[4];
+	public static int hand;
+	public static int modifier;
+	public static boolean flush = false;
 
 	public ShowdownAction() {
 		this.p = AbstractDungeon.player;
@@ -60,79 +61,100 @@ public class ShowdownAction extends AbstractGameAction {
 		this.init = false;
 	}
 
+	public static void calculateShowdown() {
+		ShowdownAction.pokerCards.clear();
+		for (AbstractCard c : AbstractDungeon.player.hand.group) {
+			if (c instanceof PokerCard) {
+				ShowdownAction.pokerCards.add((PokerCard) c);
+			}
+		}
+		int[] nums = new int[11];
+		int[] suits = new int[4];
+
+		rawPow = new int[4];
+		pow = new int[4];
+		parity = new boolean[4];
+		for (PokerCard card : pokerCards) {
+			rawPow[card.suit.value] += card.rank;
+			pow[card.suit.value] += card.rank;
+
+			if (card.suit == PokerCard.Suit.Diamond && AbstractDungeon.player.hasPower(SharpenPower.POWER_ID)) {
+				pow[PokerCard.Suit.Diamond.value] += AbstractDungeon.player.getPower(SharpenPower.POWER_ID).amount;
+			}
+			if (card.suit == PokerCard.Suit.Club && AbstractDungeon.player.hasPower(RoundPower.POWER_ID)) {
+				pow[PokerCard.Suit.Spade.value] += AbstractDungeon.player.getPower(RoundPower.POWER_ID).amount;
+			}
+
+			nums[card.rank]++;
+			suits[card.suit.value]++;
+		}
+
+		hand = 0;
+		for (int i = 1; i <= 10; i++) {
+			if (nums[i] >= 5) {
+				hand = 8;
+			} else if (nums[i] == 4) {
+				if (hand < 6) hand = 6;
+			} else if (nums[i] == 3) {
+				if (hand >= 1 && hand <= 3) hand = 4;
+				else if (hand < 1) hand = 3;
+			} else if (nums[i] == 2) {
+				if (hand <= 3 && hand != 2) hand++;
+			}
+		}
+
+		int straightModifier = 1;
+		if (AbstractDungeon.player.hasPower(DamnStraightPower.POWER_ID)) {
+			straightModifier <<= AbstractDungeon.player.getPower(DamnStraightPower.POWER_ID).amount;
+		}
+		if (hand < 5 || straightModifier > 1) {
+			for (int i = 1; i <= 6; i++) {
+				if (nums[i] >= 1 && nums[i + 1] >= 1 && nums[i + 2] >= 1 && nums[i + 3] >= 1 && nums[i + 4] >= 1) {
+					hand = 5;
+					break;
+				}
+			}
+		}
+
+		int flushThreshold = 5;
+		if (AbstractDungeon.player.hasPower(FakeSymbolsPower.POWER_ID)) {
+			flushThreshold -= AbstractDungeon.player.getPower(FakeSymbolsPower.POWER_ID).amount;
+		}
+		for (int i = 0; i < 4; i++) {
+			if (suits[i] >= flushThreshold) {
+				flush = true;
+			}
+		}
+
+		modifier = (hand + (flush ? 4 : 0)) * 50;
+		if (hand == 5) {
+			modifier *= straightModifier;
+		}
+	}
+
+	public static String getHandName() {
+		return flush ? (hand == 0 ? TEXT[10] : TEXT[hand] + TEXT[10]) : TEXT[hand];
+	}
+
 	@Override
 	public void update() {
-		if (pokerCards.isEmpty()) {
+		if (AbstractDungeon.getCurrRoom().isBattleEnding()) {
 			this.isDone = true;
 			return;
 		}
-
-		onAction = true;
 		if (!init) {
-			int[] nums = new int[11];
-			int[] suits = new int[4];
-
-			pow = new int[4];
-			parity = new boolean[4];
-			for (PokerCard card : pokerCards) {
-				pow[card.suit.value] += card.rank;
-
-				if (card.suit == PokerCard.Suit.Diamond && this.p.hasPower(SharpenPower.POWER_ID)) {
-					pow[PokerCard.Suit.Diamond.value] += this.p.getPower(SharpenPower.POWER_ID).amount;
-				}
-				if (card.suit == PokerCard.Suit.Club && this.p.hasPower(RoundPower.POWER_ID)) {
-					pow[PokerCard.Suit.Spade.value] += this.p.getPower(RoundPower.POWER_ID).amount;
-				}
-
-				nums[card.rank]++;
-				suits[card.suit.value]++;
+			calculateShowdown();
+			if (pokerCards.isEmpty()) {
+				this.isDone = true;
+				return;
 			}
+			onAction = true;
+
 			index = 0;
 			init = true;
 
-			for (int i = 1; i <= 10; i++) {
-				if (nums[i] >= 5) {
-					hand = 8;
-				} else if (nums[i] == 4) {
-					if (hand < 6) hand = 6;
-				} else if (nums[i] == 3) {
-					if (hand >= 1 && hand <= 3) hand = 4;
-					else if (hand < 1) hand = 3;
-				} else if (nums[i] == 2) {
-					if (hand <= 3 && hand != 2) hand++;
-				}
-			}
-
-			int straightModifier = 1;
-			if (p.hasPower(DamnStraightPower.POWER_ID)) {
-				straightModifier <<= p.getPower(DamnStraightPower.POWER_ID).amount;
-			}
-			if (hand < 5 || straightModifier > 1) {
-				for (int i = 1; i <= 6; i++) {
-					if (nums[i] >= 1 && nums[i + 1] >= 1 && nums[i + 2] >= 1 && nums[i + 3] >= 1 && nums[i + 4] >= 1) {
-						hand = 5;
-						break;
-					}
-				}
-			}
-
-			int flushThreshold = 5;
-			if (this.p.hasPower(FakeSymbolsPower.POWER_ID)) {
-				flushThreshold -= this.p.getPower(FakeSymbolsPower.POWER_ID).amount;
-			}
-			for (int i = 0; i < 4; i++) {
-				if (suits[i] >= flushThreshold) {
-					flush = true;
-				}
-			}
-
-			modifier = (hand + (flush ? 4 : 0)) * 50;
-			if (hand == 5) {
-				modifier *= straightModifier;
-			}
-			String msg = flush ? (hand == 0 ? TEXT[10] : TEXT[hand] + TEXT[10]) : TEXT[hand] + TEXT[9];
+			String msg = getHandName() + TEXT[9];
 			if (modifier > 0) msg += TEXT[11] + modifier + TEXT[12];
-
 			AbstractDungeon.effectList.add(new SpeechBubble(p.dialogX, p.dialogY, TALK_DUR, msg, true));
 		}
 
@@ -169,7 +191,7 @@ public class ShowdownAction extends AbstractGameAction {
 		if (isDone) {
 			for (PokerCard card : pokerCards) {
 				if (AbstractDungeon.player.hand.contains(card)) {
-					if (card.suit == PokerCard.Suit.Heart) {
+					if (card.isEthereal) {
 						AbstractDungeon.player.hand.moveToExhaustPile(card);
 						card.exhaustOnUseOnce = false;
 						card.freeToPlayOnce = false;
@@ -183,7 +205,6 @@ public class ShowdownAction extends AbstractGameAction {
 			}
 			pokerCards.clear();
 			otherCards.clear();
-			PokerCardEndOfTurnAction.triggeredThisTurn = false;
 			onAction = false;
 		}
 	}

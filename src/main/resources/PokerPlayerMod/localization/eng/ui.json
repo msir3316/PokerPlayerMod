@@ -9,9 +9,9 @@
       "Straight",
       "Four of a kind",
       "????",
-      "Five of a kind!",
+      "Five of a kind",
       "!",
-      " Flush!",
+      " Flush",
       " NL +",
       "%."
     ]
@@ -34,7 +34,8 @@
   "PokerPlayerMod:PokerCardChangeAction": {
     "TEXT": [
       "Change Rank",
-      "Extract"
+      "Extract",
+      "Copy"
     ]
   }
 }

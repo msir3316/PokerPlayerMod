@@ -1,7 +1,6 @@
 package ThePokerPlayer.relics;
 
 import ThePokerPlayer.PokerPlayerMod;
-import ThePokerPlayer.actions.ShowdownAction;
 import ThePokerPlayer.cards.PokerCard;
 import ThePokerPlayer.interfaces.IShowdownEffect;
 import basemod.abstracts.CustomRelic;
@@ -10,6 +9,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -20,7 +20,7 @@ public class JackpotMachine extends CustomRelic implements IShowdownEffect {
 	public static final String ID = PokerPlayerMod.makeID(RAW_ID);
 	public static final String IMG = PokerPlayerMod.GetRelicPath(RAW_ID);
 	public static final String OUTLINE = PokerPlayerMod.GetRelicOutlinePath(RAW_ID);
-	public static final int DAMAGE = 77;
+	public static final int DAMAGE = 49;
 
 	public JackpotMachine() {
 		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.RARE, LandingSound.HEAVY);
@@ -29,8 +29,8 @@ public class JackpotMachine extends CustomRelic implements IShowdownEffect {
 	@Override
 	public void onShowdownStart() {
 		int seven = 0;
-		for (PokerCard c : ShowdownAction.pokerCards) {
-			if (c.rank == 7) seven++;
+		for (AbstractCard c : AbstractDungeon.player.hand.group) {
+			if (c instanceof PokerCard && ((PokerCard) c).rank == 7) seven++;
 		}
 		if (seven >= 3) {
 			AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));

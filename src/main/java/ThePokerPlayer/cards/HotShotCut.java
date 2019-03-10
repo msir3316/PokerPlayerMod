@@ -26,7 +26,7 @@ public class HotShotCut extends CustomCard {
 	private static final AbstractCard.CardRarity RARITY = CardRarity.UNCOMMON;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.ALL_ENEMY;
 
-	private static final int POWER = 13;
+	private static final int POWER = 10;
 
 	public HotShotCut() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

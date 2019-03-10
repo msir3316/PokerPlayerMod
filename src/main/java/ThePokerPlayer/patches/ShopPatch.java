@@ -15,6 +15,7 @@ public class ShopPatch {
 		@SpirePrefixPatch
 		public static void Prefix(ShopScreen __instance, ArrayList<AbstractCard> coloredCards, ArrayList<AbstractCard> colorlessCards) {
 			if (AbstractDungeon.player.chosenClass == ThePokerPlayerEnum.THE_POKER_PLAYER) {
+				coloredCards.set(2, coloredCards.get(1));
 				int[] n = new int[]{
 						AbstractDungeon.cardRng.random(39),
 						AbstractDungeon.cardRng.random(38)
@@ -25,7 +26,7 @@ public class ShopPatch {
 				for (int i = 0; i < 2; i++) {
 					PokerCard.Suit suit = PokerCard.Suit.values()[n[i] / 10];
 					int num = n[i] % 10 + 1;
-					coloredCards.set(i * 2, new PokerCard(suit, num));
+					coloredCards.set(i, new PokerCard(suit, num));
 				}
 			}
 		}

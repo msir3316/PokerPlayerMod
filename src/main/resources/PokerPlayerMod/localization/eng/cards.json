@@ -11,7 +11,7 @@
       " of Clubs",
       "",
       " of Diamonds",
-      "pokerplayer:Heart ",
+      "Ethereal. NL pokerplayer:Heart ",
       "",
       "pokerplayer:Spade ",
       "",
@@ -23,7 +23,19 @@
   },
   "PokerPlayerMod:DiamondStrike": {
     "NAME": "Diamond Strike",
-    "DESCRIPTION": "Deal !D! damage. Add a random pokerplayer:Diamond Card to your hand."
+    "DESCRIPTION": "Deal !D! damage. NL Add a random pokerplayer:Diamond card into your hand."
+  },
+  "PokerPlayerMod:SpadeStrike": {
+    "NAME": "Spade Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Add a pokerplayer:Spade card into your hand with Rank equal to unblocked damage."
+  },
+  "PokerPlayerMod:ClubStrike": {
+    "NAME": "Club Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Add a random pokerplayer:Club card with !M! or more Rank into your hand."
+  },
+  "PokerPlayerMod:HeartStrike": {
+    "NAME": "Heart Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Add a 3 of pokerplayer:Hearts to your hand. NL Exhaust."
   },
   "PokerPlayerMod:BadJoker": {
     "NAME": "Bad Joker",
@@ -38,9 +50,9 @@
     "NAME": "Dart Throw",
     "DESCRIPTION": "Deal !D! damage."
   },
-  "PokerPlayerMod:CloakShield": {
-    "NAME": "Cloak Shield",
-    "DESCRIPTION": "Gain !B! Block."
+  "PokerPlayerMod:CloakAndDiamond": {
+    "NAME": "Cloak and Diamond",
+    "DESCRIPTION": "Gain !B! Block. NL Add a !M! of pokerplayer:Diamonds into your hand."
   },
   "PokerPlayerMod:Manipulation": {
     "NAME": "Manipulation",
@@ -82,16 +94,24 @@
   },
   "PokerPlayerMod:Extraction": {
     "NAME": "Extraction",
-    "DESCRIPTION": "Exhaust a Poker Card. Gain energy equal to its pokerplayer:Rank."
+    "DESCRIPTION": "Exhaust a card from your hand. If it is a Poker card, gain energy equal to its pokerplayer:Rank."
   },
   "PokerPlayerMod:Raise": {
     "NAME": "Raise",
-    "DESCRIPTION": "Draw a card. NL pokerplayer:Ranks of all Poker Cards in your hand are increased by !M!."
+    "DESCRIPTION": "Draw a card. NL You may choose a Poker card in you hand to raise its pokerplayer:Rank by !M!."
   },
   "PokerPlayerMod:MagicTrick": {
     "NAME": "Magic Trick",
     "DESCRIPTION": "Draw until you have 6 cards in hand. NL Discard !M! card.",
     "UPGRADE_DESCRIPTION": "Draw until you have 7 cards in hand. NL Discard !M! cards."
+  },
+  "PokerPlayerMod:Fold": {
+    "NAME": "Fold",
+    "DESCRIPTION": "Gain !B! Block. NL Discard !M! cards."
+  },
+  "PokerPlayerMod:FillThePot": {
+    "NAME": "Fill the Pot",
+    "DESCRIPTION": "Put !M! random non-Poker cards from your draw pile into your hand. NL Exhaust."
   },
   "PokerPlayerMod:DamnStraight": {
     "NAME": "Damn Straight",
