@@ -46,8 +46,8 @@ public class ShowdownAction extends AbstractGameAction {
 	private static boolean[] parity;
 	private boolean init;
 
-	public static int[] rawPow = new int[4];
 	public static int[] pow = new int[4];
+	public static int[] powView = new int[4];
 	public static int hand;
 	public static int modifier;
 	public static boolean flush = false;
@@ -68,14 +68,18 @@ public class ShowdownAction extends AbstractGameAction {
 				ShowdownAction.pokerCards.add((PokerCard) c);
 			}
 		}
+		if (PokerCardChangeAction.ref != null && PokerCardChangeAction.ref.rankChange > 0) {
+			if (AbstractDungeon.handCardSelectScreen.upgradePreviewCard instanceof PokerCard) {
+				ShowdownAction.pokerCards.add((PokerCard) AbstractDungeon.handCardSelectScreen.upgradePreviewCard);
+			}
+		}
 		int[] nums = new int[11];
 		int[] suits = new int[4];
 
-		rawPow = new int[4];
 		pow = new int[4];
+		powView = new int[4];
 		parity = new boolean[4];
 		for (PokerCard card : pokerCards) {
-			rawPow[card.suit.value] += card.rank;
 			pow[card.suit.value] += card.rank;
 
 			if (card.suit == PokerCard.Suit.Diamond && AbstractDungeon.player.hasPower(SharpenPower.POWER_ID)) {
@@ -130,6 +134,8 @@ public class ShowdownAction extends AbstractGameAction {
 		if (hand == 5) {
 			modifier *= straightModifier;
 		}
+		for (int i = 0; i < 4; i++)
+			powView[i] = pow[i] * (100 + modifier) / 100;
 	}
 
 	public static String getHandName() {

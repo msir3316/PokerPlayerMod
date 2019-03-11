@@ -45,7 +45,7 @@ public class HeartStrike extends CustomCard {
 		AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
 				new DamageInfo(p, this.damage, this.damageTypeForTurn),
 				AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-		AbstractCard c = new PokerCard(PokerCard.Suit.Diamond, this.magicNumber);
+		AbstractCard c = new PokerCard(PokerCard.Suit.Heart, this.magicNumber);
 		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, true));
 	}
 

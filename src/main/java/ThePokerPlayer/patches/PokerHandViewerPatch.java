@@ -39,7 +39,7 @@ public class PokerHandViewerPatch {
 					sb.draw(
 							PokerCard.Suit.values()[i].getImage(),
 							Settings.WIDTH / 2.0f + dx - DIST,
-							Settings.HEIGHT * 0.8f,
+							Settings.HEIGHT * 0.9f,
 							SUIT_WIDTH / 2.0f,
 							SUIT_HEIGHT / 2.0f,
 							SUIT_WIDTH,
@@ -50,9 +50,9 @@ public class PokerHandViewerPatch {
 					FontHelper.renderFontCentered(
 							sb,
 							FontHelper.topPanelAmountFont,
-							String.valueOf(ShowdownAction.pow[i]),
+							String.valueOf(ShowdownAction.powView[i]),
 							Settings.WIDTH / 2.0f + dx + DIST,
-							Settings.HEIGHT * 0.8f,
+							Settings.HEIGHT * 0.9f,
 							Settings.BLUE_TEXT_COLOR);
 				}
 			}

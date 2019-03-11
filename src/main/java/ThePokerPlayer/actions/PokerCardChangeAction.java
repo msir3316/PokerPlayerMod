@@ -122,7 +122,7 @@ public class PokerCardChangeAction extends AbstractGameAction {
 						this.p.hand.addToTop(c);
 						break;
 					case EXTRACT:
-						doExtract((PokerCard) c);
+						doExtract(c);
 						this.p.hand.addToTop(c);
 						break;
 					case COPY:
