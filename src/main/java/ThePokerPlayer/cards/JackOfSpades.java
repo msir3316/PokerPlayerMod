@@ -13,28 +13,30 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class BadJoker extends CustomCard {
-	private static final String RAW_ID = "BadJoker";
+public class JackOfSpades extends CustomCard {
+	private static final String RAW_ID = "JackOfSpades";
 	public static final String ID = PokerPlayerMod.makeID(RAW_ID);
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String IMG = PokerPlayerMod.GetCardPath(RAW_ID);
-	private static final int COST = 0;
+	private static final int COST = 2;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final AbstractCard.CardType TYPE = CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = CardColorEnum.POKER_PLAYER_GRAY;
-	private static final AbstractCard.CardRarity RARITY = CardRarity.BASIC;
+	private static final AbstractCard.CardRarity RARITY = CardRarity.UNCOMMON;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.SELF;
 
-	private static final int POWER = 3;
-	private static final int UPGRADE_BONUS = 2;
+	private static final int POWER = 11;
+	private static final int MAGIC = 11;
+	private static final int NEW_COST = 1;
 
-	public BadJoker() {
+	public JackOfSpades() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-		this.baseMagicNumber = POWER;
+		this.baseBlock = POWER;
+		this.baseMagicNumber = MAGIC;
 		this.magicNumber = this.baseMagicNumber;
-		this.purgeOnUse = true;
+		this.exhaust = true;
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
@@ -42,17 +44,17 @@ public class BadJoker extends CustomCard {
 				new DamageInfo(p, this.damage, this.damageTypeForTurn),
 				AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 
-		AbstractDungeon.actionManager.addToBottom(new PokerCardDiscoveryAction(this, this.magicNumber, 1, 5));
+		AbstractDungeon.actionManager.addToBottom(new PokerCardDiscoveryAction(this, this.magicNumber, PokerCard.Suit.Club));
 	}
 
 	public AbstractCard makeCopy() {
-		return new BadJoker();
+		return new JackOfSpades();
 	}
 
 	public void upgrade() {
 		if (!upgraded) {
 			upgradeName();
-			this.upgradeMagicNumber(UPGRADE_BONUS);
+			this.upgradeBaseCost(NEW_COST);
 		}
 	}
 }

@@ -64,7 +64,7 @@ public class PlayingCardEffect extends AbstractGameEffect {
 
 		AbstractMonster result = null;
 		for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-			if (!m.halfDead && !m.isDying && !m.isEscaping) {
+			if (!m.isDeadOrEscaped()) {
 				if (suit == PokerCard.Suit.Club) {
 					addDests(m.hb);
 				} else {
@@ -98,7 +98,7 @@ public class PlayingCardEffect extends AbstractGameEffect {
 			curA = 0;
 			this.init = true;
 		} else if (suit == PokerCard.Suit.Diamond) {
-			if (selected.isDying) {
+			if (selected.isDeadOrEscaped()) {
 				AbstractMonster m = getTarget();
 				if (m != null) selected = m;
 			}

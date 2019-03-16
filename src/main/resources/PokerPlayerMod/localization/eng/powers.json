@@ -47,9 +47,22 @@
   "PokerPlayerMod:GamblerFormPower": {
     "NAME": "Gambler Form",
     "DESCRIPTIONS": [
-      "At the start of Showdown, you may choose a Poker Card to randomize its rank between 6 and 10.",
-      "At the start of Showdown, you may choose #b",
-      " Poker Cards to randomize its rank between 6 and 10."
+      "If you score two pair or better, the Showdown effect of all Poker cards are increased by #b",
+      "."
+    ]
+  },
+  "PokerPlayerMod:CardPrinterPower": {
+    "NAME": "Gambler Form",
+    "DESCRIPTIONS": [
+      "At the start of your turn, shuffle a random #ypokerplayer:Rank #b",
+      " Poker card to your draw pile."
+    ]
+  },
+  "PokerPlayerMod:StackedDeckPower": {
+    "NAME": "Stacked Deck",
+    "DESCRIPTIONS": [
+      "(Draw a card.) At the start of your turn, Look at the top #b",
+      " cards of your draw pile and discard any of them."
     ]
   }
 }

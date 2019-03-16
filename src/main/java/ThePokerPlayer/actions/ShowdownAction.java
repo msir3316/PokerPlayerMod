@@ -1,10 +1,7 @@
 package ThePokerPlayer.actions;
 
 import ThePokerPlayer.cards.PokerCard;
-import ThePokerPlayer.powers.DamnStraightPower;
-import ThePokerPlayer.powers.FakeSymbolsPower;
-import ThePokerPlayer.powers.RoundPower;
-import ThePokerPlayer.powers.SharpenPower;
+import ThePokerPlayer.powers.*;
 import ThePokerPlayer.vfx.PlayingCardEffect;
 import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -104,6 +101,12 @@ public class ShowdownAction extends AbstractGameAction {
 				else if (hand < 1) hand = 3;
 			} else if (nums[i] == 2) {
 				if (hand <= 3 && hand != 2) hand++;
+			}
+		}
+
+		if (hand >= 2 && AbstractDungeon.player.hasPower(GamblerFormPower.POWER_ID)) {
+			for (PokerCard card : pokerCards) {
+				pow[card.suit.value] += AbstractDungeon.player.getPower(GamblerFormPower.POWER_ID).amount;
 			}
 		}
 

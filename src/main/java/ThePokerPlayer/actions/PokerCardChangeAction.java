@@ -2,17 +2,21 @@ package ThePokerPlayer.actions;
 
 import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.cards.PokerCard;
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import java.util.ArrayList;
 
@@ -30,7 +34,8 @@ public class PokerCardChangeAction extends AbstractGameAction {
 		RANK_CHANGE_ANY,
 		RANK_CHANGE_ALL,
 		EXTRACT,
-		COPY
+		COPY,
+		ROYAL_STRIKE
 	}
 
 
@@ -56,6 +61,7 @@ public class PokerCardChangeAction extends AbstractGameAction {
 			switch (mode) {
 				case RANK_CHANGE_ANY:
 				case COPY:
+				case ROYAL_STRIKE:
 					for (AbstractCard c : this.p.hand.group) {
 						if (!(c instanceof PokerCard)) {
 							this.nonPokerCards.add(c);
@@ -73,7 +79,7 @@ public class PokerCardChangeAction extends AbstractGameAction {
 						AbstractDungeon.handCardSelectScreen.open(TEXT[0], amount, true, true, false, amount == 1);
 						this.tickDuration();
 						return;
-					} else {
+					} else if (mode == Mode.COPY) {
 						if (this.p.hand.group.size() - this.nonPokerCards.size() <= amount) {
 							for (AbstractCard c : this.p.hand.group) {
 								if (c instanceof PokerCard) {
@@ -85,6 +91,25 @@ public class PokerCardChangeAction extends AbstractGameAction {
 						} else {
 							this.p.hand.group.removeAll(this.nonPokerCards);
 							AbstractDungeon.handCardSelectScreen.open(TEXT[2], amount, false, false, false, false);
+							this.tickDuration();
+							return;
+						}
+					} else if (mode == Mode.ROYAL_STRIKE) {
+						if (target == null) {
+							this.isDone = true;
+							return;
+						}
+						if (this.p.hand.group.size() - this.nonPokerCards.size() <= amount) {
+							for (AbstractCard c : this.p.hand.group) {
+								if (c instanceof PokerCard) {
+									doRoyalStrike((PokerCard) c);
+								}
+							}
+							this.isDone = true;
+							return;
+						} else {
+							this.p.hand.group.removeAll(this.nonPokerCards);
+							AbstractDungeon.handCardSelectScreen.open(TEXT[3], amount, false, false, false, false);
 							this.tickDuration();
 							return;
 						}
@@ -159,5 +184,32 @@ public class PokerCardChangeAction extends AbstractGameAction {
 
 	private void doCopy(PokerCard c) {
 		AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(c));
+	}
+
+	private void doRoyalStrike(PokerCard c) {
+		if (target != null) {
+			AttackEffect effect = c.rank > 6 ? AttackEffect.BLUNT_HEAVY :
+					c.rank > 3 ? AttackEffect.BLUNT_HEAVY : AttackEffect.SLASH_DIAGONAL;
+			float damage = c.rank * rankChange;
+			for (AbstractPower p : source.powers) {
+				damage = p.atDamageGive(damage, DamageInfo.DamageType.NORMAL);
+			}
+			for (AbstractPower p : target.powers) {
+				damage = p.atDamageReceive(damage, DamageInfo.DamageType.NORMAL);
+			}
+			for (AbstractPower p : source.powers) {
+				damage = p.atDamageFinalGive(damage, DamageInfo.DamageType.NORMAL);
+			}
+			for (AbstractPower p : target.powers) {
+				damage = p.atDamageFinalReceive(damage, DamageInfo.DamageType.NORMAL);
+			}
+			if (damage < 0.0F) {
+				damage = 0.0F;
+			}
+
+			DamageInfo info = new DamageInfo(source, MathUtils.floor(damage));
+
+			AbstractDungeon.actionManager.addToTop(new DamageAction(target, info, effect));
+		}
 	}
 }

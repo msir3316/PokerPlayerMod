@@ -27,7 +27,7 @@
   },
   "PokerPlayerMod:BadJoker": {
     "NAME": "Bad Joker",
-    "DESCRIPTION": "Choose 1 of !M! random Poker Cards. This becomes that card until the end of turn."
+    "DESCRIPTION": "Choose 1 of !M! random Poker Cards with 5 or less pokerplayer:Rank. This becomes that card until the end of turn."
   },
   "PokerPlayerMod:Mulligan": {
     "NAME": "Mulligan",
@@ -42,9 +42,13 @@
     "NAME": "Dart Throw",
     "DESCRIPTION": "Deal !D! damage."
   },
+  "PokerPlayerMod:FlyingCard": {
+    "NAME": "Flying Card",
+    "DESCRIPTION": "Deal !D! damage. If you have 3 or less other cards in hand, draw !M! cards."
+  },
   "PokerPlayerMod:SpadeStrike": {
     "NAME": "Spade Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Add a pokerplayer:Spade card into your hand with Rank equal to unblocked damage."
+    "DESCRIPTION": "Deal !D! damage. NL Add a pokerplayer:Spade card into your hand with pokerplayer:Rank equal to unblocked damage."
   },
   "PokerPlayerMod:Trickery": {
     "NAME": "Trickery",
@@ -103,20 +107,11 @@
   },
   "PokerPlayerMod:ClubDance": {
     "NAME": "Club Dance",
-    "DESCRIPTION": "Choose 1 of !M! random Clubs. This becomes that card until the end of turn."
-  },
-  "PokerPlayerMod:FalseShuffle": {
-    "NAME": "False Shuffle",
-    "DESCRIPTION": "Shuffle your deck and Fetch a Poker Card from it. Randomize its Rank.",
-    "UPGRADE_DESCRIPTION": "Shuffle your deck and Fetch a Poker Card from it. Randomize its Rank between 4 and 10."
+    "DESCRIPTION": "Choose 1 of !M! random pokerplayer:Clubs. This becomes that card until the end of turn."
   },
   "PokerPlayerMod:FillThePot": {
     "NAME": "Fill the Pot",
     "DESCRIPTION": "Put !M! random non-Poker cards from your draw pile into your hand. NL Exhaust."
-  },
-  "PokerPlayerMod:Focus": {
-    "NAME": "Focus",
-    "DESCRIPTION": "At the start of the next !M! turns, gain 2 energy. NL Exhaust."
   },
   "PokerPlayerMod:HiddenCard": {
     "NAME": "Hidden Card",
@@ -126,23 +121,32 @@
       "There are no Poker Cards in my discard pile."
     ]
   },
+  "PokerPlayerMod:JackOfSpades": {
+    "NAME": "Jack of Spades",
+    "DESCRIPTION": "Gain !B! Block. NL Apply 10 Weak. NL Apply 10 Vulnerable. NL Exhaust."
+  },
+  "PokerPlayerMod:Overdeal": {
+    "NAME": "Overdeal",
+    "DESCRIPTION": "Add X random Poker cards into your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Add X+1 random Poker cards into your hand. NL Exhaust."
+  },
   "PokerPlayerMod:RiskyBet": {
     "NAME": "Risky Bet",
     "DESCRIPTION": "Discard a Poker card. If the top card of your draw pile is a Poker card with the same Suit, draw !M! cards."
   },
   "PokerPlayerMod:Ace": {
     "NAME": "Ace",
-    "DESCRIPTION": "Whenever you play a Poker Card with pokerplayer:Rank 1, deal !M! damage to a random enemy.",
-    "UPGRADE_DESCRIPTION": "Draw a card. NL Whenever you play a Poker Card with pokerplayer:Rank 1, deal !M! damage to a random enemy."
+    "DESCRIPTION": "Whenever you play a pokerplayer:Rank 1 Poker Card, deal !M! damage to a random enemy.",
+    "UPGRADE_DESCRIPTION": "Draw a card. NL Whenever you play a pokerplayer:Rank 1 Poker Card, deal !M! damage to a random enemy."
   },
   "PokerPlayerMod:CardPrinter": {
     "NAME": "Card Printer",
-    "DESCRIPTION": "At the start of your turn, shuffle a random Poker card with pokerplayer:Rank !M! to your draw pile.",
+    "DESCRIPTION": "At the start of your turn, shuffle a random pokerplayer:Rank !M! Poker card to your draw pile.",
     "EXTENDED_DESCRIPTION": [
       "Can be upgraded 9 times.",
       "Can be upgraded ",
-      " more time",
-      " more times"
+      " more times.",
+      "Can be upgraded 1 more time."
     ]
   },
   "PokerPlayerMod:DamnStraight": {
@@ -166,7 +170,7 @@
   },
   "PokerPlayerMod:RoyalStrike": {
     "NAME": "Royal Strike",
-    "DESCRIPTION": "Discard a Poker card. Deal damage equal to !M! times the Rank of it."
+    "DESCRIPTION": "Discard a Poker card. NL Deal damage equal to !M! times the pokerplayer:Rank of it."
   },
   "PokerPlayerMod:VarietyAttack": {
     "NAME": "Variety Attack",
@@ -188,14 +192,18 @@
     "NAME": "Secret Dealer",
     "DESCRIPTION": "Draw !M! cards."
   },
+  "PokerPlayerMod:TheDieIsCast": {
+    "NAME": "The Die is Cast",
+    "DESCRIPTION": "Throw a 6-sided die; choose any number of Poker cards to change their pokerplayer:Rank to the dice roll."
+  },
   "PokerPlayerMod:WildCard": {
     "NAME": "Wild Card",
     "DESCRIPTION": "Choose 1 from ALL Poker Cards to add into your hand. NL Exhaust."
   },
   "PokerPlayerMod:FakeSymbols": {
     "NAME": "Fake Symbols",
-    "DESCRIPTION": "You score a Flush if you have 4 or more Poker Cards with same suit during pokerplayer:Showdown.",
-    "UPGRADE_DESCRIPTION": "Draw a card. NL You score a Flush if you have 4 or more Poker Cards with same suit during pokerplayer:Showdown."
+    "DESCRIPTION": "You score a Flush if you have 4 or more Poker Cards with same Suit during pokerplayer:Showdown.",
+    "UPGRADE_DESCRIPTION": "Draw a card. NL You score a Flush if you have 4 or more Poker Cards with same Suit during pokerplayer:Showdown."
   },
   "PokerPlayerMod:GamblerForm": {
     "NAME": "Gambler Form",

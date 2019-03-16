@@ -253,7 +253,6 @@ public class PokerPlayerMod
 		cards.add(new SecretDealer());
 		cards.add(new Sharpen());
 		cards.add(new SpadeStrike());
-		cards.add(new Splitter());
 		cards.add(new Trickery());
 		cards.add(new VarietyAttack());
 		cards.add(new WildCard());

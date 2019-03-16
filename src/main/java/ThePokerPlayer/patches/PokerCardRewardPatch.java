@@ -54,8 +54,12 @@ public class PokerCardRewardPatch {
 		@SpirePostfixPatch
 		public static ArrayList<AbstractCard> Postfix(ArrayList<AbstractCard> __result) {
 			if (AbstractDungeon.player.chosenClass == ThePokerPlayerEnum.THE_POKER_PLAYER) {
-				if (__result.size() > 0) {
-					int num = AbstractDungeon.cardRng.random(999);
+				for (int pos = 0; pos < (__result.size() + 1) / 2; pos++) {
+					int value = AbstractDungeon.cardRng.random(1999);
+					if (pos * 2 + 1 == __result.size() && value < 1000) {
+						break;
+					}
+					int num = value % 1000;
 					int suitNum = num % 10;
 					int rankNum = num / 10;
 					PokerCard.Suit suit = PokerCard.Suit.Diamond;
@@ -79,7 +83,7 @@ public class PokerCardRewardPatch {
 						}
 						rankNum -= ratio[rank];
 					}
-					__result.set(0, new PokerCard(suit, rank));
+					__result.set(pos, new PokerCard(suit, rank));
 				}
 			}
 			return __result;

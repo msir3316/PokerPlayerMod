@@ -35,7 +35,8 @@
     "TEXT": [
       "Change Rank",
       "Extract",
-      "Copy"
+      "Copy",
+      "Discard"
     ]
   }
 }

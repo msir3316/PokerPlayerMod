@@ -1,18 +1,19 @@
 package ThePokerPlayer.powers;
 
 import ThePokerPlayer.PokerPlayerMod;
-import ThePokerPlayer.interfaces.IShowdownEffect;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.unique.ReprogramAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class GamblerFormPower extends AbstractPower {
+public class StackedDeckPower extends AbstractPower {
 	public AbstractCreature source;
 
-	private static final String RAW_ID = "GamblerFormPower";
+	private static final String RAW_ID = "StackedDeck";
 	public static final String POWER_ID = PokerPlayerMod.makeID(RAW_ID);
 	private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 	public static final String NAME = powerStrings.NAME;
@@ -22,7 +23,7 @@ public class GamblerFormPower extends AbstractPower {
 	public static final TextureAtlas.AtlasRegion IMG48 = new TextureAtlas.AtlasRegion(
 			ImageMaster.loadImage(PokerPlayerMod.GetPowerPath(RAW_ID, 48)), 0, 0, 32, 32);
 
-	public GamblerFormPower(AbstractCreature owner, AbstractCreature source, int amount) {
+	public StackedDeckPower(AbstractCreature owner, AbstractCreature source, int amount) {
 		this.name = NAME;
 		this.ID = POWER_ID;
 		this.owner = owner;
@@ -33,6 +34,11 @@ public class GamblerFormPower extends AbstractPower {
 		this.region128 = IMG128;
 		this.region48 = IMG48;
 		this.source = source;
+	}
+
+	@Override
+	public void atStartOfTurn() {
+		AbstractDungeon.actionManager.addToBottom(new ReprogramAction(amount));
 	}
 
 	@Override
