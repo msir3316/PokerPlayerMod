@@ -123,7 +123,7 @@
   },
   "PokerPlayerMod:JackOfSpades": {
     "NAME": "Jack of Spades",
-    "DESCRIPTION": "Gain !B! Block. NL Apply 10 Weak. NL Apply 10 Vulnerable. NL Exhaust."
+    "DESCRIPTION": "Gain !B! Block. NL Apply !M! Weak. NL Apply !M! Vulnerable. NL Exhaust."
   },
   "PokerPlayerMod:Overdeal": {
     "NAME": "Overdeal",
@@ -132,7 +132,7 @@
   },
   "PokerPlayerMod:RiskyBet": {
     "NAME": "Risky Bet",
-    "DESCRIPTION": "Discard a Poker card. If the top card of your draw pile is a Poker card with the same Suit, draw !M! cards."
+    "DESCRIPTION": "Discard a card and draw a card. If they are both Poker cards with the same pokerplayer:Suit, draw !M! cards."
   },
   "PokerPlayerMod:Ace": {
     "NAME": "Ace",
@@ -143,16 +143,21 @@
     "NAME": "Card Printer",
     "DESCRIPTION": "At the start of your turn, shuffle a random pokerplayer:Rank !M! Poker card to your draw pile.",
     "EXTENDED_DESCRIPTION": [
-      "Can be upgraded 9 times.",
-      "Can be upgraded ",
+      " Can be upgraded 9 times.",
+      " Can be upgraded ",
       " more times.",
-      "Can be upgraded 1 more time."
+      " Can be upgraded 1 more time."
     ]
   },
   "PokerPlayerMod:DamnStraight": {
     "NAME": "Damn Straight",
     "DESCRIPTION": "Modifier Bonus from Straight is doubled.",
-    "UPGRADE_DESCRIPTION": "Draw a card. NL Modifier Bonus from Straight is doubled."
+    "UPGRADE_DESCRIPTION": "Draw a card. NL Modifier Bonus from Straight is doubled.",
+    "EXTENDED_DESCRIPTION": [
+      " NL (",
+      "% -> ",
+      "%)"
+    ]
   },
   "PokerPlayerMod:Round": {
     "NAME": "Round",
@@ -174,7 +179,7 @@
   },
   "PokerPlayerMod:VarietyAttack": {
     "NAME": "Variety Attack",
-    "DESCRIPTION": "Deal !D! damage to all enemies. Damage is doubled for each unique Suit of Poker Cards in your hand."
+    "DESCRIPTION": "Deal !D! damage to all enemies. Damage is doubled for each unique pokerplayer:Suit of Poker Cards in your hand."
   },
   "PokerPlayerMod:Duplicate": {
     "NAME": "Duplicate",
@@ -186,15 +191,15 @@
   },
   "PokerPlayerMod:Promotion": {
     "NAME": "Promotion",
-    "DESCRIPTION": "Raise the Rank of ALL Poker cards by !M! for the rest of combat. NL Exhaust."
+    "DESCRIPTION": "Raise the pokerplayer:Rank of ALL Poker cards by !M! for the rest of combat. NL Exhaust."
   },
   "PokerPlayerMod:SecretDealer": {
     "NAME": "Secret Dealer",
     "DESCRIPTION": "Draw !M! cards."
   },
   "PokerPlayerMod:TheDieIsCast": {
-    "NAME": "The Die is Cast",
-    "DESCRIPTION": "Throw a 6-sided die; choose any number of Poker cards to change their pokerplayer:Rank to the dice roll."
+    "NAME": "The Die is Cast!",
+    "DESCRIPTION": "Throw a die. NL Choose any number of Poker cards in your hand to change their pokerplayer:Rank to the die roll."
   },
   "PokerPlayerMod:WildCard": {
     "NAME": "Wild Card",
@@ -202,8 +207,8 @@
   },
   "PokerPlayerMod:FakeSymbols": {
     "NAME": "Fake Symbols",
-    "DESCRIPTION": "You score a Flush if you have 4 or more Poker Cards with same Suit during pokerplayer:Showdown.",
-    "UPGRADE_DESCRIPTION": "Draw a card. NL You score a Flush if you have 4 or more Poker Cards with same Suit during pokerplayer:Showdown."
+    "DESCRIPTION": "You score a Flush if you have 4 or more Poker Cards with same pokerplayer:Suit during pokerplayer:Showdown.",
+    "UPGRADE_DESCRIPTION": "Draw a card. NL You score a Flush if you have 4 or more Poker Cards with same pokerplayer:Suit during pokerplayer:Showdown."
   },
   "PokerPlayerMod:GamblerForm": {
     "NAME": "Gambler Form",

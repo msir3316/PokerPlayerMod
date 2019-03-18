@@ -20,6 +20,7 @@ public class Overdeal extends CustomCard {
 	public static final String IMG = PokerPlayerMod.GetCardPath(RAW_ID);
 	private static final int COST = -1;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final AbstractCard.CardType TYPE = CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = CardColorEnum.POKER_PLAYER_GRAY;
 	private static final AbstractCard.CardRarity RARITY = CardRarity.UNCOMMON;
@@ -28,6 +29,7 @@ public class Overdeal extends CustomCard {
 
 	public Overdeal() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+		this.exhaust = true;
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
@@ -45,6 +47,8 @@ public class Overdeal extends CustomCard {
 	public void upgrade() {
 		if (!upgraded) {
 			upgradeName();
+			this.rawDescription = UPGRADE_DESCRIPTION;
+			this.initializeDescription();
 		}
 	}
 }

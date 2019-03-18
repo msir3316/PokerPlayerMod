@@ -1,5 +1,6 @@
 package ThePokerPlayer.actions;
 
+import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.cards.PokerCard;
 import ThePokerPlayer.powers.*;
 import ThePokerPlayer.vfx.PlayingCardEffect;
@@ -13,6 +14,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.SpeechBubble;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import org.apache.commons.lang3.tuple.ImmutablePair;
@@ -24,7 +26,7 @@ import java.util.LinkedList;
 import static ThePokerPlayer.vfx.PlayingCardEffect.EFFECT_DUR;
 
 public class ShowdownAction extends AbstractGameAction {
-	private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("PokerPlayerMod:PokerHands");
+	private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(PokerPlayerMod.makeID("PokerHands"));
 	public static final String[] TEXT = uiStrings.TEXT;
 
 	private AbstractPlayer p;
@@ -47,15 +49,18 @@ public class ShowdownAction extends AbstractGameAction {
 	public static int[] powView = new int[4];
 	public static int hand;
 	public static int modifier;
-	public static boolean flush = false;
+	public static boolean flush;
 
-	public ShowdownAction() {
+	boolean discardAtEnd;
+
+	public ShowdownAction(boolean discardAtEnd) {
 		this.p = AbstractDungeon.player;
 		this.duration = EFFECT_DUR;
 		this.actionType = ActionType.SPECIAL;
 		this.timer = START_DELAY;
 		this.index = 0;
 		this.init = false;
+		this.discardAtEnd = discardAtEnd;
 	}
 
 	public static void calculateShowdown() {
@@ -91,6 +96,7 @@ public class ShowdownAction extends AbstractGameAction {
 		}
 
 		hand = 0;
+		flush = false;
 		for (int i = 1; i <= 10; i++) {
 			if (nums[i] >= 5) {
 				hand = 8;
@@ -133,12 +139,30 @@ public class ShowdownAction extends AbstractGameAction {
 			}
 		}
 
-		modifier = (hand + (flush ? 4 : 0)) * 50;
-		if (hand == 5) {
-			modifier *= straightModifier;
-		}
+		modifier = modifierByHand(hand);
+		if (flush) modifier += flushModifier();
+
 		for (int i = 0; i < 4; i++)
 			powView[i] = pow[i] * (100 + modifier) / 100;
+	}
+
+	public static int modifierByHand(int hand) {
+		int result = hand * 50;
+		if (hand == 5) {
+			int straightModifier = 1;
+			if (AbstractDungeon.currMapNode != null &&
+					AbstractDungeon.getCurrRoom() != null &&
+					AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT &&
+					AbstractDungeon.player.hasPower(DamnStraightPower.POWER_ID)) {
+				straightModifier <<= AbstractDungeon.player.getPower(DamnStraightPower.POWER_ID).amount;
+			}
+			result *= straightModifier;
+		}
+		return result;
+	}
+
+	public static int flushModifier() {
+		return 200;
 	}
 
 	public static String getHandName() {
@@ -198,14 +222,16 @@ public class ShowdownAction extends AbstractGameAction {
 		this.tickDuration();
 
 		if (isDone) {
-			for (PokerCard card : pokerCards) {
-				if (AbstractDungeon.player.hand.contains(card)) {
-					if (card.isEthereal) {
-						AbstractDungeon.player.hand.moveToExhaustPile(card);
-						card.exhaustOnUseOnce = false;
-						card.freeToPlayOnce = false;
-					} else {
-						AbstractDungeon.player.hand.moveToDiscardPile(card);
+			if (discardAtEnd) {
+				for (PokerCard card : pokerCards) {
+					if (AbstractDungeon.player.hand.contains(card)) {
+						if (card.isEthereal) {
+							AbstractDungeon.player.hand.moveToExhaustPile(card);
+							card.exhaustOnUseOnce = false;
+							card.freeToPlayOnce = false;
+						} else {
+							AbstractDungeon.player.hand.moveToDiscardPile(card);
+						}
 					}
 				}
 			}

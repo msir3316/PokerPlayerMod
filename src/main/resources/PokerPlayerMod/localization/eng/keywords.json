@@ -4,7 +4,7 @@
     "NAMES": [
       "poker card"
     ],
-    "DESCRIPTION": "This is a Poker Card. Play to draw 1 card, keep them until the end of your turn for Showdown effects."
+    "DESCRIPTION": "The is a Poker Card. Play to draw a card, or keep them until the end of your turn for Showdown effects."
   },
   {
     "NAMES": [
@@ -34,7 +34,7 @@
       "heart",
       "hearts"
     ],
-    "DESCRIPTION": "Showdown Effect: Heal X HP, and Exhausts."
+    "DESCRIPTION": "Showdown Effect: Heal X HP."
   },
   {
     "PROPER_NAME": "Club X",
@@ -50,5 +50,11 @@
       "ranks"
     ],
     "DESCRIPTION": "The number of symbols on Poker Cards. During Showdown, the number of suits coming out is equal to their Rank."
+  },
+  {
+    "NAMES": [
+      "suit"
+    ],
+    "DESCRIPTION": "The shape of Poker Cards determining the effect."
   }
 ]

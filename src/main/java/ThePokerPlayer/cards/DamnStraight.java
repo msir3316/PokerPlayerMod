@@ -1,6 +1,7 @@
 package ThePokerPlayer.cards;
 
 import ThePokerPlayer.PokerPlayerMod;
+import ThePokerPlayer.actions.ShowdownAction;
 import ThePokerPlayer.patches.CardColorEnum;
 import ThePokerPlayer.powers.DamnStraightPower;
 import basemod.abstracts.CustomCard;
@@ -22,6 +23,7 @@ public class DamnStraight extends CustomCard {
 	private static final int COST = 0;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+	public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
 	private static final AbstractCard.CardType TYPE = CardType.POWER;
 	private static final AbstractCard.CardColor COLOR = CardColorEnum.POKER_PLAYER_GRAY;
 	private static final AbstractCard.CardRarity RARITY = CardRarity.UNCOMMON;
@@ -29,6 +31,7 @@ public class DamnStraight extends CustomCard {
 
 	public DamnStraight() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+		updateDescription();
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
@@ -42,11 +45,23 @@ public class DamnStraight extends CustomCard {
 		return new DamnStraight();
 	}
 
+	@Override
+	public void applyPowers() {
+		updateDescription();
+	}
+
+	private void updateDescription() {
+		this.rawDescription = (upgraded ? UPGRADE_DESCRIPTION : DESCRIPTION) +
+				EXTENDED_DESCRIPTION[0] + ShowdownAction.modifierByHand(5) +
+				EXTENDED_DESCRIPTION[1] + ShowdownAction.modifierByHand(5) * 2 +
+				EXTENDED_DESCRIPTION[2];
+		this.initializeDescription();
+	}
+
 	public void upgrade() {
 		if (!upgraded) {
 			upgradeName();
-			this.rawDescription = UPGRADE_DESCRIPTION;
-			this.initializeDescription();
+			updateDescription();
 		}
 	}
 }

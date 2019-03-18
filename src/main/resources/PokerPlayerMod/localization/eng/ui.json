@@ -21,9 +21,23 @@
       "Poker"
     ]
   },
+  "PokerPlayerMod:PokerScoreViewer": {
+    "TEXT": [
+      "Showdown Power",
+      "This shows the power of each Suit, affected by Buffs, Relics and Poker Hand.",
+      "<Poker Hand Bonuses>"
+    ]
+  },
   "PokerPlayerMod:WildCardAction": {
     "TEXT": [
       "Choose a Poker Card to Add to Your Hand."
+    ]
+  },
+  "PokerPlayerMod:RiskyBetAction": {
+    "TEXT": [
+      "Discard (Bet)",
+      "Successful!",
+      "Failed..."
     ]
   },
   "PokerPlayerMod:DiscardAnyNumberAction": {

@@ -4,6 +4,7 @@ import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.cards.PokerCard;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
@@ -43,7 +44,7 @@ public class PokerCardChangeAction extends AbstractGameAction {
 	// rankChange = how much card rank will be changed.
 	//   0 = randomized. -1 = randomized between 6 and 10.
 	public PokerCardChangeAction(AbstractCreature target, AbstractCreature source, Mode mode, int amount, int rankChange) {
-		this.p = (AbstractPlayer) target;
+		this.p = (AbstractPlayer) source;
 		this.mode = mode;
 		this.setValues(target, source, amount);
 		this.duration = Settings.ACTION_DUR_FAST;
@@ -154,6 +155,9 @@ public class PokerCardChangeAction extends AbstractGameAction {
 						doCopy((PokerCard) c);
 						this.p.hand.addToTop(c);
 						break;
+					case ROYAL_STRIKE:
+						doRoyalStrike((PokerCard) c);
+						break;
 				}
 			}
 
@@ -187,6 +191,9 @@ public class PokerCardChangeAction extends AbstractGameAction {
 	}
 
 	private void doRoyalStrike(PokerCard c) {
+		this.p.hand.moveToDiscardPile(c);
+		c.triggerOnManualDiscard();
+		GameActionManager.incrementDiscard(false);
 		if (target != null) {
 			AttackEffect effect = c.rank > 6 ? AttackEffect.BLUNT_HEAVY :
 					c.rank > 3 ? AttackEffect.BLUNT_HEAVY : AttackEffect.SLASH_DIAGONAL;

@@ -38,7 +38,7 @@ public class CloakAndDiamond extends CustomCard {
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, POWER));
+		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
 		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new PokerCard(PokerCard.Suit.Diamond, this.magicNumber)));
 	}
 

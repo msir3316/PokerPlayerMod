@@ -4,6 +4,7 @@ import ThePokerPlayer.actions.PokerCardEndOfTurnAction;
 import ThePokerPlayer.actions.ShowdownAction;
 import ThePokerPlayer.cards.*;
 import ThePokerPlayer.characters.ThePokerPlayer;
+import ThePokerPlayer.modules.PokerScoreViewer;
 import ThePokerPlayer.patches.CardColorEnum;
 import ThePokerPlayer.patches.ThePokerPlayerEnum;
 import ThePokerPlayer.relics.JackpotMachine;
@@ -32,6 +33,7 @@ import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.*;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -78,7 +80,7 @@ public class PokerPlayerMod
 	public static final String THE_DEFAULT_SHOULDER_2 = "char/ThePokerPlayer/shoulder2.png";
 	public static final String THE_DEFAULT_CORPSE = "char/ThePokerPlayer/corpse.png";
 
-	//Mod Badge
+	// Mod Badge
 	public static final String BADGE_IMAGE = "Badge.png";
 
 	// Animations atlas and JSON files
@@ -89,6 +91,9 @@ public class PokerPlayerMod
 	public static AbstractCard cardSelectScreenCard;
 	public static float transformAnimTimer;
 	public static HashMap<AbstractCard, AbstractCard> shapeshiftReturns;
+
+	// Modules
+	public static PokerScoreViewer pokerScoreViewer;
 
 	// Bans
 	public static final ArrayList<String> bannedRelics = new ArrayList<>(Arrays.asList(
@@ -161,19 +166,17 @@ public class PokerPlayerMod
 
 	@Override
 	public void receivePostInitialize() {
-
-		logger.info("Load Badge Image and mod options");
 		// Load the Mod Badge
 		Texture badgeTexture = new Texture(makePath(BADGE_IMAGE));
 
 		// Create the Mod Menu
 		ModPanel settingsPanel = new ModPanel();
-		settingsPanel.addUIElement(new ModLabel("PokerPlayerMod doesn't have any settings!", 400.0f, 700.0f,
+		settingsPanel.addUIElement(new ModLabel("PokerPlayerMod doesn't have any settings.", 400.0f, 700.0f,
 				settingsPanel, (me) -> {
 		}));
 		BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 
-		logger.info("Done loading badge Image and mod options");
+		pokerScoreViewer = new PokerScoreViewer();
 
 	}
 
@@ -223,43 +226,53 @@ public class PokerPlayerMod
 				cards.add(new PokerCard(PokerCard.Suit.values()[i], j));
 			}
 		}
-		cards.add(new DiamondStrike());
-		cards.add(new BadJoker());
-		cards.add(new Mulligan());
 
 		cards.add(new Ace());
+		cards.add(new BadJoker());
 		cards.add(new CardBurn());
+		cards.add(new CardPrinter());
 		cards.add(new ChangeRules());
 		cards.add(new CloakAndDiamond());
+		cards.add(new ClubDance());
 		cards.add(new ClubsClub());
 		cards.add(new ClubStrike());
 		cards.add(new Configure());
 		cards.add(new DamnStraight());
 		cards.add(new DartThrow());
+		cards.add(new DiamondStrike());
 		cards.add(new Duplicate());
 		cards.add(new Extraction());
 		cards.add(new FakeSymbols());
 		cards.add(new FillThePot());
+		cards.add(new FlyingCard());
 		cards.add(new Fold());
 		cards.add(new GamblerForm());
 		cards.add(new HeartStrike());
 		cards.add(new HiddenCard());
 		cards.add(new HotShotCut());
+		cards.add(new ItsShowtime());
+		cards.add(new JackOfSpades());
 		cards.add(new MagicTrick());
 		cards.add(new Manipulation());
+		cards.add(new Mulligan());
+		cards.add(new Overdeal());
+		cards.add(new Promotion());
 		cards.add(new Raise());
+		cards.add(new RiskyBet());
 		cards.add(new Round());
+		cards.add(new RoyalStrike());
 		cards.add(new SecondChance());
 		cards.add(new SecretDealer());
 		cards.add(new Sharpen());
 		cards.add(new SpadeStrike());
+		cards.add(new StackedDeck());
 		cards.add(new Trickery());
 		cards.add(new VarietyAttack());
 		cards.add(new WildCard());
 
 		for (CustomCard card : cards) {
 			BaseMod.addCard(card);
-			//UnlockTracker.unlockCard(card.cardID);
+			UnlockTracker.unlockCard(card.cardID);
 		}
 	}
 

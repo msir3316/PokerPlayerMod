@@ -1,9 +1,11 @@
 package ThePokerPlayer.cards;
 
 import ThePokerPlayer.PokerPlayerMod;
-import ThePokerPlayer.actions.PromotionAction;
+import ThePokerPlayer.actions.ItsShowtimeAction;
 import ThePokerPlayer.patches.CardColorEnum;
 import basemod.abstracts.CustomCard;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -11,8 +13,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class Promotion extends CustomCard {
-	private static final String RAW_ID = "Promotion";
+public class ItsShowtime extends CustomCard {
+	private static final String RAW_ID = "ItsShowtime";
 	public static final String ID = PokerPlayerMod.makeID(RAW_ID);
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -24,22 +26,24 @@ public class Promotion extends CustomCard {
 	private static final AbstractCard.CardRarity RARITY = CardRarity.RARE;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.SELF;
 
-	private static final int POWER = 1;
+	private static final int DRAW = 1;
 	private static final int NEW_COST = 0;
 
-	public Promotion() {
+	public ItsShowtime() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-		this.baseMagicNumber = POWER;
+		this.baseMagicNumber = DRAW;
 		this.magicNumber = this.baseMagicNumber;
 		this.exhaust = true;
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new PromotionAction(this.magicNumber));
+		AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, this.magicNumber));
+		AbstractDungeon.actionManager.addToBottom(new WaitAction(0.2f));
+		AbstractDungeon.actionManager.addToBottom(new ItsShowtimeAction());
 	}
 
 	public AbstractCard makeCopy() {
-		return new Promotion();
+		return new ItsShowtime();
 	}
 
 	public void upgrade() {

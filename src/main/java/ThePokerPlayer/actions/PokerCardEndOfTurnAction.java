@@ -47,7 +47,7 @@ public class PokerCardEndOfTurnAction extends AbstractGameAction {
 					((IShowdownEffect) r).onShowdownStart();
 				}
 			}
-			AbstractDungeon.actionManager.addToBottom(new ShowdownAction());
+			AbstractDungeon.actionManager.addToBottom(new ShowdownAction(true));
 			cards.clear();
 		}
 	}
