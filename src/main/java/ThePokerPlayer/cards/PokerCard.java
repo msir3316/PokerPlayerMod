@@ -141,6 +141,7 @@ public class PokerCard extends CustomCard {
 			this.tags.add(CardTags.HEALING);
 		}
 		this.isEthereal = (suit == Suit.Heart);
+		this.cardID = getID(suit, rank);
 	}
 
 	@Override

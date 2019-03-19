@@ -2,6 +2,7 @@ package ThePokerPlayer.patches;
 
 import ThePokerPlayer.actions.PokerCardDiscoveryAction;
 import ThePokerPlayer.cards.PokerCard;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
@@ -72,6 +73,16 @@ public class DiscoveryPatch {
 					__instance.rewardGroup.get(i).target_x = Settings.WIDTH / 2.0F + (AbstractCard.IMG_WIDTH + PAD_X) * (i - 2);
 					__instance.rewardGroup.get(i).target_y = y;
 				}
+			}
+		}
+	}
+
+	@SpirePatch(clz = CardRewardScreen.class, method = "render")
+	public static class DiscoveryHandVisiblePatch {
+		@SpirePostfixPatch
+		public static void Postfix(CardRewardScreen __instance, SpriteBatch sb) {
+			if (PokerCardDiscoveryAction.isActive) {
+				AbstractDungeon.player.hand.render(sb);
 			}
 		}
 	}
