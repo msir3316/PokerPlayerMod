@@ -1,4 +1,4 @@
-package ThePokerPlayer.cards;
+package ThePokerPlayer.cards.Deprecated;
 
 import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.patches.CardColorEnum;

@@ -27,8 +27,8 @@ public class HeartStrike extends CustomCard {
 	private static final CardTarget TARGET = CardTarget.ENEMY;
 
 	private static final int POWER = 8;
-	private static final int UPGRADE_BONUS = 3;
 	private static final int MAGIC = 3;
+	private static final int UPGRADE_MAGIC = 2;
 
 	public HeartStrike() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
@@ -44,7 +44,7 @@ public class HeartStrike extends CustomCard {
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
 				new DamageInfo(p, this.damage, this.damageTypeForTurn),
-				AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+				AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
 		AbstractCard c = new PokerCard(PokerCard.Suit.Heart, this.magicNumber);
 		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, true));
 	}
@@ -56,7 +56,7 @@ public class HeartStrike extends CustomCard {
 	public void upgrade() {
 		if (!upgraded) {
 			upgradeName();
-			upgradeDamage(UPGRADE_BONUS);
+			upgradeMagicNumber(UPGRADE_MAGIC);
 		}
 	}
 }

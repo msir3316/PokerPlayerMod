@@ -2,7 +2,7 @@
   "PokerPlayerMod:DamnStraightPower": {
     "NAME": "Damn Straight",
     "DESCRIPTIONS": [
-      "Whenever you score a Straight during Showdown, the Modifier bonus you get is",
+      "Showdown bonus from Straight is",
       " doubled.",
       " multiplied by #b",
       ".",

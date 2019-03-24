@@ -26,9 +26,9 @@ public class ClubStrike extends CustomCard {
 	private static final CardRarity RARITY = CardRarity.UNCOMMON;
 	private static final CardTarget TARGET = CardTarget.ENEMY;
 
-	private static final int POWER = 10;
+	private static final int POWER = 12;
 	private static final int UPGRADE_BONUS = 3;
-	private static final int MAGIC = 4;
+	private static final int MAGIC = 6;
 	private static final int UPGRADE_MAGIC = 2;
 
 	public ClubStrike() {
@@ -40,19 +40,11 @@ public class ClubStrike extends CustomCard {
 		this.tags.add(CardTags.STRIKE);
 	}
 
-	@Override
-	public void applyPowers() {
-		if (this.magicNumber > 10) {
-			this.magicNumber = 10;
-		}
-	}
-
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
 				new DamageInfo(p, this.damage, this.damageTypeForTurn),
 				AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-		int rank = AbstractDungeon.cardRandomRng.random(this.magicNumber, 10);
-		AbstractCard c = new PokerCard(PokerCard.Suit.Club, rank);
+		AbstractCard c = new PokerCard(PokerCard.Suit.Club, this.magicNumber);
 		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, true));
 	}
 

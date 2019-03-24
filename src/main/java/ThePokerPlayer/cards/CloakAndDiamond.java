@@ -26,9 +26,8 @@ public class CloakAndDiamond extends CustomCard {
 	private static final AbstractCard.CardTarget TARGET = CardTarget.SELF;
 
 	private static final int POWER = 6;
-	private static final int UPGRADE_BONUS = 1;
 	private static final int MAGIC = 4;
-	private static final int UPGRADE_MAGIC = 2;
+	private static final int UPGRADE_MAGIC = 4;
 
 	public CloakAndDiamond() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
@@ -49,7 +48,6 @@ public class CloakAndDiamond extends CustomCard {
 	public void upgrade() {
 		if (!upgraded) {
 			upgradeName();
-			this.upgradeBlock(UPGRADE_BONUS);
 			this.upgradeMagicNumber(UPGRADE_MAGIC);
 		}
 	}

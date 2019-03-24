@@ -21,10 +21,6 @@
       ""
     ]
   },
-  "PokerPlayerMod:DiamondStrike": {
-    "NAME": "Diamond Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Add a random pokerplayer:Diamond card into your hand."
-  },
   "PokerPlayerMod:BadJoker": {
     "NAME": "Bad Joker",
     "DESCRIPTION": "Choose 1 of !M! random Poker Cards with 5 or less pokerplayer:Rank. This becomes that card until the end of turn."
@@ -33,6 +29,38 @@
     "NAME": "Mulligan",
     "DESCRIPTION": "Discard any number of cards. NL Draw cards until you have 5 cards in hand. NL Exhaust.",
     "UPGRADE_DESCRIPTION": "Discard any number of cards. NL Draw cards until you have 5 cards in hand."
+  },
+  "PokerPlayerMod:ThinkingTime": {
+    "NAME": "Thinking Time",
+    "DESCRIPTION": "Choose One: Draw a card; or gain !B! Block (number of Poker cards in your deck).",
+    "EXTENDED_DESCRIPTION": [
+      "Choose One",
+      "Hit",
+      "Stay",
+      "Draw a card.",
+      "Gain ",
+      " Block."
+    ]
+  },
+  "PokerPlayerMod:DiamondStrike": {
+    "NAME": "Diamond Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Add a !M! of pokerplayer:Diamonds into your hand."
+  },
+  "PokerPlayerMod:SpadeStrike": {
+    "NAME": "Spade Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Add a !M! of pokerplayer:Spades into your hand."
+  },
+  "PokerPlayerMod:ClubStrike": {
+    "NAME": "Club Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Add a !M! of pokerplayer:Clubs into your hand."
+  },
+  "PokerPlayerMod:HeartStrike": {
+    "NAME": "Heart Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Add a !M! of pokerplayer:Hearts into your hand. NL Exhaust."
+  },
+  "PokerPlayerMod:CloakAndDiamond": {
+    "NAME": "Cloak and Diamond",
+    "DESCRIPTION": "Gain !B! Block. NL Add a !M! of pokerplayer:Diamonds into your hand."
   },
   "PokerPlayerMod:ClubsClub": {
     "NAME": "Clubs Club",
@@ -44,19 +72,14 @@
   },
   "PokerPlayerMod:FlyingCard": {
     "NAME": "Flying Card",
-    "DESCRIPTION": "Deal !D! damage. If you have 3 or less other cards in hand, draw !M! cards."
-  },
-  "PokerPlayerMod:SpadeStrike": {
-    "NAME": "Spade Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Add a pokerplayer:Spade card into your hand with pokerplayer:Rank equal to unblocked damage."
+    "DESCRIPTION": "Gain !B! Block and deal !D! damage for each card generated in this combat.",
+    "EXTENDED_DESCRIPTION": [
+      " NL ( !M! cards generated.)"
+    ]
   },
   "PokerPlayerMod:Trickery": {
     "NAME": "Trickery",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak."
-  },
-  "PokerPlayerMod:CloakAndDiamond": {
-    "NAME": "Cloak and Diamond",
-    "DESCRIPTION": "Gain !B! Block. NL Add a !M! of pokerplayer:Diamonds into your hand."
   },
   "PokerPlayerMod:Configure": {
     "NAME": "Configure",
@@ -78,14 +101,6 @@
   "PokerPlayerMod:Raise": {
     "NAME": "Raise",
     "DESCRIPTION": "Draw a card. NL You may choose a Poker card in you hand to raise its pokerplayer:Rank by !M!."
-  },
-  "PokerPlayerMod:ClubStrike": {
-    "NAME": "Club Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Add a random pokerplayer:Club card with !M! or more Rank into your hand."
-  },
-  "PokerPlayerMod:HeartStrike": {
-    "NAME": "Heart Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Add a 3 of pokerplayer:Hearts to your hand. NL Exhaust."
   },
   "PokerPlayerMod:HotShotCut": {
     "NAME": "Hot Shot Cut",
@@ -151,8 +166,8 @@
   },
   "PokerPlayerMod:DamnStraight": {
     "NAME": "Damn Straight",
-    "DESCRIPTION": "Modifier Bonus from Straight is doubled.",
-    "UPGRADE_DESCRIPTION": "Draw a card. NL Modifier Bonus from Straight is doubled.",
+    "DESCRIPTION": "pokerplayer:Showdown bonus from Straight is doubled.",
+    "UPGRADE_DESCRIPTION": "Draw a card. NL pokerplayer:Showdown bonus from Straight is doubled.",
     "EXTENDED_DESCRIPTION": [
       " NL (",
       "% -> ",
@@ -179,7 +194,7 @@
   },
   "PokerPlayerMod:VarietyAttack": {
     "NAME": "Variety Attack",
-    "DESCRIPTION": "Deal !D! damage to all enemies. Damage is doubled for each unique pokerplayer:Suit of Poker Cards in your hand."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. Damage is doubled for each unique pokerplayer:Suit of Poker Cards in your hand."
   },
   "PokerPlayerMod:Duplicate": {
     "NAME": "Duplicate",

@@ -5,7 +5,7 @@ import ThePokerPlayer.patches.CardColorEnum;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -20,34 +20,41 @@ public class FlyingCard extends CustomCard {
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String IMG = PokerPlayerMod.GetCardPath(RAW_ID);
-	private static final int COST = 1;
+	private static final int COST = 0;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+	public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
 	private static final AbstractCard.CardType TYPE = CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = CardColorEnum.POKER_PLAYER_GRAY;
-	private static final AbstractCard.CardRarity RARITY = CardRarity.COMMON;
+	private static final AbstractCard.CardRarity RARITY = CardRarity.UNCOMMON;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
 
-	private static final int POWER = 5;
-	private static final int THRESHOLD = 3;
-	private static final int DRAW = 2;
-	private static final int NEW_COST = 0;
+	private static final int DAMAGE = 3;
+	private static final int UPGRADE_DAMAGE = 2;
+	private static final int BLOCK = 3;
+	private static final int UPGRADE_BLOCK = 2;
 
 	public FlyingCard() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-		this.baseDamage = POWER;
-		this.baseMagicNumber = DRAW;
+		this.baseDamage = DAMAGE;
+		this.baseBlock = BLOCK;
+	}
+
+	@Override
+	public void applyPowers() {
+		this.baseMagicNumber = PokerPlayerMod.genCards.size();
 		this.magicNumber = this.baseMagicNumber;
+		super.applyPowers();
+		this.rawDescription = DESCRIPTION + EXTENDED_DESCRIPTION[0];
+		this.initializeDescription();
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		int cur = 0;
-		for (AbstractCard c : p.hand.group) {
-			if (c != this) cur++;
+		for (int i = 0; i < this.magicNumber; i++) {
+			AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block, true));
+			AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
 		}
-		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-		if (cur <= THRESHOLD) {
-			AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, this.magicNumber));
-		}
+		this.rawDescription = DESCRIPTION;
+		this.initializeDescription();
 	}
 
 	public AbstractCard makeCopy() {
@@ -57,7 +64,8 @@ public class FlyingCard extends CustomCard {
 	public void upgrade() {
 		if (!upgraded) {
 			upgradeName();
-			this.upgradeBaseCost(NEW_COST);
+			this.upgradeDamage(UPGRADE_DAMAGE);
+			this.upgradeBlock(UPGRADE_BLOCK);
 		}
 	}
 }

@@ -23,15 +23,19 @@ public class DiamondStrike extends CustomCard {
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	private static final AbstractCard.CardType TYPE = CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = CardColorEnum.POKER_PLAYER_GRAY;
-	private static final AbstractCard.CardRarity RARITY = CardRarity.BASIC;
+	private static final AbstractCard.CardRarity RARITY = CardRarity.COMMON;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
 
 	private static final int POWER = 6;
 	private static final int UPGRADE_BONUS = 3;
+	private static final int MAGIC = 4;
+	private static final int UPGRADE_MAGIC = 2;
 
 	public DiamondStrike() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		this.baseDamage = POWER;
+		this.baseMagicNumber = MAGIC;
+		this.magicNumber = this.baseMagicNumber;
 
 		this.tags.add(CardTags.STRIKE);
 	}
@@ -40,7 +44,7 @@ public class DiamondStrike extends CustomCard {
 		AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
 				new DamageInfo(p, this.damage, this.damageTypeForTurn),
 				AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-		AbstractCard c = new PokerCard(PokerCard.Suit.Diamond, AbstractDungeon.cardRandomRng.random(1, 10));
+		AbstractCard c = new PokerCard(PokerCard.Suit.Diamond, this.magicNumber);
 		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, true));
 	}
 
@@ -52,6 +56,7 @@ public class DiamondStrike extends CustomCard {
 		if (!upgraded) {
 			upgradeName();
 			upgradeDamage(UPGRADE_BONUS);
+			upgradeMagicNumber(UPGRADE_MAGIC);
 		}
 	}
 }

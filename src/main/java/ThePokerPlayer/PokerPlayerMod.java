@@ -91,13 +91,14 @@ public class PokerPlayerMod
 	public static AbstractCard cardSelectScreenCard;
 	public static float transformAnimTimer;
 	public static HashMap<AbstractCard, AbstractCard> shapeshiftReturns;
+	public static HashSet<AbstractCard> genCards;
 
 	// Modules
 	public static PokerScoreViewer pokerScoreViewer;
 
 	// Bans
 	public static final ArrayList<String> bannedRelics = new ArrayList<>(Arrays.asList(
-			SneckoEye.ID, CentennialPuzzle.ID, RunicPyramid.ID, BagOfPreparation.ID, Pocketwatch.ID
+			SneckoEye.ID, CentennialPuzzle.ID, RunicPyramid.ID, BagOfPreparation.ID, Pocketwatch.ID, GremlinHorn.ID
 	));
 	public static final HashSet<String> bannedCards = new HashSet<>(Arrays.asList(
 			DeepBreath.ID, Impatience.ID, MasterOfStrategy.ID, Mayhem.ID, Magnetism.ID, Violence.ID
@@ -227,7 +228,6 @@ public class PokerPlayerMod
 			}
 		}
 
-		cards.add(new Ace());
 		cards.add(new BadJoker());
 		cards.add(new CardBurn());
 		cards.add(new CardPrinter());
@@ -266,6 +266,7 @@ public class PokerPlayerMod
 		cards.add(new Sharpen());
 		cards.add(new SpadeStrike());
 		cards.add(new StackedDeck());
+		cards.add(new ThinkingTime());
 		cards.add(new Trickery());
 		cards.add(new VarietyAttack());
 		cards.add(new WildCard());
@@ -370,6 +371,7 @@ public class PokerPlayerMod
 		ShowdownAction.pendingEffects.clear();
 		PokerCardEndOfTurnAction.cards.clear();
 		shapeshiftReturns = new HashMap<>();
+		genCards = new HashSet<>();
 	}
 
 	@Override

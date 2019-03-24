@@ -1,10 +1,7 @@
 package ThePokerPlayer.characters;
 
 import ThePokerPlayer.PokerPlayerMod;
-import ThePokerPlayer.cards.BadJoker;
-import ThePokerPlayer.cards.DiamondStrike;
-import ThePokerPlayer.cards.Mulligan;
-import ThePokerPlayer.cards.PokerCard;
+import ThePokerPlayer.cards.*;
 import ThePokerPlayer.patches.CardColorEnum;
 import ThePokerPlayer.relics.ProtectiveDeckHolder;
 import basemod.abstracts.CustomPlayer;
@@ -136,9 +133,9 @@ public class ThePokerPlayer extends CustomPlayer {
 		retVal.add(PokerCard.getID(PokerCard.Suit.Heart, 1));
 		retVal.add(PokerCard.getID(PokerCard.Suit.Club, 1));
 		retVal.add(PokerCard.getID(PokerCard.Suit.Club, 2));
-		retVal.add(DiamondStrike.ID);
 		retVal.add(BadJoker.ID);
 		retVal.add(Mulligan.ID);
+		retVal.add(ThinkingTime.ID);
 
 		return retVal;
 	}

@@ -187,7 +187,7 @@ public class PokerCardChangeAction extends AbstractGameAction {
 	}
 
 	private void doCopy(PokerCard c) {
-		AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(c));
+		AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(c.makeStatEquivalentCopy()));
 	}
 
 	private void doRoyalStrike(PokerCard c) {
