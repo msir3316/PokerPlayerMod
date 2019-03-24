@@ -3,6 +3,7 @@ package ThePokerPlayer.actions;
 import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.cards.PokerCard;
 import ThePokerPlayer.powers.*;
+import ThePokerPlayer.relics.ClubPass;
 import ThePokerPlayer.vfx.PlayingCardEffect;
 import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -91,6 +92,9 @@ public class ShowdownAction extends AbstractGameAction {
 				pow[PokerCard.Suit.Spade.value] += AbstractDungeon.player.getPower(RoundPower.POWER_ID).amount;
 			}
 
+			if (AbstractDungeon.player.hasRelic(ClubPass.ID)) {
+				pow[PokerCard.Suit.Club.value] += AbstractDungeon.player.getRelic(ClubPass.ID).counter;
+			}
 			nums[card.rank]++;
 			suits[card.suit.value]++;
 		}

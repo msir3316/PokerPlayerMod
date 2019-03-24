@@ -7,11 +7,58 @@
       "Once per combat, right click to exhaust ALL Statuses and draw up to #b5 cards in hand."
     ]
   },
+  "PokerPlayerMod:BottledPoker": {
+    "NAME": "Bottled Poker",
+    "FLAVOR": "You feel nostalgic while looking at this bottle.",
+    "DESCRIPTIONS": [
+      "Upon pick up, choose a Poker card. Start each combat with this card in your hand.",
+      "Choose a card for ",
+      "Start each combat with ",
+      " in your hand."
+    ]
+  },
+  "PokerPlayerMod:FairLicense": {
+    "NAME": "Fair License",
+    "FLAVOR": "Great present for honest people, but what if you're the cheater?",
+    "DESCRIPTIONS": [
+      "If you do not play any Poker cards during your turn, gain an extra [E] next turn."
+    ]
+  },
+  "PokerPlayerMod:ClubPass": {
+    "NAME": "Club Pass",
+    "FLAVOR": "Of course it's the Club of Joking.",
+    "DESCRIPTIONS": [
+      "Whenever you play a card containing \"Club\", your Clubs deal #b1 more damage during this turn's Showdown."
+    ]
+  },
   "PokerPlayerMod:PenAndEraser": {
     "NAME": "Pen and Eraser",
     "FLAVOR": "The best tool for \"modifying\" poker cards.",
     "DESCRIPTIONS": [
       "Upon pickup, raise the pokerplayer:Rank of two random Poker Cards by #b3."
+    ]
+  },
+  "PokerPlayerMod:CoolBox": {
+    "NAME": "Cool Box",
+    "FLAVOR": "Contains tools for cooling your cool head.",
+    "DESCRIPTIONS": [
+      "At the start of each combat, draw #b1 fewer card and add a #b10 of Spades with Ethereal into your hand."
+    ]
+  },
+  "PokerPlayerMod:Splitter": {
+    "NAME": "Splitter",
+    "FLAVOR": "The magic of lower cards begins.",
+    "DESCRIPTIONS": [
+      "Whenever you play a Poker card with #b",
+      " or less Rank, deal #b",
+      " damage to ALL enemies."
+    ]
+  },
+  "PokerPlayerMod:EnergeticBat": {
+    "NAME": "Energetic Bat",
+    "FLAVOR": "This bat is so energetic that strikes the enemy before you realize it.",
+    "DESCRIPTIONS": [
+      "Whenever you play a Strike card, gain [E]."
     ]
   },
   "PokerPlayerMod:JackpotMachine": {
@@ -20,6 +67,22 @@
     "DESCRIPTIONS": [
       "If you have #b3 or more Poker Cards with rank #b7 during Showdown, deal #b",
       " damage to ALL enemies."
+    ]
+  },
+  "PokerPlayerMod:StuffedPocket": {
+    "NAME": "Stuffed Pocket",
+    "FLAVOR": "Be careful not to spill anything from your pocket. Or give the scavengers bonuses.",
+    "DESCRIPTIONS": [
+      "At the start of your combat, draw #b1 additional card for every #b",
+      " cards in your deck."
+    ]
+  },
+  "PokerPlayerMod:AceCard": {
+    "NAME": "Ace Card",
+    "FLAVOR": "The one card to trump the opponents.",
+    "DESCRIPTIONS": [
+      "Rank 1 Poker Cards costs #b0 and gives you #b",
+      " Block when played."
     ]
   }
 }

@@ -11,14 +11,15 @@
       " of Clubs",
       "",
       " of Diamonds",
-      "Ethereal. NL pokerplayer:Heart ",
+      "pokerplayer:Heart ",
       "",
       "pokerplayer:Spade ",
       "",
       "pokerplayer:Club ",
       "",
       "pokerplayer:Diamond ",
-      ""
+      "",
+      "Ethereal. NL "
     ]
   },
   "PokerPlayerMod:BadJoker": {

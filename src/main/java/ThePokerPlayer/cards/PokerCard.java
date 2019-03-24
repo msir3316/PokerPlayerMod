@@ -5,11 +5,13 @@ import ThePokerPlayer.actions.PokerCardEndOfTurnAction;
 import ThePokerPlayer.patches.CardColorEnum;
 import ThePokerPlayer.patches.CardTypeEnum;
 import ThePokerPlayer.patches.PokerCardTypePatch;
+import ThePokerPlayer.relics.AceCard;
 import basemod.abstracts.CustomCard;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
+import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.evacipated.cardcrawl.modthespire.lib.SpireSuper;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
@@ -76,6 +78,8 @@ public class PokerCard extends CustomCard {
 	public static float typeWidthPoker;
 	public static float typeOffsetPoker;
 
+	public static SpireField<Boolean> aced = new SpireField<>(() -> false);
+
 	static {
 		float d = 48.0F * Settings.scale;
 		GlyphLayout gl = new GlyphLayout();
@@ -124,24 +128,42 @@ public class PokerCard extends CustomCard {
 		return PokerPlayerMod.makeID(SUIT_TO_RAW_ID[suit.value] + num);
 	}
 
-	public PokerCard(Suit suit, int rank) {
+	public PokerCard(Suit suit, int rank, boolean isEthereal) {
 		super(getID(suit, rank), NAME, BLANK_IMG, COST, DESCRIPTION, TYPE, COLOR, CardRarity.SPECIAL, TARGET);
 
 		this.suit = suit;
 		this.rank = MathUtils.clamp(rank, 1, 10);
-		initCard();
+		initCard(isEthereal);
 	}
 
-	private void initCard() {
+	public PokerCard(Suit suit, int rank) {
+		this(suit, rank, false);
+	}
+
+	private void initCard(boolean isEthereal) {
 		this.name = getCardName(suit, rank);
-		this.rawDescription = getCardDescription(suit, rank);
-		this.initializeTitle();
-		this.initializeDescription();
 		if (suit == Suit.Heart) {
 			this.tags.add(CardTags.HEALING);
 		}
-		this.isEthereal = (suit == Suit.Heart);
+		this.isEthereal = (suit == Suit.Heart) || isEthereal;
+		this.rawDescription = getCardDescription(suit, rank);
+		if (this.isEthereal) {
+			this.rawDescription = EXTENDED_DESCRIPTION[16] + this.rawDescription;
+		}
+		this.initializeTitle();
+		this.initializeDescription();
 		this.cardID = getID(suit, rank);
+
+		boolean aceCheck = rank == 1 && AbstractDungeon.player.hasRelic(AceCard.ID);
+		if (aced.get(this) != aceCheck) {
+			aced.set(this, aceCheck);
+			if (aceCheck) {
+				this.upgradeBaseCost(0);
+			} else {
+				this.upgradeBaseCost(COST);
+				this.costForTurn = COST;
+			}
+		}
 	}
 
 	@Override
@@ -250,6 +272,6 @@ public class PokerCard extends CustomCard {
 				}
 				break;
 		}
-		initCard();
+		initCard(this.isEthereal);
 	}
 }

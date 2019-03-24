@@ -7,9 +7,7 @@ import ThePokerPlayer.characters.ThePokerPlayer;
 import ThePokerPlayer.modules.PokerScoreViewer;
 import ThePokerPlayer.patches.CardColorEnum;
 import ThePokerPlayer.patches.ThePokerPlayerEnum;
-import ThePokerPlayer.relics.JackpotMachine;
-import ThePokerPlayer.relics.PenAndEraser;
-import ThePokerPlayer.relics.ProtectiveDeckHolder;
+import ThePokerPlayer.relics.*;
 import ThePokerPlayer.variables.DefaultCustomVariable;
 import basemod.BaseMod;
 import basemod.ModLabel;
@@ -203,8 +201,17 @@ public class PokerPlayerMod
 		logger.info("Add relics");
 
 		BaseMod.addRelicToCustomPool(new ProtectiveDeckHolder(), CardColorEnum.POKER_PLAYER_GRAY);
-		BaseMod.addRelicToCustomPool(new PenAndEraser(), CardColorEnum.POKER_PLAYER_GRAY);
+
+		BaseMod.addRelicToCustomPool(new AceCard(), CardColorEnum.POKER_PLAYER_GRAY);
+		BaseMod.addRelicToCustomPool(new BottledPoker(), CardColorEnum.POKER_PLAYER_GRAY);
+		BaseMod.addRelicToCustomPool(new ClubPass(), CardColorEnum.POKER_PLAYER_GRAY);
+		BaseMod.addRelicToCustomPool(new CoolBox(), CardColorEnum.POKER_PLAYER_GRAY);
+		BaseMod.addRelicToCustomPool(new EnergeticBat(), CardColorEnum.POKER_PLAYER_GRAY);
+		BaseMod.addRelicToCustomPool(new FairLicense(), CardColorEnum.POKER_PLAYER_GRAY);
 		BaseMod.addRelicToCustomPool(new JackpotMachine(), CardColorEnum.POKER_PLAYER_GRAY);
+		BaseMod.addRelicToCustomPool(new PenAndEraser(), CardColorEnum.POKER_PLAYER_GRAY);
+		BaseMod.addRelicToCustomPool(new Splitter(), CardColorEnum.POKER_PLAYER_GRAY);
+		BaseMod.addRelicToCustomPool(new StuffedPocket(), CardColorEnum.POKER_PLAYER_GRAY);
 
 		logger.info("Done adding relics!");
 	}
