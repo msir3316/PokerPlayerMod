@@ -13,6 +13,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
+import static ThePokerPlayer.patches.CustomTags.POKER_PLAYER_CLUB;
+
 public class ClubStrike extends CustomCard {
 	private static final String RAW_ID = "ClubStrike";
 	public static final String ID = PokerPlayerMod.makeID(RAW_ID);
@@ -38,6 +40,7 @@ public class ClubStrike extends CustomCard {
 		this.magicNumber = this.baseMagicNumber;
 
 		this.tags.add(CardTags.STRIKE);
+		this.tags.add(POKER_PLAYER_CLUB);
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {

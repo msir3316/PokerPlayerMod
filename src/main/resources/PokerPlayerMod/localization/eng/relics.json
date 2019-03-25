@@ -3,8 +3,8 @@
     "NAME": "Protective Deck Holder",
     "FLAVOR": "The protection even help you recover from your Statuses.",
     "DESCRIPTIONS": [
-      "[#2aecd7]Once [#2aecd7]per [#2aecd7]combat, [#2aecd7]right [#2aecd7]click [#2aecd7]to [#2aecd7]activate.[] NL Exhaust ALL Status cards and draw until you have #b5 cards in hand.",
-      "Once per combat, right click to exhaust ALL Statuses and draw up to #b5 cards in hand."
+      "[#2aecd7]Once [#2aecd7]per [#2aecd7]combat, [#2aecd7]right [#2aecd7]click [#2aecd7]to [#2aecd7]activate.[] NL #yExhaust ALL #yStatus cards and draw until you have #b5 cards in hand.",
+      "Once per combat, right click to #yexhaust ALL #yStatuses and draw up to #b5 cards in hand."
     ]
   },
   "PokerPlayerMod:BottledPoker": {
@@ -35,7 +35,7 @@
     "NAME": "Pen and Eraser",
     "FLAVOR": "The best tool for \"modifying\" poker cards.",
     "DESCRIPTIONS": [
-      "Upon pickup, raise the pokerplayer:Rank of two random Poker Cards by #b3."
+      "Upon pickup, raise the #ypokerplayer:Rank of two random Poker Cards by #b3."
     ]
   },
   "PokerPlayerMod:CoolBox": {
@@ -50,15 +50,15 @@
     "FLAVOR": "The magic of lower cards begins.",
     "DESCRIPTIONS": [
       "Whenever you play a Poker card with #b",
-      " or less Rank, deal #b",
+      " or less #ypokerplayer:Rank, deal #b",
       " damage to ALL enemies."
     ]
   },
   "PokerPlayerMod:EnergeticBat": {
     "NAME": "Energetic Bat",
-    "FLAVOR": "This bat is so energetic that strikes the enemy before you realize it.",
+    "FLAVOR": "This bat is so lively that strikes the enemy before you realize it.",
     "DESCRIPTIONS": [
-      "Whenever you play a Strike card, gain [E]."
+      "Whenever you play a #yStrike card, gain [E] ."
     ]
   },
   "PokerPlayerMod:JackpotMachine": {
@@ -79,7 +79,7 @@
   },
   "PokerPlayerMod:AceCard": {
     "NAME": "Ace Card",
-    "FLAVOR": "The one card to trump the opponents.",
+    "FLAVOR": "The single card to trump the opponents.",
     "DESCRIPTIONS": [
       "Rank 1 Poker Cards costs #b0 and gives you #b",
       " Block when played."

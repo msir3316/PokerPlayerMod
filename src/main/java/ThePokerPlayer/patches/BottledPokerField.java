@@ -3,7 +3,6 @@ package ThePokerPlayer.patches;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import javassist.CtBehavior;
 
 import java.util.ArrayList;
@@ -47,9 +46,9 @@ public class BottledPokerField {
 		private static class Locator extends SpireInsertLocator {
 			@Override
 			public int[] Locate(CtBehavior ctBehavior) throws Exception {
-				Matcher finalMatcher = new Matcher.MethodCallMatcher(AbstractPlayer.class, "masterHandSize");
+				Matcher finalMatcher = new Matcher.MethodCallMatcher(ArrayList.class, "iterator");
 
-				return LineFinder.findAllInOrder(ctBehavior, finalMatcher);
+				return new int[]{LineFinder.findAllInOrder(ctBehavior, finalMatcher)[1]};
 			}
 		}
 	}

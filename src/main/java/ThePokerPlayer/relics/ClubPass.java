@@ -10,6 +10,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
+import static ThePokerPlayer.patches.CustomTags.POKER_PLAYER_CLUB;
+
 public class ClubPass extends CustomRelic {
 
 	private static final String RAW_ID = "ClubPass";
@@ -22,7 +24,7 @@ public class ClubPass extends CustomRelic {
 	}
 
 	public void onUseCard(AbstractCard card, UseCardAction action) {
-		if (card instanceof PokerCard && ((PokerCard) card).suit == PokerCard.Suit.Club) {
+		if (card instanceof PokerCard && ((PokerCard) card).suit == PokerCard.Suit.Club || card.hasTag(POKER_PLAYER_CLUB)) {
 			AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
 			this.counter++;
 		}

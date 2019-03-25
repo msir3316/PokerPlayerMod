@@ -105,7 +105,7 @@ public class PokerCardTypePatch {
 					BaseMod.saveSkillBgTexture(color, ImageMaster.loadImage(BaseMod.getSkillBg(color)));
 				}
 				Texture texture = BaseMod.getSkillBgTexture(color);
-				renderHelper(__instance, sb, Color.WHITE, texture, xPos, yPos);
+				renderHelper(__instance, sb, Color.WHITE.cpy(), texture, xPos, yPos);
 				return SpireReturn.Return(SpireReturn.Return(null));
 			} else {
 				return SpireReturn.Continue();

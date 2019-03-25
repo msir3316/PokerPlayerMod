@@ -22,7 +22,7 @@ public class AceCard extends CustomRelic implements CustomSavable<Void> {
 	private static final int BLOCK = 4;
 
 	public AceCard() {
-		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.RARE, LandingSound.HEAVY);
+		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.BOSS, LandingSound.HEAVY);
 	}
 
 	@Override

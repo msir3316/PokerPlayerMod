@@ -11,7 +11,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
-import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.evacipated.cardcrawl.modthespire.lib.SpireSuper;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
@@ -78,7 +77,7 @@ public class PokerCard extends CustomCard {
 	public static float typeWidthPoker;
 	public static float typeOffsetPoker;
 
-	public static SpireField<Boolean> aced = new SpireField<>(() -> false);
+	public static boolean aced = false;
 
 	static {
 		float d = 48.0F * Settings.scale;
@@ -145,6 +144,7 @@ public class PokerCard extends CustomCard {
 		if (suit == Suit.Heart) {
 			this.tags.add(CardTags.HEALING);
 		}
+		if (isEthereal) PokerPlayerMod.logger.debug("FUCK" + rank);
 		this.isEthereal = (suit == Suit.Heart) || isEthereal;
 		this.rawDescription = getCardDescription(suit, rank);
 		if (this.isEthereal) {
@@ -154,9 +154,9 @@ public class PokerCard extends CustomCard {
 		this.initializeDescription();
 		this.cardID = getID(suit, rank);
 
-		boolean aceCheck = rank == 1 && AbstractDungeon.player.hasRelic(AceCard.ID);
-		if (aced.get(this) != aceCheck) {
-			aced.set(this, aceCheck);
+		boolean aceCheck = rank == 1 && AbstractDungeon.player != null && AbstractDungeon.player.hasRelic(AceCard.ID);
+		if (aced != aceCheck) {
+			aced = aceCheck;
 			if (aceCheck) {
 				this.upgradeBaseCost(0);
 			} else {
@@ -179,6 +179,15 @@ public class PokerCard extends CustomCard {
 	@Override
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
+	}
+
+	@Override
+	public AbstractCard makeStatEquivalentCopy() {
+		AbstractCard card = super.makeStatEquivalentCopy();
+		if (card instanceof PokerCard) {
+			((PokerCard) card).initCard(this.isEthereal);
+		}
+		return card;
 	}
 
 	public void renderSuit(SpriteBatch sb) {

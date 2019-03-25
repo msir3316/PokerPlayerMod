@@ -141,7 +141,7 @@ public class PlayingCardEffect extends AbstractGameEffect {
 
 	@Override
 	public void render(SpriteBatch sb) {
-		sb.setColor(Color.WHITE);
+		sb.setColor(Color.WHITE.cpy());
 		for (int i = 0; i < curPos.size(); i++) {
 			this.renderImg(sb, PokerCard.SUIT_TO_IMG[suit.value], rotation, i);
 		}
