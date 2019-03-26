@@ -32,7 +32,7 @@ public class PokerScoreViewer {
 
 	public PokerScoreViewer() {
 		hb = new Hitbox(width * Settings.scale, height * Settings.scale);
-		hb.move(Settings.WIDTH / 2.0f, Settings.HEIGHT * 0.875f);
+		hb.move(Settings.WIDTH / 2.0f, Settings.HEIGHT * 0.75f);
 		uiStrings = CardCrawlGame.languagePack.getUIString(PokerPlayerMod.makeID("PokerScoreViewer"));
 		TEXT = uiStrings.TEXT;
 	}
@@ -58,7 +58,7 @@ public class PokerScoreViewer {
 				moveState = 0;
 			} else {
 				float x = Math.min(Math.max(InputHelper.mX + dx, 0.05f * Settings.WIDTH), 0.95f * Settings.WIDTH);
-				float y = Math.min(Math.max(InputHelper.mY + dy, 0.3f * Settings.HEIGHT), 0.875f * Settings.HEIGHT);
+				float y = Math.min(Math.max(InputHelper.mY + dy, 0.3f * Settings.HEIGHT), 0.85f * Settings.HEIGHT);
 
 				if ((startx - InputHelper.mX) * (startx - InputHelper.mX) + (starty - InputHelper.mY) * (starty - InputHelper.mY) > 64) {
 					moveState = 2;

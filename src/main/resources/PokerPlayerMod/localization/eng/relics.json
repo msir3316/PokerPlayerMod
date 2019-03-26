@@ -56,7 +56,7 @@
   },
   "PokerPlayerMod:EnergeticBat": {
     "NAME": "Energetic Bat",
-    "FLAVOR": "This bat is so lively that strikes the enemy before you realize it.",
+    "FLAVOR": "This lively bat strikes enemies before you even realize it.",
     "DESCRIPTIONS": [
       "Whenever you play a #yStrike card, gain [E] ."
     ]
@@ -65,7 +65,7 @@
     "NAME": "Jackpot Machine",
     "FLAVOR": "That feeling when you became a millionaire... in your dream.",
     "DESCRIPTIONS": [
-      "If you have #b3 or more Poker Cards with rank #b7 during Showdown, deal #b",
+      "If you have #b3 or more Poker Cards with #ypokerplayer:Rank #b7 during Showdown, deal #b",
       " damage to ALL enemies."
     ]
   },
@@ -81,7 +81,7 @@
     "NAME": "Ace Card",
     "FLAVOR": "The single card to trump the opponents.",
     "DESCRIPTIONS": [
-      "Rank 1 Poker Cards costs #b0 and gives you #b",
+      "#ypokerplayer:Rank #b1 Poker Cards cost #b0 and gives you #b",
       " Block when played."
     ]
   }

@@ -26,18 +26,28 @@ public class AceCard extends CustomRelic implements CustomSavable<Void> {
 	}
 
 	@Override
+	public void onEquip() {
+		for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
+			if (c instanceof PokerCard && ((PokerCard) c).rank == 1) {
+				c.modifyCostForCombat(-9);
+			}
+		}
+	}
+
+	@Override
 	public Void onSave() {
 		return null;
 	}
 
 	@Override
 	public void onLoad(Void v) {
-		if (AbstractDungeon.player != null)
+		if (AbstractDungeon.player != null) {
 			for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
 				if (c instanceof PokerCard && ((PokerCard) c).rank == 1) {
-					c.updateCost(-9);
+					c.modifyCostForCombat(-9);
 				}
 			}
+		}
 	}
 
 	@Override

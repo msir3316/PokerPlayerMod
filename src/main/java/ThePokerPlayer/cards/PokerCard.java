@@ -77,7 +77,7 @@ public class PokerCard extends CustomCard {
 	public static float typeWidthPoker;
 	public static float typeOffsetPoker;
 
-	public static boolean aced = false;
+	public boolean aced = false;
 
 	static {
 		float d = 48.0F * Settings.scale;
@@ -141,10 +141,9 @@ public class PokerCard extends CustomCard {
 
 	private void initCard(boolean isEthereal) {
 		this.name = getCardName(suit, rank);
-		if (suit == Suit.Heart) {
+		if (suit == Suit.Heart && !this.tags.contains(CardTags.HEALING)) {
 			this.tags.add(CardTags.HEALING);
 		}
-		if (isEthereal) PokerPlayerMod.logger.debug("FUCK" + rank);
 		this.isEthereal = (suit == Suit.Heart) || isEthereal;
 		this.rawDescription = getCardDescription(suit, rank);
 		if (this.isEthereal) {
@@ -158,10 +157,10 @@ public class PokerCard extends CustomCard {
 		if (aced != aceCheck) {
 			aced = aceCheck;
 			if (aceCheck) {
-				this.upgradeBaseCost(0);
+				modifyCostForCombat(-9);
 			} else {
-				this.upgradeBaseCost(COST);
-				this.costForTurn = COST;
+				this.costForTurn = this.cost = COST;
+				this.isCostModified = false;
 			}
 		}
 	}
@@ -185,7 +184,9 @@ public class PokerCard extends CustomCard {
 	public AbstractCard makeStatEquivalentCopy() {
 		AbstractCard card = super.makeStatEquivalentCopy();
 		if (card instanceof PokerCard) {
-			((PokerCard) card).initCard(this.isEthereal);
+			PokerCard pc = (PokerCard) card;
+			pc.aced = this.aced;
+			pc.initCard(this.isEthereal);
 		}
 		return card;
 	}
