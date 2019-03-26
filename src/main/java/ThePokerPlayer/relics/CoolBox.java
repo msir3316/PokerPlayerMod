@@ -19,7 +19,7 @@ public class CoolBox extends CustomRelic {
 	private boolean reduced = false;
 
 	public CoolBox() {
-		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.RARE, LandingSound.HEAVY);
+		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.SHOP, LandingSound.HEAVY);
 	}
 
 	@Override

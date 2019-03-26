@@ -21,7 +21,7 @@ public class FairLicense extends CustomRelic {
 	private boolean gainEnergyNext;
 
 	public FairLicense() {
-		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.RARE, LandingSound.HEAVY);
+		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.COMMON, LandingSound.HEAVY);
 	}
 
 

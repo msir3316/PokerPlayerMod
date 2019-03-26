@@ -20,7 +20,7 @@ public class ClubPass extends CustomRelic {
 	public static final String OUTLINE = PokerPlayerMod.GetRelicOutlinePath(RAW_ID);
 
 	public ClubPass() {
-		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.RARE, LandingSound.HEAVY);
+		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.COMMON, LandingSound.HEAVY);
 	}
 
 	public void onUseCard(AbstractCard card, UseCardAction action) {

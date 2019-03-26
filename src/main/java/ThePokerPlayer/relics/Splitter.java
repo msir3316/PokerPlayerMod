@@ -23,7 +23,7 @@ public class Splitter extends CustomRelic {
 	public static final int DAMAGE = 6;
 
 	public Splitter() {
-		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.RARE, LandingSound.HEAVY);
+		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.UNCOMMON, LandingSound.HEAVY);
 	}
 
 	public void onUseCard(AbstractCard card, UseCardAction action) {
