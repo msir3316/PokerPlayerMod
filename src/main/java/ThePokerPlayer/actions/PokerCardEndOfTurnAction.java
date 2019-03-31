@@ -2,7 +2,7 @@ package ThePokerPlayer.actions;
 
 import ThePokerPlayer.cards.PokerCard;
 import ThePokerPlayer.interfaces.IShowdownEffect;
-import ThePokerPlayer.relics.ProtectiveDeckHolder;
+import ThePokerPlayer.relics.PendantOfEscape;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -20,7 +20,7 @@ public class PokerCardEndOfTurnAction extends AbstractGameAction {
 		this.duration = Settings.ACTION_DUR_FAST;
 		this.actionType = ActionType.SPECIAL;
 		cards.add(card);
-		ProtectiveDeckHolder.disabled = true;
+		PendantOfEscape.disabled = true;
 	}
 
 	@Override

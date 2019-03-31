@@ -28,7 +28,7 @@ public class ClubStrike extends CustomCard {
 	private static final CardRarity RARITY = CardRarity.UNCOMMON;
 	private static final CardTarget TARGET = CardTarget.ENEMY;
 
-	private static final int POWER = 12;
+	private static final int POWER = 14;
 	private static final int UPGRADE_BONUS = 3;
 	private static final int MAGIC = 6;
 	private static final int UPGRADE_MAGIC = 2;

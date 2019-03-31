@@ -19,10 +19,10 @@ public class AceCard extends CustomRelic implements CustomSavable<Void> {
 	public static final String IMG = PokerPlayerMod.GetRelicPath(RAW_ID);
 	public static final String OUTLINE = PokerPlayerMod.GetRelicOutlinePath(RAW_ID);
 
-	private static final int BLOCK = 4;
+	private static final int BLOCK = 3;
 
 	public AceCard() {
-		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.BOSS, LandingSound.HEAVY);
+		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.BOSS, LandingSound.FLAT);
 	}
 
 	@Override

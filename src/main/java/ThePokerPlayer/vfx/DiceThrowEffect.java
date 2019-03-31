@@ -22,7 +22,6 @@ import com.bulletphysics.linearmath.DefaultMotionState;
 import com.bulletphysics.linearmath.Transform;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 
@@ -80,7 +79,7 @@ public class DiceThrowEffect extends AbstractGameEffect {
 					if (x == 0 || y == 0 || x == px.getWidth() - 1 || y == px.getHeight()) {
 						px.setColor(0.0f, 0.0f, 0.0f, 1.0f);
 					} else {
-						px.setColor(0.5f, 0.5f, 1.05f, 1.0f);
+						px.setColor(1.0f, 1.0f, 1.0f, 1.0f);
 					}
 					px.drawPixel(x, y);
 				}
@@ -159,7 +158,7 @@ public class DiceThrowEffect extends AbstractGameEffect {
 		CollisionShape diceShape = new BoxShape(new Vector3f(1, 1, 1));
 
 		DefaultMotionState groundMotionState = new DefaultMotionState(new Transform(new Matrix4f(new Quat4f(0, 0, 0, 1), new Vector3f(0, 0, -1), 1.0f)));
-		DefaultMotionState wallMotionState = new DefaultMotionState(new Transform(new Matrix4f(new Quat4f(0, 0, 0, 1), new Vector3f(0, 5.2f, 0), 1.0f)));
+		DefaultMotionState wallMotionState = new DefaultMotionState(new Transform(new Matrix4f(new Quat4f(0, 0, 0, 1), new Vector3f(0, 5.0f, 0), 1.0f)));
 		DefaultMotionState wall2MotionState = new DefaultMotionState(new Transform(new Matrix4f(new Quat4f(0, 0, 0, 1), new Vector3f(-7, 0, 0), 1.0f)));
 		DefaultMotionState wall3MotionState = new DefaultMotionState(new Transform(new Matrix4f(new Quat4f(0, 0, 0, 1), new Vector3f(6, 0, 0), 1.0f)));
 
@@ -220,7 +219,7 @@ public class DiceThrowEffect extends AbstractGameEffect {
 	public void update() {
 		t += Gdx.graphics.getDeltaTime();
 		if (t <= STOP_DUR) {
-			dynamicsWorld.stepSimulation(1 / 60.f, 10);
+			dynamicsWorld.stepSimulation(Gdx.graphics.getDeltaTime(), 10);
 
 			setVertices();
 		} else if (t >= WAIT_DUR) {
@@ -267,13 +266,6 @@ public class DiceThrowEffect extends AbstractGameEffect {
 				sb.draw(faceTexWithSpot[spots[i]], getVertices(faceIndex[i], Color.WHITE.cpy()), 0, 20);
 			}
 		}
-		FontHelper.renderFontCentered(
-				sb,
-				FontHelper.topPanelAmountFont,
-				String.valueOf(diceResult),
-				100,
-				500,
-				Settings.CREAM_COLOR);
 	}
 
 	private float[] getVertices(int[] index, Color color) {

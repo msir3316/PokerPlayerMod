@@ -1,10 +1,10 @@
 {
-  "PokerPlayerMod:ProtectiveDeckHolder": {
-    "NAME": "Protective Deck Holder",
-    "FLAVOR": "The protection even help you recover from your Statuses.",
+  "PokerPlayerMod:DeckCase": {
+    "NAME": "Deck Case",
+    "FLAVOR": "Looking at this calms you down and help you quickly recover from bad conditions.",
     "DESCRIPTIONS": [
-      "[#2aecd7]Once [#2aecd7]per [#2aecd7]combat, [#2aecd7]right [#2aecd7]click [#2aecd7]to [#2aecd7]activate.[] NL #yExhaust ALL #yStatus cards and draw until you have #b5 cards in hand.",
-      "Once per combat, right click to #yexhaust ALL #yStatuses and draw up to #b5 cards in hand."
+      "Each combat, the first #b",
+      " Status cards entering your deck are exhausted."
     ]
   },
   "PokerPlayerMod:BottledPoker": {
@@ -28,21 +28,28 @@
     "NAME": "Club Pass",
     "FLAVOR": "Of course it's the Club of Joking.",
     "DESCRIPTIONS": [
-      "Whenever you play a card containing \"Club\", your Clubs deal #b1 more damage during this turn's Showdown."
+      "Whenever you play a card containing \"Club\", your #ypokerplayer:Clubs deal #b1 more damage until the end of combat."
     ]
   },
   "PokerPlayerMod:PenAndEraser": {
     "NAME": "Pen and Eraser",
     "FLAVOR": "The best tool for \"modifying\" poker cards.",
     "DESCRIPTIONS": [
-      "Upon pickup, raise the #ypokerplayer:Rank of two random Poker Cards by #b3."
+      "Upon pickup, raise the #ypokerplayer:Rank of two random Poker Cards by #b2."
+    ]
+  },
+  "PokerPlayerMod:PendantOfEscape": {
+    "NAME": "Pendant of Escape",
+    "FLAVOR": "Touch this if you feel hopeless.",
+    "DESCRIPTIONS": [
+      "[#2aecd7]Once [#2aecd7]per [#2aecd7]combat, [#2aecd7]right [#2aecd7]click [#2aecd7]to [#2aecd7]activate.[] NL Discard your hand and draw #b5 cards."
     ]
   },
   "PokerPlayerMod:CoolBox": {
     "NAME": "Cool Box",
     "FLAVOR": "Contains tools for cooling your cool head.",
     "DESCRIPTIONS": [
-      "At the start of each combat, draw #b1 fewer card and add a #b10 of Spades with Ethereal into your hand."
+      "At the start of each combat, add a #b10 of #ypokerplayer:Spades with Ethereal on top of your draw pile. It costs #b0."
     ]
   },
   "PokerPlayerMod:Splitter": {

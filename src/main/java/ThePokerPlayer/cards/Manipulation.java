@@ -4,7 +4,7 @@ import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.actions.ManipulationAction;
 import ThePokerPlayer.patches.CardColorEnum;
 import basemod.abstracts.CustomCard;
-import com.evacipated.cardcrawl.mod.stslib.actions.common.RefundAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -26,7 +26,7 @@ public class Manipulation extends CustomCard {
 	private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
 
 	private static final int POWER = 5;
-	private static final int UPGRADE_BONUS = 2;
+	private static final int UPGRADE_BONUS = 3;
 
 	public Manipulation() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
@@ -35,7 +35,7 @@ public class Manipulation extends CustomCard {
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new ManipulationAction(p, m, this.damage, this.damageTypeForTurn, this.freeToPlayOnce, this.energyOnUse));
-		AbstractDungeon.actionManager.addToBottom(new RefundAction(this, 1));
+		AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
 	}
 
 	public AbstractCard makeCopy() {

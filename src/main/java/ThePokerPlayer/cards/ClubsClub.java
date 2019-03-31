@@ -34,7 +34,6 @@ public class ClubsClub extends CustomCard {
 	public ClubsClub() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		this.baseDamage = POWER;
-		this.exhaust = true;
 		this.tags.add(POKER_PLAYER_CLUB);
 	}
 

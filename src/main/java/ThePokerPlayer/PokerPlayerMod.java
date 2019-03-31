@@ -200,7 +200,7 @@ public class PokerPlayerMod
 	public void receiveEditRelics() {
 		logger.info("Add relics");
 
-		BaseMod.addRelicToCustomPool(new ProtectiveDeckHolder(), CardColorEnum.POKER_PLAYER_GRAY);
+		BaseMod.addRelicToCustomPool(new DeckCase(), CardColorEnum.POKER_PLAYER_GRAY);
 
 		BaseMod.addRelicToCustomPool(new AceCard(), CardColorEnum.POKER_PLAYER_GRAY);
 		BaseMod.addRelicToCustomPool(new BottledPoker(), CardColorEnum.POKER_PLAYER_GRAY);
@@ -210,6 +210,7 @@ public class PokerPlayerMod
 		BaseMod.addRelicToCustomPool(new FairLicense(), CardColorEnum.POKER_PLAYER_GRAY);
 		BaseMod.addRelicToCustomPool(new JackpotMachine(), CardColorEnum.POKER_PLAYER_GRAY);
 		BaseMod.addRelicToCustomPool(new PenAndEraser(), CardColorEnum.POKER_PLAYER_GRAY);
+		BaseMod.addRelicToCustomPool(new PendantOfEscape(), CardColorEnum.POKER_PLAYER_GRAY);
 		BaseMod.addRelicToCustomPool(new Splitter(), CardColorEnum.POKER_PLAYER_GRAY);
 		BaseMod.addRelicToCustomPool(new StuffedPocket(), CardColorEnum.POKER_PLAYER_GRAY);
 
@@ -274,8 +275,8 @@ public class PokerPlayerMod
 		cards.add(new SpadeStrike());
 		cards.add(new StackedDeck());
 		cards.add(new TheDieIsCast());
-		cards.add(new ThinkingTime());
 		cards.add(new Trickery());
+		cards.add(new TrumpStrike());
 		cards.add(new VarietyAttack());
 		cards.add(new WildCard());
 

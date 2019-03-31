@@ -5,8 +5,8 @@ import ThePokerPlayer.cards.PokerCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -65,6 +65,7 @@ public class RiskyBetAction extends AbstractGameAction {
 		AbstractCard card = AbstractDungeon.player.drawPile.getTopCard();
 		if (card instanceof PokerCard && c instanceof PokerCard && ((PokerCard) card).suit == ((PokerCard) c).suit) {
 			AbstractDungeon.actionManager.addToTop(new DrawCardAction(p, amount));
+			AbstractDungeon.actionManager.addToTop(new GainEnergyAction(1));
 			AbstractDungeon.actionManager.addToTop(new TalkAction(true, TEXT[1], 0.6f, 2.0f));
 		} else {
 			AbstractDungeon.actionManager.addToTop(new TalkAction(true, TEXT[2], 0.6f, 2.0f));

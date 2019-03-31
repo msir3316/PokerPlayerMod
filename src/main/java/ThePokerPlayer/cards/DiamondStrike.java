@@ -26,8 +26,8 @@ public class DiamondStrike extends CustomCard {
 	private static final AbstractCard.CardRarity RARITY = CardRarity.COMMON;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
 
-	private static final int POWER = 6;
-	private static final int UPGRADE_BONUS = 3;
+	private static final int POWER = 7;
+	private static final int UPGRADE_BONUS = 2;
 	private static final int MAGIC = 4;
 	private static final int UPGRADE_MAGIC = 2;
 

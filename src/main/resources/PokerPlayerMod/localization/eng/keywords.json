@@ -32,7 +32,8 @@
     "PROPER_NAME": "Heart X",
     "NAMES": [
       "heart",
-      "hearts"
+      "hearts",
+      "non-heart"
     ],
     "DESCRIPTION": "Showdown Effect: Heal X HP."
   },

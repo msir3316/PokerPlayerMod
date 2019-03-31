@@ -41,7 +41,7 @@ public class CardPrinterPower extends AbstractPower implements NonStackablePower
 	@Override
 	public void atStartOfTurn() {
 		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(
-				new PokerCard(PokerCard.Suit.values()[AbstractDungeon.cardRandomRng.random(3)], amount),
+				new PokerCard(PokerCard.Suit.values()[AbstractDungeon.cardRandomRng.random(2) + 1], amount),
 				1, true, true));
 	}
 

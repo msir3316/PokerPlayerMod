@@ -29,9 +29,9 @@ public class FlyingCard extends CustomCard {
 	private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
 
 	private static final int DAMAGE = 3;
-	private static final int UPGRADE_DAMAGE = 2;
+	private static final int UPGRADE_DAMAGE = 1;
 	private static final int BLOCK = 3;
-	private static final int UPGRADE_BLOCK = 2;
+	private static final int UPGRADE_BLOCK = 1;
 
 	public FlyingCard() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

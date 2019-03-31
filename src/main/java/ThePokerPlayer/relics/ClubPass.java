@@ -1,6 +1,7 @@
 package ThePokerPlayer.relics;
 
 import ThePokerPlayer.PokerPlayerMod;
+import ThePokerPlayer.cards.ClubsClub;
 import ThePokerPlayer.cards.PokerCard;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
@@ -20,17 +21,21 @@ public class ClubPass extends CustomRelic {
 	public static final String OUTLINE = PokerPlayerMod.GetRelicOutlinePath(RAW_ID);
 
 	public ClubPass() {
-		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.COMMON, LandingSound.HEAVY);
+		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.COMMON, LandingSound.FLAT);
 	}
 
 	public void onUseCard(AbstractCard card, UseCardAction action) {
 		if (card instanceof PokerCard && ((PokerCard) card).suit == PokerCard.Suit.Club || card.hasTag(POKER_PLAYER_CLUB)) {
 			AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
 			this.counter++;
+			if (card instanceof ClubsClub) {
+				AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+				this.counter++;
+			}
 		}
 	}
 
-	public void atTurnStart() {
+	public void atBattleStart() {
 		this.counter = 0;
 	}
 

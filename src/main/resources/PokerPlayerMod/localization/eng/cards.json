@@ -28,8 +28,11 @@
   },
   "PokerPlayerMod:Mulligan": {
     "NAME": "Mulligan",
-    "DESCRIPTION": "Discard any number of cards. NL Draw cards until you have 5 cards in hand. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Discard any number of cards. NL Draw cards until you have 5 cards in hand."
+    "DESCRIPTION": "Discard any number of cards. NL Draw cards until you have 5 cards in hand."
+  },
+  "PokerPlayerMod:TrumpStrike": {
+    "NAME": "Trump Strike",
+    "DESCRIPTION": "Deal !D! damage (number of Poker cards in your deck). NL Draw a card."
   },
   "PokerPlayerMod:ThinkingTime": {
     "NAME": "Thinking Time",
@@ -110,7 +113,7 @@
   },
   "PokerPlayerMod:Manipulation": {
     "NAME": "Manipulation",
-    "DESCRIPTION": "Deal !D! damage X times. You may increase the pokerplayer:Rank of one Poker Card by X. NL Refund 1"
+    "DESCRIPTION": "Deal !D! damage X times. You may increase the pokerplayer:Rank of one Poker Card by X. NL Gain [E]"
   },
   "PokerPlayerMod:SecondChance": {
     "NAME": "Second Chance",
@@ -148,7 +151,7 @@
   },
   "PokerPlayerMod:RiskyBet": {
     "NAME": "Risky Bet",
-    "DESCRIPTION": "Discard a card and draw a card. If they are both Poker cards with the same pokerplayer:Suit, draw !M! cards."
+    "DESCRIPTION": "Discard a card and draw a card. If they are both Poker cards with the same pokerplayer:Suit, gain [E] and draw !M! cards."
   },
   "PokerPlayerMod:Ace": {
     "NAME": "Ace",
@@ -157,9 +160,9 @@
   },
   "PokerPlayerMod:CardPrinter": {
     "NAME": "Card Printer",
-    "DESCRIPTION": "At the start of your turn, shuffle a random pokerplayer:Rank !M! Poker card to your draw pile.",
+    "DESCRIPTION": "At the start of your turn, shuffle a pokerplayer:non-Heart, pokerplayer:Rank !M! Poker card to your draw pile.",
     "EXTENDED_DESCRIPTION": [
-      " Can be upgraded 9 times.",
+      " Can be upgraded 8 times.",
       " Can be upgraded ",
       " more times.",
       " Can be upgraded 1 more time."
@@ -203,7 +206,7 @@
   },
   "PokerPlayerMod:ItsShowtime": {
     "NAME": "It's Showtime!",
-    "DESCRIPTION": "Draw a card. NL Trigger the pokerplayer:Showdown effect. NL Exhaust."
+    "DESCRIPTION": "Draw a card. NL Trigger the pokerplayer:Showdown. NL Exhaust."
   },
   "PokerPlayerMod:Promotion": {
     "NAME": "Promotion",

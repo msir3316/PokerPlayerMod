@@ -4,25 +4,23 @@ import ThePokerPlayer.PokerPlayerMod;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.relics.ClickableRelic;
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
-import com.megacrit.cardcrawl.actions.unique.ExpertiseAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.actions.common.DiscardAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
-public class ProtectiveDeckHolder extends CustomRelic implements ClickableRelic {
+public class PendantOfEscape extends CustomRelic implements ClickableRelic {
 
-	private static final String RAW_ID = "ProtectiveDeckHolder";
+	private static final String RAW_ID = "PendantOfEscape";
 	public static final String ID = PokerPlayerMod.makeID(RAW_ID);
 	public static final String IMG = PokerPlayerMod.GetRelicPath(RAW_ID);
 	public static final String OUTLINE = PokerPlayerMod.GetRelicOutlinePath(RAW_ID);
 	public static boolean disabled = false;
 	public boolean alreadyUsed;
 
-	public ProtectiveDeckHolder() {
-		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.STARTER, LandingSound.MAGICAL);
+	public PendantOfEscape() {
+		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.SHOP, LandingSound.MAGICAL);
 	}
 
 	@Override
@@ -38,20 +36,8 @@ public class ProtectiveDeckHolder extends CustomRelic implements ClickableRelic 
 			alreadyUsed = true;
 			flash();
 			stopPulse();
-			CardGroup[] groups = new CardGroup[]{
-					AbstractDungeon.player.hand,
-					AbstractDungeon.player.drawPile,
-					AbstractDungeon.player.discardPile,
-					AbstractDungeon.player.exhaustPile
-			};
-			AbstractDungeon.actionManager.addToTop(new ExpertiseAction(AbstractDungeon.player, 5));
-			for (CardGroup cg : groups) {
-				for (AbstractCard c : cg.group) {
-					if (c.type == AbstractCard.CardType.STATUS) {
-						AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(c, cg));
-					}
-				}
-			}
+			AbstractDungeon.actionManager.addToTop(new DrawCardAction(AbstractDungeon.player, 5));
+			AbstractDungeon.actionManager.addToTop(new DiscardAction(AbstractDungeon.player, AbstractDungeon.player, AbstractDungeon.player.hand.size(), false));
 		}
 	}
 
@@ -78,6 +64,6 @@ public class ProtectiveDeckHolder extends CustomRelic implements ClickableRelic 
 
 	@Override
 	public AbstractRelic makeCopy() {
-		return new ProtectiveDeckHolder();
+		return new PendantOfEscape();
 	}
 }

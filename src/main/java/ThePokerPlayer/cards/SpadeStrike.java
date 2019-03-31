@@ -1,7 +1,6 @@
 package ThePokerPlayer.cards;
 
 import ThePokerPlayer.PokerPlayerMod;
-import ThePokerPlayer.actions.MinePokerCardAction;
 import ThePokerPlayer.patches.CardColorEnum;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;

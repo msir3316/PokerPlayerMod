@@ -5,7 +5,5 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 
 public class CustomTags {
 	@SpireEnum
-	public static AbstractCard.CardTags POKER_PLAYER_JOKER;
-	@SpireEnum
 	public static AbstractCard.CardTags POKER_PLAYER_CLUB;
 }

@@ -20,10 +20,10 @@ public class Splitter extends CustomRelic {
 	public static final String IMG = PokerPlayerMod.GetRelicPath(RAW_ID);
 	public static final String OUTLINE = PokerPlayerMod.GetRelicOutlinePath(RAW_ID);
 	public static final int THRESHOLD = 3;
-	public static final int DAMAGE = 6;
+	public static final int DAMAGE = 5;
 
 	public Splitter() {
-		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.UNCOMMON, LandingSound.HEAVY);
+		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.COMMON, LandingSound.MAGICAL);
 	}
 
 	public void onUseCard(AbstractCard card, UseCardAction action) {

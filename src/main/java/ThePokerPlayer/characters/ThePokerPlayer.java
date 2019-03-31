@@ -1,9 +1,12 @@
 package ThePokerPlayer.characters;
 
 import ThePokerPlayer.PokerPlayerMod;
-import ThePokerPlayer.cards.*;
+import ThePokerPlayer.cards.BadJoker;
+import ThePokerPlayer.cards.Mulligan;
+import ThePokerPlayer.cards.PokerCard;
+import ThePokerPlayer.cards.TrumpStrike;
 import ThePokerPlayer.patches.CardColorEnum;
-import ThePokerPlayer.relics.ProtectiveDeckHolder;
+import ThePokerPlayer.relics.DeckCase;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.graphics.Color;
@@ -133,9 +136,9 @@ public class ThePokerPlayer extends CustomPlayer {
 		retVal.add(PokerCard.getID(PokerCard.Suit.Heart, 1));
 		retVal.add(PokerCard.getID(PokerCard.Suit.Club, 1));
 		retVal.add(PokerCard.getID(PokerCard.Suit.Club, 2));
+		retVal.add(TrumpStrike.ID);
 		retVal.add(BadJoker.ID);
 		retVal.add(Mulligan.ID);
-		retVal.add(ThinkingTime.ID);
 
 		return retVal;
 	}
@@ -144,9 +147,9 @@ public class ThePokerPlayer extends CustomPlayer {
 	public ArrayList<String> getStartingRelics() {
 		ArrayList<String> retVal = new ArrayList<>();
 
-		retVal.add(ProtectiveDeckHolder.ID);
+		retVal.add(DeckCase.ID);
 
-		UnlockTracker.markRelicAsSeen(ProtectiveDeckHolder.ID);
+		UnlockTracker.markRelicAsSeen(DeckCase.ID);
 
 		return retVal;
 	}
