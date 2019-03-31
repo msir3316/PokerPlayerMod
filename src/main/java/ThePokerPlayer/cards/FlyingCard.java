@@ -49,8 +49,8 @@ public class FlyingCard extends CustomCard {
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
+		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block * magicNumber, true));
 		for (int i = 0; i < this.magicNumber; i++) {
-			AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block, true));
 			AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
 		}
 		this.rawDescription = DESCRIPTION;
