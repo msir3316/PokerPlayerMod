@@ -273,6 +273,7 @@ public class PokerPlayerMod
 		cards.add(new Sharpen());
 		cards.add(new SpadeStrike());
 		cards.add(new StackedDeck());
+		cards.add(new TheDieIsCast());
 		cards.add(new ThinkingTime());
 		cards.add(new Trickery());
 		cards.add(new VarietyAttack());
@@ -417,6 +418,10 @@ public class PokerPlayerMod
 
 	public static String GetPowerPath(String id, int size) {
 		return "PokerPlayerMod/images/powers/" + id + "_" + size + ".png";
+	}
+
+	public static String GetOtherPath(String id) {
+		return "PokerPlayerMod/images/other/" + id + ".png";
 	}
 
 	public static String GetRelicPath(String id) {

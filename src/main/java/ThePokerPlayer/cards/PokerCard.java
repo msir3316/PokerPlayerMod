@@ -284,4 +284,14 @@ public class PokerCard extends CustomCard {
 		}
 		initCard(this.isEthereal);
 	}
+
+	public void rankSet(int amount) {
+		this.rank = amount;
+		if (this.rank > 10) {
+			this.rank = 10;
+		} else if (this.rank < 1) {
+			this.rank = 1;
+		}
+		initCard(this.isEthereal);
+	}
 }

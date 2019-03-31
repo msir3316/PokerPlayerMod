@@ -4,7 +4,7 @@ import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.cards.PokerCard;
 import ThePokerPlayer.powers.*;
 import ThePokerPlayer.relics.ClubPass;
-import ThePokerPlayer.vfx.PlayingCardEffect;
+import ThePokerPlayer.vfx.ShowdownEffect;
 import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -24,7 +24,9 @@ import org.apache.commons.lang3.tuple.Pair;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import static ThePokerPlayer.vfx.PlayingCardEffect.EFFECT_DUR;
+import static ThePokerPlayer.actions.PokerCardChangeAction.Mode.RANK_CHANGE_ANY;
+import static ThePokerPlayer.actions.PokerCardChangeAction.Mode.RANK_CHANGE_SET;
+import static ThePokerPlayer.vfx.ShowdownEffect.EFFECT_DUR;
 
 public class ShowdownAction extends AbstractGameAction {
 	private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(PokerPlayerMod.makeID("PokerHands"));
@@ -71,9 +73,18 @@ public class ShowdownAction extends AbstractGameAction {
 				ShowdownAction.pokerCards.add((PokerCard) c);
 			}
 		}
-		if (PokerCardChangeAction.ref != null && PokerCardChangeAction.ref.rankChange > 0) {
-			if (AbstractDungeon.handCardSelectScreen.upgradePreviewCard instanceof PokerCard) {
+		if (PokerCardChangeAction.ref != null) {
+			if (PokerCardChangeAction.ref.mode == RANK_CHANGE_ANY &&
+					PokerCardChangeAction.ref.rankChange > 0 &&
+					AbstractDungeon.handCardSelectScreen.upgradePreviewCard instanceof PokerCard) {
 				ShowdownAction.pokerCards.add((PokerCard) AbstractDungeon.handCardSelectScreen.upgradePreviewCard);
+			} else if (PokerCardChangeAction.ref.mode == RANK_CHANGE_SET) {
+				for (AbstractCard c : AbstractDungeon.handCardSelectScreen.selectedCards.group) {
+					if (c instanceof PokerCard) {
+						PokerCard pc = (PokerCard) c;
+						ShowdownAction.pokerCards.add(new PokerCard(pc.suit, PokerCardChangeAction.ref.rankChange));
+					}
+				}
 			}
 		}
 		int[] nums = new int[11];
@@ -201,7 +212,7 @@ public class ShowdownAction extends AbstractGameAction {
 		if (timer <= 0.0f && index < pow.length) {
 			if (pow[index] > 0) {
 				AbstractDungeon.effectList.add(
-						new PlayingCardEffect(PokerCard.Suit.values()[index])
+						new ShowdownEffect(PokerCard.Suit.values()[index])
 				);
 				timer = DUR_DELTA;
 				this.duration = DUR;

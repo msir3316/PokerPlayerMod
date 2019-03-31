@@ -20,7 +20,7 @@ import org.apache.commons.lang3.tuple.ImmutablePair;
 
 import java.util.ArrayList;
 
-public class PlayingCardEffect extends AbstractGameEffect {
+public class ShowdownEffect extends AbstractGameEffect {
 	public static final float EFFECT_DUR = 0.8f;
 	private boolean init = false;
 	public static final float randomXRange = 100.0f;
@@ -37,7 +37,7 @@ public class PlayingCardEffect extends AbstractGameEffect {
 	private float curA;
 	AbstractMonster selected = null;
 
-	public PlayingCardEffect(PokerCard.Suit suit) {
+	public ShowdownEffect(PokerCard.Suit suit) {
 		this.duration = EFFECT_DUR;
 
 		p = AbstractDungeon.player;
@@ -160,6 +160,7 @@ public class PlayingCardEffect extends AbstractGameEffect {
 				false, false);
 	}
 
+	@Override
 	public void dispose() {
 	}
 }

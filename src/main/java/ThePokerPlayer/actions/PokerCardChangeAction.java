@@ -25,7 +25,7 @@ public class PokerCardChangeAction extends AbstractGameAction {
 	private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(PokerPlayerMod.makeID("PokerCardChangeAction"));
 	public static final String[] TEXT = uiStrings.TEXT;
 	private AbstractPlayer p;
-	private Mode mode;
+	public Mode mode;
 	private ArrayList<AbstractCard> nonPokerCards = new ArrayList<>();
 	public int rankChange;
 
@@ -36,7 +36,8 @@ public class PokerCardChangeAction extends AbstractGameAction {
 		RANK_CHANGE_ALL,
 		EXTRACT,
 		COPY,
-		ROYAL_STRIKE
+		ROYAL_STRIKE,
+		RANK_CHANGE_SET
 	}
 
 
@@ -63,6 +64,7 @@ public class PokerCardChangeAction extends AbstractGameAction {
 				case RANK_CHANGE_ANY:
 				case COPY:
 				case ROYAL_STRIKE:
+				case RANK_CHANGE_SET:
 					for (AbstractCard c : this.p.hand.group) {
 						if (!(c instanceof PokerCard)) {
 							this.nonPokerCards.add(c);
@@ -114,6 +116,13 @@ public class PokerCardChangeAction extends AbstractGameAction {
 							this.tickDuration();
 							return;
 						}
+					} else if (mode == Mode.RANK_CHANGE_SET) {
+						this.p.hand.group.removeAll(this.nonPokerCards);
+						ref = this;
+						PokerPlayerMod.transformAnimTimer = 0;
+						AbstractDungeon.handCardSelectScreen.open(TEXT[4] + rankChange, amount, true, true, false, false);
+						this.tickDuration();
+						return;
 					}
 				case EXTRACT:
 					if (this.p.hand.group.size() <= amount) {
@@ -157,6 +166,11 @@ public class PokerCardChangeAction extends AbstractGameAction {
 						break;
 					case ROYAL_STRIKE:
 						doRoyalStrike((PokerCard) c);
+						break;
+					case RANK_CHANGE_SET:
+						((PokerCard) c).rankSet(rankChange);
+						c.superFlash();
+						this.p.hand.addToTop(c);
 						break;
 				}
 			}

@@ -215,7 +215,8 @@
   },
   "PokerPlayerMod:TheDieIsCast": {
     "NAME": "The Die is Cast!",
-    "DESCRIPTION": "Throw a die. NL Choose any number of Poker cards in your hand to change their pokerplayer:Rank to the die roll."
+    "DESCRIPTION": "Throw a dice. NL Choose any number of Poker cards in your hand to change their pokerplayer:Rank to the dice roll.",
+    "UPGRADE_DESCRIPTION": "Throw a loaded dice. NL Choose any number of Poker cards in your hand to change their pokerplayer:Rank to the dice roll."
   },
   "PokerPlayerMod:WildCard": {
     "NAME": "Wild Card",

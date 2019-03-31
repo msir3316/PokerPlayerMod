@@ -32,7 +32,7 @@ public class PokerScoreViewer {
 
 	public PokerScoreViewer() {
 		hb = new Hitbox(width * Settings.scale, height * Settings.scale);
-		hb.move(Settings.WIDTH / 2.0f, Settings.HEIGHT * 0.75f);
+		hb.move(Settings.WIDTH / 2.0f, Settings.HEIGHT * 0.79f);
 		uiStrings = CardCrawlGame.languagePack.getUIString(PokerPlayerMod.makeID("PokerScoreViewer"));
 		TEXT = uiStrings.TEXT;
 	}
