@@ -1,57 +1,57 @@
 {
   "PokerPlayerMod:PokerHands": {
     "TEXT": [
-      "No Pairs...",
-      "One Pair",
-      "Two Pair",
-      "Three of a kind",
-      "Full House",
-      "Straight",
-      "Four of a kind",
+      "족보가 없다...",
+      "원페어",
+      "투페어",
+      "트리플",
+      "풀하우스",
+      "스트레이트",
+      "포카드",
       "????",
-      "Five of a kind",
+      "파이브카드",
       "!",
-      " Flush",
+      " 플러시",
       " NL +",
       "%."
     ]
   },
   "PokerPlayerMod:PokerCardType": {
     "TEXT": [
-      "Poker"
+      "포커"
     ]
   },
   "PokerPlayerMod:PokerScoreViewer": {
     "TEXT": [
-      "Showdown Power",
-      "This shows the power of each Suit, affected by Buffs, Relics and Poker Hand.",
-      "<Poker Hand Bonuses>"
+      "쇼다운 효과",
+      "파워, 유물 그리고 족보에 의한 보너스를 적용하고 난 이후 각각의 무늬의 효과 크기를 보여줍니다.",
+      "<족보 보너스>"
     ]
   },
   "PokerPlayerMod:WildCardAction": {
     "TEXT": [
-      "Choose a Poker Card to Add to Your Hand."
+      "가져올 포커 카드를 선택하십시오."
     ]
   },
   "PokerPlayerMod:RiskyBetAction": {
     "TEXT": [
-      "Discard (Bet)",
-      "Successful!",
-      "Failed..."
+      "버릴 카드를 선택하십시오 (위험한 도박)",
+      "성공!",
+      "실패..."
     ]
   },
   "PokerPlayerMod:DiscardAnyNumberAction": {
     "TEXT": [
-      "Discard"
+      "버릴 카드를 선택하십시오"
     ]
   },
   "PokerPlayerMod:PokerCardChangeAction": {
     "TEXT": [
-      "Change Rank",
-      "Extract",
-      "Copy",
-      "Discard",
-      "Change Rank to "
+      "등급을 바꿀 포커 카드를 선택하십시오",
+      "추출할 포커 카드를 선택하십시오",
+      "복사할 포커 카드를 선택하십시오",
+      "버릴 포커 카드를 선택하십시오",
+      "등급을 다음으로 바꿀 포커 카드를 선택하십시오: "
     ]
   }
 }

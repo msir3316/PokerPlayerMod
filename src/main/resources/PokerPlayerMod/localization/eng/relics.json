@@ -19,7 +19,7 @@
   },
   "PokerPlayerMod:FairLicense": {
     "NAME": "Fair License",
-    "FLAVOR": "Great present for honest people, but what if you're the cheater?",
+    "FLAVOR": "Great present for honest people.",
     "DESCRIPTIONS": [
       "If you do not play any Poker cards during your turn, gain an extra [E] next turn."
     ]
@@ -56,8 +56,7 @@
     "NAME": "Splitter",
     "FLAVOR": "The magic of lower cards begins.",
     "DESCRIPTIONS": [
-      "Whenever you play a Poker card with #b",
-      " or less #ypokerplayer:Rank, deal #b",
+      "Whenever you play a Poker card with #b3 or less #ypokerplayer:Rank, deal #b",
       " damage to ALL enemies."
     ]
   },

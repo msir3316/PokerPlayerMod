@@ -21,7 +21,9 @@ public class CardGenPatch {
 	public static class AddToDiscardConstruct1 {
 		@SpirePostfixPatch
 		public static void Postfix(ShowCardAndAddToDiscardEffect __instance, AbstractCard srcCard, float x, float y) {
-			PokerPlayerMod.genCards.add(srcCard);
+			if (srcCard.type != AbstractCard.CardType.STATUS && srcCard.type != AbstractCard.CardType.CURSE) {
+				PokerPlayerMod.genCards++;
+			}
 		}
 	}
 
@@ -35,7 +37,9 @@ public class CardGenPatch {
 	public static class AddToDiscardConstruct2 {
 		@SpirePostfixPatch
 		public static void Postfix(ShowCardAndAddToDiscardEffect __instance, AbstractCard card) {
-			PokerPlayerMod.genCards.add(card);
+			if (card.type != AbstractCard.CardType.STATUS && card.type != AbstractCard.CardType.CURSE) {
+				PokerPlayerMod.genCards++;
+			}
 		}
 	}
 
@@ -54,7 +58,9 @@ public class CardGenPatch {
 	public static class AddToDrawPileConstruct1 {
 		@SpirePostfixPatch
 		public static void Postfix(ShowCardAndAddToDrawPileEffect __instance, AbstractCard srcCard, float x, float y, boolean randomSpot, boolean cardOffset, boolean toBottom) {
-			PokerPlayerMod.genCards.add(srcCard);
+			if (srcCard.type != AbstractCard.CardType.STATUS && srcCard.type != AbstractCard.CardType.CURSE) {
+				PokerPlayerMod.genCards++;
+			}
 		}
 	}
 
@@ -70,7 +76,9 @@ public class CardGenPatch {
 	public static class AddToDrawPileConstruct2 {
 		@SpirePostfixPatch
 		public static void Postfix(ShowCardAndAddToDrawPileEffect __instance, AbstractCard srcCard, boolean randomSpot, boolean toBottom) {
-			PokerPlayerMod.genCards.add(srcCard);
+			if (srcCard.type != AbstractCard.CardType.STATUS && srcCard.type != AbstractCard.CardType.CURSE) {
+				PokerPlayerMod.genCards++;
+			}
 		}
 	}
 
@@ -86,7 +94,9 @@ public class CardGenPatch {
 	public static class AddToHandConstructor1 {
 		@SpirePostfixPatch()
 		public static void Postfix(ShowCardAndAddToHandEffect __instance, AbstractCard card, float offsetX, float offsetY) {
-			PokerPlayerMod.genCards.add(card);
+			if (card.type != AbstractCard.CardType.STATUS && card.type != AbstractCard.CardType.CURSE) {
+				PokerPlayerMod.genCards++;
+			}
 		}
 	}
 
@@ -100,7 +110,9 @@ public class CardGenPatch {
 	public static class AddToHandConstructor2 {
 		@SpirePostfixPatch()
 		public static void Postfix(ShowCardAndAddToHandEffect __instance, AbstractCard card) {
-			PokerPlayerMod.genCards.add(card);
+			if (card.type != AbstractCard.CardType.STATUS && card.type != AbstractCard.CardType.CURSE) {
+				PokerPlayerMod.genCards++;
+			}
 		}
 	}
 }

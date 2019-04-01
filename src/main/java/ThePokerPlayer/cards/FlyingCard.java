@@ -41,7 +41,7 @@ public class FlyingCard extends CustomCard {
 
 	@Override
 	public void applyPowers() {
-		this.baseMagicNumber = PokerPlayerMod.genCards.size();
+		this.baseMagicNumber = PokerPlayerMod.genCards;
 		this.magicNumber = this.baseMagicNumber;
 		super.applyPowers();
 		this.rawDescription = DESCRIPTION + EXTENDED_DESCRIPTION[0];

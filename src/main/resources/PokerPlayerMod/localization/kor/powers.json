@@ -1,69 +1,54 @@
 {
   "PokerPlayerMod:DamnStraightPower": {
-    "NAME": "Damn Straight",
+    "NAME": "스트레이트 매니아",
     "DESCRIPTIONS": [
-      "Showdown bonus from Straight is",
-      " doubled.",
-      " multiplied by #b",
-      ".",
-      " almost infinite."
+      "스트레이트의 쇼다운 보너스가",
+      " #b2 배가 됩니다.",
+      " #b",
+      " 배가 됩니다.",
+      " 엄청나게 커집니다."
     ]
   },
   "PokerPlayerMod:SharpenPower": {
-    "NAME": "Sharpen",
+    "NAME": "날카로움",
     "DESCRIPTIONS": [
-      "During Showdown, your Diamonds deal ",
-      " extra damage."
+      "#y다이아몬드 카드가 쇼다운 에서 #b",
+      " 만큼 피해를 더 줍니다."
     ]
   },
   "PokerPlayerMod:RoundPower": {
-    "NAME": "Round",
+    "NAME": "뭉툭함",
     "DESCRIPTIONS": [
-      "During Showdown, your Clubs give you ",
-      " Block per card."
-    ]
-  },
-  "PokerPlayerMod:AcePower": {
-    "NAME": "Ace",
-    "DESCRIPTIONS": [
-      "Whenever you play a Poker Card with #ypokerplayer:Rank 1, deal #b",
-      " damage to a random enemy."
-    ]
-  },
-  "PokerPlayerMod:SplitterPower": {
-    "NAME": "Splitter",
-    "DESCRIPTIONS": [
-      "During Showdown, if ranks of your Poker Cards in hand are all #b5 or less, they are increased by #b",
-      ".",
-      "It's now deprecated."
+      "#y클럽 카드가 쇼다운 에서 방어도를 #b",
+      " 만큼 줍니다."
     ]
   },
   "PokerPlayerMod:FakeSymbolsPower": {
-    "NAME": "Fake Symbols",
+    "NAME": "위조 무늬",
     "DESCRIPTIONS": [
-      "During Showdown, you score a Flush if you have #b",
-      " or more Poker Cards with same suit."
+      "같은 무늬 가 #b",
+      " 장 이상일 때 플러시로 인정합니다."
     ]
   },
   "PokerPlayerMod:GamblerFormPower": {
-    "NAME": "Gambler Form",
+    "NAME": "도박꾼의 형상",
     "DESCRIPTIONS": [
-      "If you score two pair or better, the Showdown effect of all Poker cards are increased by #b",
-      "."
+      "투페어 이상의 족보를 만들면 모든 포커 카드의 쇼다운 효과가 #b",
+      " 만큼 증가합니다"
     ]
   },
   "PokerPlayerMod:CardPrinterPower": {
-    "NAME": "Card Printer",
+    "NAME": "카드 인쇄기",
     "DESCRIPTIONS": [
-      "At the start of your turn, shuffle a random #yRank #b",
-      " Poker card to your draw pile."
+      "매 턴 시작 시 #y하트 가 아닌 #y등급 #b",
+      " 의 무작위 포커 카드를 뽑을 카드 더미에 섞어 넣습니다."
     ]
   },
   "PokerPlayerMod:StackedDeckPower": {
-    "NAME": "Stacked Deck",
+    "NAME": "조작된 덱",
     "DESCRIPTIONS": [
-      "At the start of your turn, Look at the top #b",
-      " cards of your draw pile and discard any of them."
+      "매 턴 시작 시 뽑을 카드 더미 위의 카드 #b",
+      " 장을 보고 원하는 만큼 카드를 버립니다."
     ]
   }
 }

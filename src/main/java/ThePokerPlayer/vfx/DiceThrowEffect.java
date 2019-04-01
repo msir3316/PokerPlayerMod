@@ -79,7 +79,7 @@ public class DiceThrowEffect extends AbstractGameEffect {
 					if (x == 0 || y == 0 || x == px.getWidth() - 1 || y == px.getHeight()) {
 						px.setColor(0.0f, 0.0f, 0.0f, 1.0f);
 					} else {
-						px.setColor(1.0f, 1.0f, 1.0f, 1.0f);
+						px.setColor(0.5f, 0.5f, 1.0f, 1.0f);
 					}
 					px.drawPixel(x, y);
 				}
@@ -108,7 +108,7 @@ public class DiceThrowEffect extends AbstractGameEffect {
 			px.drawPixel(SPOTS_X[num][i], SPOTS_Y[num][i] + 1);
 			px.drawPixel(SPOTS_X[num][i] + 1, SPOTS_Y[num][i] - 1);
 			px.drawPixel(SPOTS_X[num][i] + 1, SPOTS_Y[num][i]);
-			px.setColor(0.7f, 0.7f, 0.9f, 1.0f);
+			px.setColor(1.0f, 1.0f, 1.0f, 1.0f);
 			px.drawPixel(SPOTS_X[num][i] - 1, SPOTS_Y[num][i] - 1);
 			px.drawPixel(SPOTS_X[num][i] - 1, SPOTS_Y[num][i]);
 			px.drawPixel(SPOTS_X[num][i], SPOTS_Y[num][i] - 1);

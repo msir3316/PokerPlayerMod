@@ -175,12 +175,12 @@
     ]
   },
   "PokerPlayerMod:Round": {
-    "NAME": "둥근 ",
+    "NAME": "뭉툭함",
     "DESCRIPTION": "pokerplayer:클럽 카드가 pokerplayer:쇼다운 에서 방어도를 !M! 만큼 줍니다.",
     "UPGRADE_DESCRIPTION": "카드를 1장 뽑습니다. NL pokerplayer:클럽 카드가 pokerplayer:쇼다운 에서 방어도를 !M! 만큼 줍니다."
   },
   "PokerPlayerMod:Sharpen": {
-    "NAME": "날 세우기",
+    "NAME": "날카로움",
     "DESCRIPTION": "pokerplayer:다이아몬드 카드가 pokerplayer:쇼다운 에서 !M! 만큼 피해를 더 줍니다.",
     "UPGRADE_DESCRIPTION": "카드를 1장 뽑습니다. NL pokerplayer:다이아몬드 카드가 pokerplayer:쇼다운 에서 !M! 만큼 피해를 더 줍니다."
   },
@@ -223,8 +223,8 @@
   },
   "PokerPlayerMod:FakeSymbols": {
     "NAME": "위조 무늬",
-    "DESCRIPTION": "같은 pokerplayer:무늬 가 4장 이상이어도 플러시로 인정합니다.",
-    "UPGRADE_DESCRIPTION": "카드를 1장 뽑습니다. NL 같은 pokerplayer:무늬 가 4장 이상이어도 플러시로 인정합니다."
+    "DESCRIPTION": "같은 pokerplayer:무늬 가 4장 이상일 때 플러시로 인정합니다.",
+    "UPGRADE_DESCRIPTION": "카드를 1장 뽑습니다. NL 같은 pokerplayer:무늬 가 4장 이상일 때 플러시로 인정합니다."
   },
   "PokerPlayerMod:GamblerForm": {
     "NAME": "도박꾼의 형상",

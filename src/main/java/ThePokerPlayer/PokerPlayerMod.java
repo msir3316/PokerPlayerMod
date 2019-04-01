@@ -89,7 +89,7 @@ public class PokerPlayerMod
 	public static AbstractCard cardSelectScreenCard;
 	public static float transformAnimTimer;
 	public static HashMap<AbstractCard, AbstractCard> shapeshiftReturns;
-	public static HashSet<AbstractCard> genCards;
+	public static int genCards;
 
 	// Modules
 	public static PokerScoreViewer pokerScoreViewer;
@@ -380,7 +380,7 @@ public class PokerPlayerMod
 		ShowdownAction.pendingEffects.clear();
 		PokerCardEndOfTurnAction.cards.clear();
 		shapeshiftReturns = new HashMap<>();
-		genCards = new HashSet<>();
+		genCards = 0;
 	}
 
 	@Override

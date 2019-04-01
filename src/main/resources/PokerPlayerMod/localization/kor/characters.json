@@ -1,11 +1,11 @@
 {
   "ThePokerPlayer": {
     "NAMES": [
-      "the Poker Player",
-      "The Poker Player"
+      "포커 플레이어",
+      "포커 플레이어"
     ],
     "TEXT": [
-      "Former professional poker player. NL He fights with his own rule of cards tricks."
+      "전 프로 포커 선수 입니다. NL 자신만의 카드 규칙으로 싸웁니다!"
     ]
   }
 }

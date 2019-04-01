@@ -35,7 +35,7 @@ public class Splitter extends CustomRelic {
 
 	@Override
 	public String getUpdatedDescription() {
-		return DESCRIPTIONS[0] + THRESHOLD + DESCRIPTIONS[1] + DAMAGE + DESCRIPTIONS[2];
+		return DESCRIPTIONS[0] + DAMAGE + DESCRIPTIONS[1];
 	}
 
 	@Override
