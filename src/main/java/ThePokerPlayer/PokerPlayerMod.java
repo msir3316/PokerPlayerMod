@@ -96,7 +96,7 @@ public class PokerPlayerMod
 
 	// Bans
 	public static final ArrayList<String> bannedRelics = new ArrayList<>(Arrays.asList(
-			SneckoEye.ID, CentennialPuzzle.ID, RunicPyramid.ID, BagOfPreparation.ID, Pocketwatch.ID, GremlinHorn.ID
+			SneckoEye.ID, CentennialPuzzle.ID, RunicPyramid.ID, BagOfPreparation.ID, Pocketwatch.ID, GremlinHorn.ID, PandorasBox.ID
 	));
 	public static final HashSet<String> bannedCards = new HashSet<>(Arrays.asList(
 			DeepBreath.ID, Impatience.ID, MasterOfStrategy.ID, Mayhem.ID, Magnetism.ID, Violence.ID
@@ -348,7 +348,7 @@ public class PokerPlayerMod
 
 	public static String getLocCode() {
 		if (Settings.language == Settings.GameLanguage.KOR) {
-			return "eng"; // TODO: change this to kor later
+			return "kor";
 		} else {
 			return "eng";
 		}

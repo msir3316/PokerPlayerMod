@@ -248,6 +248,9 @@ public class PokerCard extends CustomCard {
 		if (!keywords.contains("pokerplayer:poker card")) {
 			keywords.add(0, "pokerplayer:poker card");
 		}
+		if (!keywords.contains("pokerplayer:showdown")) {
+			keywords.add(1, "pokerplayer:showdown");
+		}
 	}
 
 	@Override

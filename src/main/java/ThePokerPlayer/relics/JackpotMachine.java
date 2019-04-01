@@ -20,7 +20,7 @@ public class JackpotMachine extends CustomRelic implements IShowdownEffect {
 	public static final String ID = PokerPlayerMod.makeID(RAW_ID);
 	public static final String IMG = PokerPlayerMod.GetRelicPath(RAW_ID);
 	public static final String OUTLINE = PokerPlayerMod.GetRelicOutlinePath(RAW_ID);
-	public static final int DAMAGE = 49;
+	public static final int DAMAGE = 52;
 
 	public JackpotMachine() {
 		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.RARE, LandingSound.HEAVY);

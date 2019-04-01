@@ -1,0 +1,69 @@
+{
+  "PokerPlayerMod:DamnStraightPower": {
+    "NAME": "Damn Straight",
+    "DESCRIPTIONS": [
+      "Showdown bonus from Straight is",
+      " doubled.",
+      " multiplied by #b",
+      ".",
+      " almost infinite."
+    ]
+  },
+  "PokerPlayerMod:SharpenPower": {
+    "NAME": "Sharpen",
+    "DESCRIPTIONS": [
+      "During Showdown, your Diamonds deal ",
+      " extra damage."
+    ]
+  },
+  "PokerPlayerMod:RoundPower": {
+    "NAME": "Round",
+    "DESCRIPTIONS": [
+      "During Showdown, your Clubs give you ",
+      " Block per card."
+    ]
+  },
+  "PokerPlayerMod:AcePower": {
+    "NAME": "Ace",
+    "DESCRIPTIONS": [
+      "Whenever you play a Poker Card with #ypokerplayer:Rank 1, deal #b",
+      " damage to a random enemy."
+    ]
+  },
+  "PokerPlayerMod:SplitterPower": {
+    "NAME": "Splitter",
+    "DESCRIPTIONS": [
+      "During Showdown, if ranks of your Poker Cards in hand are all #b5 or less, they are increased by #b",
+      ".",
+      "It's now deprecated."
+    ]
+  },
+  "PokerPlayerMod:FakeSymbolsPower": {
+    "NAME": "Fake Symbols",
+    "DESCRIPTIONS": [
+      "During Showdown, you score a Flush if you have #b",
+      " or more Poker Cards with same suit."
+    ]
+  },
+  "PokerPlayerMod:GamblerFormPower": {
+    "NAME": "Gambler Form",
+    "DESCRIPTIONS": [
+      "If you score two pair or better, the Showdown effect of all Poker cards are increased by #b",
+      "."
+    ]
+  },
+  "PokerPlayerMod:CardPrinterPower": {
+    "NAME": "Card Printer",
+    "DESCRIPTIONS": [
+      "At the start of your turn, shuffle a random #yRank #b",
+      " Poker card to your draw pile."
+    ]
+  },
+  "PokerPlayerMod:StackedDeckPower": {
+    "NAME": "Stacked Deck",
+    "DESCRIPTIONS": [
+      "At the start of your turn, Look at the top #b",
+      " cards of your draw pile and discard any of them."
+    ]
+  }
+}

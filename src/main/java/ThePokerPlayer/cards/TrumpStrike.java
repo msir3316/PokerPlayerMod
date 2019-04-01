@@ -20,30 +20,36 @@ public class TrumpStrike extends CustomCard {
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String IMG = PokerPlayerMod.GetCardPath(RAW_ID);
-	private static final int COST = 2;
+	private static final int COST = 1;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final AbstractCard.CardType TYPE = CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = CardColorEnum.POKER_PLAYER_GRAY;
 	private static final AbstractCard.CardRarity RARITY = CardRarity.BASIC;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
 
 	private static final int DRAW = 1;
-	private static final int NEW_COST = 1;
 
 	public TrumpStrike() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		this.baseDamage = 0;
 		this.baseMagicNumber = DRAW;
 		this.magicNumber = this.baseMagicNumber;
+		this.tags.add(CardTags.STRIKE);
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
-		AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
+		AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, magicNumber));
 	}
 
 	@Override
 	public void update() {
+		updateDescription();
+		super.update();
+	}
+
+	private void updateDescription() {
 		if (AbstractDungeon.player != null && AbstractDungeon.player.masterDeck != null) {
 			int count = 0;
 			for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
@@ -51,12 +57,12 @@ public class TrumpStrike extends CustomCard {
 					count++;
 				}
 			}
-			if (this.baseDamage != count) {
-				this.baseDamage = count;
+			int tmp = upgraded ? count : count / 2;
+			if (this.baseDamage != tmp) {
+				this.baseDamage = tmp;
 				this.initializeDescription();
 			}
 		}
-		super.update();
 	}
 
 	public AbstractCard makeCopy() {
@@ -66,7 +72,9 @@ public class TrumpStrike extends CustomCard {
 	public void upgrade() {
 		if (!upgraded) {
 			upgradeName();
-			this.upgradeBaseCost(NEW_COST);
+			this.rawDescription = UPGRADE_DESCRIPTION;
+			this.initializeDescription();
+			updateDescription();
 		}
 	}
 }

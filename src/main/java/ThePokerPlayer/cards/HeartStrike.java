@@ -26,7 +26,7 @@ public class HeartStrike extends CustomCard {
 	private static final CardRarity RARITY = CardRarity.UNCOMMON;
 	private static final CardTarget TARGET = CardTarget.ENEMY;
 
-	private static final int POWER = 10;
+	private static final int POWER = 8;
 	private static final int MAGIC = 3;
 	private static final int UPGRADE_MAGIC = 2;
 

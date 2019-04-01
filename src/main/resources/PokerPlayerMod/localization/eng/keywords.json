@@ -4,13 +4,13 @@
     "NAMES": [
       "poker card"
     ],
-    "DESCRIPTION": "The is a Poker Card. Play to draw a card, or keep them until the end of your turn for Showdown effects."
+    "DESCRIPTION": "Play to draw a card, or keep them until the end of your turn to enter #yShowdown."
   },
   {
     "NAMES": [
       "showdown"
     ],
-    "DESCRIPTION": "At the end of your turn, you receive Showdown effects from Poker Cards in you hand. They are boosted by poker hand you score."
+    "DESCRIPTION": "Receive the Showdown effects from Poker Cards in you hand (max. 5 cards). They are boosted by poker hand you score."
   },
   {
     "PROPER_NAME": "Spade X",

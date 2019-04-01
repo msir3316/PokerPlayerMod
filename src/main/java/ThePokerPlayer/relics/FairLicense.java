@@ -22,17 +22,16 @@ public class FairLicense extends CustomRelic {
 
 	public FairLicense() {
 		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.COMMON, LandingSound.FLAT);
+		this.pulse = false;
 	}
 
 
 	public void atPreBattle() {
-		this.flash();
 		this.gainEnergyNext = false;
 		if (!this.pulse) {
 			this.beginPulse();
 			this.pulse = true;
 		}
-
 	}
 
 	public void atTurnStart() {
@@ -53,6 +52,10 @@ public class FairLicense extends CustomRelic {
 			this.pulse = false;
 		}
 
+	}
+
+	public void onVictory() {
+		this.pulse = false;
 	}
 
 	@Override

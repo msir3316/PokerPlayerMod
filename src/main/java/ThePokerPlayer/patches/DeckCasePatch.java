@@ -122,7 +122,7 @@ public class DeckCasePatch {
 		@SpirePostfixPatch
 		public static void Postfix(ShowCardAndAddToDrawPileEffect __instance, AbstractCard srcCard, float x, float y, boolean randomSpot, boolean cardOffset, boolean toBottom) {
 			if (Util.needToExhaust(srcCard)) {
-				AbstractDungeon.player.discardPile.removeCard(srcCard);
+				AbstractDungeon.player.drawPile.removeCard(srcCard);
 				__instance.duration *= 0.5f;
 				Util.setExhaustStatus(__instance);
 			}
@@ -142,7 +142,7 @@ public class DeckCasePatch {
 		@SpirePostfixPatch
 		public static void Postfix(ShowCardAndAddToDrawPileEffect __instance, AbstractCard srcCard, boolean randomSpot, boolean toBottom) {
 			if (Util.needToExhaust(srcCard)) {
-				AbstractDungeon.player.discardPile.removeCard(srcCard);
+				AbstractDungeon.player.drawPile.removeCard(srcCard);
 				__instance.duration *= 0.5f;
 				Util.setExhaustStatus(__instance);
 			}

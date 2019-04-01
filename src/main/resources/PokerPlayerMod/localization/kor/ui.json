@@ -1,0 +1,57 @@
+{
+  "PokerPlayerMod:PokerHands": {
+    "TEXT": [
+      "No Pairs...",
+      "One Pair",
+      "Two Pair",
+      "Three of a kind",
+      "Full House",
+      "Straight",
+      "Four of a kind",
+      "????",
+      "Five of a kind",
+      "!",
+      " Flush",
+      " NL +",
+      "%."
+    ]
+  },
+  "PokerPlayerMod:PokerCardType": {
+    "TEXT": [
+      "Poker"
+    ]
+  },
+  "PokerPlayerMod:PokerScoreViewer": {
+    "TEXT": [
+      "Showdown Power",
+      "This shows the power of each Suit, affected by Buffs, Relics and Poker Hand.",
+      "<Poker Hand Bonuses>"
+    ]
+  },
+  "PokerPlayerMod:WildCardAction": {
+    "TEXT": [
+      "Choose a Poker Card to Add to Your Hand."
+    ]
+  },
+  "PokerPlayerMod:RiskyBetAction": {
+    "TEXT": [
+      "Discard (Bet)",
+      "Successful!",
+      "Failed..."
+    ]
+  },
+  "PokerPlayerMod:DiscardAnyNumberAction": {
+    "TEXT": [
+      "Discard"
+    ]
+  },
+  "PokerPlayerMod:PokerCardChangeAction": {
+    "TEXT": [
+      "Change Rank",
+      "Extract",
+      "Copy",
+      "Discard",
+      "Change Rank to "
+    ]
+  }
+}

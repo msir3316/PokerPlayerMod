@@ -1,0 +1,56 @@
+[
+  {
+    "PROPER_NAME": "포커 카드",
+    "NAMES": [
+      "poker card"
+    ],
+    "DESCRIPTION": "사용시 카드를 1장을 뽑고, 턴 종료시 손에 있으면 #y쇼다운 에 돌입합니다."
+  },
+  {
+    "NAMES": [
+      "쇼다운",
+      "showdown"
+    ],
+    "DESCRIPTION": "손에 있는 포커 카드들의 쇼다운 효과를 최대 5장까지 받습니다. 포커 족보를 형성할 경우 효과가 강해집니다."
+  },
+  {
+    "PROPER_NAME": "스페이드 X",
+    "NAMES": [
+      "스페이드"
+    ],
+    "DESCRIPTION": "쇼다운 효과: 방어도 를 X 얻습니다."
+  },
+  {
+    "PROPER_NAME": "다이아몬드 X",
+    "NAMES": [
+      "다이아몬드"
+    ],
+    "DESCRIPTION": "쇼다운 효과: 체력이 가장 낮은 적에게 피해를 X 줍니다."
+  },
+  {
+    "PROPER_NAME": "하트 X",
+    "NAMES": [
+      "하트"
+    ],
+    "DESCRIPTION": "쇼다운 효과: 체력을 X 회복합니다."
+  },
+  {
+    "PROPER_NAME": "클럽 X",
+    "NAMES": [
+      "클럽"
+    ],
+    "DESCRIPTION": "쇼다운 효과: 적 전체에게 피해를 X 줍니다."
+  },
+  {
+    "NAMES": [
+      "등급"
+    ],
+    "DESCRIPTION": "포커 카드의 숫자입니다. 쇼다운 효과는 등급에 비례합니다."
+  },
+  {
+    "NAMES": [
+      "무늬"
+    ],
+    "DESCRIPTION": "포커카드의 무늬입니다. 쇼다운 효과의 종류를 결정합니다."
+  }
+]

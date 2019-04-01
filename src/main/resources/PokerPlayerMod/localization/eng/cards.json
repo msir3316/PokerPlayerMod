@@ -32,16 +32,17 @@
   },
   "PokerPlayerMod:TrumpStrike": {
     "NAME": "Trump Strike",
-    "DESCRIPTION": "Deal !D! damage (number of Poker cards in your deck). NL Draw a card."
+    "DESCRIPTION": "Deal !D! damage (half the number of Poker cards in your deck). NL Draw 1 card.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage (number of Poker cards in your deck). NL Draw 1 card."
   },
   "PokerPlayerMod:ThinkingTime": {
     "NAME": "Thinking Time",
-    "DESCRIPTION": "Choose One: Draw a card; or gain !B! Block (number of Poker cards in your deck).",
+    "DESCRIPTION": "Choose One: Draw 1 card; or gain !B! Block (number of Poker cards in your deck).",
     "EXTENDED_DESCRIPTION": [
       "Choose One",
       "Hit",
       "Stay",
-      "Draw a card.",
+      "Draw 1 card.",
       "Gain ",
       " Block."
     ]
@@ -68,7 +69,7 @@
   },
   "PokerPlayerMod:ClubsClub": {
     "NAME": "Clubs Club",
-    "DESCRIPTION": "Draw a card. NL Deal !D! damage for each pokerplayer:Club in your hand."
+    "DESCRIPTION": "Draw 1 card. NL Deal !D! damage for each pokerplayer:Club in your hand."
   },
   "PokerPlayerMod:DartThrow": {
     "NAME": "Dart Throw",
@@ -104,7 +105,7 @@
   },
   "PokerPlayerMod:Raise": {
     "NAME": "Raise",
-    "DESCRIPTION": "Draw a card. NL You may choose a Poker card in you hand to raise its pokerplayer:Rank by !M!."
+    "DESCRIPTION": "Draw 1 card. NL You may choose a Poker card in you hand to raise its pokerplayer:Rank by !M!."
   },
   "PokerPlayerMod:HotShotCut": {
     "NAME": "Hot Shot Cut",
@@ -113,11 +114,11 @@
   },
   "PokerPlayerMod:Manipulation": {
     "NAME": "Manipulation",
-    "DESCRIPTION": "Deal !D! damage X times. You may increase the pokerplayer:Rank of one Poker Card by X. NL Gain [E]"
+    "DESCRIPTION": "Deal !D! damage X times. You may increase the pokerplayer:Rank of one Poker Card by X. NL Gain [E]."
   },
   "PokerPlayerMod:SecondChance": {
     "NAME": "Second Chance",
-    "DESCRIPTION": "Deal !D! damage. NL Draw a card. NL Repeat until you have 5 cards in hand."
+    "DESCRIPTION": "Deal !D! damage. NL Draw 1 card. NL Repeat until you have 5 cards in hand."
   },
   "PokerPlayerMod:CardBurn": {
     "NAME": "Card Burn",
@@ -151,12 +152,7 @@
   },
   "PokerPlayerMod:RiskyBet": {
     "NAME": "Risky Bet",
-    "DESCRIPTION": "Discard a card and draw a card. If they are both Poker cards with the same pokerplayer:Suit, gain [E] and draw !M! cards."
-  },
-  "PokerPlayerMod:Ace": {
-    "NAME": "Ace",
-    "DESCRIPTION": "Whenever you play a pokerplayer:Rank 1 Poker Card, deal !M! damage to a random enemy.",
-    "UPGRADE_DESCRIPTION": "Draw a card. NL Whenever you play a pokerplayer:Rank 1 Poker Card, deal !M! damage to a random enemy."
+    "DESCRIPTION": "Discard a card and draw 1 card. If they are both Poker cards with the same pokerplayer:Suit, gain [E] and draw !M! cards."
   },
   "PokerPlayerMod:CardPrinter": {
     "NAME": "Card Printer",
@@ -171,7 +167,7 @@
   "PokerPlayerMod:DamnStraight": {
     "NAME": "Damn Straight",
     "DESCRIPTION": "pokerplayer:Showdown bonus from Straight is doubled.",
-    "UPGRADE_DESCRIPTION": "Draw a card. NL pokerplayer:Showdown bonus from Straight is doubled.",
+    "UPGRADE_DESCRIPTION": "Draw 1 card. NL pokerplayer:Showdown bonus from Straight is doubled.",
     "EXTENDED_DESCRIPTION": [
       " NL (",
       "% -> ",
@@ -181,12 +177,12 @@
   "PokerPlayerMod:Round": {
     "NAME": "Round",
     "DESCRIPTION": "Your pokerplayer:Clubs give you !M! Block during pokerplayer:Showdown.",
-    "UPGRADE_DESCRIPTION": "Draw a card. NL Your pokerplayer:Clubs give you 2 Block during pokerplayer:Showdown."
+    "UPGRADE_DESCRIPTION": "Draw 1 card. NL Your pokerplayer:Clubs give you !M! Block during pokerplayer:Showdown."
   },
   "PokerPlayerMod:Sharpen": {
     "NAME": "Sharpen",
     "DESCRIPTION": "Your pokerplayer:Diamonds deal !M! more damage during pokerplayer:Showdown.",
-    "UPGRADE_DESCRIPTION": "Draw a card. NL Your pokerplayer:Diamonds deal !M! more damage during pokerplayer:Showdown."
+    "UPGRADE_DESCRIPTION": "Draw 1 card. NL Your pokerplayer:Diamonds deal !M! more damage during pokerplayer:Showdown."
   },
   "PokerPlayerMod:ChangeRules": {
     "NAME": "Change Rules",
@@ -206,7 +202,7 @@
   },
   "PokerPlayerMod:ItsShowtime": {
     "NAME": "It's Showtime!",
-    "DESCRIPTION": "Draw a card. NL Trigger the pokerplayer:Showdown. NL Exhaust."
+    "DESCRIPTION": "Draw 1 card. NL Trigger the pokerplayer:Showdown. NL Exhaust."
   },
   "PokerPlayerMod:Promotion": {
     "NAME": "Promotion",
@@ -228,24 +224,16 @@
   "PokerPlayerMod:FakeSymbols": {
     "NAME": "Fake Symbols",
     "DESCRIPTION": "You score a Flush if you have 4 or more Poker Cards with same pokerplayer:Suit during pokerplayer:Showdown.",
-    "UPGRADE_DESCRIPTION": "Draw a card. NL You score a Flush if you have 4 or more Poker Cards with same pokerplayer:Suit during pokerplayer:Showdown."
+    "UPGRADE_DESCRIPTION": "Draw 1 card. NL You score a Flush if you have 4 or more Poker Cards with same pokerplayer:Suit during pokerplayer:Showdown."
   },
   "PokerPlayerMod:GamblerForm": {
     "NAME": "Gambler Form",
     "DESCRIPTION": "If you score two pair or better, the pokerplayer:Showdown effect of all Poker cards are increased by !M! .",
-    "UPGRADE_DESCRIPTION": "Draw a card. NL If you score two pair or better, the pokerplayer:Showdown effect of all Poker cards are increased by !M! ."
+    "UPGRADE_DESCRIPTION": "Draw 1 card. NL If you score two pair or better, the pokerplayer:Showdown effect of all Poker cards are increased by !M! ."
   },
   "PokerPlayerMod:StackedDeck": {
     "NAME": "Stacked Deck",
     "DESCRIPTION": "At the start of your turn, Look at the top !M! cards of your draw pile and discard any of them.",
-    "UPGRADE_DESCRIPTION": "Draw a card. NL At the start of your turn, Look at the top !M! cards of your draw pile and discard any of them."
-  },
-  "PokerPlayerMod:Splitter": {
-    "NAME": "Splitter",
-    "DESCRIPTION": "If the pokerplayer:Ranks of all Poker Cards in your hand are 5 or less during pokerplayer:Showdown, increase their pokerplayer:Rank by !M! .",
-    "UPGRADE_DESCRIPTION": "Draw a card. NL If the pokerplayer:Ranks of all Poker Cards in your hand are 5 or less during pokerplayer:Showdown, increase their pokerplayer:Rank by !M! .",
-    "EXTENDED_DESCRIPTION": [
-      "This card is highly likely to be deprecated."
-    ]
+    "UPGRADE_DESCRIPTION": "Draw 1 card. NL At the start of your turn, Look at the top !M! cards of your draw pile and discard any of them."
   }
 }

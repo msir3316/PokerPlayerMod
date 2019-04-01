@@ -4,7 +4,7 @@
     "FLAVOR": "Looking at this calms you down and help you quickly recover from bad conditions.",
     "DESCRIPTIONS": [
       "Each combat, the first #b",
-      " #yStatus cards entering your deck are #yexhausted."
+      " Status cards entering your deck are exhausted."
     ]
   },
   "PokerPlayerMod:BottledPoker": {
