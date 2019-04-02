@@ -25,7 +25,7 @@ public class Fold extends CustomCard {
 	private static final AbstractCard.CardRarity RARITY = CardRarity.COMMON;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.SELF;
 
-	private static final int POWER = 13;
+	private static final int POWER = 14;
 	private static final int UPGRADE_BONUS = 4;
 	private static final int MAGIC = 2;
 

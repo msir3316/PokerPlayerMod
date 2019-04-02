@@ -40,9 +40,9 @@
   },
   "PokerPlayerMod:PendantOfEscape": {
     "NAME": "탈출의 펜던트",
-    "FLAVOR": "답이 없다고 느꺼질 때 눌러보세요.",
+    "FLAVOR": "답이 없다고 느껴질 때 눌러보세요.",
     "DESCRIPTIONS": [
-      "[#2aecd7]전투마다 [#2aecd7]1번, [#2aecd7]오른쪽 [#2aecd7]클릭으로 [#2aecd7]발동합니다.[] NL 손의 카드를 모두 버리고 카드를 #b5 장 뽑습니다."
+      "[#2aecd7]전투마다 [#2aecd7]1번, [#2aecd7]오른쪽 [#2aecd7]클릭으로 [#2aecd7]사용합니다.[] NL 손의 카드를 모두 버리고 카드를 #b5 장 뽑습니다."
     ]
   },
   "PokerPlayerMod:CoolBox": {

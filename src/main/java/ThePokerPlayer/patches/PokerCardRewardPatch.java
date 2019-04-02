@@ -17,17 +17,17 @@ public class PokerCardRewardPatch {
 	public static final int[] PRICE_SUIT = new int[]{25, 10, 20, 0};
 
 	public static final int[] RATIO_RANK_NORMAL =
-			new int[]{0, 18, 18, 18, 18, 10, 7, 5, 3, 2, 1};
+			new int[]{0, 15, 15, 15, 15, 10, 10, 8, 6, 4, 2};
 	public static final int[] RATIO_RANK_NORMAL_NLOTH =
-			new int[]{0, 16, 16, 16, 16, 10, 9, 7, 5, 3, 2};
+			new int[]{0, 13, 13, 13, 13, 10, 10, 10, 8, 6, 4};
 	public static final int[] RATIO_RANK_ELITE =
-			new int[]{0, 16, 16, 16, 16, 10, 9, 7, 5, 3, 2};
+			new int[]{0, 13, 13, 13, 13, 10, 10, 10, 8, 6, 4};
 	public static final int[] RATIO_RANK_ELITE_NLOTH =
-			new int[]{0, 13, 13, 13, 13, 12, 12, 9, 7, 5, 3};
+			new int[]{0, 11, 11, 11, 11, 10, 10, 10, 10, 8, 8};
 	public static final int[] RATIO_RANK_BOSS =
-			new int[]{0, 0, 0, 0, 0, 0, 30, 25, 20, 15, 10};
+			new int[]{0, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25};
 	public static final int[] RATIO_RANK_BOSS_NLOTH =
-			new int[]{0, 0, 0, 0, 0, 0, 20, 20, 20, 20, 20};
+			new int[]{0, 0, 0, 0, 0, 0, 0, 10, 10, 40, 40};
 	public static final int[] RATIO_SUIT = new int[]{1, 3, 2, 4};
 
 	@SpirePatch(clz = ShopScreen.class, method = "initCards")
@@ -83,7 +83,22 @@ public class PokerCardRewardPatch {
 						}
 						rankNum -= ratio[rank];
 					}
-					__result.set(pos, new PokerCard(suit, rank));
+					boolean dup = false;
+					for (int i = 0; i < pos; i++) {
+						AbstractCard c = __result.get(i);
+						if (c instanceof PokerCard) {
+							PokerCard pc = (PokerCard) c;
+							if (pc.suit == suit && pc.rank == rank) {
+								dup = true;
+								break;
+							}
+						}
+					}
+					if (dup) {
+						pos--;
+					} else {
+						__result.set(pos, new PokerCard(suit, rank));
+					}
 				}
 			}
 			return __result;

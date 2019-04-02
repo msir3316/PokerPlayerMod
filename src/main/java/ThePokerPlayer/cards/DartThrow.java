@@ -27,7 +27,7 @@ public class DartThrow extends CustomCard {
 	private static final AbstractCard.CardRarity RARITY = CardRarity.COMMON;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
 
-	private static final int POWER = 14;
+	private static final int POWER = 16;
 	private static final int UPGRADE_BONUS = 4;
 
 	public DartThrow() {

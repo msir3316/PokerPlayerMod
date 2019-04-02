@@ -6,7 +6,7 @@
   ],
   "credits": "HSymbol - original game",
   "description": "Adds a character called The Poker Player, who fights with his own rule inspired from poker. Contains 83 cards and 12 relics.",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "sts_version": "01-23-2019",
   "mts_version": "3.7.0",
   "dependencies": [
