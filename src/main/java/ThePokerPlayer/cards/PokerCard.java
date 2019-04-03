@@ -20,6 +20,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.GameDictionary;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -251,6 +252,7 @@ public class PokerCard extends CustomCard {
 		if (!keywords.contains("pokerplayer:showdown")) {
 			keywords.add(1, "pokerplayer:showdown");
 		}
+		keywords.remove(GameDictionary.ETHEREAL.NAMES[0]);
 	}
 
 	@Override

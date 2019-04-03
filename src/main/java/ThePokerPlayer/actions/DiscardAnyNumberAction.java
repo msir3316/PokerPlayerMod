@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import java.util.Iterator;
 
 public class DiscardAnyNumberAction extends AbstractGameAction {
-	private AbstractPlayer p;
 	private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(PokerPlayerMod.makeID("DiscardAnyNumberAction"));
 	public static final String[] TEXT = uiStrings.TEXT;
 
@@ -25,6 +24,10 @@ public class DiscardAnyNumberAction extends AbstractGameAction {
 
 	public void update() {
 		if (this.duration == 0.5F) {
+			if (AbstractDungeon.player.hand.size() == 0) {
+				isDone = true;
+				return;
+			}
 			AbstractDungeon.handCardSelectScreen.open(TEXT[0], 99, true, true);
 
 			AbstractDungeon.actionManager.addToBottom(new WaitAction(0.25F));

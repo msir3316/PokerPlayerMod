@@ -65,6 +65,13 @@ public class PokerCardChangeAction extends AbstractGameAction {
 				case COPY:
 				case ROYAL_STRIKE:
 				case RANK_CHANGE_SET:
+					if (mode == Mode.RANK_CHANGE_ANY) {
+						for (AbstractCard c : this.p.hand.group) {
+							if (c instanceof PokerCard && ((PokerCard) c).rank == 10) {
+								this.nonPokerCards.add(c);
+							}
+						}
+					}
 					for (AbstractCard c : this.p.hand.group) {
 						if (!(c instanceof PokerCard)) {
 							this.nonPokerCards.add(c);
@@ -120,7 +127,7 @@ public class PokerCardChangeAction extends AbstractGameAction {
 						this.p.hand.group.removeAll(this.nonPokerCards);
 						ref = this;
 						PokerPlayerMod.transformAnimTimer = 0;
-						AbstractDungeon.handCardSelectScreen.open(TEXT[4] + rankChange, amount, true, true, false, false);
+						AbstractDungeon.handCardSelectScreen.open(TEXT[4] + rankChange + TEXT[5], amount, true, true, false, false);
 						this.tickDuration();
 						return;
 					}

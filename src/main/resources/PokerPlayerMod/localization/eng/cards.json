@@ -152,11 +152,11 @@
   },
   "PokerPlayerMod:RiskyBet": {
     "NAME": "Risky Bet",
-    "DESCRIPTION": "Discard a card and draw 1 card. If they are both Poker cards with the same pokerplayer:Suit, gain [E] and draw !M! cards."
+    "DESCRIPTION": "Discard a card and draw a card. If they are both Poker cards with the same pokerplayer:Suit, gain [E] and draw !M! cards."
   },
   "PokerPlayerMod:CardPrinter": {
     "NAME": "Card Printer",
-    "DESCRIPTION": "At the start of your turn, shuffle a pokerplayer:non-Heart, pokerplayer:Rank !M! Poker card to your draw pile.",
+    "DESCRIPTION": "At the start of your turn, add a pokerplayer:non-Heart, pokerplayer:Rank !M! Poker card to your discard pile.",
     "EXTENDED_DESCRIPTION": [
       " Can be upgraded 8 times.",
       " Can be upgraded ",

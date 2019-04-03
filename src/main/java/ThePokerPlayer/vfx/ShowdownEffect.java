@@ -100,7 +100,10 @@ public class ShowdownEffect extends AbstractGameEffect {
 		} else if (suit == PokerCard.Suit.Diamond) {
 			if (selected.isDeadOrEscaped()) {
 				AbstractMonster m = getTarget();
-				if (m != null) selected = m;
+				if (m != null) {
+					selected = m;
+					dest2.set(0, new Vector2(selected.hb.cX, selected.hb.cY));
+				}
 			}
 		}
 
