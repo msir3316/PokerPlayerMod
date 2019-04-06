@@ -19,12 +19,13 @@
       "",
       "pokerplayer:다이아몬드 ",
       "",
-      "휘발성 NL "
+      "휘발성 NL ",
+      " NL pokerplayer:변화됨."
     ]
   },
   "PokerPlayerMod:BadJoker": {
     "NAME": "불완전한 조커",
-    "DESCRIPTION": "pokerplayer:등급 이 5 이하인 무작위 !M! 장의 포커 카드 중 1장을 선택합니다. 턴 종료시 까지 그 카드로 바뀝니다."
+    "DESCRIPTION": "pokerplayer:등급 이 5 이하인 무작위 !M! 장의 포커 카드 중 1장을 선택합니다. 이번 턴 동안 그 카드로 pokerplayer:변화 합니다."
   },
   "PokerPlayerMod:Mulligan": {
     "NAME": "멀리건",
@@ -36,7 +37,7 @@
     "UPGRADE_DESCRIPTION": "피해를 !D! 줍니다 (덱에 있는 포커 카드 수). NL 카드를 1장 뽑습니다."
   },
   "PokerPlayerMod:ThinkingTime": {
-    "NAME": "Thinking Time",
+    "NAME": "생각의 시간",
     "DESCRIPTION": "선택: 카드를 1장 뽑습니다; 또는 방어도 를 !B! 얻습니다 (덱에 있는 포커 카드 수).",
     "EXTENDED_DESCRIPTION": [
       "선택",
@@ -49,23 +50,23 @@
   },
   "PokerPlayerMod:DiamondStrike": {
     "NAME": "다이아몬드 타격",
-    "DESCRIPTION": "피해를 !D! 줍니다. NL pokerplayer:다이아몬드 !M! 카드를 1장 얻습니다."
+    "DESCRIPTION": "피해를 !D! 줍니다. NL 이번 턴 동안 pokerplayer:다이아몬드 !M! 카드로 pokerplayer:변화 합니다."
   },
   "PokerPlayerMod:SpadeStrike": {
     "NAME": "스페이드 타격",
-    "DESCRIPTION": "피해를 !D! 줍니다. NL pokerplayer:스페이드 !M! 카드를 1장 얻습니다."
+    "DESCRIPTION": "피해를 !D! 줍니다. NL 이번 턴 동안 pokerplayer:스페이드 !M! 카드로 pokerplayer:변화 합니다."
   },
   "PokerPlayerMod:ClubStrike": {
     "NAME": "클럽 타격",
-    "DESCRIPTION": "피해를 !D! 줍니다. NL pokerplayer:클럽 !M! 카드를 1장 얻습니다."
+    "DESCRIPTION": "피해를 !D! 줍니다. NL 이번 턴 동안 pokerplayer:클럽 !M! 카드로 pokerplayer:변화 합니다."
   },
   "PokerPlayerMod:HeartStrike": {
     "NAME": "하트 타격",
-    "DESCRIPTION": "피해를 !D! 줍니다. NL pokerplayer:하트 !M! 카드를 1장 얻습니다. NL 소멸."
+    "DESCRIPTION": "피해를 !D! 줍니다. NL 이번 턴 동안 pokerplayer:하트 !M! 카드로 pokerplayer:변화 합니다."
   },
   "PokerPlayerMod:CloakAndDiamond": {
     "NAME": "망토와 다이아몬드",
-    "DESCRIPTION": "방어도 를 !B! 얻습니다. NL pokerplayer:다이아몬드 !M! 카드를 1장 얻습니다."
+    "DESCRIPTION": "방어도 를 !B! 얻습니다. NL 이번 턴 동안 pokerplayer:다이아몬드 !M! 카드로 pokerplayer:변화 합니다."
   },
   "PokerPlayerMod:ClubsClub": {
     "NAME": "클럽 클럽",
@@ -77,7 +78,7 @@
   },
   "PokerPlayerMod:FlyingCard": {
     "NAME": "플라잉 카드",
-    "DESCRIPTION": "이번 전투에서 아무튼 생성된 카드 1장당 방어도 를 !B! 얻고 피해를 !D! 줍니다.",
+    "DESCRIPTION": "이번 전투에서 생성되거나 변화된 카드 1장당 방어도 를 !B! 얻고 피해를 !D! 줍니다.",
     "EXTENDED_DESCRIPTION": [
       " NL ( !M! 장 생성됨.)"
     ]
@@ -127,7 +128,7 @@
   },
   "PokerPlayerMod:ClubDance": {
     "NAME": "클럽 댄스",
-    "DESCRIPTION": "무작위 !M! 장의 pokerplayer:클럽 카드 중 1장을 선택합니다. 턴 종료시 까지 그 카드로 바뀝니다."
+    "DESCRIPTION": "무작위 !M! 장의 pokerplayer:클럽 카드 중 1장을 선택합니다. 이번 턴 동안 그 카드로 pokerplayer:변화 합니다."
   },
   "PokerPlayerMod:FillThePot": {
     "NAME": "판돈 키우기",

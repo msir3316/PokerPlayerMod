@@ -20,7 +20,6 @@ public class PromotionAction extends AbstractGameAction {
 
 	public void update() {
 		if (this.duration == Settings.ACTION_DUR_MED) {
-			AbstractPlayer p = AbstractDungeon.player;
 			this.promoteAllCardsInGroup(p.hand);
 			this.promoteAllCardsInGroup(p.drawPile);
 			this.promoteAllCardsInGroup(p.discardPile);
@@ -39,7 +38,6 @@ public class PromotionAction extends AbstractGameAction {
 				if (cardGroup.type == CardGroup.CardGroupType.HAND) {
 					c.superFlash();
 				}
-				c.upgrade();
 				c.applyPowers();
 			}
 		}

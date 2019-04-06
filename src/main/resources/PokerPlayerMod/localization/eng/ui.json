@@ -54,5 +54,10 @@
       "Change Rank to ",
       ""
     ]
+  },
+  "PokerPlayerMod:ExordiumClubConfig": {
+    "TEXT": [
+      "Enable Exordium Club event for other characters"
+    ]
   }
 }

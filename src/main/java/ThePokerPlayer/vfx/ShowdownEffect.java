@@ -1,5 +1,6 @@
 package ThePokerPlayer.vfx;
 
+import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.actions.ShowdownAction;
 import ThePokerPlayer.cards.PokerCard;
 import com.badlogic.gdx.Gdx;
@@ -114,27 +115,28 @@ public class ShowdownEffect extends AbstractGameEffect {
 		if (t > 1) {
 			this.isDone = true;
 		} else {
+			float a = t * 2 - 1;
+			a *= a;
+
 			for (int i = 0; i < dest1.size(); i++) {
 				float x, y;
 				if (t < 0.5f) {
 					Vector2 v1 = dest1.get(i);
 					x = Interpolation.linear.apply(originX, v1.x, t * 2);
 					y = Interpolation.linear.apply(originY, v1.y, t * 2);
+					curA = 0;
 				} else {
-					float a = t * 2 - 1;
-					a *= a;
-
 					float p = (curA > 0.999f ? 1 : (a - curA) / (1 - curA));
 
 					Vector2 vc = curPos.get(i);
 					Vector2 v2 = dest2.get(i);
 					x = Interpolation.linear.apply(vc.x, v2.x, p);
 					y = Interpolation.linear.apply(vc.y, v2.y, p);
-					curA = a;
 				}
 
 				curPos.set(i, new Vector2(x, y));
 			}
+			curA = a;
 		}
 
 		if (isDone) {

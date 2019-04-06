@@ -54,5 +54,10 @@
       "등급을 ",
       "로 바꿀 포커 카드를 선택하십시오"
     ]
+  },
+  "PokerPlayerMod:ExordiumClubConfig": {
+    "TEXT": [
+      "엑소디움 클럽 이벤트를 다른 캐릭터도 볼 수 있음"
+    ]
   }
 }

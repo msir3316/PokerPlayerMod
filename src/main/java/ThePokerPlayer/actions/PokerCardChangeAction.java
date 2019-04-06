@@ -65,13 +65,6 @@ public class PokerCardChangeAction extends AbstractGameAction {
 				case COPY:
 				case ROYAL_STRIKE:
 				case RANK_CHANGE_SET:
-					if (mode == Mode.RANK_CHANGE_ANY) {
-						for (AbstractCard c : this.p.hand.group) {
-							if (c instanceof PokerCard && ((PokerCard) c).rank == 10) {
-								this.nonPokerCards.add(c);
-							}
-						}
-					}
 					for (AbstractCard c : this.p.hand.group) {
 						if (!(c instanceof PokerCard)) {
 							this.nonPokerCards.add(c);

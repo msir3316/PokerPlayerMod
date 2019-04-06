@@ -2,12 +2,14 @@ package ThePokerPlayer.actions;
 
 import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.cards.PokerCard;
+import basemod.ReflectionHacks;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDiscardEffect;
-import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
+import com.megacrit.cardcrawl.screens.CardRewardScreen;
+import com.megacrit.cardcrawl.ui.buttons.SingingBowlButton;
+import com.megacrit.cardcrawl.ui.buttons.SkipCardButton;
 
 public class PokerCardDiscoveryAction extends AbstractGameAction {
 	private boolean retrieveCard = false;
@@ -43,6 +45,12 @@ public class PokerCardDiscoveryAction extends AbstractGameAction {
 
 	public void update() {
 		if (this.duration == Settings.ACTION_DUR_FAST) {
+			for (AbstractCard c : PokerPlayerMod.shapeshiftReturns.values()) {
+				if (c.uuid == shapeshiftCard.uuid) {
+					this.isDone = true;
+					return;
+				}
+			}
 			isActive = true;
 			AbstractDungeon.cardRewardScreen.discoveryOpen();
 
@@ -50,25 +58,27 @@ public class PokerCardDiscoveryAction extends AbstractGameAction {
 		} else {
 			if (!this.retrieveCard) {
 				if (AbstractDungeon.cardRewardScreen.discoveryCard != null) {
-					AbstractCard disCard = AbstractDungeon.cardRewardScreen.discoveryCard.makeStatEquivalentCopy();
-					disCard.current_x = -1000.0F * Settings.scale;
-					if (AbstractDungeon.player.hand.size() < 10) {
-						AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(disCard, (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
-					} else {
-						AbstractDungeon.effectList.add(new ShowCardAndAddToDiscardEffect(disCard, (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
-					}
 
+					AbstractDungeon.actionManager.addToTop(new PokerCardTransformAction(
+							shapeshiftCard, AbstractDungeon.cardRewardScreen.discoveryCard.makeStatEquivalentCopy()));
 					AbstractDungeon.cardRewardScreen.discoveryCard = null;
-					if (shapeshiftCard != null) {
-						PokerPlayerMod.shapeshiftReturns.put(disCard, this.shapeshiftCard);
-					}
 
 					isActive = false;
-				}
 
-				this.retrieveCard = true;
+					this.retrieveCard = true;
+					this.isDone = true;
+				} else {
+					AbstractDungeon.topPanel.unhoverHitboxes();
+					AbstractDungeon.isScreenUp = true;
+					AbstractDungeon.screen = AbstractDungeon.CurrentScreen.CARD_REWARD;
+					AbstractDungeon.dynamicBanner.appear(CardRewardScreen.TEXT[1]);
+					AbstractDungeon.overlayMenu.showBlackScreen();
+					SkipCardButton skipButton = (SkipCardButton) ReflectionHacks.getPrivate(AbstractDungeon.cardRewardScreen, CardRewardScreen.class, "skipButton");
+					SingingBowlButton bowlButton = (SingingBowlButton) ReflectionHacks.getPrivate(AbstractDungeon.cardRewardScreen, CardRewardScreen.class, "bowlButton");
+					skipButton.hide();
+					bowlButton.hide();
+				}
 			}
-			this.tickDuration();
 		}
 	}
 }

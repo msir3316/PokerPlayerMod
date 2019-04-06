@@ -19,12 +19,13 @@
       "",
       "pokerplayer:Diamond ",
       "",
-      "Ethereal. NL "
+      "Ethereal. NL ",
+      " NL pokerplayer:Transformed."
     ]
   },
   "PokerPlayerMod:BadJoker": {
     "NAME": "Bad Joker",
-    "DESCRIPTION": "Choose 1 of !M! random Poker Cards with 5 or less pokerplayer:Rank. This becomes that card until the end of turn."
+    "DESCRIPTION": "Choose 1 of !M! random Poker Cards with 5 or less pokerplayer:Rank. pokerplayer:Transform to the chosen card for this turn."
   },
   "PokerPlayerMod:Mulligan": {
     "NAME": "Mulligan",
@@ -49,23 +50,23 @@
   },
   "PokerPlayerMod:DiamondStrike": {
     "NAME": "Diamond Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Add a !M! of pokerplayer:Diamonds into your hand."
+    "DESCRIPTION": "Deal !D! damage. NL pokerplayer:Transform to !M! of pokerplayer:Diamonds for this turn."
   },
   "PokerPlayerMod:SpadeStrike": {
     "NAME": "Spade Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Add a !M! of pokerplayer:Spades into your hand."
+    "DESCRIPTION": "Deal !D! damage. NL pokerplayer:Transform to !M! of pokerplayer:Spades for this turn."
   },
   "PokerPlayerMod:ClubStrike": {
     "NAME": "Club Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Add a !M! of pokerplayer:Clubs into your hand."
+    "DESCRIPTION": "Deal !D! damage. NL pokerplayer:Transform to !M! of pokerplayer:Clubs for this turn."
   },
   "PokerPlayerMod:HeartStrike": {
     "NAME": "Heart Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Add a !M! of pokerplayer:Hearts into your hand. NL Exhaust."
+    "DESCRIPTION": "Deal !D! damage. NL pokerplayer:Transform to !M! of pokerplayer:Hearts for this turn."
   },
   "PokerPlayerMod:CloakAndDiamond": {
     "NAME": "Cloak and Diamond",
-    "DESCRIPTION": "Gain !B! Block. NL Add a !M! of pokerplayer:Diamonds into your hand."
+    "DESCRIPTION": "Gain !B! Block. NL pokerplayer:Transform to !M! of pokerplayer:Diamonds for this turn."
   },
   "PokerPlayerMod:ClubsClub": {
     "NAME": "Clubs Club",
@@ -77,7 +78,7 @@
   },
   "PokerPlayerMod:FlyingCard": {
     "NAME": "Flying Card",
-    "DESCRIPTION": "Gain !B! Block and deal !D! damage for each card generated in this combat.",
+    "DESCRIPTION": "Gain !B! Block and deal !D! damage for each card generated or pokerplayer:transformed in this combat.",
     "EXTENDED_DESCRIPTION": [
       " NL ( !M! cards generated.)"
     ]
@@ -127,7 +128,7 @@
   },
   "PokerPlayerMod:ClubDance": {
     "NAME": "Club Dance",
-    "DESCRIPTION": "Choose 1 of !M! random pokerplayer:Clubs. This becomes that card until the end of turn."
+    "DESCRIPTION": "Choose 1 of !M! random pokerplayer:Clubs. pokerplayer:Transform to the chosen card for this turn."
   },
   "PokerPlayerMod:FillThePot": {
     "NAME": "Fill the Pot",

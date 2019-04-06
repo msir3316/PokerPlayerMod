@@ -57,5 +57,19 @@
       "suit"
     ],
     "DESCRIPTION": "The shape of Poker Cards determining the effect."
+  },
+  {
+    "PROPER_NAME": "Transform for this turn",
+    "NAMES": [
+      "transform"
+    ],
+    "DESCRIPTION": "This card transforms to the specified card and put into your hand. At the end of this turn, it reverts to this card (Wherever it is)."
+  },
+  {
+    "PROPER_NAME": "Transformed for this turn",
+    "NAMES": [
+      "transformed"
+    ],
+    "DESCRIPTION": "This card was transformed. At the end of this turn, it reverts to the original card (Wherever it is)."
   }
 ]

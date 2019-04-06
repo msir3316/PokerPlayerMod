@@ -1,7 +1,7 @@
 {
   "PokerPlayerMod:DeckCase": {
     "NAME": "Deck Case",
-    "FLAVOR": "Looking at this calms you down and help you quickly recover from bad conditions.",
+    "FLAVOR": "Having this calms you down and help you quickly recover from bad conditions.",
     "DESCRIPTIONS": [
       "Each combat, the first #b",
       " #yStatus cards entering your deck are #yexhausted."
@@ -54,9 +54,9 @@
   },
   "PokerPlayerMod:Splitter": {
     "NAME": "Splitter",
-    "FLAVOR": "The magic of lower cards begins.",
+    "FLAVOR": "The magical abilities of Poker cards shine!",
     "DESCRIPTIONS": [
-      "Whenever you play a Poker card with #b3 or less #ypokerplayer:Rank, deal #b",
+      "Whenever you play a Poker card, deal #b",
       " damage to ALL enemies."
     ]
   },

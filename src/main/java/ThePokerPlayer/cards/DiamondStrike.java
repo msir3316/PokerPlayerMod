@@ -1,10 +1,10 @@
 package ThePokerPlayer.cards;
 
 import ThePokerPlayer.PokerPlayerMod;
+import ThePokerPlayer.actions.PokerCardTransformAction;
 import ThePokerPlayer.patches.CardColorEnum;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -36,6 +36,7 @@ public class DiamondStrike extends CustomCard {
 		this.baseDamage = POWER;
 		this.baseMagicNumber = MAGIC;
 		this.magicNumber = this.baseMagicNumber;
+		this.purgeOnUse = true;
 
 		this.tags.add(CardTags.STRIKE);
 	}
@@ -45,7 +46,7 @@ public class DiamondStrike extends CustomCard {
 				new DamageInfo(p, this.damage, this.damageTypeForTurn),
 				AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 		AbstractCard c = new PokerCard(PokerCard.Suit.Diamond, this.magicNumber);
-		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, true));
+		AbstractDungeon.actionManager.addToBottom(new PokerCardTransformAction(this, c));
 	}
 
 	public AbstractCard makeCopy() {

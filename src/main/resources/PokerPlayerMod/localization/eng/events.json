@@ -10,9 +10,50 @@
   "PokerPlayerMod:Vampires": {
     "NAME": "Vampires(?)",
     "DESCRIPTIONS": [
-      "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~anomaly,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~"
+      "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~anomaly,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~",
+      "From the experience of Poker matches, you started to think hard. NL When it is over, the entire group of hooded figures disappeared, and you find yourself with a weird card in your hand.",
+      "You step back and raise your cards in defiance. The tall figure sighs. \"Very well.\" The entire group of hooded figures morph into a thick black fog that flows away from you. NL You are alone once more."
     ],
     "OPTIONS": [
+      "[Think Hard] #gRecieve Thinking Time.",
+      "[Refuse]",
+      "[Leave]"
+    ]
+  },
+  "PokerPlayerMod:ExordiumClub": {
+    "NAME": "Exordium Club",
+    "DESCRIPTIONS": [
+      "\"Welcome to the Exordium Club!\" NL NL A loud voice is coming from a giant room. NL NL \"Do you like Jackpot? Or trade for wonders?\"",
+      "5 Clubs with Exordium power comes from the door.",
+      "As you throw one of your Poker card, a different one flies to you from the door.",
+      "You don't need this suspicious help."
+    ],
+    "OPTIONS": [
+      "[Jackpot] #gReceive 2, 3, 4, 5, 6 of Clubs.",
+      "[Trade] Remove a Poker card. Receive a random Clubs.",
+      "[Locked] Requires: Poker card.",
+      "[Ignore]",
+      "Select a Card to Trade.",
+      "[Leave]"
+    ]
+  },
+  "PokerPlayerMod:BackToBasicsPoker": {
+    "NAME": "Ancient Writing",
+    "DESCRIPTIONS": [
+      "Scaling the city, you notice a wall covered in the writing of #y~Ancients.~ As you try to wrap your head around what the puzzling symbols and glyphs could mean, the writing begins to #b~glow.~ NL Suddenly, the message becomes clear...",
+      "The answer was elegance. NL Of course.",
+      "The truth is always simple.",
+      "You decide to seek for your own answer."
+    ],
+    "OPTIONS": [
+      "[Elegance] #gRemove #ga #gcard #gfrom #gyour #gdeck.",
+      "[Locked] Requires: Removable card.",
+      "[Simplicity] #gDuplicate #ga #gBasic #gcard #gin #gyour #gdeck.",
+      "[Locked] Requires: Basic card.",
+      "[Ignore]",
+      "Select a Card to Remove.",
+      "Select a Card to Duplicate.",
+      "[Leave]"
     ]
   }
 }

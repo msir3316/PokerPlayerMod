@@ -10,7 +10,7 @@ import ThePokerPlayer.patches.ThePokerPlayerEnum;
 import ThePokerPlayer.relics.*;
 import ThePokerPlayer.variables.DefaultCustomVariable;
 import basemod.BaseMod;
-import basemod.ModLabel;
+import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
 import basemod.abstracts.CustomCard;
 import basemod.interfaces.*;
@@ -18,14 +18,17 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.colorless.*;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -88,7 +91,7 @@ public class PokerPlayerMod
 	// Logics
 	public static AbstractCard cardSelectScreenCard;
 	public static float transformAnimTimer;
-	public static HashMap<AbstractCard, AbstractCard> shapeshiftReturns;
+	public static HashMap<AbstractCard, AbstractCard> shapeshiftReturns = new HashMap<>();
 	public static int genCards;
 
 	// Modules
@@ -96,11 +99,17 @@ public class PokerPlayerMod
 
 	// Bans
 	public static final ArrayList<String> bannedRelics = new ArrayList<>(Arrays.asList(
-			SneckoEye.ID, CentennialPuzzle.ID, RunicPyramid.ID, BagOfPreparation.ID, Pocketwatch.ID, GremlinHorn.ID, PandorasBox.ID
+			SneckoEye.ID, CentennialPuzzle.ID, RunicPyramid.ID, BagOfPreparation.ID, Pocketwatch.ID, GremlinHorn.ID, PandorasBox.ID, UnceasingTop.ID
 	));
 	public static final HashSet<String> bannedCards = new HashSet<>(Arrays.asList(
 			DeepBreath.ID, Impatience.ID, MasterOfStrategy.ID, Mayhem.ID, Magnetism.ID, Violence.ID
 	));
+
+	// Configs
+	public static Properties pokerDefaults = new Properties();
+	public static boolean exordiumAll = false;
+	ModLabeledToggleButton exordiumAllButton;
+
 	// =============== /INPUT TEXTURE LOCATION/ =================
 
 	/**
@@ -137,7 +146,7 @@ public class PokerPlayerMod
 	@SuppressWarnings("unused")
 	public static void initialize() {
 		logger.info("========================= Initializing Default Mod. Hi. =========================");
-		PokerPlayerMod defaultmod = new PokerPlayerMod();
+		PokerPlayerMod mod = new PokerPlayerMod();
 		logger.info("========================= /Default Mod Initialized/ =========================");
 	}
 
@@ -162,6 +171,30 @@ public class PokerPlayerMod
 
 	// =============== POST-INITIALIZE =================
 
+	public static void loadConfig() {
+		logger.debug("loadConfig started.");
+		try {
+			SpireConfig config = new SpireConfig("PokerPlayerMod", "PokerPlayerModSaveData", pokerDefaults);
+			config.load();
+			exordiumAll = config.getBool("exordiumAll");
+		} catch (Exception e) {
+			e.printStackTrace();
+			exordiumAll = false;
+		}
+		logger.debug("loadConfig finished.");
+	}
+
+	public static void saveConfig() {
+		logger.debug("saveConfig started.");
+		try {
+			SpireConfig config = new SpireConfig("GathererMod", "GathererSaveData", pokerDefaults);
+			config.setBool("exordiumAll", exordiumAll);
+			config.save();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		logger.debug("saveConfig finished.");
+	}
 
 	@Override
 	public void receivePostInitialize() {
@@ -170,9 +203,18 @@ public class PokerPlayerMod
 
 		// Create the Mod Menu
 		ModPanel settingsPanel = new ModPanel();
-		settingsPanel.addUIElement(new ModLabel("PokerPlayerMod doesn't have any settings.", 400.0f, 700.0f,
-				settingsPanel, (me) -> {
-		}));
+
+		exordiumAllButton = new ModLabeledToggleButton(
+				CardCrawlGame.languagePack.getUIString(PokerPlayerMod.makeID("ExordiumClubConfig")).TEXT[0],
+				400.0f, 480.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
+				exordiumAll, settingsPanel, (label) -> {
+		}, (button) -> {
+			exordiumAll = button.enabled;
+			saveConfig();
+		});
+
+		settingsPanel.addUIElement(exordiumAllButton);
+
 		BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 
 		pokerScoreViewer = new PokerScoreViewer();
@@ -275,6 +317,7 @@ public class PokerPlayerMod
 		cards.add(new SpadeStrike());
 		cards.add(new StackedDeck());
 		cards.add(new TheDieIsCast());
+		cards.add(new ThinkingTime());
 		cards.add(new Trickery());
 		cards.add(new TrumpStrike());
 		cards.add(new VarietyAttack());
@@ -379,7 +422,7 @@ public class PokerPlayerMod
 		ShowdownAction.otherCards.clear();
 		ShowdownAction.pendingEffects.clear();
 		PokerCardEndOfTurnAction.cards.clear();
-		shapeshiftReturns = new HashMap<>();
+		shapeshiftReturns.clear();
 		genCards = 0;
 	}
 

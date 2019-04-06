@@ -140,7 +140,7 @@ public class PokerCard extends CustomCard {
 		this(suit, rank, false);
 	}
 
-	private void initCard(boolean isEthereal) {
+	public void initCard(boolean isEthereal) {
 		this.name = getCardName(suit, rank);
 		if (suit == Suit.Heart && !this.tags.contains(CardTags.HEALING)) {
 			this.tags.add(CardTags.HEALING);
@@ -150,6 +150,10 @@ public class PokerCard extends CustomCard {
 		if (this.isEthereal) {
 			this.rawDescription = EXTENDED_DESCRIPTION[16] + this.rawDescription;
 		}
+		if (PokerPlayerMod.shapeshiftReturns.containsKey(this)) {
+			this.rawDescription += EXTENDED_DESCRIPTION[17];
+		}
+
 		this.initializeTitle();
 		this.initializeDescription();
 		this.cardID = getID(suit, rank);

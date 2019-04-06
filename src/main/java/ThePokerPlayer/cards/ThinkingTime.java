@@ -24,7 +24,7 @@ public class ThinkingTime extends CustomCard {
 	public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = CardColorEnum.POKER_PLAYER_GRAY;
-	private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.BASIC;
+	private static final AbstractCard.CardRarity RARITY = CardRarity.SPECIAL;
 	private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;
 
 	private static final int DRAW = 1;
