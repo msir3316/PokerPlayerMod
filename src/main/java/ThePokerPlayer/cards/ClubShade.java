@@ -2,7 +2,7 @@ package ThePokerPlayer.cards;
 
 import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.patches.CardColorEnum;
-import ThePokerPlayer.powers.RoundPower;
+import ThePokerPlayer.powers.ClubShadePower;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
@@ -13,8 +13,10 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class Round extends CustomCard {
-	private static final String RAW_ID = "Round";
+import static ThePokerPlayer.patches.CustomTags.POKER_PLAYER_CLUB;
+
+public class ClubShade extends CustomCard {
+	private static final String RAW_ID = "ClubShade";
 	public static final String ID = PokerPlayerMod.makeID(RAW_ID);
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
@@ -29,21 +31,22 @@ public class Round extends CustomCard {
 
 	private static final int POWER = 2;
 
-	public Round() {
+	public ClubShade() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		this.baseMagicNumber = POWER;
 		this.magicNumber = this.baseMagicNumber;
+		this.tags.add(POKER_PLAYER_CLUB);
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		if (upgraded) {
 			AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
 		}
-		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new RoundPower(p, p, this.magicNumber), this.magicNumber));
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new ClubShadePower(p, p, this.magicNumber), this.magicNumber));
 	}
 
 	public AbstractCard makeCopy() {
-		return new Round();
+		return new ClubShade();
 	}
 
 	public void upgrade() {

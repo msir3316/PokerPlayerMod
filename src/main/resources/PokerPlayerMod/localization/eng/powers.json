@@ -16,8 +16,8 @@
       " extra damage."
     ]
   },
-  "PokerPlayerMod:RoundPower": {
-    "NAME": "Round",
+  "PokerPlayerMod:ClubShadePower": {
+    "NAME": "Club Shade",
     "DESCRIPTIONS": [
       "During Showdown, your Clubs give you #b",
       " Block per card."

@@ -25,7 +25,7 @@
   },
   "PokerPlayerMod:BadJoker": {
     "NAME": "Bad Joker",
-    "DESCRIPTION": "Choose 1 of !M! random Poker Cards with 5 or less pokerplayer:Rank. pokerplayer:Transform to the chosen card for this turn."
+    "DESCRIPTION": "Choose 1 of !M! random pokerplayer:non-Heart Poker Cards to add to your hand. It has Ethereal."
   },
   "PokerPlayerMod:Mulligan": {
     "NAME": "Mulligan",
@@ -50,23 +50,23 @@
   },
   "PokerPlayerMod:DiamondStrike": {
     "NAME": "Diamond Strike",
-    "DESCRIPTION": "Deal !D! damage. NL pokerplayer:Transform to !M! of pokerplayer:Diamonds for this turn."
+    "DESCRIPTION": "Deal !D! damage. NL Add a !M! of pokerplayer:Diamonds with Ethereal into your hand."
   },
   "PokerPlayerMod:SpadeStrike": {
     "NAME": "Spade Strike",
-    "DESCRIPTION": "Deal !D! damage. NL pokerplayer:Transform to !M! of pokerplayer:Spades for this turn."
+    "DESCRIPTION": "Deal !D! damage. NL Add a !M! of pokerplayer:Spades with Ethereal into your hand."
   },
   "PokerPlayerMod:ClubStrike": {
     "NAME": "Club Strike",
-    "DESCRIPTION": "Deal !D! damage. NL pokerplayer:Transform to !M! of pokerplayer:Clubs for this turn."
+    "DESCRIPTION": "Deal !D! damage. NL Add a !M! of pokerplayer:Clubs with Ethereal into your hand."
   },
   "PokerPlayerMod:HeartStrike": {
     "NAME": "Heart Strike",
-    "DESCRIPTION": "Deal !D! damage. NL pokerplayer:Transform to !M! of pokerplayer:Hearts for this turn."
+    "DESCRIPTION": "Deal !D! damage. NL Add a !M! of pokerplayer:Hearts into your hand. NL Exhaust."
   },
   "PokerPlayerMod:CloakAndDiamond": {
     "NAME": "Cloak and Diamond",
-    "DESCRIPTION": "Gain !B! Block. NL pokerplayer:Transform to !M! of pokerplayer:Diamonds for this turn."
+    "DESCRIPTION": "Gain !B! Block. NL Add a !M! of pokerplayer:Diamonds with Ethereal into your hand."
   },
   "PokerPlayerMod:ClubsClub": {
     "NAME": "Clubs Club",
@@ -78,7 +78,7 @@
   },
   "PokerPlayerMod:FlyingCard": {
     "NAME": "Flying Card",
-    "DESCRIPTION": "Gain !B! Block and deal !D! damage for each card generated or pokerplayer:transformed in this combat.",
+    "DESCRIPTION": "Gain !B! Block and deal !D! damage for each card generated in this combat.",
     "EXTENDED_DESCRIPTION": [
       " NL ( !M! cards generated.)"
     ]
@@ -128,7 +128,7 @@
   },
   "PokerPlayerMod:ClubDance": {
     "NAME": "Club Dance",
-    "DESCRIPTION": "Choose 1 of !M! random pokerplayer:Clubs. pokerplayer:Transform to the chosen card for this turn."
+    "DESCRIPTION": "Choose 1 of !M! random pokerplayer:Clubs to add to your hand. It has Ethereal."
   },
   "PokerPlayerMod:FillThePot": {
     "NAME": "Fill the Pot",
@@ -153,7 +153,7 @@
   },
   "PokerPlayerMod:RiskyBet": {
     "NAME": "Risky Bet",
-    "DESCRIPTION": "Discard a card and draw a card. If they are both Poker cards with the same pokerplayer:Suit, gain [E] and draw !M! cards."
+    "DESCRIPTION": "Discard a card and draw a card. If they are both Poker cards with the same pokerplayer:Suit, draw !M! cards."
   },
   "PokerPlayerMod:CardPrinter": {
     "NAME": "Card Printer",
@@ -175,8 +175,8 @@
       "%)"
     ]
   },
-  "PokerPlayerMod:Round": {
-    "NAME": "Round",
+  "PokerPlayerMod:ClubShade": {
+    "NAME": "Club Shade",
     "DESCRIPTION": "Your pokerplayer:Clubs give you !M! Block during pokerplayer:Showdown.",
     "UPGRADE_DESCRIPTION": "Draw 1 card. NL Your pokerplayer:Clubs give you !M! Block during pokerplayer:Showdown."
   },

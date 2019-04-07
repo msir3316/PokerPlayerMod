@@ -16,8 +16,8 @@
       " 만큼 피해를 더 줍니다."
     ]
   },
-  "PokerPlayerMod:RoundPower": {
-    "NAME": "뭉툭함",
+  "PokerPlayerMod:ClubShadePower": {
+    "NAME": "클럽의 그림자",
     "DESCRIPTIONS": [
       "#y클럽 카드가 쇼다운 에서 방어도를 #b",
       " 만큼 줍니다."

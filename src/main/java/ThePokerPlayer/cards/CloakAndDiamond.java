@@ -1,10 +1,10 @@
 package ThePokerPlayer.cards;
 
 import ThePokerPlayer.PokerPlayerMod;
-import ThePokerPlayer.actions.PokerCardTransformAction;
 import ThePokerPlayer.patches.CardColorEnum;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -27,20 +27,19 @@ public class CloakAndDiamond extends CustomCard {
 
 	private static final int POWER = 6;
 	private static final int MAGIC = 4;
-	private static final int UPGRADE_MAGIC = 3;
+	private static final int UPGRADE_MAGIC = 2;
 
 	public CloakAndDiamond() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		this.baseBlock = POWER;
 		this.baseMagicNumber = MAGIC;
 		this.magicNumber = this.baseMagicNumber;
-		this.purgeOnUse = true;
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
 		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
-		AbstractCard c = new PokerCard(PokerCard.Suit.Diamond, this.magicNumber);
-		AbstractDungeon.actionManager.addToBottom(new PokerCardTransformAction(this, c));
+		AbstractCard c = new PokerCard(PokerCard.Suit.Diamond, this.magicNumber, true);
+		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c));
 	}
 
 	public AbstractCard makeCopy() {

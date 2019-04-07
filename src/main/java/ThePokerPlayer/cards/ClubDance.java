@@ -36,7 +36,6 @@ public class ClubDance extends CustomCard {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		this.baseMagicNumber = POWER;
 		this.magicNumber = this.baseMagicNumber;
-		this.purgeOnUse = true;
 		this.tags.add(POKER_PLAYER_CLUB);
 	}
 
@@ -45,7 +44,7 @@ public class ClubDance extends CustomCard {
 				new DamageInfo(p, this.damage, this.damageTypeForTurn),
 				AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
 
-		AbstractDungeon.actionManager.addToBottom(new PokerCardDiscoveryAction(this, this.magicNumber, PokerCard.Suit.Club));
+		AbstractDungeon.actionManager.addToBottom(new PokerCardDiscoveryAction(this.magicNumber, PokerCard.Suit.Club));
 	}
 
 	public AbstractCard makeCopy() {

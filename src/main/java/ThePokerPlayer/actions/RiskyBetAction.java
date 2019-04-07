@@ -30,11 +30,10 @@ public class RiskyBetAction extends AbstractGameAction {
 	public void update() {
 		if (this.duration == Settings.ACTION_DUR_FAST) {
 			if (this.p.hand.size() == 0) {
+				doAction(null);
 				this.isDone = true;
 				return;
-			}
-
-			if (this.p.hand.group.size() <= 1) {
+			} else if (this.p.hand.group.size() <= 1) {
 				for (AbstractCard c : this.p.hand.group) {
 					doAction(c);
 				}
@@ -65,7 +64,6 @@ public class RiskyBetAction extends AbstractGameAction {
 		AbstractCard card = AbstractDungeon.player.drawPile.getTopCard();
 		if (card instanceof PokerCard && c instanceof PokerCard && ((PokerCard) card).suit == ((PokerCard) c).suit) {
 			AbstractDungeon.actionManager.addToTop(new DrawCardAction(p, amount));
-			AbstractDungeon.actionManager.addToTop(new GainEnergyAction(1));
 			AbstractDungeon.actionManager.addToTop(new TalkAction(true, TEXT[1], 0.6f, 2.0f));
 		} else {
 			AbstractDungeon.actionManager.addToTop(new TalkAction(true, TEXT[2], 0.6f, 2.0f));

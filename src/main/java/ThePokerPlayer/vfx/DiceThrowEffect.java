@@ -28,6 +28,7 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import javax.vecmath.Matrix4f;
 import javax.vecmath.Quat4f;
 import javax.vecmath.Vector3f;
+import java.util.Set;
 
 public class DiceThrowEffect extends AbstractGameEffect {
 	public static final float STOP_DUR = 3.2f;
@@ -217,9 +218,10 @@ public class DiceThrowEffect extends AbstractGameEffect {
 
 	@Override
 	public void update() {
-		t += Gdx.graphics.getDeltaTime();
+		float dt = Gdx.graphics.getDeltaTime() * (Settings.FAST_MODE ? 1.5f : 1.0f);
+		t += dt;
 		if (t <= STOP_DUR) {
-			dynamicsWorld.stepSimulation(Gdx.graphics.getDeltaTime(), 10);
+			dynamicsWorld.stepSimulation(dt, 10);
 
 			setVertices();
 		} else if (t >= WAIT_DUR) {

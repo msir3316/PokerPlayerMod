@@ -8,10 +8,10 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class RoundPower extends AbstractPower {
+public class ClubShadePower extends AbstractPower {
 	public AbstractCreature source;
 
-	private static final String RAW_ID = "RoundPower";
+	private static final String RAW_ID = "ClubShadePower";
 	public static final String POWER_ID = PokerPlayerMod.makeID(RAW_ID);
 	private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
 	public static final String NAME = powerStrings.NAME;
@@ -21,7 +21,7 @@ public class RoundPower extends AbstractPower {
 	public static final TextureAtlas.AtlasRegion IMG48 = new TextureAtlas.AtlasRegion(
 			ImageMaster.loadImage(PokerPlayerMod.GetPowerPath(RAW_ID, 48)), 0, 0, 32, 32);
 
-	public RoundPower(AbstractCreature owner, AbstractCreature source, int amount) {
+	public ClubShadePower(AbstractCreature owner, AbstractCreature source, int amount) {
 		this.name = NAME;
 		this.ID = POWER_ID;
 		this.owner = owner;

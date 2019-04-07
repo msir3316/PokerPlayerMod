@@ -18,7 +18,7 @@ public class EnergeticBat extends CustomRelic {
 	public static final String OUTLINE = PokerPlayerMod.GetRelicOutlinePath(RAW_ID);
 
 	public EnergeticBat() {
-		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.UNCOMMON, LandingSound.HEAVY);
+		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.RARE, LandingSound.HEAVY);
 	}
 
 	public void onUseCard(AbstractCard card, UseCardAction action) {

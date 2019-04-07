@@ -177,7 +177,7 @@ public class PokerCard extends CustomCard {
 
 	@Override
 	public AbstractCard makeCopy() {
-		return new PokerCard(this.suit, this.rank);
+		return new PokerCard(this.suit, this.rank, this.isEthereal);
 	}
 
 	@Override

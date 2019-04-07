@@ -1,9 +1,9 @@
 package ThePokerPlayer.actions;
 
-import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.cards.PokerCard;
 import basemod.ReflectionHacks;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.ui.buttons.SkipCardButton;
 
 public class PokerCardDiscoveryAction extends AbstractGameAction {
 	private boolean retrieveCard = false;
-	private AbstractCard shapeshiftCard;
 	public static int choices;
 	public static PokerCard.Suit suit;
 	public static int min;
@@ -21,22 +20,22 @@ public class PokerCardDiscoveryAction extends AbstractGameAction {
 
 	public static boolean isActive = false;
 
-	public PokerCardDiscoveryAction(AbstractCard shapeshiftCard, int choices) {
-		this(shapeshiftCard, choices, null, 1, 10);
+	public PokerCardDiscoveryAction(int choices) {
+		this(choices, null, 1, 10);
 	}
 
-	public PokerCardDiscoveryAction(AbstractCard shapeshiftCard, int choices, PokerCard.Suit suit) {
-		this(shapeshiftCard, choices, suit, 1, 10);
+	public PokerCardDiscoveryAction(int choices, PokerCard.Suit suit) {
+		this(choices, suit, 1, 10);
 	}
 
-	public PokerCardDiscoveryAction(AbstractCard shapeshiftCard, int choices, int min, int max) {
-		this(shapeshiftCard, choices, null, min, max);
+	public PokerCardDiscoveryAction(int choices, int min, int max) {
+		this(choices, null, min, max);
 	}
 
-	public PokerCardDiscoveryAction(AbstractCard shapeshiftCard, int choices, PokerCard.Suit suit, int min, int max) {
+	// suit == null -> non-Heart
+	public PokerCardDiscoveryAction(int choices, PokerCard.Suit suit, int min, int max) {
 		this.actionType = ActionType.CARD_MANIPULATION;
 		this.duration = Settings.ACTION_DUR_FAST;
-		this.shapeshiftCard = shapeshiftCard;
 		PokerCardDiscoveryAction.choices = choices;
 		PokerCardDiscoveryAction.suit = suit;
 		PokerCardDiscoveryAction.min = min;
@@ -45,12 +44,6 @@ public class PokerCardDiscoveryAction extends AbstractGameAction {
 
 	public void update() {
 		if (this.duration == Settings.ACTION_DUR_FAST) {
-			for (AbstractCard c : PokerPlayerMod.shapeshiftReturns.values()) {
-				if (c.uuid == shapeshiftCard.uuid) {
-					this.isDone = true;
-					return;
-				}
-			}
 			isActive = true;
 			AbstractDungeon.cardRewardScreen.discoveryOpen();
 
@@ -59,8 +52,9 @@ public class PokerCardDiscoveryAction extends AbstractGameAction {
 			if (!this.retrieveCard) {
 				if (AbstractDungeon.cardRewardScreen.discoveryCard != null) {
 
-					AbstractDungeon.actionManager.addToTop(new PokerCardTransformAction(
-							shapeshiftCard, AbstractDungeon.cardRewardScreen.discoveryCard.makeStatEquivalentCopy()));
+					AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(
+							AbstractDungeon.cardRewardScreen.discoveryCard.makeStatEquivalentCopy(), true));
+
 					AbstractDungeon.cardRewardScreen.discoveryCard = null;
 
 					isActive = false;

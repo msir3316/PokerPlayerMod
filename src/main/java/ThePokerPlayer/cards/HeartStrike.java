@@ -1,7 +1,6 @@
 package ThePokerPlayer.cards;
 
 import ThePokerPlayer.PokerPlayerMod;
-import ThePokerPlayer.actions.PokerCardTransformAction;
 import ThePokerPlayer.patches.CardColorEnum;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -36,7 +35,7 @@ public class HeartStrike extends CustomCard {
 		this.baseDamage = POWER;
 		this.baseMagicNumber = MAGIC;
 		this.magicNumber = this.baseMagicNumber;
-		this.purgeOnUse = true;
+		this.exhaust = true;
 
 		this.tags.add(CardTags.STRIKE);
 		this.tags.add(CardTags.HEALING);
@@ -47,7 +46,7 @@ public class HeartStrike extends CustomCard {
 				new DamageInfo(p, this.damage, this.damageTypeForTurn),
 				AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
 		AbstractCard c = new PokerCard(PokerCard.Suit.Heart, this.magicNumber);
-		AbstractDungeon.actionManager.addToBottom(new PokerCardTransformAction(this, c));
+		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c));
 	}
 
 	public AbstractCard makeCopy() {

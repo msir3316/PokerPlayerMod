@@ -20,9 +20,10 @@ public class DiscoveryPatch {
 			if (PokerCardDiscoveryAction.isActive) {
 				return new PokerCard(
 						PokerCardDiscoveryAction.suit == null ?
-								PokerCard.Suit.values()[AbstractDungeon.cardRandomRng.random(3)] :
+								PokerCard.Suit.values()[AbstractDungeon.cardRandomRng.random(2) + 1] :
 								PokerCardDiscoveryAction.suit,
-						AbstractDungeon.cardRandomRng.random(PokerCardDiscoveryAction.min, PokerCardDiscoveryAction.max));
+						AbstractDungeon.cardRandomRng.random(PokerCardDiscoveryAction.min, PokerCardDiscoveryAction.max),
+						true);
 			} else {
 				return __result;
 			}
@@ -49,6 +50,9 @@ public class DiscoveryPatch {
 					if (!dupe) {
 						derp.add(tmp.makeCopy());
 					}
+				}
+				for (int i = derp.size() - 1; i >= PokerCardDiscoveryAction.choices; i--) {
+					derp.remove(i);
 				}
 			}
 		}

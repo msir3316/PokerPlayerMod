@@ -99,7 +99,7 @@ public class PokerPlayerMod
 
 	// Bans
 	public static final ArrayList<String> bannedRelics = new ArrayList<>(Arrays.asList(
-			SneckoEye.ID, CentennialPuzzle.ID, RunicPyramid.ID, BagOfPreparation.ID, Pocketwatch.ID, GremlinHorn.ID, PandorasBox.ID, UnceasingTop.ID
+			SneckoEye.ID, CentennialPuzzle.ID, RunicPyramid.ID, BagOfPreparation.ID, Pocketwatch.ID, GremlinHorn.ID, PandorasBox.ID, UnceasingTop.ID, DeadBranch.ID
 	));
 	public static final HashSet<String> bannedCards = new HashSet<>(Arrays.asList(
 			DeepBreath.ID, Impatience.ID, MasterOfStrategy.ID, Mayhem.ID, Magnetism.ID, Violence.ID
@@ -309,7 +309,7 @@ public class PokerPlayerMod
 		cards.add(new Promotion());
 		cards.add(new Raise());
 		cards.add(new RiskyBet());
-		cards.add(new Round());
+		cards.add(new ClubShade());
 		cards.add(new RoyalStrike());
 		cards.add(new SecondChance());
 		cards.add(new SecretDealer());

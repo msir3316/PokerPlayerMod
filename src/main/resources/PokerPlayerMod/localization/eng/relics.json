@@ -54,9 +54,9 @@
   },
   "PokerPlayerMod:Splitter": {
     "NAME": "Splitter",
-    "FLAVOR": "The magical abilities of Poker cards shine!",
+    "FLAVOR": "The magical abilities of lower Poker cards shine!",
     "DESCRIPTIONS": [
-      "Whenever you play a Poker card, deal #b",
+      "Whenever you play a Poker card #ypokerplayer:ranked #b3 or less, deal #b",
       " damage to ALL enemies."
     ]
   },

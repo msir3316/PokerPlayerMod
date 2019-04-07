@@ -1,10 +1,10 @@
 package ThePokerPlayer.cards;
 
 import ThePokerPlayer.PokerPlayerMod;
-import ThePokerPlayer.actions.PokerCardTransformAction;
 import ThePokerPlayer.patches.CardColorEnum;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -26,17 +26,16 @@ public class DiamondStrike extends CustomCard {
 	private static final AbstractCard.CardRarity RARITY = CardRarity.COMMON;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
 
-	private static final int POWER = 6;
-	private static final int UPGRADE_BONUS = 2;
-	private static final int MAGIC = 5;
-	private static final int UPGRADE_MAGIC = 2;
+	private static final int POWER = 8;
+	private static final int UPGRADE_BONUS = 3;
+	private static final int MAGIC = 4;
+	private static final int UPGRADE_MAGIC = 1;
 
 	public DiamondStrike() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		this.baseDamage = POWER;
 		this.baseMagicNumber = MAGIC;
 		this.magicNumber = this.baseMagicNumber;
-		this.purgeOnUse = true;
 
 		this.tags.add(CardTags.STRIKE);
 	}
@@ -45,8 +44,8 @@ public class DiamondStrike extends CustomCard {
 		AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
 				new DamageInfo(p, this.damage, this.damageTypeForTurn),
 				AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-		AbstractCard c = new PokerCard(PokerCard.Suit.Diamond, this.magicNumber);
-		AbstractDungeon.actionManager.addToBottom(new PokerCardTransformAction(this, c));
+		AbstractCard c = new PokerCard(PokerCard.Suit.Diamond, this.magicNumber, true);
+		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c));
 	}
 
 	public AbstractCard makeCopy() {

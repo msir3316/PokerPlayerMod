@@ -25,7 +25,7 @@
   },
   "PokerPlayerMod:BadJoker": {
     "NAME": "불완전한 조커",
-    "DESCRIPTION": "pokerplayer:등급 이 5 이하인 무작위 !M! 장의 포커 카드 중 1장을 선택합니다. 이번 턴 동안 그 카드로 pokerplayer:변화 합니다."
+    "DESCRIPTION": "pokerplayer:하트 가 아닌 무작위 !M! 장의 포커 카드 중 1장을 선택해 손으로 가져옵니다. 그 카드는 휘발성 이 있습니다."
   },
   "PokerPlayerMod:Mulligan": {
     "NAME": "멀리건",
@@ -50,23 +50,23 @@
   },
   "PokerPlayerMod:DiamondStrike": {
     "NAME": "다이아몬드 타격",
-    "DESCRIPTION": "피해를 !D! 줍니다. NL 이번 턴 동안 pokerplayer:다이아몬드 !M! 카드로 pokerplayer:변화 합니다."
+    "DESCRIPTION": "피해를 !D! 줍니다. NL 휘발성 이 있는 pokerplayer:다이아몬드 !M! 카드를 1장 얻습니다."
   },
   "PokerPlayerMod:SpadeStrike": {
     "NAME": "스페이드 타격",
-    "DESCRIPTION": "피해를 !D! 줍니다. NL 이번 턴 동안 pokerplayer:스페이드 !M! 카드로 pokerplayer:변화 합니다."
+    "DESCRIPTION": "피해를 !D! 줍니다. NL 휘발성 이 있는 pokerplayer:스페이드 !M! 카드를 1장 얻습니다."
   },
   "PokerPlayerMod:ClubStrike": {
     "NAME": "클럽 타격",
-    "DESCRIPTION": "피해를 !D! 줍니다. NL 이번 턴 동안 pokerplayer:클럽 !M! 카드로 pokerplayer:변화 합니다."
+    "DESCRIPTION": "피해를 !D! 줍니다. NL 휘발성 이 있는 pokerplayer:클럽 !M! 카드를 1장 얻습니다."
   },
   "PokerPlayerMod:HeartStrike": {
     "NAME": "하트 타격",
-    "DESCRIPTION": "피해를 !D! 줍니다. NL 이번 턴 동안 pokerplayer:하트 !M! 카드로 pokerplayer:변화 합니다."
+    "DESCRIPTION": "피해를 !D! 줍니다. NL pokerplayer:하트 !M! 카드를 1장 얻습니다. NL 소멸"
   },
   "PokerPlayerMod:CloakAndDiamond": {
     "NAME": "망토와 다이아몬드",
-    "DESCRIPTION": "방어도 를 !B! 얻습니다. NL 이번 턴 동안 pokerplayer:다이아몬드 !M! 카드로 pokerplayer:변화 합니다."
+    "DESCRIPTION": "방어도 를 !B! 얻습니다. NL 휘발성 이 있는 pokerplayer:다이아몬드 !M! 카드를 1장 얻습니다."
   },
   "PokerPlayerMod:ClubsClub": {
     "NAME": "클럽 클럽",
@@ -78,7 +78,7 @@
   },
   "PokerPlayerMod:FlyingCard": {
     "NAME": "플라잉 카드",
-    "DESCRIPTION": "이번 전투에서 생성되거나 변화된 카드 1장당 방어도 를 !B! 얻고 피해를 !D! 줍니다.",
+    "DESCRIPTION": "이번 전투에서 아무튼 생성된 카드 1장당 방어도 를 !B! 얻고 피해를 !D! 줍니다.",
     "EXTENDED_DESCRIPTION": [
       " NL ( !M! 장 생성됨.)"
     ]
@@ -128,7 +128,7 @@
   },
   "PokerPlayerMod:ClubDance": {
     "NAME": "클럽 댄스",
-    "DESCRIPTION": "무작위 !M! 장의 pokerplayer:클럽 카드 중 1장을 선택합니다. 이번 턴 동안 그 카드로 pokerplayer:변화 합니다."
+    "DESCRIPTION": "무작위 !M! 장의 pokerplayer:클럽 카드 중 1장을 선택하여 손으로 가져옵니다. 그 카드는 휘발성 이 있습니다."
   },
   "PokerPlayerMod:FillThePot": {
     "NAME": "판돈 키우기",
@@ -147,13 +147,13 @@
     "DESCRIPTION": "방어도 를 !B! 얻습니다. NL 약화 를 !M! 부여합니다. NL 취약 을 !M! 부여합니다. NL 소멸."
   },
   "PokerPlayerMod:Overdeal": {
-    "NAME": "초과 딜링",
+    "NAME": "초과 배분",
     "DESCRIPTION": "무작위 포커 카드를 X 장 얻습니다. NL 소멸.",
     "UPGRADE_DESCRIPTION": "무작위 포커 카드를 X+1 장 얻습니다. NL 소멸."
   },
   "PokerPlayerMod:RiskyBet": {
     "NAME": "위험한 도박",
-    "DESCRIPTION": "카드를 1장 버리고 1장 뽑습니다. 만약 그 두 카드가 pokerplayer:무늬 가 같은 포커 카드이면, [E] 를 얻고 카드를 !M! 장 뽑습니다."
+    "DESCRIPTION": "카드를 1장 버리고 1장 뽑습니다. 만약 그 두 카드가 pokerplayer:무늬 가 같은 포커 카드이면, 카드를 !M! 장 뽑습니다."
   },
   "PokerPlayerMod:CardPrinter": {
     "NAME": "카드 인쇄기",
@@ -175,8 +175,8 @@
       "%)"
     ]
   },
-  "PokerPlayerMod:Round": {
-    "NAME": "뭉툭함",
+  "PokerPlayerMod:ClubShade": {
+    "NAME": "클럽의 그림자",
     "DESCRIPTION": "pokerplayer:클럽 카드가 pokerplayer:쇼다운 에서 방어도를 !M! 만큼 줍니다.",
     "UPGRADE_DESCRIPTION": "카드를 1장 뽑습니다. NL pokerplayer:클럽 카드가 pokerplayer:쇼다운 에서 방어도를 !M! 만큼 줍니다."
   },

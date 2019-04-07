@@ -100,8 +100,8 @@ public class ShowdownAction extends AbstractGameAction {
 				pow[PokerCard.Suit.Diamond.value] += AbstractDungeon.player.getPower(SharpenPower.POWER_ID).amount;
 			}
 			if (card.suit == PokerCard.Suit.Club) {
-				if (AbstractDungeon.player.hasPower(RoundPower.POWER_ID)) {
-					pow[PokerCard.Suit.Spade.value] += AbstractDungeon.player.getPower(RoundPower.POWER_ID).amount;
+				if (AbstractDungeon.player.hasPower(ClubShadePower.POWER_ID)) {
+					pow[PokerCard.Suit.Spade.value] += AbstractDungeon.player.getPower(ClubShadePower.POWER_ID).amount;
 				}
 				if (AbstractDungeon.player.hasRelic(ClubPass.ID)) {
 					pow[PokerCard.Suit.Club.value] += AbstractDungeon.player.getRelic(ClubPass.ID).counter;
