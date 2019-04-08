@@ -40,12 +40,14 @@ public class ShowdownAction extends AbstractGameAction {
 	public static final float DUR_DELTA = 0.05f;
 	public static final float DUR = EFFECT_DUR + DUR_DELTA * 2;
 
+	public static final int MULTIPLIER = 25;
+
 	public static LinkedList<ImmutablePair<PokerCard.Suit, AbstractMonster>> pendingEffects = new LinkedList<>();
 	public static boolean onAction;
 
 	private float timer;
 	private int index;
-	private static boolean[] parity;
+	private static int[] partial;
 	private boolean init;
 
 	public static int[] pow = new int[4];
@@ -92,7 +94,7 @@ public class ShowdownAction extends AbstractGameAction {
 
 		pow = new int[4];
 		powView = new int[4];
-		parity = new boolean[4];
+		partial = new int[4];
 		for (PokerCard card : pokerCards) {
 			pow[card.suit.value] += card.rank;
 
@@ -164,7 +166,7 @@ public class ShowdownAction extends AbstractGameAction {
 	}
 
 	public static int modifierByHand(int hand) {
-		int result = hand * 50;
+		int result = hand * MULTIPLIER;
 		if (hand == 5) {
 			int straightModifier = 1;
 			if (AbstractDungeon.currMapNode != null &&
@@ -179,7 +181,7 @@ public class ShowdownAction extends AbstractGameAction {
 	}
 
 	public static int flushModifier() {
-		return 200;
+		return 4 * MULTIPLIER;
 	}
 
 	public static String getHandName() {
@@ -262,8 +264,10 @@ public class ShowdownAction extends AbstractGameAction {
 	}
 
 	private void doEffect(PokerCard.Suit suit, AbstractMonster target) {
-		int eff = 1 + (parity[suit.value] ? (modifier / 50 + 1) / 2 : modifier / 50 / 2);
-		parity[suit.value] = !parity[suit.value];
+		partial[suit.value] += modifier;
+		int eff = 1 + partial[suit.value] / 100;
+		partial[suit.value] %= 100;
+
 		switch (suit) {
 			case Spade:
 				AbstractDungeon.effectList.add(new FlashAtkImgEffect(p.hb.cX, p.hb.cY, AbstractGameAction.AttackEffect.SHIELD));

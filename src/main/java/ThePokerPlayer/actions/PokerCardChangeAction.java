@@ -103,10 +103,14 @@ public class PokerCardChangeAction extends AbstractGameAction {
 							return;
 						}
 						if (this.p.hand.group.size() - this.nonPokerCards.size() <= amount) {
+							ArrayList<PokerCard> cardToAction = new ArrayList<>();
 							for (AbstractCard c : this.p.hand.group) {
 								if (c instanceof PokerCard) {
-									doRoyalStrike((PokerCard) c);
+									cardToAction.add((PokerCard) c);
 								}
+							}
+							for (PokerCard c : cardToAction) {
+								doRoyalStrike(c);
 							}
 							this.isDone = true;
 							return;

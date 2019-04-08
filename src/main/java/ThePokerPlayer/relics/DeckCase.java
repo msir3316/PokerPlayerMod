@@ -11,7 +11,7 @@ public class DeckCase extends CustomRelic {
 	public static final String ID = PokerPlayerMod.makeID(RAW_ID);
 	public static final String IMG = PokerPlayerMod.GetRelicPath(RAW_ID);
 	public static final String OUTLINE = PokerPlayerMod.GetRelicOutlinePath(RAW_ID);
-	public static final int EXHAUST_COUNT = 5;
+	public static final int EXHAUST_COUNT = 6;
 
 	public DeckCase() {
 		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.STARTER, LandingSound.FLAT);

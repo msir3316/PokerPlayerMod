@@ -187,7 +187,7 @@
   },
   "PokerPlayerMod:ChangeRules": {
     "NAME": "규칙 파괴",
-    "DESCRIPTION": "피해를 !D! 줍니다. NL 힘 을 !M! 얻습니다."
+    "DESCRIPTION": "피해를 !D! 줍니다. NL 힘 을 !M! 얻습니다. NL 민첩 을 !M! 얻습니다."
   },
   "PokerPlayerMod:RoyalStrike": {
     "NAME": "로얄 타격",
