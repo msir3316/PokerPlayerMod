@@ -52,8 +52,8 @@ public class DamnStraight extends CustomCard {
 
 	private void updateDescription() {
 		this.rawDescription = (upgraded ? UPGRADE_DESCRIPTION : DESCRIPTION) +
-				EXTENDED_DESCRIPTION[0] + ShowdownAction.modifierByHand(5) +
-				EXTENDED_DESCRIPTION[1] + ShowdownAction.modifierByHand(5) * 2 +
+				EXTENDED_DESCRIPTION[0] + ShowdownAction.modifierByHand(ShowdownAction.STRAIGHT) +
+				EXTENDED_DESCRIPTION[1] + ShowdownAction.modifierByHand(ShowdownAction.STRAIGHT) * 2 +
 				EXTENDED_DESCRIPTION[2];
 		this.initializeDescription();
 	}

@@ -133,9 +133,9 @@ public class ThePokerPlayer extends CustomPlayer {
 		retVal.add(PokerCard.getID(PokerCard.Suit.Spade, 2));
 		retVal.add(PokerCard.getID(PokerCard.Suit.Spade, 3));
 		retVal.add(PokerCard.getID(PokerCard.Suit.Spade, 4));
-		retVal.add(PokerCard.getID(PokerCard.Suit.Heart, 1));
 		retVal.add(PokerCard.getID(PokerCard.Suit.Club, 1));
 		retVal.add(PokerCard.getID(PokerCard.Suit.Club, 2));
+		retVal.add(PokerCard.getID(PokerCard.Suit.Heart, 2));
 		retVal.add(TrumpStrike.ID);
 		retVal.add(BadJoker.ID);
 		retVal.add(Mulligan.ID);

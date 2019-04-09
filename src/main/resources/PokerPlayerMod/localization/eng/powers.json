@@ -33,7 +33,7 @@
   "PokerPlayerMod:GamblerFormPower": {
     "NAME": "Gambler Form",
     "DESCRIPTIONS": [
-      "If you score two pair or better, the Showdown effect of all Poker cards are increased by #b",
+      "If you score Two Pair or better, the Showdown effect of all Poker cards are increased by #b",
       "."
     ]
   },

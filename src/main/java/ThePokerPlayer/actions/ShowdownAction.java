@@ -40,7 +40,21 @@ public class ShowdownAction extends AbstractGameAction {
 	public static final float DUR_DELTA = 0.05f;
 	public static final float DUR = EFFECT_DUR + DUR_DELTA * 2;
 
-	public static final int MULTIPLIER = 25;
+	public static final int NO_PAIR = 0;
+	public static final int ONE_PAIR = 1;
+	public static final int TWO_PAIR = 2;
+	public static final int TRIPLE = 3;
+	public static final int STRAIGHT = 4;
+	public static final int FULL_HOUSE = 5;
+	public static final int FOUR_CARD = 6;
+	public static final int FIVE_CARD = 7;
+	public static final int EXCLAMATION = 8;
+	public static final int FLUSH = 9;
+	public static final int BONUS1 = 10;
+	public static final int BONUS2 = 11;
+	public static final int[] MODIFIER_BONUS = new int[]{
+			0, 25, 50, 100, 150, 150, 200, 250, 0, 150
+	};
 
 	public static LinkedList<ImmutablePair<PokerCard.Suit, AbstractMonster>> pendingEffects = new LinkedList<>();
 	public static boolean onAction;
@@ -118,20 +132,15 @@ public class ShowdownAction extends AbstractGameAction {
 		flush = false;
 		for (int i = 1; i <= 10; i++) {
 			if (nums[i] >= 5) {
-				hand = 8;
+				hand = FIVE_CARD;
 			} else if (nums[i] == 4) {
-				if (hand < 6) hand = 6;
+				if (hand < FOUR_CARD) hand = FOUR_CARD;
 			} else if (nums[i] == 3) {
-				if (hand >= 1 && hand <= 3) hand = 4;
-				else if (hand < 1) hand = 3;
+				if (hand >= ONE_PAIR && hand <= TRIPLE) hand = FULL_HOUSE;
+				else if (hand < ONE_PAIR) hand = TRIPLE;
 			} else if (nums[i] == 2) {
-				if (hand <= 3 && hand != 2) hand++;
-			}
-		}
-
-		if (hand >= 2 && AbstractDungeon.player.hasPower(GamblerFormPower.POWER_ID)) {
-			for (PokerCard card : pokerCards) {
-				pow[card.suit.value] += AbstractDungeon.player.getPower(GamblerFormPower.POWER_ID).amount;
+				if (hand == TRIPLE) hand = FULL_HOUSE;
+				else if (hand <= ONE_PAIR) hand++;
 			}
 		}
 
@@ -139,10 +148,10 @@ public class ShowdownAction extends AbstractGameAction {
 		if (AbstractDungeon.player.hasPower(DamnStraightPower.POWER_ID)) {
 			straightModifier <<= AbstractDungeon.player.getPower(DamnStraightPower.POWER_ID).amount;
 		}
-		if (hand < 5 || straightModifier > 1) {
+		if (hand < STRAIGHT || straightModifier > 1) {
 			for (int i = 1; i <= 6; i++) {
 				if (nums[i] >= 1 && nums[i + 1] >= 1 && nums[i + 2] >= 1 && nums[i + 3] >= 1 && nums[i + 4] >= 1) {
-					hand = 5;
+					hand = STRAIGHT;
 					break;
 				}
 			}
@@ -158,16 +167,21 @@ public class ShowdownAction extends AbstractGameAction {
 			}
 		}
 
-		modifier = modifierByHand(hand);
-		if (flush) modifier += flushModifier();
+		if ((hand >= 2 || flush) && AbstractDungeon.player.hasPower(GamblerFormPower.POWER_ID)) {
+			for (PokerCard card : pokerCards) {
+				pow[card.suit.value] += AbstractDungeon.player.getPower(GamblerFormPower.POWER_ID).amount;
+			}
+		}
+
+		modifier = modifierByHand(hand) + (flush ? MODIFIER_BONUS[FLUSH] : 0);
 
 		for (int i = 0; i < 4; i++)
 			powView[i] = pow[i] * (100 + modifier) / 100;
 	}
 
 	public static int modifierByHand(int hand) {
-		int result = hand * MULTIPLIER;
-		if (hand == 5) {
+		int result = MODIFIER_BONUS[hand];
+		if (hand == STRAIGHT) {
 			int straightModifier = 1;
 			if (AbstractDungeon.currMapNode != null &&
 					AbstractDungeon.getCurrRoom() != null &&
@@ -180,12 +194,8 @@ public class ShowdownAction extends AbstractGameAction {
 		return result;
 	}
 
-	public static int flushModifier() {
-		return 4 * MULTIPLIER;
-	}
-
 	public static String getHandName() {
-		return flush ? (hand == 0 ? TEXT[10] : TEXT[hand] + TEXT[10]) : TEXT[hand];
+		return flush ? (hand == 0 ? TEXT[FLUSH] : TEXT[hand] + TEXT[FLUSH]) : TEXT[hand];
 	}
 
 	@Override
@@ -205,8 +215,8 @@ public class ShowdownAction extends AbstractGameAction {
 			index = 0;
 			init = true;
 
-			String msg = getHandName() + TEXT[9];
-			if (modifier > 0) msg += TEXT[11] + modifier + TEXT[12];
+			String msg = getHandName() + TEXT[EXCLAMATION];
+			if (modifier > 0) msg += TEXT[BONUS1] + modifier + TEXT[BONUS2];
 			AbstractDungeon.effectList.add(new SpeechBubble(p.dialogX, p.dialogY, TALK_DUR, msg, true));
 		}
 

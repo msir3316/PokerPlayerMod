@@ -229,8 +229,8 @@
   },
   "PokerPlayerMod:GamblerForm": {
     "NAME": "Gambler Form",
-    "DESCRIPTION": "If you score two pair or better, the pokerplayer:Showdown effect of all Poker cards are increased by !M! .",
-    "UPGRADE_DESCRIPTION": "Draw 1 card. NL If you score two pair or better, the pokerplayer:Showdown effect of all Poker cards are increased by !M! ."
+    "DESCRIPTION": "If you score Two Pair or better, the pokerplayer:Showdown effect of all Poker cards are increased by !M! .",
+    "UPGRADE_DESCRIPTION": "Draw 1 card. NL If you score Two Pair or better, the pokerplayer:Showdown effect of all Poker cards are increased by !M! ."
   },
   "PokerPlayerMod:StackedDeck": {
     "NAME": "Stacked Deck",

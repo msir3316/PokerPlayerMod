@@ -107,9 +107,7 @@ public class PokerScoreViewer {
 	public String getTipBody() {
 		String result = TEXT[1] + " NL " + TEXT[2];
 
-		for (int i = 1; i <= 8; i++) {
-			if (i == 7) continue;
-
+		for (int i = 1; i <= ShowdownAction.FIVE_CARD; i++) {
 			if (i == ShowdownAction.hand) {
 				result += " NL " + highlightedText(ShowdownAction.TEXT[i]) + " : #b+" + ShowdownAction.modifierByHand(i) + "%";
 			} else {
@@ -118,9 +116,9 @@ public class PokerScoreViewer {
 		}
 
 		if (ShowdownAction.flush) {
-			result += " NL" + highlightedText(ShowdownAction.TEXT[10]) + " : #b+" + ShowdownAction.flushModifier() + "%";
+			result += " NL" + highlightedText(ShowdownAction.TEXT[ShowdownAction.FLUSH]) + " : #b+" + ShowdownAction.MODIFIER_BONUS[ShowdownAction.FLUSH] + "%";
 		} else {
-			result += " NL" + ShowdownAction.TEXT[10] + " : #b+" + ShowdownAction.flushModifier() + "%";
+			result += " NL" + ShowdownAction.TEXT[ShowdownAction.FLUSH] + " : #b+" + ShowdownAction.MODIFIER_BONUS[ShowdownAction.FLUSH] + "%";
 		}
 		return result;
 	}

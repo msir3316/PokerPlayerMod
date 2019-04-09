@@ -166,7 +166,7 @@
     ]
   },
   "PokerPlayerMod:DamnStraight": {
-    "NAME": "스트레이트 매니아",
+    "NAME": "직설적 표현",
     "DESCRIPTION": "스트레이트의 pokerplayer:쇼다운 보너스가 2배가 됩니다.",
     "UPGRADE_DESCRIPTION": "카드를 1장 뽑습니다. NL 스트레이트의 pokerplayer:쇼다운 보너스가 2배가 됩니다.",
     "EXTENDED_DESCRIPTION": [
