@@ -13,9 +13,6 @@ import javassist.CtBehavior;
 import java.util.ArrayList;
 
 public class PokerCardRewardPatch {
-	public static final int[] PRICE_RANK = new int[]{0, 10, 20, 30, 40, 50, 70, 90, 110, 130, 150};
-	public static final int[] PRICE_SUIT = new int[]{30, 10, 20, 0};
-
 	public static final int[] RATIO_RANK_NORMAL =
 			new int[]{0, 20, 20, 20, 20, 10, 4, 2, 2, 1, 1};
 	public static final int[] RATIO_RANK_NORMAL_NLOTH =
@@ -29,25 +26,6 @@ public class PokerCardRewardPatch {
 	public static final int[] RATIO_RANK_BOSS_NLOTH =
 			new int[]{0, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25};
 	public static final int[] RATIO_SUIT = new int[]{1, 3, 2, 4};
-
-	@SpirePatch(clz = ShopScreen.class, method = "initCards")
-	public static class PricePatch {
-		@SpireInsertPatch(locator = PokerCardRewardPatch.PriceLocator.class, localvars = {"c"})
-		public static void Insert(ShopScreen __instance, AbstractCard c) {
-			if (c instanceof PokerCard) {
-				PokerCard pc = (PokerCard) c;
-				c.price = (int) ((PRICE_RANK[pc.rank] + PRICE_SUIT[pc.suit.value]) * AbstractDungeon.merchantRng.random(0.9F, 1.1F));
-			}
-		}
-	}
-
-	private static class PriceLocator extends SpireInsertLocator {
-		@Override
-		public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {
-			Matcher finalMatcher = new Matcher.FieldAccessMatcher(AbstractCard.class, "current_x");
-			return LineFinder.findAllInOrder(ctMethodToPatch, finalMatcher);
-		}
-	}
 
 	@SpirePatch(clz = AbstractDungeon.class, method = "getRewardCards")
 	public static class RewardPatch {

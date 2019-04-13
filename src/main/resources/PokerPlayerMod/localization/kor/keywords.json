@@ -32,7 +32,7 @@
     "NAMES": [
       "하트"
     ],
-    "DESCRIPTION": "쇼다운 효과: 체력을 X 회복합니다."
+    "DESCRIPTION": "쇼다운 효과: 체력을 X 회복합니다. NL (하트는 휘발성 이 있습니다.)"
   },
   {
     "PROPER_NAME": "클럽 X",

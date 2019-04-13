@@ -11,11 +11,14 @@
     "NAME": "Vampires(?)",
     "DESCRIPTIONS": [
       "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~anomaly,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~",
-      "From the experience of Poker matches, you started to think hard. NL When it is over, the entire group of hooded figures disappeared, and you find yourself with a weird card in your hand.",
+      "From the experience of Poker matches, you started to think hard. NL When it was over, the entire group of hooded figures disappeared, and you find yourself with a weird card in your hand.",
+      "The pale figures gasp as you take out the #yBlood #yVial. NL ~\"The~ ~master's~ ~blood...~ ~the~ ~master's~ ~blood!~ @THE@ @MASTER'S@ @BLOOD!\"@ NL They all chant fervently as the tall one bows before you. \"Drink from His blood, and become one with #y~Him.\"~ NL The chant growing louder, you consume the contents of the vial. Your vision immediately ~warps~ and fades to darkness. NL NL You wake up some time later, alone. An intense ~hunger~ passes through your belly. You #rmust #rfeed.",
       "You step back and raise your cards in defiance. The tall figure sighs. \"Very well.\" The entire group of hooded figures morph into a thick black fog that flows away from you. NL You are alone once more."
     ],
     "OPTIONS": [
       "[Think Hard] #gRecieve Thinking Time.",
+      "[Lose ",
+      "] #gReceive Super Bite.",
       "[Refuse]",
       "[Leave]"
     ]
@@ -23,13 +26,13 @@
   "PokerPlayerMod:ExordiumClub": {
     "NAME": "Exordium Club",
     "DESCRIPTIONS": [
-      "\"Welcome to the Exordium Club!\" NL NL A loud voice is coming from a giant room. NL NL \"Do you like Jackpot? Or trade for wonders?\"",
-      "5 Clubs with Exordium power comes from the door.",
-      "As you throw one of your Poker card, a different one flies to you from the door.",
+      "\"Welcome to the Exordium Club!\" NL NL A loud voice is coming from afar. NL NL \"Do you like Jackpot? Or trade for wonders?\"",
+      " ~\"EXORDIA!!!\"~ With the screem, 5 Clubs flies to you.",
+      "As you throw one of your Poker card, a different one flies to you from nowhere.",
       "You don't need this suspicious help."
     ],
     "OPTIONS": [
-      "[Jackpot] #gReceive 2, 3, 4, 5, 6 of Clubs.",
+      "[Jackpot] #gReceive 3, 4, 5, 6, 7 of Clubs.",
       "[Trade] Remove a Poker card. Receive a random Clubs.",
       "[Locked] Requires: Poker card.",
       "[Ignore]",

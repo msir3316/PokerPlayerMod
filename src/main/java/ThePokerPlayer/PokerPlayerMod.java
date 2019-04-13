@@ -63,20 +63,20 @@ public class PokerPlayerMod
 	private static final String POKER_PLAYER_MOD_ASSETS_FOLDER = "PokerPlayerMod/images";
 
 	// Card backgrounds
-	private static final String ATTACK_DEAFULT_GRAY = "512/bg_attack_default_gray.png";
-	private static final String POWER_DEAFULT_GRAY = "512/bg_power_default_gray.png";
-	private static final String SKILL_DEAFULT_GRAY = "512/bg_skill_default_gray.png";
-	private static final String ENERGY_ORB_DEAFULT_GRAY = "512/card_default_gray_orb.png";
+	private static final String ATTACK_POKER_PLAYER_GRAY = "512/bg_attack_default_gray.png";
+	private static final String POWER_POKER_PLAYER_GRAY = "512/bg_power_default_gray.png";
+	private static final String SKILL_POKER_PLAYER_GRAY = "512/bg_skill_default_gray.png";
+	private static final String ENERGY_ORB_POKER_PLAYER_GRAY = "512/card_default_gray_orb.png";
 	private static final String CARD_ENERGY_ORB = "512/card_small_orb.png";
 
-	private static final String ATTACK_DEAFULT_GRAY_PORTRAIT = "1024/bg_attack_default_gray.png";
-	private static final String POWER_DEAFULT_GRAY_PORTRAIT = "1024/bg_power_default_gray.png";
-	private static final String SKILL_DEAFULT_GRAY_PORTRAIT = "1024/bg_skill_default_gray.png";
-	private static final String ENERGY_ORB_DEAFULT_GRAY_PORTRAIT = "1024/card_default_gray_orb.png";
+	private static final String ATTACK_POKER_PLAYER_GRAY_PORTRAIT = "1024/bg_attack_default_gray.png";
+	private static final String POWER_POKER_PLAYER_GRAY_PORTRAIT = "1024/bg_power_default_gray.png";
+	private static final String SKILL_POKER_PLAYER_GRAY_PORTRAIT = "1024/bg_skill_default_gray.png";
+	private static final String ENERGY_ORB_POKER_PLAYER_GRAY_PORTRAIT = "1024/card_default_gray_orb.png";
 
 	// Character assets
-	private static final String THE_DEFAULT_BUTTON = "charSelect/DefaultCharacterButton.png";
-	private static final String THE_DEFAULT_PORTRAIT = "charSelect/DeafultCharacterPortraitBG.png";
+	private static final String THE_DEFAULT_BUTTON = "charSelect/PokerPlayerButton.png";
+	private static final String THE_DEFAULT_PORTRAIT = "charSelect/PokerPlayerPortraitBG.png";
 	public static final String THE_DEFAULT_SHOULDER_1 = "char/ThePokerPlayer/shoulder.png";
 	public static final String THE_DEFAULT_SHOULDER_2 = "char/ThePokerPlayer/shoulder2.png";
 	public static final String THE_DEFAULT_CORPSE = "char/ThePokerPlayer/corpse.png";
@@ -134,20 +134,22 @@ public class PokerPlayerMod
 		logger.info("Creating the color " + CardColorEnum.POKER_PLAYER_GRAY.toString());
 
 		BaseMod.addColor(CardColorEnum.POKER_PLAYER_GRAY, POKER_PLAYER_GRAY, POKER_PLAYER_GRAY, POKER_PLAYER_GRAY,
-				POKER_PLAYER_GRAY, POKER_PLAYER_GRAY, POKER_PLAYER_GRAY, POKER_PLAYER_GRAY, makePath(ATTACK_DEAFULT_GRAY),
-				makePath(SKILL_DEAFULT_GRAY), makePath(POWER_DEAFULT_GRAY),
-				makePath(ENERGY_ORB_DEAFULT_GRAY), makePath(ATTACK_DEAFULT_GRAY_PORTRAIT),
-				makePath(SKILL_DEAFULT_GRAY_PORTRAIT), makePath(POWER_DEAFULT_GRAY_PORTRAIT),
-				makePath(ENERGY_ORB_DEAFULT_GRAY_PORTRAIT), makePath(CARD_ENERGY_ORB));
+				POKER_PLAYER_GRAY, POKER_PLAYER_GRAY, POKER_PLAYER_GRAY, POKER_PLAYER_GRAY, makePath(ATTACK_POKER_PLAYER_GRAY),
+				makePath(SKILL_POKER_PLAYER_GRAY), makePath(POWER_POKER_PLAYER_GRAY),
+				makePath(ENERGY_ORB_POKER_PLAYER_GRAY), makePath(ATTACK_POKER_PLAYER_GRAY_PORTRAIT),
+				makePath(SKILL_POKER_PLAYER_GRAY_PORTRAIT), makePath(POWER_POKER_PLAYER_GRAY_PORTRAIT),
+				makePath(ENERGY_ORB_POKER_PLAYER_GRAY_PORTRAIT), makePath(CARD_ENERGY_ORB));
 
 		logger.info("Done Creating the color");
+
+		loadConfig();
+
+		logger.debug("Constructor finished.");
 	}
 
 	@SuppressWarnings("unused")
 	public static void initialize() {
-		logger.info("========================= Initializing Default Mod. Hi. =========================");
 		PokerPlayerMod mod = new PokerPlayerMod();
-		logger.info("========================= /Default Mod Initialized/ =========================");
 	}
 
 	// ============== /SUBSCRIBE, CREATE THE COLOR, INITIALIZE/ =================
@@ -187,7 +189,7 @@ public class PokerPlayerMod
 	public static void saveConfig() {
 		logger.debug("saveConfig started.");
 		try {
-			SpireConfig config = new SpireConfig("GathererMod", "GathererSaveData", pokerDefaults);
+			SpireConfig config = new SpireConfig("PokerPlayerMod", "PokerPlayerModSaveData", pokerDefaults);
 			config.setBool("exordiumAll", exordiumAll);
 			config.save();
 		} catch (Exception e) {
@@ -322,6 +324,8 @@ public class PokerPlayerMod
 		cards.add(new TrumpStrike());
 		cards.add(new VarietyAttack());
 		cards.add(new WildCard());
+
+		cards.add(new SuperBite());
 
 		for (CustomCard card : cards) {
 			BaseMod.addCard(card);

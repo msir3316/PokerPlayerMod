@@ -5,8 +5,8 @@
     "Celicath"
   ],
   "credits": "HSymbol - original game",
-  "description": "Adds a character called The Poker Player, who fights with his own rule inspired from poker. Contains 83 cards and 12 relics.",
-  "version": "0.6.1",
+  "description": "Adds a character called The Poker Player, who fights with his own rule inspired from poker.\n\n- Adds 84 cards and 12 relics.\n- Contains a Poker Player exclusive event, which can be enabled for other characters in the config.",
+  "version": "0.7.0",
   "sts_version": "01-23-2019",
   "mts_version": "3.7.0",
   "dependencies": [

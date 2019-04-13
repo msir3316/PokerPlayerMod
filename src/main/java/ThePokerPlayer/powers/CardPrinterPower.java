@@ -5,6 +5,7 @@ import ThePokerPlayer.cards.PokerCard;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -40,9 +41,9 @@ public class CardPrinterPower extends AbstractPower implements NonStackablePower
 
 	@Override
 	public void atStartOfTurn() {
-		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDiscardAction(
+		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInDrawPileAction(
 				new PokerCard(PokerCard.Suit.values()[AbstractDungeon.cardRandomRng.random(2) + 1], amount),
-				1));
+				1, true, true));
 		this.flash();
 	}
 

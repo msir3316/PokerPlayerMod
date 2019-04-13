@@ -20,22 +20,19 @@ public class Manipulation extends CustomCard {
 	public static final String IMG = PokerPlayerMod.GetCardPath(RAW_ID);
 	private static final int COST = -1;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-	private static final AbstractCard.CardType TYPE = CardType.ATTACK;
+	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+	private static final AbstractCard.CardType TYPE = CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = CardColorEnum.POKER_PLAYER_GRAY;
 	private static final AbstractCard.CardRarity RARITY = CardRarity.UNCOMMON;
-	private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
-
-	private static final int POWER = 5;
-	private static final int UPGRADE_BONUS = 3;
+	private static final AbstractCard.CardTarget TARGET = CardTarget.SELF;
 
 	public Manipulation() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-		this.baseDamage = POWER;
+		this.exhaust = true;
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new ManipulationAction(p, m, this.damage, this.damageTypeForTurn, this.freeToPlayOnce, this.energyOnUse));
-		AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
+		AbstractDungeon.actionManager.addToBottom(new ManipulationAction(p, this.freeToPlayOnce, this.energyOnUse));
 	}
 
 	public AbstractCard makeCopy() {
@@ -45,7 +42,9 @@ public class Manipulation extends CustomCard {
 	public void upgrade() {
 		if (!upgraded) {
 			upgradeName();
-			this.upgradeDamage(UPGRADE_BONUS);
+			this.exhaust = false;
+			this.rawDescription = UPGRADE_DESCRIPTION;
+			this.initializeDescription();
 		}
 	}
 }

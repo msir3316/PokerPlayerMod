@@ -8,7 +8,6 @@ import ThePokerPlayer.cards.TrumpStrike;
 import ThePokerPlayer.patches.CardColorEnum;
 import ThePokerPlayer.relics.DeckCase;
 import basemod.abstracts.CustomPlayer;
-import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
@@ -67,9 +66,7 @@ public class ThePokerPlayer extends CustomPlayer {
 
 	public ThePokerPlayer(String name, PlayerClass setClass) {
 		super(name, setClass, orbTextures,
-				"PokerPlayerMod/images/char/ThePokerPlayer/orb/vfx.png", null,
-				new SpriterAnimation(
-						"PokerPlayerMod/images/char/ThePokerPlayer/Spriter/theDefaultAnimation.scml"));
+				"PokerPlayerMod/images/char/ThePokerPlayer/orb/vfx.png", null, null, null);
 
 
 		// =============== TEXTURES, ENERGY, LOADOUT =================
@@ -89,8 +86,9 @@ public class ThePokerPlayer extends CustomPlayer {
 				PokerPlayerMod.makePath(PokerPlayerMod.THE_DEFAULT_SKELETON_ATLAS),
 				PokerPlayerMod.makePath(PokerPlayerMod.THE_DEFAULT_SKELETON_JSON),
 				1.0f);
-		AnimationState.TrackEntry e = this.state.setAnimation(0, "animation", true);
+		AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
 		e.setTime(e.getEndTime() * MathUtils.random());
+		e.setTimeScale(0.75F);
 
 		// =============== /ANIMATIONS/ =================
 
@@ -166,7 +164,7 @@ public class ThePokerPlayer extends CustomPlayer {
 	// Character select on-button-press sound effect
 	@Override
 	public String getCustomModeCharacterButtonSoundKey() {
-		return "ATTACK_DAGGER_1";
+		return "CARD_DRAW_8";
 	}
 
 	// Should return how much HP your maximum HP reduces by when starting a run at

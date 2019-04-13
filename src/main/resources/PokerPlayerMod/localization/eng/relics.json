@@ -35,7 +35,7 @@
     "NAME": "Pen and Eraser",
     "FLAVOR": "The best tool for \"modifying\" poker cards.",
     "DESCRIPTIONS": [
-      "Upon pickup, raise the #ypokerplayer:Rank of two random Poker Cards by #b2."
+      "Upon pickup, raise the #ypokerplayer:Rank of two random Poker Cards by #b3."
     ]
   },
   "PokerPlayerMod:PendantOfEscape": {
@@ -69,7 +69,7 @@
   },
   "PokerPlayerMod:JackpotMachine": {
     "NAME": "Jackpot Machine",
-    "FLAVOR": "That feeling when you became a millionaire... in your dream.",
+    "FLAVOR": "Looks like a jackpot machine, but actually a calendar.",
     "DESCRIPTIONS": [
       "If you have #b3 or more Poker Cards with #ypokerplayer:Rank #b7 during Showdown, deal #b",
       " damage to ALL enemies."

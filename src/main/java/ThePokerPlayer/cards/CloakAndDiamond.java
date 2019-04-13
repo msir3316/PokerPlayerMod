@@ -27,7 +27,7 @@ public class CloakAndDiamond extends CustomCard {
 
 	private static final int POWER = 6;
 	private static final int MAGIC = 4;
-	private static final int UPGRADE_MAGIC = 2;
+	private static final int UPGRADE_MAGIC = 3;
 
 	public CloakAndDiamond() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

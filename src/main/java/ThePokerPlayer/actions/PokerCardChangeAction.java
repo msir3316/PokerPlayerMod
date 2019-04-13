@@ -93,6 +93,7 @@ public class PokerCardChangeAction extends AbstractGameAction {
 							return;
 						} else {
 							this.p.hand.group.removeAll(this.nonPokerCards);
+							ref = this;
 							AbstractDungeon.handCardSelectScreen.open(TEXT[2], amount, false, false, false, false);
 							this.tickDuration();
 							return;

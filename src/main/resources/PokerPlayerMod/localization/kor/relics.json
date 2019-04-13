@@ -35,7 +35,7 @@
     "NAME": "연필과 지우개",
     "FLAVOR": "포커 카드를 \"수정\" 하기 위한 최고의 도구입니다.",
     "DESCRIPTIONS": [
-      "획득 시 무작위 포커 카드 #b2 장을 #y강화 합니다."
+      "획득 시 무작위 포커 카드 #b2 장의 #ypokerplayer:등급 을 #b3 증가 시킵니다."
     ]
   },
   "PokerPlayerMod:PendantOfEscape": {
@@ -69,7 +69,7 @@
   },
   "PokerPlayerMod:JackpotMachine": {
     "NAME": "잭팟 머신",
-    "FLAVOR": "백만장자가 되었습니다! ...꿈에서요.",
+    "FLAVOR": "당신은 대박을 꿈꾸지만, 현실은 그 달력입니다.",
     "DESCRIPTIONS": [
       "쇼다운에서 #b3 장 이상의 #ypokerplayer:등급 #b7 포커카드를 가지고 있다면, 적 전체에게 피해를 #b",
       " 줍니다."
@@ -77,7 +77,7 @@
   },
   "PokerPlayerMod:StuffedPocket": {
     "NAME": "가득 찬 주머니",
-    "FLAVOR": "주머니를 너무 채우면 중요한 물건을 흘려버릴지도 모릅니다. 그걸 줍고 다니는 사람에게 도움이 될지도요.",
+    "FLAVOR": "주머니를 너무 채우면 중요한 물건을 흘려버릴 지도 모릅니다.",
     "DESCRIPTIONS": [
       "첫 턴에만 덱에 있는 카드 #b",
       " 장 마다 #b1 장의 카드를 추가로 뽑습니다."

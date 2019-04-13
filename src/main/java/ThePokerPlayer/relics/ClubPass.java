@@ -26,9 +26,11 @@ public class ClubPass extends CustomRelic {
 
 	public void onUseCard(AbstractCard card, UseCardAction action) {
 		if (card instanceof PokerCard && ((PokerCard) card).suit == PokerCard.Suit.Club || card.hasTag(POKER_PLAYER_CLUB)) {
+			this.flash();
 			AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
 			this.counter++;
 			if (card instanceof ClubsClub) {
+				this.flash();
 				AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
 				this.counter++;
 			}

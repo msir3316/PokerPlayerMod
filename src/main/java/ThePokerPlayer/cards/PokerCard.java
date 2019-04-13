@@ -6,6 +6,7 @@ import ThePokerPlayer.patches.CardColorEnum;
 import ThePokerPlayer.patches.CardTypeEnum;
 import ThePokerPlayer.patches.PokerCardTypePatch;
 import ThePokerPlayer.relics.AceCard;
+import basemod.ReflectionHacks;
 import basemod.abstracts.CustomCard;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
@@ -19,6 +20,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.GameDictionary;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -133,6 +135,8 @@ public class PokerCard extends CustomCard {
 
 		this.suit = suit;
 		this.rank = MathUtils.clamp(rank, 1, 10);
+		ReflectionHacks.setPrivate(this, AbstractCard.class, "bannerColor", CardHelper.getColor(168, 204, 159));
+
 		initCard(isEthereal);
 	}
 

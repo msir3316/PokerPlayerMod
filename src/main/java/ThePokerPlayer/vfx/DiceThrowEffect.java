@@ -132,13 +132,14 @@ public class DiceThrowEffect extends AbstractGameEffect {
 	public DiceThrowEffect(boolean upgraded) {
 		spots = new int[]{1, 2, 3, 4, 5, 6};
 		if (upgraded) {
-			int spotRng = AbstractDungeon.cardRandomRng.random(5039);
+			int spotRng = AbstractDungeon.cardRandomRng.random(18 * 16 * 14 * 12 - 1);
 			for (int i = 10; i >= 7; i--) {
-				int pos = spotRng % i;
+				int div = i * 2 - 2;
+				int pos = spotRng % div;
 				if (pos < 6) {
 					spots[pos] = i;
 				}
-				spotRng /= i;
+				spotRng /= div;
 			}
 		} else {
 			AbstractDungeon.cardRandomRng.random(48);

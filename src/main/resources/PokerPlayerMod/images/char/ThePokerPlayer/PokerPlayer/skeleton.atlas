@@ -1,0 +1,132 @@
+
+skeleton.png
+size: 512,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+shadow
+  rotate: false
+  xy: 1, 87
+  size: 306, 35
+  orig: 306, 35
+  offset: 0, 0
+  index: -1
+neck
+  rotate: false
+  xy: 177, 36
+  size: 33, 33
+  orig: 33, 33
+  offset: 0, 0
+  index: -1
+pants
+  rotate: false
+  xy: 1, 1
+  size: 132, 84
+  orig: 132, 84
+  offset: 0, 0
+  index: -1
+shirt
+  rotate: false
+  xy: 309, 1
+  size: 96, 98
+  orig: 96, 98
+  offset: 0, 0
+  index: -1
+pauldron_low_left
+  rotate: false
+  xy: 212, 68
+  size: 26, 16
+  orig: 30, 20
+  offset: 2, 2
+  index: -1
+pauldron_left
+  rotate: false
+  xy: 174, 1
+  size: 37, 33
+  orig: 37, 33
+  offset: 0, 0
+  index: -1
+pauldron_low_right
+  rotate: false
+  xy: 360, 101
+  size: 26, 16
+  orig: 30, 20
+  offset: 2, 2
+  index: -1
+pauldron_right
+  rotate: false
+  xy: 135, 39
+  size: 40, 31
+  orig: 40, 31
+  offset: 0, 0
+  index: -1
+boot_right
+  rotate: false
+  xy: 407, 1
+  size: 51, 67
+  orig: 51, 67
+  offset: 0, 0
+  index: -1
+boot_left
+  rotate: false
+  xy: 460, 1
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+glove_right
+  rotate: false
+  xy: 135, 1
+  size: 37, 36
+  orig: 41, 40
+  offset: 2, 2
+  index: -1
+glove_left
+  rotate: false
+  xy: 213, 1
+  size: 24, 15
+  orig: 28, 19
+  offset: 2, 2
+  index: -1
+hand_right
+  rotate: false
+  xy: 334, 101
+  size: 24, 19
+  orig: 24, 19
+  offset: 0, 0
+  index: -1
+card_front
+  rotate: false
+  xy: 212, 36
+  size: 25, 30
+  orig: 25, 30
+  offset: 0, 0
+  index: -1
+hand_left
+  rotate: false
+  xy: 309, 101
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: -1
+hair
+  rotate: false
+  xy: 407, 70
+  size: 31, 46
+  orig: 31, 46
+  offset: 0, 0
+  index: -1
+helmet
+  rotate: false
+  xy: 460, 66
+  size: 51, 46
+  orig: 51, 46
+  offset: 0, 0
+  index: -1
+eye
+  rotate: false
+  xy: 388, 101
+  size: 17, 16
+  orig: 21, 20
+  offset: 2, 2
+  index: -1

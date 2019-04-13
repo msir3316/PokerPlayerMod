@@ -24,8 +24,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import static ThePokerPlayer.actions.PokerCardChangeAction.Mode.RANK_CHANGE_ANY;
-import static ThePokerPlayer.actions.PokerCardChangeAction.Mode.RANK_CHANGE_SET;
+import static ThePokerPlayer.actions.PokerCardChangeAction.Mode.*;
 import static ThePokerPlayer.vfx.ShowdownEffect.EFFECT_DUR;
 
 public class ShowdownAction extends AbstractGameAction {
@@ -99,6 +98,13 @@ public class ShowdownAction extends AbstractGameAction {
 					if (c instanceof PokerCard) {
 						PokerCard pc = (PokerCard) c;
 						ShowdownAction.pokerCards.add(new PokerCard(pc.suit, PokerCardChangeAction.ref.rankChange));
+					}
+				}
+			} else if (PokerCardChangeAction.ref.mode == COPY) {
+				for (AbstractCard c : AbstractDungeon.handCardSelectScreen.selectedCards.group) {
+					if (c instanceof PokerCard) {
+						ShowdownAction.pokerCards.add((PokerCard) c);
+						ShowdownAction.pokerCards.add((PokerCard) c);
 					}
 				}
 			}

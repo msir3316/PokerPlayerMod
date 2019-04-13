@@ -21,7 +21,7 @@ public class PenAndEraser extends CustomRelic {
 	public static final String ID = PokerPlayerMod.makeID(RAW_ID);
 	public static final String IMG = PokerPlayerMod.GetRelicPath(RAW_ID);
 	public static final String OUTLINE = PokerPlayerMod.GetRelicOutlinePath(RAW_ID);
-	public static final int UPGRADE_AMOUNT = 2;
+	public static final int UPGRADE_AMOUNT = 3;
 
 	public PenAndEraser() {
 		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.SHOP, LandingSound.CLINK);
@@ -30,21 +30,26 @@ public class PenAndEraser extends CustomRelic {
 	public void onEquip() {
 		ArrayList<PokerCard> upgradableCards = new ArrayList<>();
 		ArrayList<PokerCard> upgradableCards2 = new ArrayList<>();
+		ArrayList<PokerCard> upgradableCards3 = new ArrayList<>();
 
 		for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
 			if (c instanceof PokerCard) {
 				PokerCard pc = (PokerCard) c;
-				if (pc.rank <= 8) {
+				if (pc.rank <= 7) {
 					upgradableCards.add(pc);
-				} else if (pc.rank == 9) {
+				} else if (pc.rank == 8) {
 					upgradableCards2.add(pc);
+				} else if (pc.rank == 9) {
+					upgradableCards3.add(pc);
 				}
 			}
 		}
 
 		Collections.shuffle(upgradableCards, new Random(AbstractDungeon.miscRng.randomLong()));
 		Collections.shuffle(upgradableCards2, new Random(AbstractDungeon.miscRng.randomLong()));
+		Collections.shuffle(upgradableCards3, new Random(AbstractDungeon.miscRng.randomLong()));
 		upgradableCards.addAll(upgradableCards2);
+		upgradableCards.addAll(upgradableCards3);
 
 		if (!upgradableCards.isEmpty()) {
 			if (upgradableCards.size() == 1) {

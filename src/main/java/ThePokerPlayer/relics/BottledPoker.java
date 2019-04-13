@@ -78,6 +78,7 @@ public class BottledPoker extends CustomRelic implements CustomBottleRelic, Cust
 		if (cardIndex == null) {
 			return;
 		}
+		cardSelected = true;
 		if (cardIndex >= 0 && cardIndex < AbstractDungeon.player.masterDeck.group.size()) {
 			bottledCard = AbstractDungeon.player.masterDeck.group.get(cardIndex);
 			if (bottledCard != null) {

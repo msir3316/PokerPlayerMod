@@ -115,7 +115,8 @@
   },
   "PokerPlayerMod:Manipulation": {
     "NAME": "조작",
-    "DESCRIPTION": "피해를 !D! 만큼 X 번 줍니다. 포커 카드 1장의 pokerplayer:등급 을 전투가 끝날 때 까지 X 올릴 수 있습니다. NL [E] 를 얻습니다."
+    "DESCRIPTION": "다음 X턴 동안, [E] [E] 를 추가로 얻습니다. NL 포커 카드 1장의 pokerplayer:등급 을 전투가 끝날 때 까지 X 올릴 수 있습니다. NL 소멸",
+    "UPGRADE_DESCRIPTION": "다음 X턴 동안, [E] [E] 를 추가로 얻습니다. NL 포커 카드 1장의 pokerplayer:등급 을 전투가 끝날 때 까지 X 올릴 수 있습니다."
   },
   "PokerPlayerMod:SecondChance": {
     "NAME": "두번째 기회",
@@ -148,8 +149,8 @@
   },
   "PokerPlayerMod:Overdeal": {
     "NAME": "초과 배분",
-    "DESCRIPTION": "무작위 포커 카드를 X 장 얻습니다. NL 소멸.",
-    "UPGRADE_DESCRIPTION": "무작위 포커 카드를 X+1 장 얻습니다. NL 소멸."
+    "DESCRIPTION": "피해를 X 줍니다. NL 무작위 포커 카드를 X 장 얻습니다. NL 소멸.",
+    "UPGRADE_DESCRIPTION": "피해를 X+1 줍니다. NL 무작위 포커 카드를 X+1 장 얻습니다. NL 소멸."
   },
   "PokerPlayerMod:RiskyBet": {
     "NAME": "위험한 도박",
@@ -157,7 +158,7 @@
   },
   "PokerPlayerMod:CardPrinter": {
     "NAME": "카드 인쇄기",
-    "DESCRIPTION": "매 턴 시작 시 pokerplayer:하트 가 아닌 pokerplayer:등급 !M! 의 무작위 포커 카드를 버린 카드 더미에 넣습니다.",
+    "DESCRIPTION": "매 턴 시작 시 pokerplayer:하트 가 아니고 pokerplayer:등급 이 !M! 인 무작위 포커 카드를 뽑을 카드 더미에 섞어 넣습니다.",
     "EXTENDED_DESCRIPTION": [
       " 8번 강화 할 수 있습니다.",
       " ",
@@ -177,8 +178,8 @@
   },
   "PokerPlayerMod:ClubShade": {
     "NAME": "클럽의 그림자",
-    "DESCRIPTION": "pokerplayer:클럽 카드가 pokerplayer:쇼다운 에서 방어도를 !M! 만큼 줍니다.",
-    "UPGRADE_DESCRIPTION": "카드를 1장 뽑습니다. NL pokerplayer:클럽 카드가 pokerplayer:쇼다운 에서 방어도를 !M! 만큼 줍니다."
+    "DESCRIPTION": "pokerplayer:클럽 카드의 pokerplayer:쇼다운 효과에 \"방어도를 !M! 얻습니다\" 가 추가됩니다.",
+    "UPGRADE_DESCRIPTION": "카드를 1장 뽑습니다. NL pokerplayer:클럽 카드의 pokerplayer:쇼다운 효과에 \"방어도를 !M! 얻습니다\" 가 추가됩니다."
   },
   "PokerPlayerMod:Sharpen": {
     "NAME": "날카로움",
@@ -195,7 +196,7 @@
   },
   "PokerPlayerMod:VarietyAttack": {
     "NAME": "버라이어티 어택",
-    "DESCRIPTION": "적 전체에게 피해를 !D! 줍니다. 피해량은 손에 있는 포커 카드 pokerplayer:무늬 하나 당 2배씩 증가합니다."
+    "DESCRIPTION": "적 전체에게 피해를 !D! 줍니다. 피해량은 손에 있는 포커 카드 pokerplayer:무늬 종류 하나 당 2배씩 증가합니다."
   },
   "PokerPlayerMod:Duplicate": {
     "NAME": "복제",
@@ -236,5 +237,9 @@
     "NAME": "조작된 덱",
     "DESCRIPTION": "매 턴 시작 시 뽑을 카드 더미 위의 카드 !M! 장을 보고 원하는 만큼 카드를 버립니다.",
     "UPGRADE_DESCRIPTION": "카드를 1장 뽑습니다. NL 매 턴 시작 시 뽑을 카드 더미 위의 카드 !M! 장을 보고 원하는 만큼 카드를 버립니다."
+  },
+  "PokerPlayerMod:SuperBite": {
+    "NAME": "대량 흡혈",
+    "DESCRIPTION": "피해를 !D! 줍니다. NL 체력을 !M! 회복합니다."
   }
 }

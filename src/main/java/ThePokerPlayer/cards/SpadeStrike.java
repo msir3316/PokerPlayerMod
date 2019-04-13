@@ -26,10 +26,10 @@ public class SpadeStrike extends CustomCard {
 	private static final CardRarity RARITY = CardRarity.COMMON;
 	private static final CardTarget TARGET = CardTarget.ENEMY;
 
-	private static final int POWER = 7;
-	private static final int UPGRADE_BONUS = 3;
-	private static final int MAGIC = 3;
-	private static final int UPGRADE_MAGIC = 1;
+	private static final int POWER = 6;
+	private static final int UPGRADE_BONUS = 2;
+	private static final int MAGIC = 4;
+	private static final int UPGRADE_MAGIC = 2;
 
 	public SpadeStrike() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);

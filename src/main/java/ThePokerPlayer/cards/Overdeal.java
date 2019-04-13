@@ -4,12 +4,16 @@ import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.actions.OverdealAction;
 import ThePokerPlayer.patches.CardColorEnum;
 import basemod.abstracts.CustomCard;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 public class Overdeal extends CustomCard {
@@ -21,11 +25,10 @@ public class Overdeal extends CustomCard {
 	private static final int COST = -1;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-	private static final AbstractCard.CardType TYPE = CardType.SKILL;
+	private static final AbstractCard.CardType TYPE = CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = CardColorEnum.POKER_PLAYER_GRAY;
 	private static final AbstractCard.CardRarity RARITY = CardRarity.UNCOMMON;
-	private static final AbstractCard.CardTarget TARGET = CardTarget.SELF;
-
+	private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
 
 	public Overdeal() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
@@ -37,6 +40,13 @@ public class Overdeal extends CustomCard {
 			this.energyOnUse = EnergyPanel.totalCount;
 		}
 
+		this.baseDamage = this.energyOnUse;
+		if (upgraded) baseDamage++;
+		if (AbstractDungeon.player.hasRelic(ChemicalX.ID)) baseDamage += 2;
+		applyPowers();
+
+		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn),
+				AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
 		AbstractDungeon.actionManager.addToBottom(new OverdealAction(p, this.upgraded, this.freeToPlayOnce, this.energyOnUse));
 	}
 

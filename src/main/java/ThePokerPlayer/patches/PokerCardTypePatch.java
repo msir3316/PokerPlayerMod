@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
@@ -20,6 +21,7 @@ import javassist.CtBehavior;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 
 public class PokerCardTypePatch {
 	private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(PokerPlayerMod.makeID("PokerCardType"));
@@ -127,6 +129,44 @@ public class PokerCardTypePatch {
 			renderHelperMethod.invoke(card, sb, renderColor, texture, xPos, yPos);
 		} catch (IllegalAccessException | IllegalArgumentException | NoSuchFieldException | NoSuchMethodException | InvocationTargetException | SecurityException e) {
 			e.printStackTrace();
+		}
+	}
+
+	@SpirePatch(clz = CardGroup.class, method = "sortByRarity")
+	public static class SortByRarityPatch {
+		@SpirePostfixPatch()
+		public static void Postfix(CardGroup __instance, boolean ascending) {
+			ArrayList<AbstractCard> pokers = new ArrayList<>();
+			for (AbstractCard c : __instance.group) {
+				if (c instanceof PokerCard) {
+					pokers.add(c);
+				}
+			}
+			__instance.group.removeAll(pokers);
+			if (ascending) {
+				__instance.group.addAll(0, pokers);
+			} else {
+				__instance.group.addAll(pokers);
+			}
+		}
+	}
+
+	@SpirePatch(clz = CardGroup.class, method = "sortByRarityPlusStatusCardType")
+	public static class SortByRarityPlusStatusCardTypePatch {
+		@SpirePostfixPatch()
+		public static void Postfix(CardGroup __instance, boolean ascending) {
+			ArrayList<AbstractCard> pokers = new ArrayList<>();
+			for (AbstractCard c : __instance.group) {
+				if (c instanceof PokerCard) {
+					pokers.add(c);
+				}
+			}
+			__instance.group.removeAll(pokers);
+			if (ascending) {
+				__instance.group.addAll(0, pokers);
+			} else {
+				__instance.group.addAll(pokers);
+			}
 		}
 	}
 }

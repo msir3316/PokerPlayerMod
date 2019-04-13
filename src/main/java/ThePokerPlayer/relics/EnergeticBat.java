@@ -23,6 +23,7 @@ public class EnergeticBat extends CustomRelic {
 
 	public void onUseCard(AbstractCard card, UseCardAction action) {
 		if (card.hasTag(AbstractCard.CardTags.STRIKE)) {
+			this.flash();
 			AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
 			AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
 		}

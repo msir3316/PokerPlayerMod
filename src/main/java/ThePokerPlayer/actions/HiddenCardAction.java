@@ -2,6 +2,7 @@ package ThePokerPlayer.actions;
 
 import ThePokerPlayer.cards.PokerCard;
 import basemod.BaseMod;
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -10,6 +11,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class HiddenCardAction extends AbstractGameAction {
 	public static final String[] TEXT = CardCrawlGame.languagePack.getUIString("DiscardPileToHandAction").TEXT;
@@ -71,7 +73,15 @@ public class HiddenCardAction extends AbstractGameAction {
 			this.p.discardPile.removeCard(card);
 		}
 		if (upgraded) {
-			AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, ((PokerCard) card).rank));
+			float tmp = ((PokerCard) card).rank;
+			for (final AbstractPower p : AbstractDungeon.player.powers) {
+				tmp = p.modifyBlock(tmp);
+			}
+			if (tmp < 0.0f) {
+				tmp = 0.0f;
+			}
+			int block = MathUtils.floor(tmp);
+			AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, block));
 		}
 
 		card.lighten(false);

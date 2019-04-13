@@ -10,7 +10,7 @@
     "NAMES": [
       "showdown"
     ],
-    "DESCRIPTION": "Receive the Showdown effects from Poker Cards in you hand (max. 5 cards). They are boosted by poker hand you score."
+    "DESCRIPTION": "Receive the Showdown effects from Poker Cards in you hand (max. 5 cards). They're boosted by poker hand you score."
   },
   {
     "PROPER_NAME": "Spade X",
@@ -35,7 +35,7 @@
       "hearts",
       "non-heart"
     ],
-    "DESCRIPTION": "Showdown Effect: Heal X HP. NL Hearts have Ethereal, so exhausted after "
+    "DESCRIPTION": "Showdown Effect: Heal X HP. NL (Hearts have Ethereal.)"
   },
   {
     "PROPER_NAME": "Club X",

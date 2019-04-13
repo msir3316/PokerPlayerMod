@@ -115,7 +115,8 @@
   },
   "PokerPlayerMod:Manipulation": {
     "NAME": "Manipulation",
-    "DESCRIPTION": "Deal !D! damage X times. You may increase the pokerplayer:Rank of one Poker Card by X. NL Gain [E]."
+    "DESCRIPTION": "For the next X turns, gain [E] [E]. NL You may increase the pokerplayer:Rank of one Poker Card by X. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "For the next X turns, gain [E] [E]. NL You may increase the pokerplayer:Rank of one Poker Card by X."
   },
   "PokerPlayerMod:SecondChance": {
     "NAME": "Second Chance",
@@ -148,8 +149,8 @@
   },
   "PokerPlayerMod:Overdeal": {
     "NAME": "Overdeal",
-    "DESCRIPTION": "Add X random Poker cards into your hand. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Add X+1 random Poker cards into your hand. NL Exhaust."
+    "DESCRIPTION": "Deal X damage. NL Add X random Poker cards into your hand. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Deal X+1 damage. Add X+1 random Poker cards into your hand. NL Exhaust."
   },
   "PokerPlayerMod:RiskyBet": {
     "NAME": "Risky Bet",
@@ -157,7 +158,7 @@
   },
   "PokerPlayerMod:CardPrinter": {
     "NAME": "Card Printer",
-    "DESCRIPTION": "At the start of your turn, add a pokerplayer:non-Heart, pokerplayer:Rank !M! Poker card to your discard pile.",
+    "DESCRIPTION": "At the start of your turn, shuffle a pokerplayer:non-Heart, pokerplayer:Rank !M! Poker card to your draw pile.",
     "EXTENDED_DESCRIPTION": [
       " Can be upgraded 8 times.",
       " Can be upgraded ",
@@ -236,5 +237,9 @@
     "NAME": "Stacked Deck",
     "DESCRIPTION": "At the start of your turn, Look at the top !M! cards of your draw pile and discard any of them.",
     "UPGRADE_DESCRIPTION": "Draw 1 card. NL At the start of your turn, Look at the top !M! cards of your draw pile and discard any of them."
+  },
+  "PokerPlayerMod:SuperBite": {
+    "NAME": "Super Bite",
+    "DESCRIPTION": "Deal !D! damage. NL Heal !M! HP."
   }
 }
