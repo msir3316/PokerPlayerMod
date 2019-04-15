@@ -22,7 +22,7 @@ public class PokerPlayerMetricsPatch {
 		public static void Prefix(Metrics __instance, @ByRef String[] url, String fileName) {
 			ClassPool.getDefault().insertClassPath(new ClassClassPath(SendPostPatch.class));
 			if (AbstractDungeon.player.chosenClass == ThePokerPlayerEnum.THE_POKER_PLAYER) {
-				url[0] = "http://35.185.169.207:12507/upload";
+				url[0] = "http://35.185.169.207:13507/upload";
 			}
 		}
 	}

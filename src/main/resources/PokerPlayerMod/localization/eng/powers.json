@@ -6,7 +6,7 @@
       " doubled.",
       " multiplied by #b",
       ".",
-      " almost infinite."
+      " almost infinite. Beware of integer overflow!"
     ]
   },
   "PokerPlayerMod:SharpenPower": {

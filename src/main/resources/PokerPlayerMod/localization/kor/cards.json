@@ -183,8 +183,8 @@
   },
   "PokerPlayerMod:Sharpen": {
     "NAME": "날카로움",
-    "DESCRIPTION": "pokerplayer:다이아몬드 카드가 pokerplayer:쇼다운 에서 !M! 만큼 피해를 더 줍니다.",
-    "UPGRADE_DESCRIPTION": "카드를 1장 뽑습니다. NL pokerplayer:다이아몬드 카드가 pokerplayer:쇼다운 에서 !M! 만큼 피해를 더 줍니다."
+    "DESCRIPTION": "pokerplayer:다이아몬드 카드가 pokerplayer:쇼다운 에서 피해를 !M! 만큼 더 줍니다.",
+    "UPGRADE_DESCRIPTION": "카드를 1장 뽑습니다. NL pokerplayer:다이아몬드 카드가 pokerplayer:쇼다운 에서 피해를 !M! 만큼 더 줍니다."
   },
   "PokerPlayerMod:ChangeRules": {
     "NAME": "규칙 파괴",

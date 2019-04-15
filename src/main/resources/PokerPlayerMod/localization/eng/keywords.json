@@ -10,7 +10,7 @@
     "NAMES": [
       "showdown"
     ],
-    "DESCRIPTION": "Receive the Showdown effects from Poker Cards in you hand (max. 5 cards). They're boosted by poker hand you score."
+    "DESCRIPTION": "Receive the Showdown Effects from Poker Cards in you hand (max. 5 cards). They're boosted by Poker Hand you score."
   },
   {
     "PROPER_NAME": "Spade X",
@@ -51,7 +51,7 @@
       "ranks",
       "ranked"
     ],
-    "DESCRIPTION": "The number of symbols on Poker Cards. During Showdown, the number of suits coming out is equal to their Rank."
+    "DESCRIPTION": "The number of symbols on Poker Cards. The Showdown effect is proportional to the Rank."
   },
   {
     "NAMES": [

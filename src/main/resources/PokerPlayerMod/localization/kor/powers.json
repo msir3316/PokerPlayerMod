@@ -1,12 +1,12 @@
 {
   "PokerPlayerMod:DamnStraightPower": {
-    "NAME": "스트레이트 매니아",
+    "NAME": "",
     "DESCRIPTIONS": [
       "스트레이트의 쇼다운 보너스가",
       " #b2 배가 됩니다.",
       " #b",
       " 배가 됩니다.",
-      " 엄청나게 커집니다."
+      " 엄청나게 커집니다. 오버플로우를 조심하세요!"
     ]
   },
   "PokerPlayerMod:SharpenPower": {

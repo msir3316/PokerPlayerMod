@@ -37,10 +37,6 @@ public class BadJoker extends CustomCard {
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
-				new DamageInfo(p, this.damage, this.damageTypeForTurn),
-				AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-
 		AbstractDungeon.actionManager.addToBottom(new PokerCardDiscoveryAction(this.magicNumber));
 	}
 
