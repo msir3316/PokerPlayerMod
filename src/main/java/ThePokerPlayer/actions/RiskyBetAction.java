@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.animations.TalkAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -33,10 +32,8 @@ public class RiskyBetAction extends AbstractGameAction {
 				doAction(null);
 				this.isDone = true;
 				return;
-			} else if (this.p.hand.group.size() <= 1) {
-				for (AbstractCard c : this.p.hand.group) {
-					doAction(c);
-				}
+			} else if (this.p.hand.group.size() == 1) {
+				doAction(this.p.hand.group.get(0));
 				this.isDone = true;
 				return;
 			} else {
@@ -58,8 +55,10 @@ public class RiskyBetAction extends AbstractGameAction {
 	}
 
 	private void doAction(AbstractCard c) {
-		this.p.hand.moveToDiscardPile(c);
-		c.triggerOnManualDiscard();
+		if (c != null) {
+			this.p.hand.moveToDiscardPile(c);
+			c.triggerOnManualDiscard();
+		}
 		GameActionManager.incrementDiscard(false);
 		AbstractCard card = AbstractDungeon.player.drawPile.getTopCard();
 		if (card instanceof PokerCard && c instanceof PokerCard && ((PokerCard) card).suit == ((PokerCard) c).suit) {
