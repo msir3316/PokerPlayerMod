@@ -4,8 +4,8 @@
   "author_list": [
     "Celicath"
   ],
-  "credits": "HSymbol - original game",
-  "description": "Adds a character called The Poker Player, who fights with his own rule inspired from poker.\n\n- Adds 84 cards and 12 relics.\n- Contains a Poker Player exclusive event, which can be enabled for other characters in the config.\n\nv0.7.1 (2019-04-15)\n- Fixed crash issue when you play Risky Bet with 1 or less other cards in hand.\n- Changed some wording.\n- Card Printer cost reduced 3 -> 2.\n\n0.7.2 (2019-04-16)\n- Add ZHS support.",
+  "credits": "HSymbol - original game\nRita-Bernstein - ZHS translation",
+  "description": "Adds a character called The Poker Player, who fights with his own rule inspired from poker.\n\n- Adds 84 cards and 12 relics.\n- Contains a Poker Player exclusive event, which can be enabled for other characters in the config.\n\nv0.7.1 (2019-04-15)\n- Fixed crash issue when you play Risky Bet with 1 or less other cards in hand.\n- Changed some wording.\n- Card Printer cost reduced 3 -> 2.\n\n0.7.2 (2019-04-16)\n- Add ZHS support. (Rita-Bernstein)",
   "version": "0.7.2",
   "sts_version": "01-23-2019",
   "mts_version": "3.7.0",
