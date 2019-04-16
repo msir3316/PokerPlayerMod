@@ -336,39 +336,6 @@ public class PokerPlayerMod
 	// ================ /ADD CARDS/ ===================
 
 
-	// ================ LOAD THE TEXT ===================
-
-	@Override
-	public void receiveEditStrings() {
-		logger.info("Begin editing strings");
-
-		String loc = getLocCode();
-
-		// RelicStrings
-		String relicStrings = GetLocString(loc, "relics");
-		BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
-		// CardStrings
-		String cardStrings = GetLocString(loc, "cards");
-		BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
-		// PotionStrings
-		String potionStrings = GetLocString(loc, "potions");
-		BaseMod.loadCustomStrings(PotionStrings.class, potionStrings);
-		// PowerStrings
-		String powerStrings = GetLocString(loc, "powers");
-		BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
-		// UIStrings
-		String uiStrings = GetLocString(loc, "ui");
-		BaseMod.loadCustomStrings(UIStrings.class, uiStrings);
-		// EventStrings
-		String eventStrings = GetLocString(loc, "events");
-		BaseMod.loadCustomStrings(EventStrings.class, eventStrings);
-		// CharacterStrings
-		String characterStrings = GetLocString(loc, "characters");
-		BaseMod.loadCustomStrings(CharacterStrings.class, characterStrings);
-
-		logger.info("Done editing strings");
-	}
-
 	@Override
 	public void receivePostDungeonInitialize() {
 		if (AbstractDungeon.player.chosenClass == ThePokerPlayerEnum.THE_POKER_PLAYER) {
@@ -391,14 +358,52 @@ public class PokerPlayerMod
 		}
 	}
 
+	// ================ LOAD THE TEXT ===================
+
+	@Override
+	public void receiveEditStrings() {
+		logger.info("Begin editing strings");
+
+		loadLocStrings("eng");
+		loadLocStrings(getLocCode());
+
+		logger.info("Done editing strings");
+	}
+
+	void loadLocStrings(String lang) {
+		// RelicStrings
+		String relicStrings = GetLocString(lang, "relics");
+		BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
+		// CardStrings
+		String cardStrings = GetLocString(lang, "cards");
+		BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
+		// PotionStrings
+		String potionStrings = GetLocString(lang, "potions");
+		BaseMod.loadCustomStrings(PotionStrings.class, potionStrings);
+		// PowerStrings
+		String powerStrings = GetLocString(lang, "powers");
+		BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
+		// UIStrings
+		String uiStrings = GetLocString(lang, "ui");
+		BaseMod.loadCustomStrings(UIStrings.class, uiStrings);
+		// EventStrings
+		String eventStrings = GetLocString(lang, "events");
+		BaseMod.loadCustomStrings(EventStrings.class, eventStrings);
+		// CharacterStrings
+		String characterStrings = GetLocString(lang, "characters");
+		BaseMod.loadCustomStrings(CharacterStrings.class, characterStrings);
+
+	}
+
 	// ================ /LOAD THE TEXT/ ===================
 
 	public static String getLocCode() {
-		if (Settings.language == Settings.GameLanguage.KOR) {
+		if (Settings.language == Settings.GameLanguage.KOR)
 			return "kor";
-		} else {
+		else if (Settings.language == Settings.GameLanguage.ZHS)
+			return "zhs";
+		else
 			return "eng";
-		}
 	}
 
 	// ================ LOAD THE KEYWORDS ===================
@@ -406,10 +411,15 @@ public class PokerPlayerMod
 	@Override
 	public void receiveEditKeywords() {
 		logger.debug("receiveEditKeywords started.");
-		Gson gson = new Gson();
-		String loc = getLocCode();
 
-		String json = GetLocString(loc, "keywords");
+		loadLocKeywords("eng");
+		loadLocKeywords(getLocCode());
+	}
+
+	void loadLocKeywords(String lang) {
+		Gson gson = new Gson();
+
+		String json = GetLocString(lang, "keywords");
 		Keyword[] keywords = gson.fromJson(json, Keyword[].class);
 
 		if (keywords != null) {
@@ -419,6 +429,8 @@ public class PokerPlayerMod
 		}
 		logger.debug("receiveEditKeywords finished.");
 	}
+
+	// ================ /LOAD THE KEYWORDS/ ===================
 
 	@Override
 	public void receiveOnBattleStart(AbstractRoom room) {
@@ -451,8 +463,6 @@ public class PokerPlayerMod
 		shapeshiftReturns.clear();
 		return true;
 	}
-
-	// ================ /LOAD THE KEYWORDS/ ===================
 
 	// this adds "ModName: " before the ID of any card/relic/power etc.
 	// in order to avoid conflicts if any other mod uses the same ID.
