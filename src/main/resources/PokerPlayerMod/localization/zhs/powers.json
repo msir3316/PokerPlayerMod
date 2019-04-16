@@ -1,0 +1,62 @@
+{
+  "PokerPlayerMod:DamnStraightPower": {
+    "NAME": "真的的顺",
+    "DESCRIPTIONS": [
+      "摊牌时，顺子受益是 2*",
+      " 倍。",
+      " 乘以 #b",
+      "。",
+      " 几乎没上限。"
+    ]
+  },
+  "PokerPlayerMod:SharpenPower": {
+    "NAME": "锐化",
+    "DESCRIPTIONS": [
+      "摊牌时， 你的方块额外造成 #b",
+      " 点伤害。"
+    ]
+  },
+  "PokerPlayerMod:ClubShadePower": {
+    "NAME": "梅花摊牌",
+    "DESCRIPTIONS": [
+      "摊牌时， 你的每张梅花给予你 #b",
+      " 点 格挡 。"
+    ]
+  },
+  "PokerPlayerMod:FakeSymbolsPower": {
+    "NAME": "伪造花色",
+    "DESCRIPTIONS": [
+      "如果你有 #b",
+      " 或者更多张同花色的扑克牌，结算一个 #y同花 。"
+    ]
+  },
+  "PokerPlayerMod:GamblerFormPower": {
+    "NAME": "赌徒形态",
+    "DESCRIPTIONS": [
+      "如果你的结算是两对或者更好， 摊牌对所有的扑克牌的效果影响增加 #b",
+      "点。"
+    ]
+  },
+  "PokerPlayerMod:CardPrinterPower": {
+    "NAME": "印卡",
+    "DESCRIPTIONS": [
+      "在你的回合开始时，向你的弃牌堆加入一张 非红桃 牌，其 #y点数 为 #b",
+      " 。"
+    ]
+  },
+  "PokerPlayerMod:StackedDeckPower": {
+    "NAME": "层叠牌组",
+    "DESCRIPTIONS": [
+      "在你的回合开始时， 查看抽牌堆顶部的的 #b",
+      " 张牌以及任意的弃牌堆。"
+    ]
+  },
+  "PokerPlayerMod:EnergyManipulation": {
+    "NAME": "操纵能量",
+    "DESCRIPTIONS": [
+      "接下来的 #b",
+      " 个回合，获得 [E] [E] 。",
+      " 个回合，获得 [E] [E] 。"
+    ]
+  }
+}

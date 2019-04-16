@@ -1,0 +1,94 @@
+{
+  "PokerPlayerMod:DeckCase": {
+    "NAME": "牌盒",
+    "FLAVOR": "这样可以让你平静下来，帮助你迅速从恶劣的环境中恢复过来。",
+    "DESCRIPTIONS": [
+      "每场战斗， 前 #b",
+      " 张进入你的牌堆的 #y状态 牌被 #y消耗 。"
+    ]
+  },
+  "PokerPlayerMod:BottledPoker": {
+    "NAME": "瓶装扑克",
+    "FLAVOR": "每当你向这个瓶子里看去的时候，都感觉无比怀旧。",
+    "DESCRIPTIONS": [
+      "拾起时，选择一张扑克牌。在每场战斗开始时，这张牌会出现在手牌中。",
+      "选择一张牌 ",
+      "在每场战斗开始时，将 ",
+      " 放入你的手牌。"
+    ]
+  },
+  "PokerPlayerMod:FairLicense": {
+    "NAME": "公平证明",
+    "FLAVOR": "给诚实的人的好礼物。",
+    "DESCRIPTIONS": [
+      "如果你在你的回合没有打出扑克牌， 下一回合获得额外的 [E] 。"
+    ]
+  },
+  "PokerPlayerMod:ClubPass": {
+    "NAME": "俱乐部会员",
+    "FLAVOR": "当然,这是一个玩笑中的俱乐部。",
+    "DESCRIPTIONS": [
+      "每当你打出一张 \"梅花\" 牌，直到在回合结束前，你的 #ypokerplayer:梅花 额外造成 #b1 点伤害。"
+    ]
+  },
+  "PokerPlayerMod:PenAndEraser": {
+    "NAME": "铅笔与橡皮",
+    "FLAVOR": " \"修改\" 你的扑克牌的绝佳工具。",
+    "DESCRIPTIONS": [
+      "拾起时， 提高随机两张扑克牌的 #ypokerplayer:点数 #b3 点。"
+    ]
+  },
+  "PokerPlayerMod:PendantOfEscape": {
+    "NAME": "逃生吊坠",
+    "FLAVOR": "如果你觉得没有希望时，可以摸摸这个。",
+    "DESCRIPTIONS": [
+      "[#2aecd7]每场战斗一次, 右键激活。[] NL 丢弃你的全部手牌并抽 #b5 张牌。"
+    ]
+  },
+  "PokerPlayerMod:CoolBox": {
+    "NAME": "冷箱",
+    "FLAVOR": "包含冷静你的头脑的工具。",
+    "DESCRIPTIONS": [
+      "每场战斗开始时。在你的抽牌堆顶部加入一张带 #y虚无 的 #b10 点 #ypokerplayer:黑桃 。 他的能耗为 #b0 。"
+    ]
+  },
+  "PokerPlayerMod:Splitter": {
+    "NAME": "高低分池",
+    "FLAVOR": "底下扑克牌的因魔力闪闪发光！",
+    "DESCRIPTIONS": [
+      "每当你打出一张 #ypokerplayer:点数 不大于 #b3 的扑克牌， 对所有敌人造成 #b",
+      " 点伤害。"
+    ]
+  },
+  "PokerPlayerMod:EnergeticBat": {
+    "NAME": "能量球棒",
+    "FLAVOR": "这根充满活力的球棒在你意识到之前就打击了敌人。",
+    "DESCRIPTIONS": [
+      "每当你打出一张 #y打击 牌，获得 [E] 。"
+    ]
+  },
+  "PokerPlayerMod:JackpotMachine": {
+    "NAME": "老虎机",
+    "FLAVOR": "看起来像一台老虎机，但实际上只是一个日历。",
+    "DESCRIPTIONS": [
+      "摊牌时，如果你有不少于 #b3 张的扑克牌的 #ypokerplayer:点数 为 #b7 ，对所有敌人造成 #b",
+      " 点伤害。"
+    ]
+  },
+  "PokerPlayerMod:StuffedPocket": {
+    "NAME": "填料袋",
+    "FLAVOR": "小心不要从口袋里洒出任何东西。更不要拾荒者打赏。",
+    "DESCRIPTIONS": [
+      "每场战斗开始时，你的牌组每有 #b",
+      " 张牌，额外抽 #b1 张牌。"
+    ]
+  },
+  "PokerPlayerMod:AceCard": {
+    "NAME": "王牌",
+    "FLAVOR": "仅凭这张牌就能击败对手。",
+    "DESCRIPTIONS": [
+      "#ypokerplayer:点数 为 #b1 的扑克牌 #b0 费并在你打出时给予你 #b",
+      " 点 #y格挡 。"
+    ]
+  }
+}

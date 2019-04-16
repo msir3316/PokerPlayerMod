@@ -1,0 +1,56 @@
+[
+  {
+    "PROPER_NAME": "扑克牌",
+    "NAMES": [
+      "扑克牌"
+    ],
+    "DESCRIPTION": "打出以抽一张牌，或者保留到你的回合结束进入 #y摊牌 。"
+  },
+  {
+    "NAMES": [
+      "摊牌"
+    ],
+    "DESCRIPTION": "结算手中扑克牌的摊牌效果（最多5张牌）。 牌型越好效果越强。"
+  },
+  {
+    "PROPER_NAME": "黑桃 X",
+    "NAMES": [
+      "黑桃"
+    ],
+    "DESCRIPTION": "摊牌效果：  获得 X 点 格挡 。"
+  },
+  {
+    "PROPER_NAME": "方块 X",
+    "NAMES": [
+      "方块"
+    ],
+    "DESCRIPTION": "摊牌效果：  对血量最少的敌人造成 X 点伤害。"
+  },
+  {
+    "PROPER_NAME": "红桃 X",
+    "NAMES": [
+      "红桃",
+      "非红桃"
+    ],
+    "DESCRIPTION": "摊牌效果：  回复 X 生命。 NL （红桃有 虚无 ）"
+  },
+  {
+    "PROPER_NAME": "梅花 X",
+    "NAMES": [
+      "梅花"
+    ],
+    "DESCRIPTION": "摊牌效果：  对所有敌人造成 X 点伤害。"
+  },
+  {
+    "NAMES": [
+      "点数"
+    ],
+    "DESCRIPTION": "扑克牌上的花色数。 摊牌时， 花色的数量等于它的点数"
+  },
+  {
+    "NAMES": [
+      "花色"
+    ],
+    "DESCRIPTION": "扑克牌的花色决定效果。"
+  }
+]

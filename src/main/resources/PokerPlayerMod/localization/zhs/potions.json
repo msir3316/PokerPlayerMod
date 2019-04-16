@@ -1,0 +1,10 @@
+{
+  "PokerPlayerMod:PlaceholderPotion": {
+    "NAME": "占位药水",
+    "DESCRIPTIONS": [
+      "获得 ",
+      " 在你的回合结束时，失去 ",
+      " 点 力量 。"
+    ]
+  }
+}

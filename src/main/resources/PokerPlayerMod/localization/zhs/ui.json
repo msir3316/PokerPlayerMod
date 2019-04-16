@@ -1,0 +1,62 @@
+{
+  "PokerPlayerMod:PokerHands": {
+    "TEXT": [
+      "无对……",
+      "一对",
+      "两对",
+      "三条",
+      "顺子",
+      "满堂红",
+      "四条",
+      "五条",
+      "！",
+      " 同花",
+      " NL +",
+      "%。"
+    ]
+  },
+  "PokerPlayerMod:PokerCardType": {
+    "TEXT": [
+      "扑克"
+    ]
+  },
+  "PokerPlayerMod:PokerScoreViewer": {
+    "TEXT": [
+      "摊牌能力",
+      "这显示了花色的能力， 受增益效果，遗物还有牌型的影响。",
+      "<牌型奖励>"
+    ]
+  },
+  "PokerPlayerMod:WildCardAction": {
+    "TEXT": [
+      "选择一张扑克牌加入你的手牌。"
+    ]
+  },
+  "PokerPlayerMod:RiskyBetAction": {
+    "TEXT": [
+      "弃牌 （下注）",
+      "成功！",
+      "失败……"
+    ]
+  },
+  "PokerPlayerMod:DiscardAnyNumberAction": {
+    "TEXT": [
+      "弃牌"
+    ]
+  },
+  "PokerPlayerMod:PokerCardChangeAction": {
+    "TEXT": [
+      "变化点数 ",
+      "抽取",
+      "复制",
+      "弃牌",
+      "变化点数到 ",
+      ""
+    ]
+  },
+  "PokerPlayerMod:ExordiumClubConfig": {
+    "TEXT": [
+      "其他角色也能进入入口俱乐部事件"
+    ]
+  }
+}
