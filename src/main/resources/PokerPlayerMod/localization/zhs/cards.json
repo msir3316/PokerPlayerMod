@@ -33,12 +33,13 @@
   },
   "PokerPlayerMod:TrumpStrike": {
     "NAME": "王牌打击",
-    "DESCRIPTION": "造成 !D! 点伤害 （你牌组中扑克牌的数量的一半）。 NL 抽1 张牌。",
-    "UPGRADE_DESCRIPTION": "造成 !D! 点伤害 （你牌组中扑克牌的数量）。 NL 抽1 张牌。"
+    "DESCRIPTION": "造成 !D! 点伤害 （你牌组中扑克牌的数量）。 NL 抽 !M! 张牌。",
+    "UPGRADE_DESCRIPTION": "造成 !D! 点伤害 （你牌组中扑克牌的数量）。 NL 抽 !M! 张牌。"
   },
   "PokerPlayerMod:ThinkingTime": {
     "NAME": "思考时间",
-    "DESCRIPTION": "选择抽一张牌或获得 !B! 点 格挡 （你牌组中扑克牌的数量）。",
+    "DESCRIPTION": "获得 !B! 点 格挡 。 NL （你牌组中扑克牌的数量） NL 抽 !M! 张牌。",
+    "UPGRADE_DESCRIPTION": "获得 !B! 点 格挡 。 NL （你牌组中扑克牌的数量） NL 抽 !M! 张牌。",
     "EXTENDED_DESCRIPTION": [
       "选择",
       "拿牌",
@@ -74,7 +75,7 @@
   },
   "PokerPlayerMod:DartThrow": {
     "NAME": "投掷飞镖",
-    "DESCRIPTION": "造成 !D! 点伤害。"
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 这名敌人本回合失去 !M! 点 力量 。"
   },
   "PokerPlayerMod:FlyingCard": {
     "NAME": "飞牌",
@@ -101,8 +102,8 @@
   },
   "PokerPlayerMod:MagicTrick": {
     "NAME": "魔术",
-    "DESCRIPTION": "抽牌直到你的手牌有 6 张牌。 NL 丢弃 !M! 张牌。",
-    "UPGRADE_DESCRIPTION": "抽牌直到你的手牌有 6 张牌。 NL 丢弃 !M! 张牌。"
+    "DESCRIPTION": "抽牌直到你的手牌有 7 张牌。 NL 丢弃 !M! 张牌。",
+    "UPGRADE_DESCRIPTION": "抽牌直到你的手牌有 8 张牌。 NL 丢弃 !M! 张牌。"
   },
   "PokerPlayerMod:Raise": {
     "NAME": "提高",
@@ -110,8 +111,7 @@
   },
   "PokerPlayerMod:HotShotCut": {
     "NAME": "回旋射牌",
-    "DESCRIPTION": "消耗你的全部手牌。 每消耗一张扑克牌，对随机一名敌人造成 !D! 点伤害。 NL 消耗 。",
-    "UPGRADE_DESCRIPTION": "消耗你的全部手牌。 每消耗一张牌，对随机一名敌人造成 !D! 点伤害。 NL 消耗 。"
+    "DESCRIPTION": "消耗你的全部扑克牌。 每消耗一张，就对随机一名敌人造成 !D! 点伤害。 NL 消耗 。"
   },
   "PokerPlayerMod:Manipulation": {
     "NAME": "操纵",
@@ -154,13 +154,13 @@
   },
   "PokerPlayerMod:RiskyBet": {
     "NAME": "冒险下注",
-    "DESCRIPTION": "丢弃一张牌，抽一张牌。 如果两张扑克牌有相同的 pokerplayer:花色 ， 抽 !M! 张牌。"
+    "DESCRIPTION": "丢弃一张牌，抽一张牌。 如果两张扑克牌有相同的 pokerplayer:花色 ，获得 [E] 并抽 !M! 张牌。"
   },
   "PokerPlayerMod:CardPrinter": {
     "NAME": "印卡",
     "DESCRIPTION": "在你的回合开始时，向你的抽牌堆加入一张 pokerplayer:非红桃 牌，其 pokerplayer:点数 为 !M! 。",
     "EXTENDED_DESCRIPTION": [
-      " 可以被 升级 8 次。",
+      " 可以被 升级 7 次。",
       " 可以再被 升级 ",
       " 次。",
       " 可以再被升级 1 次。"
@@ -178,8 +178,8 @@
   },
   "PokerPlayerMod:ClubShade": {
     "NAME": "梅花摊牌",
-    "DESCRIPTION": "pokerplayer:摊牌 时， 你的每张 pokerplayer:梅花 给予你 !M! 点 格挡 。",
-    "UPGRADE_DESCRIPTION": "抽 1 张牌。 NL pokerplayer:摊牌 时， 你的每张 pokerplayer:梅花 给予你 !M! 点 格挡 。"
+    "DESCRIPTION": "pokerplayer:摊牌 时， 你的每张 pokerplayer:梅花 给予你额外的 !M! 点 格挡 。",
+    "UPGRADE_DESCRIPTION": "抽 1 张牌。 NL pokerplayer:摊牌 时， 你的每张 pokerplayer:梅花 给予你额外的 !M! 点 格挡 。"
   },
   "PokerPlayerMod:Sharpen": {
     "NAME": "锐化",
@@ -187,7 +187,7 @@
     "UPGRADE_DESCRIPTION": "抽 1 张牌。 NL pokerplayer:摊牌 时， 你的方块额外造成 !M! 点伤害。"
   },
   "PokerPlayerMod:ChangeRules": {
-    "NAME": "改变规则",
+    "NAME": "掀桌",
     "DESCRIPTION": "造成 !D! 点伤害。 NL 获得 !M! 点 力量 。 NL 获得 !M! 点 敏捷 。"
   },
   "PokerPlayerMod:RoyalStrike": {
@@ -241,5 +241,10 @@
   "PokerPlayerMod:SuperBite": {
     "NAME": "超级噬咬",
     "DESCRIPTION": "造成 !D! 点伤害。 NL 回复 !M! 生命。"
+   },
+  "PokerPlayerMod:Harden": {
+    "NAME": "硬化",
+    "DESCRIPTION": "pokerplayer:摊牌 时，你的 pokerplayer:黑桃 会额外给予你 2 点下一回合 格挡 。",
+    "UPGRADE_DESCRIPTION": "抽 1 张牌。 NL pokerplayer:摊牌 时，你的 pokerplayer:黑桃 会额外给予你 2 点下一回合 格挡 。"
   }
 }

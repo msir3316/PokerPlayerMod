@@ -2,7 +2,7 @@
   {
     "PROPER_NAME": "扑克牌",
     "NAMES": [
-      "poker card",
+	  "poker card",
       "扑克牌"
     ],
     "DESCRIPTION": "打出以抽一张牌，或者保留到你的回合结束进入 #y摊牌 。"
@@ -10,7 +10,7 @@
   {
     "NAMES": [
       "摊牌",
-      "showdown"
+	  "showdown"
     ],
     "DESCRIPTION": "结算手中扑克牌的摊牌效果（最多5张牌）。 牌型越好效果越强。"
   },

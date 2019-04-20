@@ -23,6 +23,13 @@
       " 点 格挡 。"
     ]
   },
+    "PokerPlayerMod:HardenPower": {
+    "NAME": "硬化",
+    "DESCRIPTIONS": [
+      "摊牌时， 你的每张黑桃给予你 #b",
+      " 点下一回合格挡。"
+    ]
+  },
   "PokerPlayerMod:FakeSymbolsPower": {
     "NAME": "伪造花色",
     "DESCRIPTIONS": [
