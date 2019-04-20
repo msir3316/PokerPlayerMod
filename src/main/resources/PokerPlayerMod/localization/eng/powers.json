@@ -23,6 +23,13 @@
       " Block per card."
     ]
   },
+  "PokerPlayerMod:HardenPower": {
+    "NAME": "Harden",
+    "DESCRIPTIONS": [
+      "During Showdown, your Spades give you #b",
+      " Block next turn per card."
+    ]
+  },
   "PokerPlayerMod:FakeSymbolsPower": {
     "NAME": "Fake Symbols",
     "DESCRIPTIONS": [

@@ -33,12 +33,13 @@
   },
   "PokerPlayerMod:TrumpStrike": {
     "NAME": "Trump Strike",
-    "DESCRIPTION": "Deal !D! damage (half the number of Poker cards in your deck). NL Draw 1 card.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage (number of Poker cards in your deck). NL Draw 1 card."
+    "DESCRIPTION": "Deal !D! damage (number of Poker cards in your deck). NL Draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage (number of Poker cards in your deck). NL Draw !M! cards."
   },
   "PokerPlayerMod:ThinkingTime": {
     "NAME": "Thinking Time",
-    "DESCRIPTION": "Choose One: Draw 1 card; or gain !B! Block (number of Poker cards in your deck).",
+    "DESCRIPTION": "Gain !B! Block NL (number of Poker cards in your deck). NL Draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block NL (number of Poker cards in your deck). NL Draw !M! cards.",
     "EXTENDED_DESCRIPTION": [
       "Choose One",
       "Hit",
@@ -74,7 +75,7 @@
   },
   "PokerPlayerMod:DartThrow": {
     "NAME": "Dart Throw",
-    "DESCRIPTION": "Deal !D! damage."
+    "DESCRIPTION": "Deal !D! damage. NL Enemy loses !M! Strength this turn."
   },
   "PokerPlayerMod:FlyingCard": {
     "NAME": "Flying Card",
@@ -101,8 +102,8 @@
   },
   "PokerPlayerMod:MagicTrick": {
     "NAME": "Magic Trick",
-    "DESCRIPTION": "Draw until you have 6 cards in hand. NL Discard !M! card.",
-    "UPGRADE_DESCRIPTION": "Draw until you have 7 cards in hand. NL Discard !M! cards."
+    "DESCRIPTION": "Draw until you have 7 cards in hand. NL Discard !M! card.",
+    "UPGRADE_DESCRIPTION": "Draw until you have 8 cards in hand. NL Discard !M! cards."
   },
   "PokerPlayerMod:Raise": {
     "NAME": "Raise",
@@ -110,8 +111,7 @@
   },
   "PokerPlayerMod:HotShotCut": {
     "NAME": "Hot Shot Cut",
-    "DESCRIPTION": "Exhaust your hand. Deal !D! damage to a random enemy for each exhausted Poker Card. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Exhaust your hand. Deal !D! damage to a random enemy for each exhausted card. NL Exhaust."
+    "DESCRIPTION": "Exhaust all Poker cards in your hand. NL Deal !D! damage to a random enemy for each of them. NL Exhaust."
   },
   "PokerPlayerMod:Manipulation": {
     "NAME": "Manipulation",
@@ -154,13 +154,13 @@
   },
   "PokerPlayerMod:RiskyBet": {
     "NAME": "Risky Bet",
-    "DESCRIPTION": "Discard a card and draw a card. If they are both Poker cards with the same pokerplayer:Suit, draw !M! cards."
+    "DESCRIPTION": "Discard a card and draw a card. If they are both Poker cards with the same pokerplayer:Suit, gain [E] and draw !M! cards."
   },
   "PokerPlayerMod:CardPrinter": {
     "NAME": "Card Printer",
     "DESCRIPTION": "At the start of your turn, shuffle a pokerplayer:non-Heart, pokerplayer:Rank !M! Poker card to your draw pile.",
     "EXTENDED_DESCRIPTION": [
-      " Can be upgraded 8 times.",
+      " Can be upgraded 7 times.",
       " Can be upgraded ",
       " more times.",
       " Can be upgraded 1 more time."
@@ -178,8 +178,8 @@
   },
   "PokerPlayerMod:ClubShade": {
     "NAME": "Club Shade",
-    "DESCRIPTION": "Your pokerplayer:Clubs give you !M! Block during pokerplayer:Showdown.",
-    "UPGRADE_DESCRIPTION": "Draw 1 card. NL Your pokerplayer:Clubs give you !M! Block during pokerplayer:Showdown."
+    "DESCRIPTION": "Your pokerplayer:Clubs give you !M! Block as an additional pokerplayer:Showdown effect.",
+    "UPGRADE_DESCRIPTION": "Draw 1 card. NL Your pokerplayer:Clubs give you !M! Block as an additional pokerplayer:Showdown effect."
   },
   "PokerPlayerMod:Sharpen": {
     "NAME": "Sharpen",
@@ -187,7 +187,7 @@
     "UPGRADE_DESCRIPTION": "Draw 1 card. NL Your pokerplayer:Diamonds deal !M! more damage during pokerplayer:Showdown."
   },
   "PokerPlayerMod:ChangeRules": {
-    "NAME": "Change Rules",
+    "NAME": "Flip Table",
     "DESCRIPTION": "Deal !D! damage. NL Gain !M! Strength. NL Gain !M! Dexterity."
   },
   "PokerPlayerMod:RoyalStrike": {
@@ -241,5 +241,10 @@
   "PokerPlayerMod:SuperBite": {
     "NAME": "Super Bite",
     "DESCRIPTION": "Deal !D! damage. NL Heal !M! HP."
+  },
+  "PokerPlayerMod:Harden": {
+    "NAME": "Harden",
+    "DESCRIPTION": "Your Spades give you 2 Block next turn as an additional Showdown effect.",
+    "UPGRADE_DESCRIPTION": "Draw 1 card. NL Your Spades give you 2 Block next turn as an additional Showdown effect."
   }
 }

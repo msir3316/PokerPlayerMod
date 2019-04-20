@@ -11,9 +11,11 @@
     "NAME": "Bottled Poker",
     "FLAVOR": "You feel nostalgic while looking at this bottle.",
     "DESCRIPTIONS": [
-      "Upon pick up, choose a Poker card. Start each combat with this card in your hand.",
+      "Upon pick up, choose up to #b",
+      " Poker cards. Start each combat with this card in your hand.",
       "Choose a card for ",
       "Start each combat with ",
+      ", ",
       " in your hand."
     ]
   },
@@ -21,7 +23,7 @@
     "NAME": "Fair License",
     "FLAVOR": "Great present for honest people.",
     "DESCRIPTIONS": [
-      "If you do not play any Poker cards during your turn, gain an extra [E] next turn."
+      "If you do not play any Poker cards during your turn and score any Poker hand, gain [E] [E] next turn."
     ]
   },
   "PokerPlayerMod:ClubPass": {
@@ -49,7 +51,7 @@
     "NAME": "Cool Box",
     "FLAVOR": "Contains tools for cooling your cool head.",
     "DESCRIPTIONS": [
-      "At the start of each combat, add a #b10 of #ypokerplayer:Spades with Ethereal on top of your draw pile. It costs #b0."
+      "At the start of each combat, add a #b10 of #ypokerplayer:Spades with Ethereal into your hand. It costs #b0."
     ]
   },
   "PokerPlayerMod:Splitter": {
@@ -89,6 +91,13 @@
     "DESCRIPTIONS": [
       "#ypokerplayer:Rank #b1 Poker Cards cost #b0 and gives you #b",
       " #yBlock when played."
+    ]
+  },
+  "PokerPlayerMod:BrokenClock": {
+    "NAME": "Broken Clock",
+    "FLAVOR": "Only you know that this clock moves slowly.",
+    "DESCRIPTIONS": [
+      "When you would add a Poker Card into your hand, you may choose to draw #b1 card instead."
     ]
   }
 }
