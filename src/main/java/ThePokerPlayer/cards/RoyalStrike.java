@@ -24,7 +24,7 @@ public class RoyalStrike extends CustomCard {
 	private static final CardRarity RARITY = CardRarity.RARE;
 	private static final CardTarget TARGET = CardTarget.ENEMY;
 
-	private static final int POWER = 4;
+	private static final int POWER = 5;
 	private static final int UPGRADE_BONUS = 1;
 
 	public RoyalStrike() {

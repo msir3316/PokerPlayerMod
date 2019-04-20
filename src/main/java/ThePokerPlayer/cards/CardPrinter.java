@@ -26,7 +26,7 @@ public class CardPrinter extends CustomCard {
 	private static final AbstractCard.CardRarity RARITY = CardRarity.UNCOMMON;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.SELF;
 
-	private static final int POWER = 2;
+	private static final int POWER = 3;
 
 	public CardPrinter() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
@@ -48,9 +48,9 @@ public class CardPrinter extends CustomCard {
 		this.rawDescription = DESCRIPTION;
 		if (timesUpgraded == 0) {
 			this.rawDescription += EXTENDED_DESCRIPTION[0];
-		} else if (timesUpgraded < 7) {
-			this.rawDescription += EXTENDED_DESCRIPTION[1] + (8 - timesUpgraded) + EXTENDED_DESCRIPTION[2];
-		} else if (timesUpgraded == 7) {
+		} else if (timesUpgraded < 6) {
+			this.rawDescription += EXTENDED_DESCRIPTION[1] + (7 - timesUpgraded) + EXTENDED_DESCRIPTION[2];
+		} else if (timesUpgraded == 6) {
 			this.rawDescription += EXTENDED_DESCRIPTION[3];
 		}
 		this.initializeDescription();
@@ -58,11 +58,11 @@ public class CardPrinter extends CustomCard {
 
 	@Override
 	public boolean canUpgrade() {
-		return timesUpgraded < 9;
+		return timesUpgraded < 7;
 	}
 
 	public void upgrade() {
-		if (timesUpgraded < 8) {
+		if (timesUpgraded < 7) {
 			timesUpgraded++;
 			this.upgradeMagicNumber(1);
 			updateDescription();

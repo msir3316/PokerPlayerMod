@@ -173,7 +173,7 @@ public class ShowdownAction extends AbstractGameAction {
 			}
 		}
 
-		if ((hand >= 2 || flush) && AbstractDungeon.player.hasPower(GamblerFormPower.POWER_ID)) {
+		if ((hand >= TWO_PAIR || flush) && AbstractDungeon.player.hasPower(GamblerFormPower.POWER_ID)) {
 			for (PokerCard card : pokerCards) {
 				pow[card.suit.value] += AbstractDungeon.player.getPower(GamblerFormPower.POWER_ID).amount;
 			}

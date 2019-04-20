@@ -1,7 +1,6 @@
 package ThePokerPlayer.cards;
 
 import ThePokerPlayer.PokerPlayerMod;
-import ThePokerPlayer.actions.ChooseAction;
 import ThePokerPlayer.patches.CardColorEnum;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
@@ -21,14 +20,16 @@ public class ThinkingTime extends CustomCard {
 	public static final String IMG = PokerPlayerMod.GetCardPath(RAW_ID);
 	private static final int COST = 1;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-	public static final String[] EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
+	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
 	private static final AbstractCard.CardColor COLOR = CardColorEnum.POKER_PLAYER_GRAY;
 	private static final AbstractCard.CardRarity RARITY = CardRarity.SPECIAL;
 	private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;
 
 	private static final int DRAW = 1;
-	private static final int NEW_COST = 0;
+	private static final int UPGRADE_BONUS = 1;
+
+	int num = 0;
 
 	public ThinkingTime() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
@@ -38,23 +39,8 @@ public class ThinkingTime extends CustomCard {
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new ChooseAction(
-				EXTENDED_DESCRIPTION[0],
-				new ChooseOption(
-						this,
-						EXTENDED_DESCRIPTION[1],
-						EXTENDED_DESCRIPTION[3],
-						() -> {
-							AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
-						}),
-				new ChooseOption(
-						this,
-						EXTENDED_DESCRIPTION[2],
-						EXTENDED_DESCRIPTION[4] + this.block + EXTENDED_DESCRIPTION[5],
-						() -> {
-							AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
-						})
-		));
+		AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, this.block));
+		AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
 	}
 
 	@Override
@@ -66,8 +52,9 @@ public class ThinkingTime extends CustomCard {
 					count++;
 				}
 			}
-			if (this.baseBlock != count) {
-				this.baseBlock = count;
+			if (num != count) {
+				this.baseBlock += (count - num);
+				num = count;
 				this.initializeDescription();
 			}
 		}
@@ -78,10 +65,19 @@ public class ThinkingTime extends CustomCard {
 		return new ThinkingTime();
 	}
 
+	@Override
+	public AbstractCard makeStatEquivalentCopy() {
+		ThinkingTime c = (ThinkingTime)(super.makeStatEquivalentCopy());
+		c.num = this.num;
+		return c;
+	}
+
 	public void upgrade() {
 		if (!upgraded) {
 			upgradeName();
-			this.upgradeBaseCost(NEW_COST);
+			upgradeMagicNumber(UPGRADE_BONUS);
+			rawDescription = UPGRADE_DESCRIPTION;
+			initializeDescription();
 		}
 	}
 }

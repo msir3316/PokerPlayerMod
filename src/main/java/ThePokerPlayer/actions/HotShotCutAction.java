@@ -1,8 +1,7 @@
 package ThePokerPlayer.actions;
 
-import ThePokerPlayer.cards.PokerCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.unique.SwordBoomerangAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -27,24 +26,14 @@ public class HotShotCutAction extends AbstractGameAction {
 
 	public void update() {
 		if (this.duration == this.startingDuration) {
-			int count = AbstractDungeon.player.hand.size();
-			int atkCount;
-			if (!upgraded) {
-				atkCount = 0;
-				for (AbstractCard c : AbstractDungeon.player.hand.group) {
-					if (c instanceof PokerCard) {
-						atkCount++;
-					}
+			int count = 0;
+			for (AbstractCard c : AbstractDungeon.player.hand.group) {
+				if (c.type != AbstractCard.CardType.ATTACK) {
+					AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(c, AbstractDungeon.player.hand));
 				}
-			} else {
-				atkCount = count;
 			}
 
-			AbstractDungeon.actionManager.addToTop(new SwordBoomerangAction(AbstractDungeon.getMonsters().getRandomMonster(null, true, AbstractDungeon.cardRandomRng), this.info, atkCount));
-
-			for (int i = 0; i < count; ++i) {
-				AbstractDungeon.actionManager.addToTop(new ExhaustAction(AbstractDungeon.player, AbstractDungeon.player, 1, true, true));
-			}
+			AbstractDungeon.actionManager.addToBottom(new SwordBoomerangAction(AbstractDungeon.getMonsters().getRandomMonster(null, true, AbstractDungeon.cardRandomRng), this.info, count));
 		}
 
 		this.tickDuration();

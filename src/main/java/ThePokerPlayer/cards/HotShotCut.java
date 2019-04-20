@@ -18,15 +18,15 @@ public class HotShotCut extends CustomCard {
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String IMG = PokerPlayerMod.GetCardPath(RAW_ID);
-	private static final int COST = 2;
+	private static final int COST = 0;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-	public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 	private static final AbstractCard.CardType TYPE = CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = CardColorEnum.POKER_PLAYER_GRAY;
 	private static final AbstractCard.CardRarity RARITY = CardRarity.UNCOMMON;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.ALL_ENEMY;
 
-	private static final int POWER = 13;
+	private static final int POWER = 10;
+	private static final int UPGRADE_BONUS = 3;
 
 	public HotShotCut() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
@@ -45,8 +45,7 @@ public class HotShotCut extends CustomCard {
 	public void upgrade() {
 		if (!upgraded) {
 			upgradeName();
-			this.rawDescription = UPGRADE_DESCRIPTION;
-			this.initializeDescription();
+			upgradeDamage(UPGRADE_BONUS);
 		}
 	}
 }

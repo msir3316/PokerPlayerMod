@@ -20,15 +20,15 @@ public class SecondChance extends CustomCard {
 	private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 	public static final String NAME = cardStrings.NAME;
 	public static final String IMG = PokerPlayerMod.GetCardPath(RAW_ID);
-	private static final int COST = 1;
+	private static final int COST = 0;
 	public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 	private static final AbstractCard.CardType TYPE = CardType.ATTACK;
 	private static final AbstractCard.CardColor COLOR = CardColorEnum.POKER_PLAYER_GRAY;
 	private static final AbstractCard.CardRarity RARITY = CardRarity.UNCOMMON;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
 
-	private static final int POWER = 5;
-	private static final int UPGRADE_BONUS = 2;
+	private static final int POWER = 7;
+	private static final int UPGRADE_BONUS = 3;
 	private static final int DRAW_UNTIL = 5;
 
 	public SecondChance() {

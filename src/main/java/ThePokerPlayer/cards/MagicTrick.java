@@ -27,7 +27,7 @@ public class MagicTrick extends CustomCard {
 	private static final AbstractCard.CardTarget TARGET = CardTarget.SELF;
 
 	private static final int DRAW_BASE = 5;
-	private static final int POWER = 1;
+	private static final int POWER = 2;
 	private static final int UPGRADE_BONUS = 1;
 
 	public MagicTrick() {

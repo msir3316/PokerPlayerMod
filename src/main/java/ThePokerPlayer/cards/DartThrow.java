@@ -4,6 +4,7 @@ import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.patches.CardColorEnum;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -12,6 +13,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.ArtifactPower;
+import com.megacrit.cardcrawl.powers.GainStrengthPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.combat.ThrowDaggerEffect;
 
 public class DartThrow extends CustomCard {
@@ -29,10 +33,14 @@ public class DartThrow extends CustomCard {
 
 	private static final int POWER = 16;
 	private static final int UPGRADE_BONUS = 4;
+	private static final int MAGIC = 3;
+	private static final int UPGRADE_MAGIC = 1;
 
 	public DartThrow() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 		this.baseDamage = POWER;
+		this.baseMagicNumber = MAGIC;
+		this.magicNumber = this.baseMagicNumber;
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
@@ -40,6 +48,10 @@ public class DartThrow extends CustomCard {
 			AbstractDungeon.actionManager.addToBottom(new VFXAction(new ThrowDaggerEffect(m.hb.cX, m.hb.cY)));
 		}
 		AbstractDungeon.actionManager.addToBottom(new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn)));
+		AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new StrengthPower(m, -this.magicNumber), -this.magicNumber));
+		if (m != null && !m.hasPower(ArtifactPower.POWER_ID)) {
+			AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, p, new GainStrengthPower(m, this.magicNumber), this.magicNumber));
+		}
 	}
 
 	public AbstractCard makeCopy() {
@@ -50,6 +62,7 @@ public class DartThrow extends CustomCard {
 		if (!upgraded) {
 			upgradeName();
 			this.upgradeDamage(UPGRADE_BONUS);
+			this.upgradeMagicNumber(UPGRADE_MAGIC);
 		}
 	}
 }

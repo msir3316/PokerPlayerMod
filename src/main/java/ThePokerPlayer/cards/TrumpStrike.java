@@ -29,6 +29,9 @@ public class TrumpStrike extends CustomCard {
 	private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
 
 	private static final int DRAW = 1;
+	private static final int UPGRADE_BONUS = 1;
+
+	int num = 0;
 
 	public TrumpStrike() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
@@ -45,11 +48,6 @@ public class TrumpStrike extends CustomCard {
 
 	@Override
 	public void update() {
-		updateDescription();
-		super.update();
-	}
-
-	private void updateDescription() {
 		if (AbstractDungeon.player != null && AbstractDungeon.player.masterDeck != null) {
 			int count = 0;
 			for (AbstractCard c : AbstractDungeon.player.masterDeck.group) {
@@ -57,24 +55,33 @@ public class TrumpStrike extends CustomCard {
 					count++;
 				}
 			}
-			int tmp = upgraded ? count : count / 2;
-			if (this.baseDamage != tmp) {
-				this.baseDamage = tmp;
+			if (num != count) {
+				this.baseDamage += (count - num);
+				num = count;
 				this.initializeDescription();
 			}
 		}
+		super.update();
 	}
 
+	@Override
 	public AbstractCard makeCopy() {
 		return new TrumpStrike();
+	}
+
+	@Override
+	public AbstractCard makeStatEquivalentCopy() {
+		TrumpStrike c = (TrumpStrike)(super.makeStatEquivalentCopy());
+		c.num = this.num;
+		return c;
 	}
 
 	public void upgrade() {
 		if (!upgraded) {
 			upgradeName();
-			this.rawDescription = UPGRADE_DESCRIPTION;
-			this.initializeDescription();
-			updateDescription();
+			upgradeMagicNumber(UPGRADE_BONUS);
+			rawDescription = UPGRADE_DESCRIPTION;
+			initializeDescription();
 		}
 	}
 }

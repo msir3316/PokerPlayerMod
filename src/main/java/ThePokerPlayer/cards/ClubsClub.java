@@ -28,8 +28,8 @@ public class ClubsClub extends CustomCard {
 	private static final AbstractCard.CardRarity RARITY = CardRarity.COMMON;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
 
-	private static final int POWER = 8;
-	private static final int UPGRADE_BONUS = 4;
+	private static final int POWER = 10;
+	private static final int UPGRADE_BONUS = 3;
 
 	public ClubsClub() {
 		super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
