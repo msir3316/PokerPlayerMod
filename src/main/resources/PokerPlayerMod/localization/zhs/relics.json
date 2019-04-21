@@ -11,11 +11,11 @@
     "NAME": "瓶装扑克",
     "FLAVOR": "每当你向这个瓶子里看去的时候，都感觉无比怀旧。",
     "DESCRIPTIONS": [
-      "拾起时，最多选择 #b",
+	  "拾起时，最多选择 #b",
       " 张扑克牌。在每场战斗开始时，这张牌会出现在手牌中。",
-      "选择牌 ",
+      "选择 5 张牌 ",
       "在每场战斗开始时，将 ",
-      " 、 "
+	  " 、 "
       " 放入你的手牌。"
     ]
   },
@@ -79,10 +79,9 @@
   },
   "PokerPlayerMod:StuffedPocket": {
     "NAME": "填料袋",
-    "FLAVOR": "小心不要从口袋里洒出任何东西。更不要拾荒者打赏。",
+    "FLAVOR": "警告：牌型可能会不以预期的那样结算。",
     "DESCRIPTIONS": [
-      "每场战斗开始时，你的牌组每有 #b",
-      " 张牌，额外抽 #b1 张牌。"
+     "#ypokerplayer:摊牌 时，你会获得所有的结算奖励而不是只结算受益最高的 5 张牌的奖励。"
     ]
   },
   "PokerPlayerMod:AceCard": {
@@ -91,13 +90,11 @@
     "DESCRIPTIONS": [
       "#ypokerplayer:点数 为 #b1 的扑克牌 #b0 费并在你打出时给予你 #b",
       " 点 #y格挡 。"
-    ]
-  },
+    },
   "PokerPlayerMod:BrokenClock": {
     "NAME": "破损时钟",
     "FLAVOR": "你只知道这个钟走得很慢很慢。",
     "DESCRIPTIONS": [
-      "When you would add a Poker Card into your hand, you may choose to draw #b1 card instead."
+      "每当你想你的手牌增加一张扑克牌，你能选择替换为抽 #b1 张牌。"
     ]
-  }
 }

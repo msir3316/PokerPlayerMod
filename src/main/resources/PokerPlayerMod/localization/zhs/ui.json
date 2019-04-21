@@ -54,9 +54,28 @@
       ""
     ]
   },
+    "PokerPlayerMod:HardModeConfig": {
+    "TEXT": [
+      "开启困难模式（减少牌型结算奖励）"
+    ]
+  },
+  "PokerPlayerMod:BanContentsConfig": {
+    "TEXT": [
+      "禁用一些原版中会引起不平衡的内容（如：遗物，无色牌等）"
+    ]
+  },
   "PokerPlayerMod:ExordiumClubConfig": {
     "TEXT": [
       "其他角色也能进入入口俱乐部事件"
+ },
+  "PokerPlayerMod:RestoreDefaultConfig": {
+    "TEXT": [
+      "恢复默认设置"
+    ]
+  },
+  "PokerPlayerMod:ConfigHelp": {
+    "TEXT": [
+      "除了困难模式以外，其他选项不会影响正在进行的游戏。"
     ]
   }
 }

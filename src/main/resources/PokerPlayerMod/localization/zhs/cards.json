@@ -20,7 +20,8 @@
       "pokerplayer:方块 ",
       "",
       "虚无。 NL ",
-      " NL pokerplayer:变化 "
+      " （X",
+      "）"
     ]
   },
   "PokerPlayerMod:BadJoker": {
@@ -133,12 +134,12 @@
   },
   "PokerPlayerMod:FillThePot": {
     "NAME": "奖金池",
-    "DESCRIPTION": "从抽牌堆中 抓取 !M! 张随机非扑克牌到你的手牌。 NL 消耗 。"
+    "DESCRIPTION": "从抽牌堆中 取出 !M! 张随机非扑克牌到你的手牌。 NL 消耗 。"
   },
   "PokerPlayerMod:HiddenCard": {
     "NAME": "隐秘卡牌",
-    "DESCRIPTION": "从弃牌堆中 抓取 一张扑克牌。",
-    "UPGRADE_DESCRIPTION": "从弃牌堆中 抓取 一张扑克牌。获得等于 pokerplayer:点数 的 格挡 。",
+    "DESCRIPTION": "从弃牌堆中 取出 一张扑克牌。",
+    "UPGRADE_DESCRIPTION": "从弃牌堆中 取出 一张扑克牌。获得等于 pokerplayer:点数 的 格挡 。",
     "EXTENDED_DESCRIPTION": [
       "弃牌堆没有扑克牌"
     ]
@@ -246,5 +247,24 @@
     "NAME": "硬化",
     "DESCRIPTION": "pokerplayer:摊牌 时，你的 pokerplayer:黑桃 会额外给予你 2 点下一回合 格挡 。",
     "UPGRADE_DESCRIPTION": "抽 1 张牌。 NL pokerplayer:摊牌 时，你的 pokerplayer:黑桃 会额外给予你 2 点下一回合 格挡 。"
+  },
+  "PokerPlayerMod:PoorCopy": {
+    "NAME": "拙劣复制",
+    "DESCRIPTION": "选择：抽 1 张牌；复制一张你手牌中的扑克牌，复制品的 pokerplayer:点数 降低 1 。",
+    "EXTENDED_DESCRIPTION": [
+      "选择",
+      "抽牌",
+      "复制",
+      "抽 1 张牌",
+      "复制一张你手牌中的扑克牌，复制品的 pokerplayer:点数 降低 1 。"
+    ]
+  },
+  "PokerPlayerMod:WasteCollection": {
+    "NAME": "废品收集",
+    "DESCRIPTION": "从你的抽牌堆中 取出 !M! 张点数小于等于3的扑克牌。 本场战斗 pokerplayer:摊牌 时，他们的结算效果是双倍。 NL 消耗 。"
+  },
+  "PokerPlayerMod:BrokenClockChoice": {
+    "NAME": "破碎时钟",
+    "DESCRIPTION": "抽 !M! 张牌。"
   }
 }
