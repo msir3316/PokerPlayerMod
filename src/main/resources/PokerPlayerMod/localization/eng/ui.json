@@ -54,9 +54,29 @@
       ""
     ]
   },
+  "PokerPlayerMod:HardModeConfig": {
+    "TEXT": [
+      "Enable Hard Mode (Reduce the Showdown bonuses from scoring poker hands.)"
+    ]
+  },
+  "PokerPlayerMod:BanContentsConfig": {
+    "TEXT": [
+      "Ban some unbalanced base game contents (relics, colorless cards, etc.)"
+    ]
+  },
   "PokerPlayerMod:ExordiumClubConfig": {
     "TEXT": [
       "Enable Exordium Club event for other characters"
+    ]
+  },
+  "PokerPlayerMod:RestoreDefaultConfig": {
+    "TEXT": [
+      "Restore Defaults"
+    ]
+  },
+  "PokerPlayerMod:ConfigHelp": {
+    "TEXT": [
+      "Except for the Hard Mode, the options will not affect the ongoing run."
     ]
   }
 }

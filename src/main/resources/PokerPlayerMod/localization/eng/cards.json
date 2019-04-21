@@ -20,7 +20,8 @@
       "pokerplayer:Diamond ",
       "",
       "Ethereal. NL ",
-      " NL pokerplayer:Transformed."
+      " (X",
+      ")"
     ]
   },
   "PokerPlayerMod:BadJoker": {
@@ -244,7 +245,26 @@
   },
   "PokerPlayerMod:Harden": {
     "NAME": "Harden",
-    "DESCRIPTION": "Your Spades give you 2 Block next turn as an additional Showdown effect.",
-    "UPGRADE_DESCRIPTION": "Draw 1 card. NL Your Spades give you 2 Block next turn as an additional Showdown effect."
+    "DESCRIPTION": "Your Spades give you !M! Block next turn as an additional pokerplayer:Showdown effect.",
+    "UPGRADE_DESCRIPTION": "Draw 1 card. NL Your Spades give you !M! Block next turn as an additional pokerplayer:Showdown effect."
+  },
+  "PokerPlayerMod:PoorCopy": {
+    "NAME": "Poor Copy",
+    "DESCRIPTION": "Choose One: Draw 1 card; or copy a Poker card from your hand and reduce the pokerplayer:Rank of the copy by 1.",
+    "EXTENDED_DESCRIPTION": [
+      "Choose One",
+      "Draw",
+      "Copy",
+      "Draw 1 card.",
+      "Copy a Poker Card from your hand and reduce the pokerplery:Rank of the copy by 1."
+    ]
+  },
+  "PokerPlayerMod:WasteCollection": {
+    "NAME": "Waste Collection",
+    "DESCRIPTION": "Fetch !M! Poker cards ranked 3 or less from your draw pile. They have double pokerplayer:Showdown Effect for this combat. NL Exhaust."
+  },
+  "PokerPlayerMod:BrokenClockChoice": {
+    "NAME": "Broken Clock",
+    "DESCRIPTION": "Draw !M! card."
   }
 }

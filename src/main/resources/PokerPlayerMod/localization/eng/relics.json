@@ -13,7 +13,7 @@
     "DESCRIPTIONS": [
       "Upon pick up, choose up to #b",
       " Poker cards. Start each combat with this card in your hand.",
-      "Choose a card for ",
+      "Choose 5 cards for ",
       "Start each combat with ",
       ", ",
       " in your hand."
@@ -79,10 +79,9 @@
   },
   "PokerPlayerMod:StuffedPocket": {
     "NAME": "Stuffed Pocket",
-    "FLAVOR": "Be careful not to spill anything from your pocket. Or give the scavengers bonuses.",
+    "FLAVOR": "Warning: Poker hand might be determined unexpectedly.",
     "DESCRIPTIONS": [
-      "At the start of your combat, draw #b1 additional card for every #b",
-      " cards in your deck."
+      "You receive the #ypokerplayer:Showdown effects from all Poker cards in your hand instead of max. #b5 cards."
     ]
   },
   "PokerPlayerMod:AceCard": {
