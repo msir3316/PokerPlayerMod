@@ -47,8 +47,8 @@
   "PokerPlayerMod:CardPrinterPower": {
     "NAME": "Card Printer",
     "DESCRIPTIONS": [
-      "At the start of your turn, add a random non-Heart #yRank #b",
-      " Poker card to your discard pile."
+      "At the start of your turn, shuffle a random non-Heart #yRank #b",
+      " Poker card to your draw pile."
     ]
   },
   "PokerPlayerMod:StackedDeckPower": {

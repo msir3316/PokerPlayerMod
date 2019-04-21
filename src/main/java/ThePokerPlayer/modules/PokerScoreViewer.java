@@ -128,9 +128,9 @@ public class PokerScoreViewer {
 		}
 
 		if (ShowdownAction.flush) {
-			result += " NL" + highlightedText(ShowdownAction.TEXT[ShowdownAction.FLUSH]) + " : #b+" + ShowdownAction.MODIFIER_BONUS[ShowdownAction.FLUSH] + "%";
+			result += " NL" + highlightedText(ShowdownAction.TEXT[ShowdownAction.FLUSH]) + " : #b+" + ShowdownAction.rawModifierBonus(ShowdownAction.FLUSH) + "%";
 		} else {
-			result += " NL" + ShowdownAction.TEXT[ShowdownAction.FLUSH] + " : #b+" + ShowdownAction.MODIFIER_BONUS[ShowdownAction.FLUSH] + "%";
+			result += " NL" + ShowdownAction.TEXT[ShowdownAction.FLUSH] + " : #b+" + ShowdownAction.rawModifierBonus(ShowdownAction.FLUSH) + "%";
 		}
 		return result;
 	}

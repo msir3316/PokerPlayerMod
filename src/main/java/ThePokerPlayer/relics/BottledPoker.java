@@ -24,8 +24,16 @@ public class BottledPoker extends CustomRelic implements CustomBottleRelic, Cust
 	public static final String IMG = PokerPlayerMod.GetRelicPath(RAW_ID);
 	public static final String OUTLINE = PokerPlayerMod.GetRelicOutlinePath(RAW_ID);
 
-	private boolean cardSelected = false;
 	private ArrayList<AbstractCard> bottledCards;
+
+	public enum bottleStatus {
+		None,
+		GridOpen,
+		GridSelected,
+		Done
+	}
+
+	public static bottleStatus status = bottleStatus.None;
 
 	private static int NUM = 5;
 
@@ -39,7 +47,7 @@ public class BottledPoker extends CustomRelic implements CustomBottleRelic, Cust
 	}
 
 	public void onEquip() {
-		cardSelected = false;
+		status = bottleStatus.None;
 		if (AbstractDungeon.isScreenUp) {
 			AbstractDungeon.dynamicBanner.hide();
 			AbstractDungeon.overlayMenu.cancelButton.hide();
@@ -52,6 +60,7 @@ public class BottledPoker extends CustomRelic implements CustomBottleRelic, Cust
 				group.addToTop(c);
 			}
 		}
+		status = bottleStatus.GridOpen;
 		AbstractDungeon.gridSelectScreen.open(group,
 				NUM, true, DESCRIPTIONS[2] + name + ".");
 	}
@@ -83,7 +92,6 @@ public class BottledPoker extends CustomRelic implements CustomBottleRelic, Cust
 
 	@Override
 	public void onLoad(ArrayList<Integer> cardIndexes) {
-		cardSelected = true;
 		if (cardIndexes != null) {
 			bottledCards = new ArrayList<>();
 			for (int i : cardIndexes) {
@@ -96,6 +104,7 @@ public class BottledPoker extends CustomRelic implements CustomBottleRelic, Cust
 				setDescriptionAfterLoading();
 			}
 		}
+		status = bottleStatus.Done;
 	}
 
 	private void setDescriptionAfterLoading() {
@@ -104,6 +113,7 @@ public class BottledPoker extends CustomRelic implements CustomBottleRelic, Cust
 		for (AbstractCard c : bottledCards) {
 			if (first) {
 				description += FontHelper.colorString(c.name, "y");
+				first = false;
 			} else {
 				description += this.DESCRIPTIONS[4] + FontHelper.colorString(c.name, "y");
 			}
@@ -118,8 +128,7 @@ public class BottledPoker extends CustomRelic implements CustomBottleRelic, Cust
 	@Override
 	public void update() {
 		super.update();
-		if (!this.cardSelected && !AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
-			this.cardSelected = true;
+		if (status == bottleStatus.GridSelected) {
 			bottledCards = new ArrayList<>();
 			bottledCards.addAll(AbstractDungeon.gridSelectScreen.selectedCards);
 			for (AbstractCard c : bottledCards) {
@@ -128,6 +137,7 @@ public class BottledPoker extends CustomRelic implements CustomBottleRelic, Cust
 			AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
 			AbstractDungeon.gridSelectScreen.selectedCards.clear();
 			setDescriptionAfterLoading();
+			status = bottleStatus.Done;
 		}
 	}
 

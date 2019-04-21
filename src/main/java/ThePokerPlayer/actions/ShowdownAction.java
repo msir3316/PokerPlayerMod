@@ -54,7 +54,10 @@ public class ShowdownAction extends AbstractGameAction {
 	public static final int FLUSH = 9;
 	public static final int BONUS1 = 10;
 	public static final int BONUS2 = 11;
-	public static final int[] MODIFIER_BONUS = new int[]{
+	private static final int[] MODIFIER_BONUS = new int[]{
+			0, 50, 100, 150, 250, 200, 300, 400, 0, 200
+	};
+	private static final int[] MODIFIER_BONUS_HARD = new int[]{
 			0, 25, 50, 100, 150, 150, 200, 250, 0, 150
 	};
 
@@ -192,7 +195,7 @@ public class ShowdownAction extends AbstractGameAction {
 			FairLicense.pokerHandScored = true;
 		}
 
-		modifierBonus = modifierByHand(hand) + (flush ? MODIFIER_BONUS[FLUSH] : 0);
+		modifierBonus = modifierByHand(hand) + (flush ? rawModifierBonus(FLUSH) : 0);
 
 		for (int i = 0; i < 4; i++)
 			powView[i] = pow[i] * (100 + modifierBonus) / 100;
@@ -200,7 +203,7 @@ public class ShowdownAction extends AbstractGameAction {
 	}
 
 	public static int modifierByHand(int hand) {
-		int result = MODIFIER_BONUS[hand];
+		int result = rawModifierBonus(hand);
 		if (hand == STRAIGHT) {
 			int straightModifier = 1;
 			if (AbstractDungeon.currMapNode != null &&
@@ -212,6 +215,10 @@ public class ShowdownAction extends AbstractGameAction {
 			result *= straightModifier;
 		}
 		return result;
+	}
+
+	public static int rawModifierBonus(int hand) {
+		return PokerPlayerMod.hardMode ? MODIFIER_BONUS_HARD[hand] : MODIFIER_BONUS[hand];
 	}
 
 	public static String getHandName() {
