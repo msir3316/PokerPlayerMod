@@ -33,7 +33,7 @@ public class DartThrow extends CustomCard {
 
 	private static final int POWER = 16;
 	private static final int UPGRADE_BONUS = 4;
-	private static final int MAGIC = 3;
+	private static final int MAGIC = 2;
 	private static final int UPGRADE_MAGIC = 1;
 
 	public DartThrow() {

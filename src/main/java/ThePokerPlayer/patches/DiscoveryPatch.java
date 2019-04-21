@@ -1,7 +1,9 @@
 package ThePokerPlayer.patches;
 
 import ThePokerPlayer.actions.PokerCardDiscoveryAction;
+import ThePokerPlayer.cards.ChoiceCard.BrokenClockChoice;
 import ThePokerPlayer.cards.PokerCard;
+import ThePokerPlayer.relics.BrokenClock;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -23,7 +25,7 @@ public class DiscoveryPatch {
 								PokerCard.Suit.values()[AbstractDungeon.cardRandomRng.random(2) + 1] :
 								PokerCardDiscoveryAction.suit,
 						AbstractDungeon.cardRandomRng.random(PokerCardDiscoveryAction.min, PokerCardDiscoveryAction.max),
-						true);
+						PokerCardDiscoveryAction.ethereal);
 			} else {
 				return __result;
 			}
@@ -54,6 +56,9 @@ public class DiscoveryPatch {
 				for (int i = derp.size() - 1; i >= PokerCardDiscoveryAction.choices; i--) {
 					derp.remove(i);
 				}
+				if (AbstractDungeon.player.hasRelic(BrokenClock.ID)) {
+					derp.add(new BrokenClockChoice());
+				}
 			}
 		}
 	}
@@ -71,12 +76,25 @@ public class DiscoveryPatch {
 	public static class DiscoveryPositionPatch {
 		@SpirePrefixPatch
 		public static void Prefix(CardRewardScreen __instance, float x, float y) {
-			if (PokerCardDiscoveryAction.isActive && __instance.rewardGroup.size() == 5) {
-				final float PAD_X = 30.0F * Settings.scale;
-				for (int i = 0; i < 5; i++) {
-					__instance.rewardGroup.get(i).target_x = Settings.WIDTH / 2.0F + (AbstractCard.IMG_WIDTH + PAD_X) * (i - 2);
-					__instance.rewardGroup.get(i).target_y = y;
+			if (PokerCardDiscoveryAction.isActive) {
+				int len = __instance.rewardGroup.size();
+				if (len >= 5) {
+					final float PAD_X = (80.0F - len * 10.0f) * Settings.scale;
+					for (int i = 0; i < __instance.rewardGroup.size(); i++) {
+						__instance.rewardGroup.get(i).target_x = Settings.WIDTH / 2.0F + (AbstractCard.IMG_WIDTH + PAD_X) * (i - (len / 2.0F - 0.5F));
+						__instance.rewardGroup.get(i).target_y = y;
+					}
 				}
+			}
+		}
+	}
+
+	@SpirePatch(clz = CardRewardScreen.class, method = "update")
+	public static class DiscoveryHandUpdatePatch {
+		@SpirePostfixPatch
+		public static void Postfix(CardRewardScreen __instance) {
+			if (PokerCardDiscoveryAction.isActive) {
+				AbstractDungeon.player.hand.update();
 			}
 		}
 	}

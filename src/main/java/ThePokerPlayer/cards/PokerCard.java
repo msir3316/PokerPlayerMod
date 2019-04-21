@@ -81,6 +81,7 @@ public class PokerCard extends CustomCard {
 	public static float typeOffsetPoker;
 
 	public boolean aced = false;
+	public int multiplier = 1;
 
 	static {
 		float d = 48.0F * Settings.scale;
@@ -146,6 +147,9 @@ public class PokerCard extends CustomCard {
 
 	public void initCard(boolean isEthereal) {
 		this.name = getCardName(suit, rank);
+		if (multiplier > 1) {
+			this.name += EXTENDED_DESCRIPTION[17] + multiplier + EXTENDED_DESCRIPTION[18];
+		}
 		if (suit == Suit.Heart && !this.tags.contains(CardTags.HEALING)) {
 			this.tags.add(CardTags.HEALING);
 		}
@@ -153,9 +157,6 @@ public class PokerCard extends CustomCard {
 		this.rawDescription = getCardDescription(suit, rank);
 		if (this.isEthereal) {
 			this.rawDescription = EXTENDED_DESCRIPTION[16] + this.rawDescription;
-		}
-		if (PokerPlayerMod.shapeshiftReturns.containsKey(this)) {
-			this.rawDescription += EXTENDED_DESCRIPTION[17];
 		}
 
 		this.initializeTitle();
@@ -195,6 +196,7 @@ public class PokerCard extends CustomCard {
 		if (card instanceof PokerCard) {
 			PokerCard pc = (PokerCard) card;
 			pc.aced = this.aced;
+			pc.multiplier = this.multiplier;
 			pc.initCard(this.isEthereal);
 		}
 		return card;
@@ -270,30 +272,15 @@ public class PokerCard extends CustomCard {
 
 	@Override
 	public void upgrade() {
-		if (!this.upgraded) {
-			rankChange(1, false);
-		}
+		rankChange(1);
 	}
 
-	public void rankChange(int amount, boolean useRng) {
-		switch (amount) {
-			case -1:
-			case 0:
-				int min = amount == 0 ? 1 : 6;
-				if (useRng) {
-					this.rank = AbstractDungeon.cardRandomRng.random(min, 10);
-				} else {
-					this.rank = MathUtils.random(min, 10);
-				}
-				break;
-			default:
-				this.rank += amount;
-				if (this.rank > 10) {
-					this.rank = 10;
-				} else if (this.rank < 1) {
-					this.rank = 1;
-				}
-				break;
+	public void rankChange(int amount) {
+		this.rank += amount;
+		if (this.rank > 10) {
+			this.rank = 10;
+		} else if (this.rank < 1) {
+			this.rank = 1;
 		}
 		initCard(this.isEthereal);
 	}
@@ -305,6 +292,11 @@ public class PokerCard extends CustomCard {
 		} else if (this.rank < 1) {
 			this.rank = 1;
 		}
+		initCard(this.isEthereal);
+	}
+
+	public void multiplyEffect(int mult) {
+		this.multiplier *= mult;
 		initCard(this.isEthereal);
 	}
 }

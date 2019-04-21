@@ -144,7 +144,7 @@ public class PokerCardChangeAction extends AbstractGameAction {
 				case RANK_CHANGE_ALL:
 					for (AbstractCard c : AbstractDungeon.player.hand.group)
 						if (c instanceof PokerCard) {
-							((PokerCard) c).rankChange(rankChange, true);
+							((PokerCard) c).rankChange(rankChange);
 							c.superFlash();
 						}
 
@@ -157,7 +157,7 @@ public class PokerCardChangeAction extends AbstractGameAction {
 			for (AbstractCard c : AbstractDungeon.handCardSelectScreen.selectedCards.group) {
 				switch (mode) {
 					case RANK_CHANGE_ANY:
-						((PokerCard) c).rankChange(rankChange, true);
+						((PokerCard) c).rankChange(rankChange);
 						c.superFlash();
 						this.p.hand.addToTop(c);
 						break;
@@ -206,7 +206,9 @@ public class PokerCardChangeAction extends AbstractGameAction {
 	}
 
 	private void doCopy(PokerCard c) {
-		AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(c.makeStatEquivalentCopy()));
+		PokerCard copy = (PokerCard) (c.makeStatEquivalentCopy());
+		copy.rankChange(rankChange);
+		AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(copy));
 	}
 
 	private void doRoyalStrike(PokerCard c) {

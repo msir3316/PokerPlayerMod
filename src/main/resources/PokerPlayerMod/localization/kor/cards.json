@@ -20,7 +20,8 @@
       "pokerplayer:다이아몬드 ",
       "",
       "휘발성 NL ",
-      " NL pokerplayer:변화됨."
+      " (X",
+      ")"
     ]
   },
   "PokerPlayerMod:BadJoker": {
@@ -241,5 +242,29 @@
   "PokerPlayerMod:SuperBite": {
     "NAME": "대량 흡혈",
     "DESCRIPTION": "피해를 !D! 줍니다. NL 체력을 !M! 회복합니다."
+  },
+  "PokerPlayerMod:Harden": {
+    "NAME": "단단함",
+    "DESCRIPTION": "Your Spades give you !M! Block next turn as an additional pokerplayer:Showdown effect.",
+    "UPGRADE_DESCRIPTION": "Draw 1 card. NL Your Spades give you !M! Block next turn as an additional pokerplayer:Showdown effect."
+  },
+  "PokerPlayerMod:PoorCopy": {
+    "NAME": "열화 카피",
+    "DESCRIPTION": "선택: 카드를 1장 뽑습니다; 또는 포커 카드 한장을 복사하고 복사본의 pokerplayer:등급 을 1 내립니다.",
+    "EXTENDED_DESCRIPTION": [
+      "선택",
+      "카드 뽑기",
+      "복사",
+      "카드를 1장 뽑습니다.",
+      "포커 카드 한장을 복사하고 복사본의 pokerplery:등급 을 1 내립니다."
+    ]
+  },
+  "PokerPlayerMod:WasteCollection": {
+    "NAME": "쓰레기 수집",
+    "DESCRIPTION": "뽑을 카드 더미에서 pokerplayer:등급 이 3 이하인 포커카드 !M! 장을 선택해 손으로 가져옵니다. 그 카드들의 pokerplayer:쇼다운 효과는 2배가 됩니다. NL 소멸"
+  },
+  "PokerPlayerMod:BrokenClock": {
+    "NAME": "고장난 시계",
+    "DESCRIPTION": "카드를 !M! 장 뽑습니다."
   }
 }

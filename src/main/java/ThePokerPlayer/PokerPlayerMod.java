@@ -107,7 +107,12 @@ public class PokerPlayerMod
 
 	// Configs
 	public static Properties pokerDefaults = new Properties();
+	public static boolean hardMode = false;
+	public static boolean banContents = true;
 	public static boolean exordiumAll = false;
+
+	ModLabeledToggleButton hardModeButton;
+	ModLabeledToggleButton banContentsButton;
 	ModLabeledToggleButton exordiumAllButton;
 
 	// =============== /INPUT TEXTURE LOCATION/ =================
@@ -206,6 +211,22 @@ public class PokerPlayerMod
 		// Create the Mod Menu
 		ModPanel settingsPanel = new ModPanel();
 
+		hardModeButton = new ModLabeledToggleButton(
+				CardCrawlGame.languagePack.getUIString(PokerPlayerMod.makeID("HardModeConfig")).TEXT[0],
+				400.0f, 640.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
+				exordiumAll, settingsPanel, (label) -> {
+		}, (button) -> {
+			hardMode = button.enabled;
+			saveConfig();
+		});
+		banContentsButton = new ModLabeledToggleButton(
+				CardCrawlGame.languagePack.getUIString(PokerPlayerMod.makeID("BanContentsConfig")).TEXT[0],
+				400.0f, 560.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
+				exordiumAll, settingsPanel, (label) -> {
+		}, (button) -> {
+			banContents = button.enabled;
+			saveConfig();
+		});
 		exordiumAllButton = new ModLabeledToggleButton(
 				CardCrawlGame.languagePack.getUIString(PokerPlayerMod.makeID("ExordiumClubConfig")).TEXT[0],
 				400.0f, 480.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
@@ -215,12 +236,13 @@ public class PokerPlayerMod
 			saveConfig();
 		});
 
+		settingsPanel.addUIElement(hardModeButton);
+		settingsPanel.addUIElement(banContentsButton);
 		settingsPanel.addUIElement(exordiumAllButton);
 
 		BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 
 		pokerScoreViewer = new PokerScoreViewer();
-
 	}
 
 	// =============== / POST-INITIALIZE/ =================
@@ -248,6 +270,7 @@ public class PokerPlayerMod
 
 		BaseMod.addRelicToCustomPool(new AceCard(), CardColorEnum.POKER_PLAYER_GRAY);
 		BaseMod.addRelicToCustomPool(new BottledPoker(), CardColorEnum.POKER_PLAYER_GRAY);
+		BaseMod.addRelicToCustomPool(new BrokenClock(), CardColorEnum.POKER_PLAYER_GRAY);
 		BaseMod.addRelicToCustomPool(new ClubPass(), CardColorEnum.POKER_PLAYER_GRAY);
 		BaseMod.addRelicToCustomPool(new CoolBox(), CardColorEnum.POKER_PLAYER_GRAY);
 		BaseMod.addRelicToCustomPool(new EnergeticBat(), CardColorEnum.POKER_PLAYER_GRAY);
@@ -287,6 +310,7 @@ public class PokerPlayerMod
 		cards.add(new CloakAndDiamond());
 		cards.add(new ClubDance());
 		cards.add(new ClubsClub());
+		cards.add(new ClubShade());
 		cards.add(new ClubStrike());
 		cards.add(new Configure());
 		cards.add(new DamnStraight());
@@ -299,7 +323,9 @@ public class PokerPlayerMod
 		cards.add(new FlyingCard());
 		cards.add(new Fold());
 		cards.add(new GamblerForm());
+		cards.add(new WasteCollection());
 		cards.add(new HeartStrike());
+		cards.add(new Harden());
 		cards.add(new HiddenCard());
 		cards.add(new HotShotCut());
 		cards.add(new ItsShowtime());
@@ -311,7 +337,7 @@ public class PokerPlayerMod
 		cards.add(new Promotion());
 		cards.add(new Raise());
 		cards.add(new RiskyBet());
-		cards.add(new ClubShade());
+		cards.add(new PoorCopy());
 		cards.add(new RoyalStrike());
 		cards.add(new SecondChance());
 		cards.add(new SecretDealer());
@@ -329,7 +355,7 @@ public class PokerPlayerMod
 
 		for (CustomCard card : cards) {
 			BaseMod.addCard(card);
-			UnlockTracker.unlockCard(card.cardID);
+			//UnlockTracker.unlockCard(card.cardID);
 		}
 	}
 
@@ -338,7 +364,7 @@ public class PokerPlayerMod
 
 	@Override
 	public void receivePostDungeonInitialize() {
-		if (AbstractDungeon.player.chosenClass == ThePokerPlayerEnum.THE_POKER_PLAYER) {
+		if (AbstractDungeon.player.chosenClass == ThePokerPlayerEnum.THE_POKER_PLAYER && banContents) {
 			ArrayList<ArrayList<String>> relicPools = new ArrayList<>();
 			relicPools.add(AbstractDungeon.commonRelicPool);
 			relicPools.add(AbstractDungeon.shopRelicPool);

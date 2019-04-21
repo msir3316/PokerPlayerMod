@@ -2,6 +2,7 @@ package ThePokerPlayer.actions;
 
 import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.cards.PokerCard;
+import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -10,6 +11,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDiscardEffect;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToHandEffect;
 
 public class WildCardAction extends AbstractGameAction {
 	private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(PokerPlayerMod.makeID("WildCardAction"));
@@ -44,9 +47,10 @@ public class WildCardAction extends AbstractGameAction {
 			} else if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
 				for (AbstractCard c : AbstractDungeon.gridSelectScreen.selectedCards) {
 					AbstractCard cc = c.makeCopy();
-					if (this.p.hand.size() < 10) {
-						this.p.hand.addToHand(cc);
-						this.p.discardPile.removeCard(cc);
+					if (AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) {
+						AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(cc, (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
+					} else {
+						AbstractDungeon.effectList.add(new ShowCardAndAddToDiscardEffect(cc, (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
 					}
 					cc.lighten(false);
 					cc.unhover();

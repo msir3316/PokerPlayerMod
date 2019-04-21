@@ -18,16 +18,16 @@ public class FairLicense extends CustomRelic {
 	public static final String IMG = PokerPlayerMod.GetRelicPath(RAW_ID);
 	public static final String OUTLINE = PokerPlayerMod.GetRelicOutlinePath(RAW_ID);
 
-	private boolean gainEnergyNext;
+	private boolean notPlayed;
+	public static boolean pokerHandScored;
 
 	public FairLicense() {
-		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.COMMON, LandingSound.FLAT);
+		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.UNCOMMON, LandingSound.FLAT);
 		this.pulse = false;
 	}
 
-
 	public void atPreBattle() {
-		this.gainEnergyNext = false;
+		this.notPlayed = false;
 		if (!this.pulse) {
 			this.beginPulse();
 			this.pulse = true;
@@ -37,21 +37,21 @@ public class FairLicense extends CustomRelic {
 	public void atTurnStart() {
 		this.beginPulse();
 		this.pulse = true;
-		if (this.gainEnergyNext) {
+		if (notPlayed && pokerHandScored) {
 			this.flash();
 			AbstractDungeon.actionManager.addToBottom(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-			AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
+			AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(2));
 		}
 
-		this.gainEnergyNext = true;
+		this.notPlayed = true;
+		pokerHandScored = false;
 	}
 
 	public void onUseCard(AbstractCard card, UseCardAction action) {
 		if (card instanceof PokerCard) {
-			this.gainEnergyNext = false;
+			this.notPlayed = false;
 			this.pulse = false;
 		}
-
 	}
 
 	public void onVictory() {

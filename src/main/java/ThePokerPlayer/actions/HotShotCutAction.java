@@ -28,6 +28,7 @@ public class HotShotCutAction extends AbstractGameAction {
 		if (this.duration == this.startingDuration) {
 			int count = 0;
 			for (AbstractCard c : AbstractDungeon.player.hand.group) {
+				count++;
 				if (c.type != AbstractCard.CardType.ATTACK) {
 					AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(c, AbstractDungeon.player.hand));
 				}

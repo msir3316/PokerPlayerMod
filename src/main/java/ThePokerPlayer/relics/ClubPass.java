@@ -42,7 +42,7 @@ public class ClubPass extends CustomRelic {
 	}
 
 	public void onVictory() {
-		this.counter = 0;
+		this.counter = -1;
 	}
 
 	@Override

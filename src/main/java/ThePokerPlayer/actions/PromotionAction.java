@@ -33,7 +33,7 @@ public class PromotionAction extends AbstractGameAction {
 			if (c instanceof PokerCard) {
 				PokerCard pc = (PokerCard) c;
 				if (pc.rank < 10) {
-					pc.rankChange(amount, false);
+					pc.rankChange(amount);
 				}
 				if (cardGroup.type == CardGroup.CardGroupType.HAND) {
 					c.superFlash();

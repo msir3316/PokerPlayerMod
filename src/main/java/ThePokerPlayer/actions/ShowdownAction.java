@@ -4,9 +4,11 @@ import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.cards.PokerCard;
 import ThePokerPlayer.powers.*;
 import ThePokerPlayer.relics.ClubPass;
+import ThePokerPlayer.relics.FairLicense;
 import ThePokerPlayer.vfx.ShowdownEffect;
 import com.badlogic.gdx.Gdx;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -15,6 +17,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.SpeechBubble;
 import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
@@ -65,8 +68,9 @@ public class ShowdownAction extends AbstractGameAction {
 
 	public static int[] pow = new int[4];
 	public static int[] powView = new int[4];
+	public static int hardenCount;
 	public static int hand;
-	public static int modifier;
+	public static int modifierBonus;
 	public static boolean flush;
 
 	boolean discardAtEnd;
@@ -104,30 +108,36 @@ public class ShowdownAction extends AbstractGameAction {
 				for (AbstractCard c : AbstractDungeon.handCardSelectScreen.selectedCards.group) {
 					if (c instanceof PokerCard) {
 						ShowdownAction.pokerCards.add((PokerCard) c);
-						ShowdownAction.pokerCards.add((PokerCard) c);
+						PokerCard pc = (PokerCard) (c.makeStatEquivalentCopy());
+						pc.rankChange(PokerCardChangeAction.ref.rankChange);
+						ShowdownAction.pokerCards.add(pc);
 					}
 				}
 			}
 		}
 		int[] nums = new int[11];
 		int[] suits = new int[4];
+		hardenCount = 0;
 
 		pow = new int[4];
 		powView = new int[4];
 		partial = new int[4];
 		for (PokerCard card : pokerCards) {
-			pow[card.suit.value] += card.rank;
+			pow[card.suit.value] += card.rank * card.multiplier;
 
 			if (card.suit == PokerCard.Suit.Diamond && AbstractDungeon.player.hasPower(SharpenPower.POWER_ID)) {
-				pow[PokerCard.Suit.Diamond.value] += AbstractDungeon.player.getPower(SharpenPower.POWER_ID).amount;
+				pow[PokerCard.Suit.Diamond.value] += AbstractDungeon.player.getPower(SharpenPower.POWER_ID).amount * card.multiplier;
 			}
 			if (card.suit == PokerCard.Suit.Club) {
 				if (AbstractDungeon.player.hasPower(ClubShadePower.POWER_ID)) {
-					pow[PokerCard.Suit.Spade.value] += AbstractDungeon.player.getPower(ClubShadePower.POWER_ID).amount;
+					pow[PokerCard.Suit.Spade.value] += AbstractDungeon.player.getPower(ClubShadePower.POWER_ID).amount * card.multiplier;
 				}
 				if (AbstractDungeon.player.hasRelic(ClubPass.ID)) {
-					pow[PokerCard.Suit.Club.value] += AbstractDungeon.player.getRelic(ClubPass.ID).counter;
+					pow[PokerCard.Suit.Club.value] += AbstractDungeon.player.getRelic(ClubPass.ID).counter * card.multiplier;
 				}
+			}
+			if (card.suit == PokerCard.Suit.Spade && AbstractDungeon.player.hasPower(HardenPower.POWER_ID)) {
+				hardenCount += AbstractDungeon.player.getPower(HardenPower.POWER_ID).amount * card.multiplier;
 			}
 
 			nums[card.rank]++;
@@ -178,11 +188,15 @@ public class ShowdownAction extends AbstractGameAction {
 				pow[card.suit.value] += AbstractDungeon.player.getPower(GamblerFormPower.POWER_ID).amount;
 			}
 		}
+		if (hand >= ONE_PAIR || flush) {
+			FairLicense.pokerHandScored = true;
+		}
 
-		modifier = modifierByHand(hand) + (flush ? MODIFIER_BONUS[FLUSH] : 0);
+		modifierBonus = modifierByHand(hand) + (flush ? MODIFIER_BONUS[FLUSH] : 0);
 
 		for (int i = 0; i < 4; i++)
-			powView[i] = pow[i] * (100 + modifier) / 100;
+			powView[i] = pow[i] * (100 + modifierBonus) / 100;
+		hardenCount = hardenCount * (100 + modifierBonus) / 100;
 	}
 
 	public static int modifierByHand(int hand) {
@@ -222,7 +236,7 @@ public class ShowdownAction extends AbstractGameAction {
 			init = true;
 
 			String msg = getHandName() + TEXT[EXCLAMATION];
-			if (modifier > 0) msg += TEXT[BONUS1] + modifier + TEXT[BONUS2];
+			if (modifierBonus > 0) msg += TEXT[BONUS1] + modifierBonus + TEXT[BONUS2];
 			AbstractDungeon.effectList.add(new SpeechBubble(p.dialogX, p.dialogY, TALK_DUR, msg, true));
 		}
 
@@ -273,6 +287,10 @@ public class ShowdownAction extends AbstractGameAction {
 			for (AbstractCard card : otherCards) {
 				this.p.hand.addToTop(card);
 			}
+			if (hardenCount > 0) {
+				AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(p, p,
+						new NextTurnBlockPower(p, hardenCount, p.getPower(HardenPower.POWER_ID).name), hardenCount));
+			}
 			pokerCards.clear();
 			otherCards.clear();
 			onAction = false;
@@ -280,7 +298,7 @@ public class ShowdownAction extends AbstractGameAction {
 	}
 
 	private void doEffect(PokerCard.Suit suit, AbstractMonster target) {
-		partial[suit.value] += modifier;
+		partial[suit.value] += modifierBonus;
 		int eff = 1 + partial[suit.value] / 100;
 		partial[suit.value] %= 100;
 

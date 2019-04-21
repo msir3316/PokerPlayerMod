@@ -1,10 +1,11 @@
 package ThePokerPlayer.actions;
 
+import ThePokerPlayer.cards.ChoiceCard.BrokenClockChoice;
 import ThePokerPlayer.cards.PokerCard;
 import basemod.ReflectionHacks;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.screens.CardRewardScreen;
@@ -17,29 +18,31 @@ public class PokerCardDiscoveryAction extends AbstractGameAction {
 	public static PokerCard.Suit suit;
 	public static int min;
 	public static int max;
+	public static boolean ethereal;
 
 	public static boolean isActive = false;
 
 	public PokerCardDiscoveryAction(int choices) {
-		this(choices, null, 1, 10);
+		this(choices, null, 1, 10, true);
 	}
 
 	public PokerCardDiscoveryAction(int choices, PokerCard.Suit suit) {
-		this(choices, suit, 1, 10);
+		this(choices, suit, 1, 10, true);
 	}
 
 	public PokerCardDiscoveryAction(int choices, int min, int max) {
-		this(choices, null, min, max);
+		this(choices, null, min, max, true);
 	}
 
 	// suit == null -> non-Heart
-	public PokerCardDiscoveryAction(int choices, PokerCard.Suit suit, int min, int max) {
+	public PokerCardDiscoveryAction(int choices, PokerCard.Suit suit, int min, int max, boolean ethereal) {
 		this.actionType = ActionType.CARD_MANIPULATION;
 		this.duration = Settings.ACTION_DUR_FAST;
 		PokerCardDiscoveryAction.choices = choices;
 		PokerCardDiscoveryAction.suit = suit;
 		PokerCardDiscoveryAction.min = min;
 		PokerCardDiscoveryAction.max = max;
+		PokerCardDiscoveryAction.ethereal = ethereal;
 	}
 
 	public void update() {
@@ -52,9 +55,12 @@ public class PokerCardDiscoveryAction extends AbstractGameAction {
 			if (!this.retrieveCard) {
 				if (AbstractDungeon.cardRewardScreen.discoveryCard != null) {
 
-					AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(
-							AbstractDungeon.cardRewardScreen.discoveryCard.makeStatEquivalentCopy(), true));
-
+					if (AbstractDungeon.cardRewardScreen.discoveryCard instanceof BrokenClockChoice) {
+						AbstractDungeon.actionManager.addToTop(new DrawCardAction(AbstractDungeon.player, 1));
+					} else {
+						AbstractDungeon.actionManager.addToTop(new MakeTempCardInHandAction(
+								AbstractDungeon.cardRewardScreen.discoveryCard.makeStatEquivalentCopy(), true));
+					}
 					AbstractDungeon.cardRewardScreen.discoveryCard = null;
 
 					isActive = false;

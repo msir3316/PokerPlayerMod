@@ -1,4 +1,4 @@
-package ThePokerPlayer.cards;
+package ThePokerPlayer.cards.ChoiceCard;
 
 import ThePokerPlayer.PokerPlayerMod;
 import basemod.abstracts.CustomCard;

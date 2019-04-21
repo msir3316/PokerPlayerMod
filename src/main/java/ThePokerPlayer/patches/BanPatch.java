@@ -13,7 +13,7 @@ public class BanPatch {
 	public static class ColorlessCardPatch {
 		@SpirePostfixPatch
 		public static void Postfix(AbstractDungeon __instance) {
-			if (AbstractDungeon.player.chosenClass == ThePokerPlayerEnum.THE_POKER_PLAYER) {
+			if (AbstractDungeon.player.chosenClass == ThePokerPlayerEnum.THE_POKER_PLAYER && PokerPlayerMod.banContents) {
 				AbstractDungeon.colorlessCardPool.group.removeIf(i -> PokerPlayerMod.bannedCards.contains(i.cardID));
 			}
 		}
@@ -23,7 +23,7 @@ public class BanPatch {
 	public static class PotionPatch {
 		@SpirePostfixPatch
 		public static void Postfix(AbstractPlayer.PlayerClass chosenClass) {
-			if (chosenClass == ThePokerPlayerEnum.THE_POKER_PLAYER) {
+			if (chosenClass == ThePokerPlayerEnum.THE_POKER_PLAYER && PokerPlayerMod.banContents) {
 				PotionHelper.potions.remove(SwiftPotion.POTION_ID);
 			}
 		}

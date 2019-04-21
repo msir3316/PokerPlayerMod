@@ -53,13 +53,13 @@ public class PenAndEraser extends CustomRelic {
 
 		if (!upgradableCards.isEmpty()) {
 			if (upgradableCards.size() == 1) {
-				upgradableCards.get(0).rankChange(UPGRADE_AMOUNT, true);
+				upgradableCards.get(0).rankChange(UPGRADE_AMOUNT);
 				AbstractDungeon.player.bottledCardUpgradeCheck(upgradableCards.get(0));
 				AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(upgradableCards.get(0).makeStatEquivalentCopy()));
 				AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect((float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
 			} else {
-				upgradableCards.get(0).rankChange(UPGRADE_AMOUNT, true);
-				upgradableCards.get(1).rankChange(UPGRADE_AMOUNT, true);
+				upgradableCards.get(0).rankChange(UPGRADE_AMOUNT);
+				upgradableCards.get(1).rankChange(UPGRADE_AMOUNT);
 				AbstractDungeon.player.bottledCardUpgradeCheck(upgradableCards.get(0));
 				AbstractDungeon.player.bottledCardUpgradeCheck(upgradableCards.get(1));
 				AbstractDungeon.topLevelEffects.add(new ShowCardBrieflyEffect(upgradableCards.get(0).makeStatEquivalentCopy(), (float) Settings.WIDTH / 2.0F - AbstractCard.IMG_WIDTH / 2.0F - 20.0F * Settings.scale, (float) Settings.HEIGHT / 2.0F));

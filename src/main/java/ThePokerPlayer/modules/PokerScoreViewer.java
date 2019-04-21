@@ -72,6 +72,7 @@ public class PokerScoreViewer {
 	}
 
 	private static final float DIST = Settings.scale * 10.0f;
+	private static final float HARDEN_DIST = Settings.scale * 30.0f;
 
 	public void render(SpriteBatch sb) {
 
@@ -95,6 +96,17 @@ public class PokerScoreViewer {
 					hb.cX + dx + DIST,
 					hb.cY,
 					Settings.BLUE_TEXT_COLOR);
+		}
+
+		if (ShowdownAction.hardenCount > 0) {
+			float dx = Settings.scale * (50.0f * (1 - 1.5f));
+			FontHelper.renderFontCentered(
+					sb,
+					FontHelper.powerAmountFont,
+					"+" + ShowdownAction.hardenCount,
+					hb.cX + dx + DIST,
+					hb.cY + HARDEN_DIST,
+					Settings.GREEN_TEXT_COLOR);
 		}
 
 		if (this.hb.hovered) {

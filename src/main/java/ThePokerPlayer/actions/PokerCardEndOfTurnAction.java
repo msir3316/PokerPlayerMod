@@ -3,6 +3,7 @@ package ThePokerPlayer.actions;
 import ThePokerPlayer.cards.PokerCard;
 import ThePokerPlayer.interfaces.IShowdownEffect;
 import ThePokerPlayer.relics.PendantOfEscape;
+import ThePokerPlayer.relics.StuffedPocket;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -34,8 +35,12 @@ public class PokerCardEndOfTurnAction extends AbstractGameAction {
 			}
 			AbstractDungeon.player.hand.group.removeAll(ShowdownAction.otherCards);
 			if (AbstractDungeon.player.hand.group.size() > 5) {
-				AbstractDungeon.actionManager.addToBottom(new DiscardAction(
-						AbstractDungeon.player, AbstractDungeon.player, AbstractDungeon.player.hand.group.size() - 5, false, true));
+				if (AbstractDungeon.player.hasRelic(StuffedPocket.ID)) {
+					AbstractDungeon.player.getRelic(StuffedPocket.ID).flash();
+				} else {
+					AbstractDungeon.actionManager.addToBottom(new DiscardAction(
+							AbstractDungeon.player, AbstractDungeon.player, AbstractDungeon.player.hand.group.size() - 5, false, true));
+				}
 			}
 			for (AbstractPower pow : AbstractDungeon.player.powers) {
 				if (pow instanceof IShowdownEffect) {
