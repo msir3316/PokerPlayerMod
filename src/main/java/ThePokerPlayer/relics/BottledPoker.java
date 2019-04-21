@@ -96,13 +96,12 @@ public class BottledPoker extends CustomRelic implements CustomBottleRelic, Cust
 			bottledCards = new ArrayList<>();
 			for (int i : cardIndexes) {
 				if (i < AbstractDungeon.player.masterDeck.group.size()) {
-					bottledCards.add(AbstractDungeon.player.masterDeck.group.get(i));
+					AbstractCard c = AbstractDungeon.player.masterDeck.group.get(i);
+					bottledCards.add(c);
+					BottledPokerField.inBottledPoker.set(c, true);
 				}
 			}
-			if (bottledCards != null) {
-				BottledPokerField.inBottledPoker.set(bottledCards, true);
-				setDescriptionAfterLoading();
-			}
+			setDescriptionAfterLoading();
 		}
 		status = bottleStatus.Done;
 	}
