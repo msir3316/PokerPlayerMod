@@ -47,6 +47,7 @@ public class DiscoveryPatch {
 					}
 				}
 				if (AbstractDungeon.player.hasRelic(BrokenClock.ID)) {
+					AbstractDungeon.player.getRelic(BrokenClock.ID).flash();
 					derp.add(new BrokenClockChoice());
 				}
 			}

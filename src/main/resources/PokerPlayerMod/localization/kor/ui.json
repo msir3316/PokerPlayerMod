@@ -54,9 +54,29 @@
       "로 바꿀 포커 카드를 선택하십시오"
     ]
   },
+  "PokerPlayerMod:HardModeConfig": {
+  "TEXT": [
+    "하드모드 (족보로부터 받는 쇼다운 효과를 감소시킵니다.)"
+  ]
+},
+  "PokerPlayerMod:BanContentsConfig": {
+    "TEXT": [
+      "밸런스를 해치는 유물과 중립 카드 일부를 등장하지 않게 함"
+    ]
+  },
   "PokerPlayerMod:ExordiumClubConfig": {
     "TEXT": [
       "엑소디움 클럽 이벤트를 다른 캐릭터도 볼 수 있음"
+    ]
+  },
+  "PokerPlayerMod:RestoreDefaultConfig": {
+    "TEXT": [
+      "기본값"
+    ]
+  },
+  "PokerPlayerMod:ConfigHelp": {
+    "TEXT": [
+      "하드모드 이외의 옵션은 현재 진행 중인 게임에 영향을 주지 않습니다."
     ]
   }
 }

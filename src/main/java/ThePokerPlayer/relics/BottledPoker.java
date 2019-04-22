@@ -35,7 +35,7 @@ public class BottledPoker extends CustomRelic implements CustomBottleRelic, Cust
 
 	public static bottleStatus status = bottleStatus.None;
 
-	private static int NUM = 5;
+	private static int NUM = 3;
 
 	public BottledPoker() {
 		super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.COMMON, LandingSound.CLINK);

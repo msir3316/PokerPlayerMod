@@ -112,7 +112,7 @@ public class PokerPlayerMod
 	public static boolean banContents = true;
 	public static boolean exordiumAll = false;
 
-	ModLabeledToggleButton hardModeButton;
+	//ModLabeledToggleButton hardModeButton;
 	ModLabeledToggleButton banContentsButton;
 	ModLabeledToggleButton exordiumAllButton;
 
@@ -194,7 +194,7 @@ public class PokerPlayerMod
 	}
 
 	public static void defaultConfig() {
-		hardMode = false;
+		//hardMode = false;
 		banContents = true;
 		exordiumAll = false;
 	}
@@ -202,7 +202,7 @@ public class PokerPlayerMod
 	public static void saveConfig() {
 		try {
 			SpireConfig config = new SpireConfig("PokerPlayerMod", "PokerPlayerModSaveData", pokerDefaults);
-			config.setBool("hardMode", hardMode);
+			//config.setBool("hardMode", hardMode);
 			config.setBool("banContents", banContents);
 			config.setBool("exordiumAll", exordiumAll);
 			config.save();
@@ -220,6 +220,7 @@ public class PokerPlayerMod
 		// Create the Mod Menu
 		ModPanel settingsPanel = new ModPanel();
 
+		/*
 		hardModeButton = new ModLabeledToggleButton(
 				CardCrawlGame.languagePack.getUIString(PokerPlayerMod.makeID("HardModeConfig")).TEXT[0],
 				400.0f, 650.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
@@ -228,6 +229,7 @@ public class PokerPlayerMod
 			hardMode = button.enabled;
 			saveConfig();
 		});
+		*/
 		banContentsButton = new ModLabeledToggleButton(
 				CardCrawlGame.languagePack.getUIString(PokerPlayerMod.makeID("BanContentsConfig")).TEXT[0],
 				400.0f, 600.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
@@ -252,22 +254,24 @@ public class PokerPlayerMod
 		}, (button) -> {
 			defaultConfig();
 			saveConfig();
-			hardModeButton.toggle.enabled = hardMode;
+			//hardModeButton.toggle.enabled = hardMode;
 			banContentsButton.toggle.enabled = banContents;
 			exordiumAllButton.toggle.enabled = exordiumAll;
 		});
 
+		/*
 		ModLabel label = new ModLabel(
 				CardCrawlGame.languagePack.getUIString(PokerPlayerMod.makeID("ConfigHelp")).TEXT[0],
 				400.0f, 350.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, settingsPanel, (l) -> {
 		}
 		);
+		*/
 
-		settingsPanel.addUIElement(hardModeButton);
+		//settingsPanel.addUIElement(hardModeButton);
 		settingsPanel.addUIElement(banContentsButton);
 		settingsPanel.addUIElement(exordiumAllButton);
 		settingsPanel.addUIElement(restoreDefaultButton);
-		settingsPanel.addUIElement(label);
+		//settingsPanel.addUIElement(label);
 
 		BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 

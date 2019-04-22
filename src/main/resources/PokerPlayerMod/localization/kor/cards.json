@@ -75,7 +75,7 @@
   },
   "PokerPlayerMod:DartThrow": {
     "NAME": "다트 던지기",
-    "DESCRIPTION": "피해를 !D! 줍니다."
+    "DESCRIPTION": "피해를 !D! 줍니다. NL 적의 힘 을 이번 턴에만 !M! 감소시킵니다."
   },
   "PokerPlayerMod:FlyingCard": {
     "NAME": "플라잉 카드",
@@ -102,8 +102,8 @@
   },
   "PokerPlayerMod:MagicTrick": {
     "NAME": "마술 트릭",
-    "DESCRIPTION": "손에 카드가 6 장이 될 때까지 카드를 뽑습니다. NL 카드를 !M! 장 버립니다.",
-    "UPGRADE_DESCRIPTION": "손에 카드가 7 장이 될 때까지 카드를 뽑습니다. NL 카드를 !M! 장 버립니다."
+    "DESCRIPTION": "손에 카드가 7 장이 될 때까지 카드를 뽑습니다. NL 카드를 !M! 장 버립니다.",
+    "UPGRADE_DESCRIPTION": "손에 카드가 8 장이 될 때까지 카드를 뽑습니다. NL 카드를 !M! 장 버립니다."
   },
   "PokerPlayerMod:Raise": {
     "NAME": "레이즈",
@@ -111,8 +111,7 @@
   },
   "PokerPlayerMod:HotShotCut": {
     "NAME": "핫 샷 컷",
-    "DESCRIPTION": "카드를 전부 소멸 시킵니다. NL 소멸된 포커 카드 하나당 무작위 적에게 피해를 !D! 줍니다. NL 소멸",
-    "UPGRADE_DESCRIPTION": "카드를 전부 소멸 시킵니다. NL 소멸된 카드 하나당 무작위 적에게 피해를 !D! 줍니다. NL 소멸"
+    "DESCRIPTION": "손에 있는 포커 카드를 전부 소멸 시킵니다. NL 소멸된 카드 하나당 무작위 적에게 피해를 !D! 줍니다. NL 소멸"
   },
   "PokerPlayerMod:Manipulation": {
     "NAME": "조작",
@@ -155,13 +154,13 @@
   },
   "PokerPlayerMod:RiskyBet": {
     "NAME": "위험한 도박",
-    "DESCRIPTION": "카드를 1장 버리고 1장 뽑습니다. 만약 그 두 카드가 pokerplayer:무늬 가 같은 포커 카드이면, 카드를 !M! 장 뽑습니다."
+    "DESCRIPTION": "카드를 1장 버리고 1장 뽑습니다. 만약 그 두 카드가 pokerplayer:무늬 가 같은 포커 카드이면, [E]를 얻고 카드를 !M! 장 뽑습니다."
   },
   "PokerPlayerMod:CardPrinter": {
     "NAME": "카드 인쇄기",
     "DESCRIPTION": "매 턴 시작 시 pokerplayer:하트 가 아니고 pokerplayer:등급 이 !M! 인 무작위 포커 카드를 뽑을 카드 더미에 섞어 넣습니다.",
     "EXTENDED_DESCRIPTION": [
-      " 8번 강화 할 수 있습니다.",
+      " 7번 강화 할 수 있습니다.",
       " ",
       "번 더 강화 할 수 있습니다.",
       " 1번 더 강화 할 수 있습니다."
@@ -179,8 +178,8 @@
   },
   "PokerPlayerMod:ClubShade": {
     "NAME": "클럽의 그림자",
-    "DESCRIPTION": "pokerplayer:클럽 카드의 pokerplayer:쇼다운 효과에 \"방어도를 !M! 얻습니다\" 가 추가됩니다.",
-    "UPGRADE_DESCRIPTION": "카드를 1장 뽑습니다. NL pokerplayer:클럽 카드의 pokerplayer:쇼다운 효과에 \"방어도를 !M! 얻습니다\" 가 추가됩니다."
+    "DESCRIPTION": "pokerplayer:클럽 카드의 pokerplayer:쇼다운 효과에 \"방어도 를 !M! 얻습니다\" 가 추가됩니다.",
+    "UPGRADE_DESCRIPTION": "카드를 1장 뽑습니다. NL pokerplayer:클럽 카드의 pokerplayer:쇼다운 효과에 \"방어도 를 !M! 얻습니다\" 가 추가됩니다."
   },
   "PokerPlayerMod:Sharpen": {
     "NAME": "날카로움",
@@ -188,7 +187,7 @@
     "UPGRADE_DESCRIPTION": "카드를 1장 뽑습니다. NL pokerplayer:다이아몬드 카드가 pokerplayer:쇼다운 에서 피해를 !M! 만큼 더 줍니다."
   },
   "PokerPlayerMod:ChangeRules": {
-    "NAME": "규칙 파괴",
+    "NAME": "상 뒤집기",
     "DESCRIPTION": "피해를 !D! 줍니다. NL 힘 을 !M! 얻습니다. NL 민첩 을 !M! 얻습니다."
   },
   "PokerPlayerMod:RoyalStrike": {
@@ -245,8 +244,8 @@
   },
   "PokerPlayerMod:Harden": {
     "NAME": "단단함",
-    "DESCRIPTION": "Your Spades give you !M! Block next turn as an additional pokerplayer:Showdown effect.",
-    "UPGRADE_DESCRIPTION": "Draw 1 card. NL Your Spades give you !M! Block next turn as an additional pokerplayer:Showdown effect."
+    "DESCRIPTION": "pokerplayer:스페이드 카드의 pokerplayer:쇼다운 효과에 \"다음 턴에 방어도 를 !M! 얻습니다\" 가 추가됩니다.",
+    "UPGRADE_DESCRIPTION": "카드를 1장 뽑습니다. NL pokerplayer:스페이드 카드의 pokerplayer:쇼다운 효과에 \"다음 턴에 방어도 를 !M! 얻습니다\" 가 추가됩니다."
   },
   "PokerPlayerMod:PoorCopy": {
     "NAME": "열화 카피",
@@ -256,14 +255,14 @@
       "카드 뽑기",
       "복사",
       "카드를 1장 뽑습니다.",
-      "포커 카드 한장을 복사하고 복사본의 pokerplery:등급 을 1 내립니다."
+      "포커 카드 한장을 복사하고 복사본의 pokerplayer:등급 을 1 내립니다."
     ]
   },
   "PokerPlayerMod:WasteCollection": {
     "NAME": "쓰레기 수집",
     "DESCRIPTION": "뽑을 카드 더미에서 pokerplayer:등급 이 3 이하인 포커카드 !M! 장을 선택해 손으로 가져옵니다. 그 카드들의 pokerplayer:쇼다운 효과는 2배가 됩니다. NL 소멸"
   },
-  "PokerPlayerMod:BrokenClock": {
+  "PokerPlayerMod:BrokenClockChoice": {
     "NAME": "고장난 시계",
     "DESCRIPTION": "카드를 !M! 장 뽑습니다."
   }

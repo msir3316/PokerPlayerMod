@@ -72,7 +72,7 @@ public class PokerScoreViewer {
 	}
 
 	private static final float DIST = Settings.scale * 10.0f;
-	private static final float HARDEN_DIST = Settings.scale * 30.0f;
+	private static final float HARDEN_DIST = Settings.scale * 25.0f;
 
 	public void render(SpriteBatch sb) {
 

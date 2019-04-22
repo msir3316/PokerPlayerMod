@@ -55,10 +55,10 @@ public class ShowdownAction extends AbstractGameAction {
 	public static final int BONUS1 = 10;
 	public static final int BONUS2 = 11;
 	private static final int[] MODIFIER_BONUS = new int[]{
-			0, 50, 100, 150, 250, 200, 300, 400, 0, 200
+			0, 25, 50, 100, 200, 150, 200, 250, 0, 150
 	};
 	private static final int[] MODIFIER_BONUS_HARD = new int[]{
-			0, 25, 50, 100, 150, 150, 200, 250, 0, 150
+			0, 25, 50, 100, 200, 150, 200, 250, 0, 150
 	};
 
 	public static LinkedList<ImmutablePair<PokerCard.Suit, AbstractMonster>> pendingEffects = new LinkedList<>();

@@ -245,8 +245,8 @@
   },
   "PokerPlayerMod:Harden": {
     "NAME": "Harden",
-    "DESCRIPTION": "Your Spades give you !M! Block next turn as an additional pokerplayer:Showdown effect.",
-    "UPGRADE_DESCRIPTION": "Draw 1 card. NL Your Spades give you !M! Block next turn as an additional pokerplayer:Showdown effect."
+    "DESCRIPTION": "Your pokerplayer:Spades give you !M! Block next turn as an additional pokerplayer:Showdown effect.",
+    "UPGRADE_DESCRIPTION": "Draw 1 card. NL Your pokerplayer:Spades give you !M! Block next turn as an additional pokerplayer:Showdown effect."
   },
   "PokerPlayerMod:PoorCopy": {
     "NAME": "Poor Copy",
@@ -256,7 +256,7 @@
       "Draw",
       "Copy",
       "Draw 1 card.",
-      "Copy a Poker Card from your hand and reduce the pokerplery:Rank of the copy by 1."
+      "Copy a Poker Card from your hand and reduce the pokerplayer:Rank of the copy by 1."
     ]
   },
   "PokerPlayerMod:WasteCollection": {
