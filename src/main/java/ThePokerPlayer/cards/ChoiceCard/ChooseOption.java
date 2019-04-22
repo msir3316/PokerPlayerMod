@@ -15,6 +15,10 @@ public class ChooseOption extends CustomCard {
 	public ChooseOption(CustomCard card, String name, String description, Runnable action) {
 		super(ID, name, card.textureImg, -2, description, CardType.SKILL, CardColor.COLORLESS, CardRarity.SPECIAL, CardTarget.NONE);
 
+		baseDamage = card.baseDamage;
+		baseBlock = card.baseBlock;
+		magicNumber = baseMagicNumber = card.baseMagicNumber;
+
 		this.action = action;
 	}
 

@@ -15,21 +15,13 @@ import javassist.CtBehavior;
 import java.util.ArrayList;
 
 public class DiscoveryPatch {
-	@SpirePatch(clz = AbstractDungeon.class, method = "returnTrulyRandomCardInCombat", paramtypez = {})
-	public static class FixRandomCard {
-		@SpirePostfixPatch
-		public static AbstractCard Postfix(AbstractCard __result) {
-			if (PokerCardDiscoveryAction.isActive) {
-				return new PokerCard(
-						PokerCardDiscoveryAction.suit == null ?
-								PokerCard.Suit.values()[AbstractDungeon.cardRandomRng.random(2) + 1] :
-								PokerCardDiscoveryAction.suit,
-						AbstractDungeon.cardRandomRng.random(PokerCardDiscoveryAction.min, PokerCardDiscoveryAction.max),
-						PokerCardDiscoveryAction.ethereal);
-			} else {
-				return __result;
-			}
-		}
+	public static PokerCard getRandomPokerCard() {
+		return new PokerCard(
+				PokerCardDiscoveryAction.suit == null ?
+						PokerCard.Suit.values()[AbstractDungeon.cardRandomRng.random(2) + 1] :
+						PokerCardDiscoveryAction.suit,
+				AbstractDungeon.cardRandomRng.random(PokerCardDiscoveryAction.min, PokerCardDiscoveryAction.max),
+				PokerCardDiscoveryAction.ethereal);
 	}
 
 	@SpirePatch(clz = CardRewardScreen.class, method = "discoveryOpen", paramtypez = {})
@@ -37,9 +29,10 @@ public class DiscoveryPatch {
 		@SpireInsertPatch(locator = OptionCountLocator.class, localvars = {"derp"})
 		public static void Insert(CardRewardScreen __instance, ArrayList derp) {
 			if (PokerCardDiscoveryAction.isActive) {
+				derp.clear();
 				while (derp.size() < PokerCardDiscoveryAction.choices) {
 					boolean dupe = false;
-					AbstractCard tmp = AbstractDungeon.returnTrulyRandomCardInCombat();
+					AbstractCard tmp = getRandomPokerCard();
 
 					for (Object obj : derp) {
 						AbstractCard c = (AbstractCard) obj;
@@ -52,9 +45,6 @@ public class DiscoveryPatch {
 					if (!dupe) {
 						derp.add(tmp.makeCopy());
 					}
-				}
-				for (int i = derp.size() - 1; i >= PokerCardDiscoveryAction.choices; i--) {
-					derp.remove(i);
 				}
 				if (AbstractDungeon.player.hasRelic(BrokenClock.ID)) {
 					derp.add(new BrokenClockChoice());

@@ -2,8 +2,6 @@ package ThePokerPlayer.actions;
 
 import ThePokerPlayer.cards.PokerCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -42,10 +40,10 @@ public class OverdealAction extends AbstractGameAction {
 		}
 
 		for (int i = 0; i < effect; ++i) {
-			AbstractCard c = new PokerCard(
+			AbstractDungeon.actionManager.addToBottom(new MakePokerCardInHandAction(
 					PokerCard.Suit.values()[AbstractDungeon.cardRandomRng.random(3)],
-					AbstractDungeon.cardRandomRng.random(1, 10));
-			AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c, 1));
+					AbstractDungeon.cardRandomRng.random(1, 10),
+					false));
 		}
 
 		if (effect > 0 && !this.freeToPlayOnce) {

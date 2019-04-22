@@ -103,7 +103,7 @@
   },
   "PokerPlayerMod:MagicTrick": {
     "NAME": "Magic Trick",
-    "DESCRIPTION": "Draw until you have 7 cards in hand. NL Discard !M! card.",
+    "DESCRIPTION": "Draw until you have 7 cards in hand. NL Discard !M! cards.",
     "UPGRADE_DESCRIPTION": "Draw until you have 8 cards in hand. NL Discard !M! cards."
   },
   "PokerPlayerMod:Raise": {

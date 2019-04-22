@@ -1,10 +1,10 @@
 package ThePokerPlayer.cards;
 
 import ThePokerPlayer.PokerPlayerMod;
+import ThePokerPlayer.actions.MakePokerCardInHandAction;
 import ThePokerPlayer.patches.CardColorEnum;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -47,8 +47,7 @@ public class ClubStrike extends CustomCard {
 		AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
 				new DamageInfo(p, this.damage, this.damageTypeForTurn),
 				AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-		AbstractCard c = new PokerCard(PokerCard.Suit.Club, this.magicNumber, true);
-		AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(c));
+		AbstractDungeon.actionManager.addToBottom(new MakePokerCardInHandAction(PokerCard.Suit.Club, this.magicNumber, true));
 	}
 
 	public AbstractCard makeCopy() {

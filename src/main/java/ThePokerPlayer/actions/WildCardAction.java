@@ -1,9 +1,12 @@
 package ThePokerPlayer.actions;
 
 import ThePokerPlayer.PokerPlayerMod;
+import ThePokerPlayer.cards.ChoiceCard.BrokenClockChoice;
 import ThePokerPlayer.cards.PokerCard;
+import ThePokerPlayer.relics.BrokenClock;
 import basemod.BaseMod;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -18,6 +21,7 @@ public class WildCardAction extends AbstractGameAction {
 	private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString(PokerPlayerMod.makeID("WildCardAction"));
 	public static final String[] TEXT = uiStrings.TEXT;
 	public static CardGroup group = null;
+	public static CardGroup groupWithClock = null;
 
 
 	private AbstractPlayer p;
@@ -42,18 +46,38 @@ public class WildCardAction extends AbstractGameAction {
 						}
 					}
 				}
-				AbstractDungeon.gridSelectScreen.open(group, 1, TEXT[0], false);
+				if (groupWithClock == null) {
+					groupWithClock = new CardGroup(CardGroup.CardGroupType.UNSPECIFIED);
+					for (int i = 0; i < 5; i++) {
+						groupWithClock.addToTop(new BrokenClockChoice());
+					}
+					for (PokerCard.Suit suit : PokerCard.Suit.values()) {
+						for (int i = 1; i <= 10; i++) {
+							groupWithClock.addToTop(new PokerCard(suit, i));
+						}
+					}
+				}
+				if (AbstractDungeon.player.hasRelic(BrokenClock.ID)) {
+					AbstractDungeon.player.getRelic(BrokenClock.ID).flash();
+					AbstractDungeon.gridSelectScreen.open(groupWithClock, 1, TEXT[0], false);
+				} else {
+					AbstractDungeon.gridSelectScreen.open(group, 1, TEXT[0], false);
+				}
 
 			} else if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
 				for (AbstractCard c : AbstractDungeon.gridSelectScreen.selectedCards) {
-					AbstractCard cc = c.makeCopy();
-					if (AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) {
-						AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(cc, (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
+					if (c instanceof BrokenClockChoice) {
+						AbstractDungeon.actionManager.addToTop(new DrawCardAction(p, 1));
 					} else {
-						AbstractDungeon.effectList.add(new ShowCardAndAddToDiscardEffect(cc, (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
+						AbstractCard cc = c.makeCopy();
+						if (AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) {
+							AbstractDungeon.effectList.add(new ShowCardAndAddToHandEffect(cc, (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
+						} else {
+							AbstractDungeon.effectList.add(new ShowCardAndAddToDiscardEffect(cc, (float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
+						}
+						cc.lighten(false);
+						cc.unhover();
 					}
-					cc.lighten(false);
-					cc.unhover();
 				}
 
 				AbstractDungeon.gridSelectScreen.selectedCards.clear();

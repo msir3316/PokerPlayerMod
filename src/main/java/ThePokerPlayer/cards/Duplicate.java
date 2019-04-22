@@ -1,9 +1,14 @@
 package ThePokerPlayer.cards;
 
 import ThePokerPlayer.PokerPlayerMod;
+import ThePokerPlayer.actions.ChooseAction;
 import ThePokerPlayer.actions.PokerCardChangeAction;
+import ThePokerPlayer.cards.ChoiceCard.BrokenClockChoice;
+import ThePokerPlayer.cards.ChoiceCard.ChooseOption;
 import ThePokerPlayer.patches.CardColorEnum;
+import ThePokerPlayer.relics.BrokenClock;
 import basemod.abstracts.CustomCard;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -31,7 +36,29 @@ public class Duplicate extends CustomCard {
 	}
 
 	public void use(AbstractPlayer p, AbstractMonster m) {
-		AbstractDungeon.actionManager.addToBottom(new PokerCardChangeAction(p, p, PokerCardChangeAction.Mode.COPY, 1, 0));
+		if (AbstractDungeon.player.hasRelic(BrokenClock.ID)) {
+			AbstractDungeon.player.getRelic(BrokenClock.ID).flash();
+			BrokenClockChoice bcc = new BrokenClockChoice();
+			AbstractDungeon.actionManager.addToBottom(new ChooseAction(
+					PoorCopy.EXTENDED_DESCRIPTION[0],
+					new ChooseOption(
+							bcc,
+							bcc.name,
+							bcc.rawDescription,
+							() -> {
+								AbstractDungeon.actionManager.addToBottom(new DrawCardAction(p, 1));
+							}),
+					new ChooseOption(
+							this,
+							this.name,
+							this.rawDescription,
+							() -> {
+								AbstractDungeon.actionManager.addToBottom(new PokerCardChangeAction(p, p, PokerCardChangeAction.Mode.COPY, 1, 0));
+							})
+			));
+		} else {
+			AbstractDungeon.actionManager.addToBottom(new PokerCardChangeAction(p, p, PokerCardChangeAction.Mode.COPY, 1, 0));
+		}
 	}
 
 	public AbstractCard makeCopy() {
