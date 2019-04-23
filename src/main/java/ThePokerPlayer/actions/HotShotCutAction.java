@@ -1,5 +1,6 @@
 package ThePokerPlayer.actions;
 
+import ThePokerPlayer.cards.PokerCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.actions.unique.SwordBoomerangAction;
@@ -28,8 +29,8 @@ public class HotShotCutAction extends AbstractGameAction {
 		if (this.duration == this.startingDuration) {
 			int count = 0;
 			for (AbstractCard c : AbstractDungeon.player.hand.group) {
-				count++;
-				if (c.type != AbstractCard.CardType.ATTACK) {
+				if (c instanceof PokerCard) {
+					count++;
 					AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(c, AbstractDungeon.player.hand));
 				}
 			}
