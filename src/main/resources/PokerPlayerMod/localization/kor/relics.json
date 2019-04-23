@@ -79,7 +79,7 @@
   },
   "PokerPlayerMod:StuffedPocket": {
     "NAME": "가득 찬 주머니",
-    "FLAVOR": "주의: 포커 족보는 이상하게 결정될 수도 있음.",
+    "FLAVOR": "주의: 포커 족보가 이상하게 결정될 수 있음.",
     "DESCRIPTIONS": [
       "손에 있는 모든 포커 카드로부터 #ypokerplayer:쇼다운 효과를 받습니다. (한턴에 최대 5장만 받는 대신)"
     ]

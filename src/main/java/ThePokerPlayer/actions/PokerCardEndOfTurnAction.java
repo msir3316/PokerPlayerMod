@@ -1,5 +1,6 @@
 package ThePokerPlayer.actions;
 
+import ThePokerPlayer.cards.JackOfSpades;
 import ThePokerPlayer.cards.PokerCard;
 import ThePokerPlayer.interfaces.IShowdownEffect;
 import ThePokerPlayer.relics.PendantOfEscape;
@@ -29,7 +30,7 @@ public class PokerCardEndOfTurnAction extends AbstractGameAction {
 		this.isDone = true;
 		if (!cards.isEmpty()) {
 			for (AbstractCard c : AbstractDungeon.player.hand.group) {
-				if (!cards.contains(c)) {
+				if (!(c instanceof PokerCard)) {
 					ShowdownAction.otherCards.add(c);
 				}
 			}

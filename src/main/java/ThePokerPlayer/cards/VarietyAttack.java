@@ -47,6 +47,9 @@ public class VarietyAttack extends CustomCard {
 			if (c instanceof PokerCard) {
 				haveSuit[((PokerCard) c).suit.value] = true;
 			}
+			if (c.cardID.equals(JackOfSpades.ID)) {
+				haveSuit[PokerCard.Suit.Spade.value] = true;
+			}
 		}
 		for (boolean b : haveSuit) {
 			if (b) {

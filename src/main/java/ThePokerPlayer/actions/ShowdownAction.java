@@ -1,6 +1,7 @@
 package ThePokerPlayer.actions;
 
 import ThePokerPlayer.PokerPlayerMod;
+import ThePokerPlayer.cards.JackOfSpades;
 import ThePokerPlayer.cards.PokerCard;
 import ThePokerPlayer.powers.*;
 import ThePokerPlayer.relics.ClubPass;
@@ -146,6 +147,20 @@ public class ShowdownAction extends AbstractGameAction {
 			nums[card.rank]++;
 			suits[card.suit.value]++;
 		}
+
+		// JackOfSpades
+		int jos = 0;
+		for (AbstractCard c : AbstractDungeon.player.hand.group) {
+			if (c.cardID.equals(JackOfSpades.ID)) {
+				jos++;
+			}
+		}
+		for (AbstractCard c : otherCards) {
+			if (c.cardID.equals(JackOfSpades.ID)) {
+				jos++;
+			}
+		}
+		suits[PokerCard.Suit.Spade.value] += jos;
 
 		hand = 0;
 		flush = false;
