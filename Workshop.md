@@ -1,6 +1,8 @@
 Join Poker Player with unique gameplay!
 
-This is a full character mod with 84 new cards, 12 relics, and 1 exclusive event.
+This is a full character mod with 87 new cards, 13 relics, and 1 exclusive event.
+
+Available languages: ENG, KOR, ZHS(by Rita-Bernstein)
 
 Recommended for:
 - People who played enough StS that wants a completely different experience.
@@ -10,8 +12,11 @@ Recommended for:
 - You.
 
 [h1] Main Mechanics: Poker Cards [/h1]
-Out of 80 draftable cards, 40 of them are Poker Card. "Poker" is a new card type with Suit and Rank.
-which draws 1 card when played.
+40 Poker cards can be put into your deck. "Poker" is a new card type with Suit and Rank.
+- Suit: Diamond, Spade, Club, Heart
+- Rank: 1 to 10
+When you play a Poker card, it just draws 1 card.
+
 At the end of your turn, you enter a phase called "Showdown", where you get the effects from Poker cards in your hand.
 Depending on what [url=https://en.wikipedia.org/wiki/List_of_poker_hands]Poker Hand[/url] you score, the effects become stronger!
 (If you have more than 5 Poker cards in hand, you have to discard down to 5 cards.)
@@ -23,7 +28,9 @@ Because of how Poker cards are played, several relics/cards are not available if
 - Potion: Swift Potion
 - 2 Events, Vampires(?) and Ancient Writings have different choices for the Poker Player.
 
-If you play this with other content mods, some of them might be unbalanced to play with the Poker Player. However I don't want to fix or ban others' work, so just have fun with them!
+Banning contents can be turned off in the mod config. (Main menu->Mods->The Poker Player->Config)
+
+Also, if you play this with other content mods, some of them might be unbalanced to play with the Poker Player. However I don't want to fix or ban others' work, so just have fun with them!
 
 [h1] Other [/h1]
 I recommend enabling "Display summed up damage in gold" in the settings.
