@@ -54,7 +54,7 @@
       ""
     ]
   },
-    "PokerPlayerMod:HardModeConfig": {
+  "PokerPlayerMod:HardModeConfig": {
     "TEXT": [
       "开启困难模式（减少牌型结算奖励）"
     ]
@@ -67,7 +67,8 @@
   "PokerPlayerMod:ExordiumClubConfig": {
     "TEXT": [
       "其他角色也能进入入口俱乐部事件"
- },
+    ]
+  },
   "PokerPlayerMod:RestoreDefaultConfig": {
     "TEXT": [
       "恢复默认设置"
