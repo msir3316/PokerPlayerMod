@@ -20,19 +20,17 @@ If you keep at least one of them until the end of your turn, you enter Showdown.
 - Clover X: Deal X damage to all enemies.
 
 In addition, if you score a [Poker Hand](https://en.wikipedia.org/wiki/List_of_poker_hands), effects of them are boosted.
-- 1 Pair: +50%
-- 2 Pairs: +100%
-- Three of a kind: +150%
-- Straight: +250%
-- Full House: +200%
-- Four of a kind: +300%
-- Five of a kind: +400%
-- Flush can be added to any of the above hand (including No pairs), which adds an additional +200% to the modifier. For example,
-  - (No pairs) Flush: +200%
-  - 1 Pair Flush: +250%
-  - Straight Flush: +450%
-
-This Bonus is decreased if you choose "Hard Mode" in the mod config.
+- 1 Pair: +25%
+- 2 Pairs: +50%
+- Three of a kind: +100%
+- Straight: +200%
+- Full House: +150%
+- Four of a kind: +200%
+- Five of a kind: +250%
+- Flush can be added to any of the above hand (including No pairs), which adds an additional +150% to the modifier. For example,
+  - (No pairs) Flush: +150%
+  - 1 Pair Flush: +175%
+  - Straight Flush: +350%
 
 If you upgrade a Poker Card, its rank will go up by 1. This means the one with rank 10 cannot be upgraded.
 
