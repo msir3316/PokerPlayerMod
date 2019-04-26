@@ -11,7 +11,6 @@ import ThePokerPlayer.patches.ThePokerPlayerEnum;
 import ThePokerPlayer.relics.*;
 import ThePokerPlayer.variables.DefaultCustomVariable;
 import basemod.BaseMod;
-import basemod.ModLabel;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
 import basemod.abstracts.CustomCard;
@@ -111,6 +110,7 @@ public class PokerPlayerMod
 	public static boolean hardMode = false;
 	public static boolean banContents = true;
 	public static boolean exordiumAll = false;
+	public static final int CONFIG_VERSION = 1;
 
 	//ModLabeledToggleButton hardModeButton;
 	ModLabeledToggleButton banContentsButton;
@@ -180,12 +180,24 @@ public class PokerPlayerMod
 	// =============== POST-INITIALIZE =================
 
 	public static void loadConfig() {
+		int version = 0;
 		try {
 			SpireConfig config = new SpireConfig("PokerPlayerMod", "PokerPlayerModSaveData", pokerDefaults);
+			try {
+				version = config.getInt("saveVersion");
+			} catch (Exception e) {
+				e.printStackTrace();
+				version = 0;
+			}
 			config.load();
 			hardMode = config.getBool("hardMode");
 			banContents = config.getBool("banContents");
 			exordiumAll = config.getBool("exordiumAll");
+			if (version < CONFIG_VERSION) {
+				logger.debug("Version is " + version + ". Resetting banContents config.");
+				banContents = true;
+				saveConfig();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			defaultConfig();
@@ -205,6 +217,7 @@ public class PokerPlayerMod
 			//config.setBool("hardMode", hardMode);
 			config.setBool("banContents", banContents);
 			config.setBool("exordiumAll", exordiumAll);
+			config.setInt("saveVersion", CONFIG_VERSION);
 			config.save();
 		} catch (Exception e) {
 			e.printStackTrace();
