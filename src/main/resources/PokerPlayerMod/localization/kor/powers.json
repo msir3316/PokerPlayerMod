@@ -41,7 +41,7 @@
     "NAME": "카드 인쇄기",
     "DESCRIPTIONS": [
       "매 턴 시작 시 #y하트 가 아닌 #y등급 #b",
-      " 의 무작위 포커 카드를 버린 카드 더미에 넣습니다."
+      " 의 무작위 포커 카드를 뽑을 카드 더미에 섞어 넣습니다."
     ]
   },
   "PokerPlayerMod:StackedDeckPower": {
