@@ -1,7 +1,6 @@
 package ThePokerPlayer.events;
 
 import ThePokerPlayer.PokerPlayerMod;
-import ThePokerPlayer.actions.PokerCardDiscoveryAction;
 import ThePokerPlayer.cards.PokerCard;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;

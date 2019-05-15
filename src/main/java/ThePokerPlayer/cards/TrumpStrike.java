@@ -71,7 +71,7 @@ public class TrumpStrike extends CustomCard {
 
 	@Override
 	public AbstractCard makeStatEquivalentCopy() {
-		TrumpStrike c = (TrumpStrike)(super.makeStatEquivalentCopy());
+		TrumpStrike c = (TrumpStrike) (super.makeStatEquivalentCopy());
 		c.num = this.num;
 		return c;
 	}

@@ -28,7 +28,6 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import javax.vecmath.Matrix4f;
 import javax.vecmath.Quat4f;
 import javax.vecmath.Vector3f;
-import java.util.Set;
 
 public class DiceThrowEffect extends AbstractGameEffect {
 	public static final float STOP_DUR = 3.2f;

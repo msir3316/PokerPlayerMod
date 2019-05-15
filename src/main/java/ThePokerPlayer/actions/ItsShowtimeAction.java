@@ -1,6 +1,5 @@
 package ThePokerPlayer.actions;
 
-import ThePokerPlayer.cards.JackOfSpades;
 import ThePokerPlayer.cards.PokerCard;
 import ThePokerPlayer.relics.StuffedPocket;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;

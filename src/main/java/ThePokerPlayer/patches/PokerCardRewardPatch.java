@@ -1,14 +1,13 @@
 package ThePokerPlayer.patches;
 
 import ThePokerPlayer.cards.PokerCard;
-import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.NlothsGift;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
-import com.megacrit.cardcrawl.shop.ShopScreen;
-import javassist.CtBehavior;
 
 import java.util.ArrayList;
 

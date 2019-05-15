@@ -81,7 +81,7 @@
     "NAME": "填料袋",
     "FLAVOR": "警告：牌型可能会不以预期的那样结算。",
     "DESCRIPTIONS": [
-      "#ypokerplayer:摊牌 时，你会获得所有的结算奖励而不是只结算受益最高的 5 张牌的奖励。"
+      "#ypokerplayer:摊牌 时，对所有牌进行结算奖励。（而不是只有五张）"
     ]
   },
   "PokerPlayerMod:AceCard": {

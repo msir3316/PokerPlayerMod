@@ -1,6 +1,5 @@
 package ThePokerPlayer.actions;
 
-import ThePokerPlayer.cards.JackOfSpades;
 import ThePokerPlayer.cards.PokerCard;
 import ThePokerPlayer.interfaces.IShowdownEffect;
 import ThePokerPlayer.relics.PendantOfEscape;

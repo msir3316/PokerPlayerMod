@@ -1,17 +1,9 @@
 package ThePokerPlayer.relics;
 
 import ThePokerPlayer.PokerPlayerMod;
-import ThePokerPlayer.cards.ClubsClub;
-import ThePokerPlayer.cards.PokerCard;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
-import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-
-import static ThePokerPlayer.patches.CustomTags.POKER_PLAYER_CLUB;
 
 public class BrokenClock extends CustomRelic {
 

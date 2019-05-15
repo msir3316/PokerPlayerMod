@@ -1,6 +1,5 @@
 package ThePokerPlayer.vfx;
 
-import ThePokerPlayer.PokerPlayerMod;
 import ThePokerPlayer.actions.ShowdownAction;
 import ThePokerPlayer.cards.PokerCard;
 import com.badlogic.gdx.Gdx;

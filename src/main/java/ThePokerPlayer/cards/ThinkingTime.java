@@ -67,7 +67,7 @@ public class ThinkingTime extends CustomCard {
 
 	@Override
 	public AbstractCard makeStatEquivalentCopy() {
-		ThinkingTime c = (ThinkingTime)(super.makeStatEquivalentCopy());
+		ThinkingTime c = (ThinkingTime) (super.makeStatEquivalentCopy());
 		c.num = this.num;
 		return c;
 	}
