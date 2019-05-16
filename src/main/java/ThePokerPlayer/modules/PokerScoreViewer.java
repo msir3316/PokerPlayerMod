@@ -41,8 +41,9 @@ public class PokerScoreViewer {
 		ShowdownAction.calculateShowdown();
 
 		hb.update();
+	}
 
-		// dragging
+	public void dragUpdate() {
 		if (InputHelper.justClickedLeft) {
 			if (hb.hovered) {
 				dx = hb.cX - InputHelper.mX;
