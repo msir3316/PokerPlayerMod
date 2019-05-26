@@ -159,6 +159,7 @@ public class PokerCard extends CustomCard {
 			this.rawDescription = EXTENDED_DESCRIPTION[16] + this.rawDescription;
 		}
 
+		this.upgraded = (rank == 10);
 		this.initializeTitle();
 		this.initializeDescription();
 		this.cardID = getID(suit, rank);
