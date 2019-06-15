@@ -31,11 +31,14 @@ public class HotShotCutAction extends AbstractGameAction {
 			for (AbstractCard c : AbstractDungeon.player.hand.group) {
 				if (c instanceof PokerCard) {
 					count++;
+				}
+			}
+			AbstractDungeon.actionManager.addToTop(new SwordBoomerangAction(AbstractDungeon.getMonsters().getRandomMonster(null, true, AbstractDungeon.cardRandomRng), this.info, count));
+			for (AbstractCard c : AbstractDungeon.player.hand.group) {
+				if (c instanceof PokerCard) {
 					AbstractDungeon.actionManager.addToTop(new ExhaustSpecificCardAction(c, AbstractDungeon.player.hand));
 				}
 			}
-
-			AbstractDungeon.actionManager.addToBottom(new SwordBoomerangAction(AbstractDungeon.getMonsters().getRandomMonster(null, true, AbstractDungeon.cardRandomRng), this.info, count));
 		}
 
 		this.tickDuration();

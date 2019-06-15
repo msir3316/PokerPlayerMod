@@ -108,7 +108,7 @@
   },
   "PokerPlayerMod:Raise": {
     "NAME": "Raise",
-    "DESCRIPTION": "Draw 1 card. NL You may choose a Poker card in you hand to raise its pokerplayer:Rank by !M!."
+    "DESCRIPTION": "Draw 1 card. NL You may increase the pokerplayer:Rank of one Poker Card by 1."
   },
   "PokerPlayerMod:HotShotCut": {
     "NAME": "Hot Shot Cut",
@@ -217,8 +217,8 @@
   },
   "PokerPlayerMod:TheDieIsCast": {
     "NAME": "The Die is Cast!",
-    "DESCRIPTION": "Throw a dice. NL Choose any number of Poker cards in your hand to change their pokerplayer:Rank to the dice roll.",
-    "UPGRADE_DESCRIPTION": "Throw a loaded dice. NL Choose any number of Poker cards in your hand to change their pokerplayer:Rank to the dice roll."
+    "DESCRIPTION": "Throw a die. NL Choose any number of Poker cards in your hand to change their pokerplayer:Rank to the die roll.",
+    "UPGRADE_DESCRIPTION": "Throw a loaded die. NL Choose any number of Poker cards in your hand to change their pokerplayer:Rank to the die roll."
   },
   "PokerPlayerMod:WildCard": {
     "NAME": "Wild Card",

@@ -32,7 +32,7 @@
       "You don't need this suspicious help."
     ],
     "OPTIONS": [
-      "[Jackpot] #gReceive 3, 4, 5, 6, 7 of Clubs.",
+      "[Jackpot] #gReceive 2, 3, 4, 5, 6 of Clubs.",
       "[Trade] Remove a Poker card. Receive a random Clubs.",
       "[Locked] Requires: Poker card.",
       "[Ignore]",

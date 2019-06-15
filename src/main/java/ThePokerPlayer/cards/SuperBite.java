@@ -30,7 +30,7 @@ public class SuperBite extends CustomCard {
 	private static final AbstractCard.CardRarity RARITY = CardRarity.SPECIAL;
 	private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
 
-	private static final int POWER = 16;
+	private static final int POWER = 20;
 	private static final int UPGRADE_BONUS = 4;
 	private static final int MAGIC = 4;
 	private static final int UPGRADE_MAGIC = 1;

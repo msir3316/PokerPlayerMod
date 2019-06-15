@@ -39,7 +39,7 @@ public class ExordiumClub extends AbstractImageEvent {
 			}
 		}
 
-		imageEventText.setDialogOption(OPTIONS[0], new PokerCard(PokerCard.Suit.Club, 7));
+		imageEventText.setDialogOption(OPTIONS[0], new PokerCard(PokerCard.Suit.Club, 6));
 		if (tradableCards.size() > 0) {
 			imageEventText.setDialogOption(OPTIONS[1]);
 		} else {
@@ -73,7 +73,7 @@ public class ExordiumClub extends AbstractImageEvent {
 				switch (buttonPressed) {
 					case 0:
 						ArrayList<String> cards = new ArrayList<>();
-						for (int i = 3; i <= 7; ++i) {
+						for (int i = 2; i <= 6; ++i) {
 							AbstractCard c = new PokerCard(PokerCard.Suit.Club, i);
 							AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(c, (float) Settings.WIDTH * (i * 0.15F - 0.1f), (float) Settings.HEIGHT / 2.0F));
 							cards.add(c.cardID);
