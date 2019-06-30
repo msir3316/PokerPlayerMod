@@ -33,7 +33,8 @@ public class BottledPoker extends CustomRelic implements CustomBottleRelic, Cust
 		Done
 	}
 
-	public static bottleStatus status = bottleStatus.None;
+	public static BottledPoker selectingInstance;
+	public bottleStatus status = bottleStatus.None;
 
 	private static int NUM = 3;
 
@@ -61,6 +62,7 @@ public class BottledPoker extends CustomRelic implements CustomBottleRelic, Cust
 			}
 		}
 		status = bottleStatus.GridOpen;
+		selectingInstance = this;
 		AbstractDungeon.gridSelectScreen.open(group,
 				NUM, true, DESCRIPTIONS[2] + name + ".");
 	}
@@ -79,8 +81,10 @@ public class BottledPoker extends CustomRelic implements CustomBottleRelic, Cust
 	@Override
 	public ArrayList<Integer> onSave() {
 		ArrayList<Integer> result = new ArrayList<>();
-		for (AbstractCard c : bottledCards) {
-			result.add(AbstractDungeon.player.masterDeck.group.indexOf(c));
+		if (bottledCards != null) {
+			for (AbstractCard c : bottledCards) {
+				result.add(AbstractDungeon.player.masterDeck.group.indexOf(c));
+			}
 		}
 		return result;
 	}

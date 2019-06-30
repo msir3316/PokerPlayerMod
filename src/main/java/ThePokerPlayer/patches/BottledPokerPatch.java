@@ -10,8 +10,8 @@ public class BottledPokerPatch {
 	public static class SetStatus {
 		@SpirePostfixPatch
 		public static void Postfix() {
-			if (BottledPoker.status == BottledPoker.bottleStatus.GridOpen) {
-				BottledPoker.status = BottledPoker.bottleStatus.GridSelected;
+			if (BottledPoker.selectingInstance != null && BottledPoker.selectingInstance.status == BottledPoker.bottleStatus.GridOpen) {
+				BottledPoker.selectingInstance.status = BottledPoker.bottleStatus.GridSelected;
 			}
 		}
 	}

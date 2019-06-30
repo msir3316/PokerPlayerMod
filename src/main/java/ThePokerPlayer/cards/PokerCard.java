@@ -11,6 +11,7 @@ import basemod.abstracts.CustomCard;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.SpireOverride;
 import com.evacipated.cardcrawl.modthespire.lib.SpireSuper;
@@ -86,7 +87,7 @@ public class PokerCard extends CustomCard {
 	static {
 		float d = 48.0F * Settings.scale;
 		GlyphLayout gl = new GlyphLayout();
-		gl.setText(FontHelper.cardTypeFont_L, PokerCardTypePatch.TEXT[0]);
+		gl.setText(FontHelper.cardTypeFont, PokerCardTypePatch.TEXT[0]);
 		typeOffsetPoker = (gl.width - 48.0F * Settings.scale) / 2.0F;
 		typeWidthPoker = (gl.width / d - 1.0F) * 2.0F + 1.0F;
 	}
@@ -250,7 +251,7 @@ public class PokerCard extends CustomCard {
 	}
 
 	@Override
-	public Texture getCardBg() {
+	public TextureAtlas.AtlasRegion getCardBgAtlas() {
 		return ImageMaster.CARD_SKILL_BG_SILHOUETTE;
 	}
 
