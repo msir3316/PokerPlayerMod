@@ -5,9 +5,9 @@
     "Celicath"
   ],
   "credits": "HSymbol - original game\nRita-Bernstein - ZHS translation",
-  "description": "Adds a character called The Poker Player, who fights with his own rule inspired from poker.\n\n- Adds 87 cards and 13 relics.\n- Disables some base game contents which are unbalanced or confusing to the Poker Player. If you don't like this behavior, check out the mod config.\n\nv0.8.6 (2019-06-16)\n- Super Bite damage increased: 16(20) -> 20(24)\n- Splitter damage decreased: 6 -> 5\n- The first option from Exordium Club event now gives you 2~6 of clubs(was 3~7 of clubs)\n- Fixed issue where Hot Shot Cut doubled damage incorrectly with Pen Nib relic.\n- Fixed some grammar issues in card texts.\n- Poker cards with rank 10 now have green name.\n\nv0.8.7 (2019-07-02)\n- Updated for v1.1 release\n\n- For the past patch notes, visit https://steamcommunity.com/sharedfiles/filedetails/changelog/1710999325\n\n",
-  "version": "0.8.7",
-  "sts_version": "01-23-2019",
+  "description": "Adds a character called The Poker Player, who fights with his own rule inspired from poker.\n\n- Adds 87 cards and 13 relics.\n- Disables some base game contents which are unbalanced or confusing to the Poker Player. If you don't like this behavior, check out the mod config.\n\nv0.8.6 (2019-06-16)\n- Super Bite damage increased: 16(20) -> 20(24)\n- Splitter damage decreased: 6 -> 5\n- The first option from Exordium Club event now gives you 2~6 of clubs(was 3~7 of clubs)\n- Fixed issue where Hot Shot Cut doubled damage incorrectly with Pen Nib relic.\n- Fixed some grammar issues in card texts.\n- Poker cards with rank 10 now have green name.\n\nv0.8.7 (2019-07-02)\n- Updated for v1.1 release\n\nv0.8.8 (2019-07-03)\n- Fixed some typos\n\n- For the past patch notes, visit https://steamcommunity.com/sharedfiles/filedetails/changelog/1710999325\n\n",
+  "version": "0.8.8",
+  "sts_version": "07-01-2019",
   "mts_version": "3.7.0",
   "dependencies": [
     "basemod",
